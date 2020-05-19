@@ -1,0 +1,81 @@
+==================================================================
+https://keybase.io/rhnvrm
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://rohanverma.net
+  * I am rhnvrm (https://keybase.io/rhnvrm) on keybase.
+  * I have a public key with fingerprint 437E 4108 DCE7 EDDC 44BC  B4C6 C8E8 5561 2971 CC42
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01013cea59ee8ee25ee8b46e604e85988c6e2ca5d553376e9a713a964ab4c7b44cd20a",
+      "fingerprint": "437e4108dce7eddc44bcb4c6c8e855612971cc42",
+      "host": "keybase.io",
+      "key_id": "c8e855612971cc42",
+      "kid": "01013cea59ee8ee25ee8b46e604e85988c6e2ca5d553376e9a713a964ab4c7b44cd20a",
+      "uid": "b4b014775662f71ffe9a4feda6cf3519",
+      "username": "rhnvrm"
+    },
+    "merkle_root": {
+      "ctime": 1549826422,
+      "hash_meta": "34a7c384645e92d80a2bf39604981984cc0220656521eb8d237f5c3b30b7e4d1",
+      "seqno": 4737805
+    },
+    "revoke": {
+      "sig_ids": [
+        "288ed9470cc534ef470baf830727c26e97ce4c92835c4f36376f9460ae77a4bf0f"
+      ]
+    },
+    "service": {
+      "hostname": "rohanverma.net",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1549826429,
+  "expire_in": 157680000,
+  "prev": "fa97c0c09d0f58104ac29f0316673477692f96693180a9a7ca6515b634308c7b",
+  "seqno": 12,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.80
+Comment: https://keybase.io/crypto
+
+yMK5AnicrVNdaBxVGE3UrSQx1qpYBfvguFYLabj/P4vaNhY0pcU+2Gps7XrnzjfZ
+Idmd7exkk1C3L6LkoUUjKEJRCCqtYhULttoXa9C2bFLxL0EQJKhpK9RiUatgsN4J
+/oD46Lzc+TnnfOeeM/eDzstb2ltPnt1iVu2c7mmdmqwPtWx/dLSxy/PjYNQr7PIG
+YHGBwQBqaXEgCryChzDC1ILhGkABEO4WnwkQiIHiWikrgFjDA84plQK0kZgaLZjx
+mZU+YzYgyHhdXhhV+iGpJlEldbKMSmAYqcCChCCwjPnWEYRVTpULTLTE1jLiiKW4
+ljGcOd/UoDuK3Tv3UFy09x/4/9n30KKcz3yEmZRcCBJKHIaOwEIIjLAh5VhnwBok
+FVMGh05KlXpS9hpdXhmSgUEoJnGcZtHaNMoAmDOtiGCEuO2ZWqlYhtQ4HmVGWqqY
+YBw0CRQyxA+pdp61wloxaxEhSHDBCQZfBYTKkFvqU+S7OAPsXNRgZyX2CkxSqRB3
+DhKoxwOQDa9F/S60mlfY5hGlINBMIms5ZRC6O9+EiiJJpCUuDWmBWU0U5ZaFVLiE
+Qs0EMiClYX6IQu+RRjYsqUd2UTxr6a/dxyVTqUNSNt0VSJ2nahKnsY0H3bdSmlZr
+hSyZdLSagYfBL/4pU/SjSuD+Esdw7FoUV1xSDvnv0HSXByPVKIFilCG4FAq5K5sD
+dScZGmcfWaQDFHKFETOW6BBRLISkrkOhSaiF0BS7gF3v1giOuS8oo0i57v9JEbt+
+UtPvNF12FZMOJeA1Jo9tv6Kltb1lSe6y7Pi0tLdd8/ehGr7y0o4Dr+57biTfvP7j
+LWLN+Sdnlu3Y3dl31T0fPmQ6XpvZdurF2emOJ9atvfjb02/37tk4Nrb8hc19n5xf
+OHzL/Td3NaINN22d3+RPbj2y4qd369PL3ly47fSvnfe9N7Vm6frmwaMH7j58h5pY
+S2fv3D3eWDm7aqL/jKzrr7+98Hz3dSvmH5+4N9r82VT+89lyfurCkWPr977cc7ot
+Fy+8nox17JssnPnl2me/KC25+mi+u/Dzd/PH+Z653Nm+2195oPcjPP79xQd7xw9u
+wnepnpXF481686vfV7+x7sd3co/Njdw6dwLPnMsd2nBq/0uX2pZG59Bw89D7T83l
+Rz/98uRbz9zofbPxxMOraUB/CPYuv+EP1KGBbg==
+=cgUx
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/rhnvrm
+
+==================================================================
