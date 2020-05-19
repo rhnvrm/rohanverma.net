@@ -9,6 +9,8 @@ url = "blog/2019/11/26/utopia-for-realists"
 author = "Rohan Verma"
 +++
 
+![book](/blog/2019/utopia.png)
+
 This book was a recent recommendation from [Dr Kailash Nadh](https://nadh.in). A
 small but heavy book, that is engaging and well researched. Rutger Bregman has 
 done a thorough job of making arguments for three major policy ideas whose time

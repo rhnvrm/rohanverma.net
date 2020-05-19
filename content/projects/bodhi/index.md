@@ -1,6 +1,7 @@
 ---
 title: Bodhi - Hugo Theme
 layout: article
+summary: Bodhi is a simple, minimal, personal website theme for Hugo.
 ---
 
 Bodhi is a simple, minimal, personal website theme for Hugo.
