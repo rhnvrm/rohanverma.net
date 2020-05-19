@@ -6,6 +6,8 @@ summary: Bodhi is a simple, minimal, personal website theme for Hugo.
 
 Bodhi is a simple, minimal, personal website theme for Hugo.
 
+View on [Github](https://github.com/rhnvrm/bodhi)
+
 ## Features
 
 - Google and Fathom Analytics integration
