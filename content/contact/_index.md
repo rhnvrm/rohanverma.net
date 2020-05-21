@@ -1,7 +1,11 @@
+---
+Title: "Contact"
+---
+
 # Social
 
-|          |                                            |
-|----------|--------------------------------------------|
+| Social         | URL                                           |
+|:--------:|--------------------------------------------|
 | github   | https://github.com/rhnvrm                  |
 | keybase  | https://keybase.io/rhnvrm                  |
 | twitter  | https://twitter.com/rhnvrm                 |

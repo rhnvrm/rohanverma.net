@@ -10,16 +10,32 @@ googleAnalytics = "UA-90695618-1"
     author = "Rohan Verma"
     commentoSrc = "https://commento.rohanverma.net/js/commento.js"
     footerMessage = "Feel free to use the content of this website with approripate attribution to the author."
+    featherIconsCDN = true
+    
+[[params.social]]
+name = "Github"
+icon = "github"
+url = "https://github.com/rhnvrm/"
 
-[[menu.main_left]]
+[[params.social]]
+name = "Twitter"
+icon = "twitter"
+url = "https://twitter.com/rhnvrm/"
+
+[[params.social]]
+name = "RSS Feed"
+icon = "rss"
+url = "/index.xml"
+
+[[menu.main]]
 name = "home"
 url = "/"
 weight = 1
 
-[[menu.main_right]]
+[[menu.main]]
 name = "contact"
 url = "/contact/"
-weight = 1
+weight = 2
 
 [[menu.nav]]
 name = "projects"
