@@ -14,7 +14,7 @@ tags:
   - misc
 
 ---
-[<figure style="width: 640px" class="wp-caption aligncenter"><img class="size-medium" src="https://imgs.xkcd.com/comics/responsible_behavior.png" alt="xkcd #364: Responsible Behavior" width="640" height="198" /><figcaption class="wp-caption-text">xkcd #364: Responsible Behavior</figcaption></figure>][1]
+[<figure class="wp-caption aligncenter"><img class="size-medium" src="https://imgs.xkcd.com/comics/responsible_behavior.png" alt="xkcd #364: Responsible Behavior" width="640" height="198" /><figcaption class="wp-caption-text">xkcd #364: Responsible Behavior</figcaption></figure>][1]
 
 I participated in ApacheCon EU 2016&#8217;s PGP Keysigning Party recently. Being a newbie about PGP keysigning, I made the mistake of not sending the keys back to the key server after signing as I was using a GUI tool called Seahorse. So today, after realizing this from searching my key on MIT&#8217;s PGP keyserver, I decided to do it again and send the keys this time using GnuPG. It is very easy to use GnuPG which is Gnu&#8217;s PGP implementation and it is well documented. I followed [this][2] article and am providing a list of simple commands below for those who already have setup GnuPG. Also, please not that you should not sign someone&#8217;s key until you verify someone.
 

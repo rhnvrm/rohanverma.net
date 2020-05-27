@@ -49,6 +49,12 @@ url = "/projects/bodhi"
 weight = 1
 
 [[menu.nav]]
+parent = "projects"
+name = "twitter bots"
+url = "/projects/twitter_bots"
+weight = 2
+
+[[menu.nav]]
 name = "blogs"
 url = "/blog"
 weight = 1
