@@ -85,7 +85,7 @@ unsafe= true
 
 [params.fathomAnalytics]
     siteID = "REDBQ"
-    serverURL = "https://fathom.rohanverma.net"
+    serverURL = "fathom.rohanverma.net"
 
 [markup]
   [markup.highlight]
