@@ -2,7 +2,6 @@ baseURL = "https://rohanverma.net/"
 languageCode = "en-us"
 title = "Rohan Verma"
 theme = "bodhi"
-googleAnalytics = "UA-90695618-1"
 
 [params]
     subtitle = "(rhnvrm)"
