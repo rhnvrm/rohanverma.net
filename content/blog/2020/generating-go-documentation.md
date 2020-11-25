@@ -1,5 +1,5 @@
 ---
-title: "Generating Go Documentation"
+title: "Generating Go docs using gomarkdoc and pandoc"
 author: ["rhnvrm"]
 date: 2020-11-24T02:19:00+05:30
 tags: ["linux", "foss", "golang"]
