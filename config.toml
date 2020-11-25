@@ -2,6 +2,7 @@ baseURL = "https://rohanverma.net/"
 languageCode = "en-us"
 title = "Rohan Verma"
 theme = "bodhi"
+rssLimit = 20
 
 [params]
     subtitle = "(rhnvrm)"
