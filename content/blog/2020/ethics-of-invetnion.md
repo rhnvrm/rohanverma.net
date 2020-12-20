@@ -1,7 +1,7 @@
 ---
 title: "The Ethics of Invention"
 author: ["rhnvrm"]
-date: 2020-12-21T03:23:00+05:30
+date: 2020-12-20T03:23:00+05:30
 tags: ["books", "techpolicy"]
 categories: ["books"]
 draft: false

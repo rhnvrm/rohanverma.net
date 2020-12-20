@@ -1,7 +1,7 @@
 ---
 title: "Does NPD Governance Framework give Government a backdoor into private companies"
 author: ["rhnvrm"]
-date: 2020-12-21T04:34:00+05:30
+date: 2020-12-03T04:34:00+05:30
 tags: ["techpolicy", "opinion"]
 categories: ["uncategorized"]
 draft: false

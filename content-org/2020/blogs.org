@@ -172,7 +172,7 @@ security question, although this could be entirely incorrect as I don't know
 Chinese or Cangjie. Another guess here is that this is the breach that led to
 the inclusion of this password in the list itself.
 * DONE The Ethics of Invention                         :@books:books:techpolicy:
-CLOSED: [2020-12-21 Mon 03:23]
+CLOSED: [2020-12-20 Sun 03:23]
 :PROPERTIES:
 :EXPORT_FILE_NAME: ethics-of-invetnion
 :EXPORT_DATE: 2020-12-20
@@ -253,12 +253,13 @@ to keep ethical discourse public and draw a balance between private discourse so
 that it does not spawn further public alienation between views of experts hired
 by private bodies and democratic institutions.
 * DONE Use of Facial Recognition Tech by Law Enforcement :@uncategorized:techpolicy:opinion:
-CLOSED: [2020-12-21 Mon 03:59]
+CLOSED: [2020-11-16 Mon 03:59]
 :PROPERTIES:
 :EXPORT_FILE_NAME: frt-law-enforcement
 :EXPORT_DATE: 2020-11-16
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :url blog/2020/11/16/use-of-facial-recognition-police
 :END:
+
 The use of Facial Recognition by law enforcement to identify offenders is one of
 the cases where the regulation of the technology lags way behind, and there is
 an urgent need to bring about policy to reduce potential pain in our society.
@@ -289,7 +290,7 @@ concerns as well.
 [1]: https://techcrunch.com/2020/03/11/india-used-facial-recognition-tech-to-identify-1100-individuals-at-a-recent-riot/
 [2]: https://securitytoday.com/articles/2019/10/10/california-to-become-third-state-to-ban-facial-recognition-software-in-police-body-cameras.aspx
 * DONE Does NPD Governance Framework give Government a backdoor into private companies :@uncategorized:techpolicy:opinion:
-CLOSED: [2020-12-21 Mon 04:34]
+CLOSED: [2020-12-03 Thu 04:34]
 :PROPERTIES:
 :EXPORT_FILE_NAME: npd-backdoor
 :EXPORT_DATE: 2020-12-03

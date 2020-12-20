@@ -1,10 +1,10 @@
 ---
 title: "Use of Facial Recognition Tech by Law Enforcement"
 author: ["rhnvrm"]
-date: 2020-11-16
+date: 2020-11-16T03:59:00+05:30
 tags: ["techpolicy", "opinion"]
 categories: ["uncategorized"]
-draft: true
+draft: false
 url: "blog/2020/11/16/use-of-facial-recognition-police"
 ---
 
