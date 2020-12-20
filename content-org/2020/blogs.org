@@ -252,8 +252,129 @@ treating all tech as extractive and solely for profiteering. Another caution is
 to keep ethical discourse public and draw a balance between private discourse so
 that it does not spawn further public alienation between views of experts hired
 by private bodies and democratic institutions.
+* DONE Use of Facial Recognition Tech by Law Enforcement :@uncategorized:techpolicy:opinion:
+CLOSED: [2020-12-21 Mon 03:59]
+:PROPERTIES:
+:EXPORT_FILE_NAME: frt-law-enforcement
+:EXPORT_DATE: 2020-11-16
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :url blog/2020/11/16/use-of-facial-recognition-police
+:END:
+The use of Facial Recognition by law enforcement to identify offenders is one of
+the cases where the regulation of the technology lags way behind, and there is
+an urgent need to bring about policy to reduce potential pain in our society.
+Apart from the serious problems that are inherent with the technology like
+mis-identification and minimal mapping between the training sets and the actual
+photos. According to a recent report in TechCrunch [1], the Home Minister of
+India admitted to using a data set trained on the Aadhaar Database to identify
+individuals involved in a recent riot. This software was originally obtained in
+the name of a good cause, to identify missing children, although according to
+the report [1] the software failed to even distinguish between boys and girls.
+Recent advances in AI have made certain model that perform recognition by
+training on huge datasets, unfortunately they are considered to be black boxes.
+Along with this, there is a question of how in line it is with the Privacy Laws
+and the inherent questions of cyber-security. To address these issues, we should
+open discourse on these topics with experts. Unlike the approach in the west [2]
+to ban the tech, we should try to come up with a middle ground. Ideally, a
+policy should be discussed to thoroughly document the process of how the model
+was trained and the dataset that was used in the process. After the model is
+trained and put into production, there should a mandatory requirement to
+disclose the uses of the model along with the false-negatives in a proper
+manner. Using this information, there should be regular reviews to revisit the
+efficacy of the model. A mechanism should be devised to be able to appeal for
+manual review by an expert in case a person who is identified by this system. A
+person should also be able to opting out of being incriminated by the use of
+this technology. Such mechanisms, in such a policy, would address the privacy
+concerns as well.
 
-* TODO Economics of AI, Social Networks, and Technology :techpolicy:
+[1]: https://techcrunch.com/2020/03/11/india-used-facial-recognition-tech-to-identify-1100-individuals-at-a-recent-riot/
+[2]: https://securitytoday.com/articles/2019/10/10/california-to-become-third-state-to-ban-facial-recognition-software-in-police-body-cameras.aspx
+* DONE Does NPD Governance Framework give Government a backdoor into private companies :@uncategorized:techpolicy:opinion:
+CLOSED: [2020-12-21 Mon 04:34]
+:PROPERTIES:
+:EXPORT_FILE_NAME: npd-backdoor
+:EXPORT_DATE: 2020-12-03
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :url blog/2020/12/03/npd-backdoor-govt
+:END:
+
+Ministry of Electronics and Information Technology (MEITY) had released a report
+[1] on the “Non-Personal Data Governance Framework” in July 2020 [2]. The report
+recommends the establishment of a Non-Personal Data Regulatory Authority with an
+enabling role as well as enforcing role. [2] Along with this, the report defines
+Non Personal Data as: [3]
+
+#+BEGIN_QUOTE
+Non-personal data: When the data is not ‘personal data’ (as defined under the
+PDP Bill), or the data is without any personally identifiable information (PII).
+It could be:
+
+- Data that never related to an identified or identifiable natural person, such
+  as data on weather conditions, data from sensors installed on industrial
+  machines, data from public infrastructures, etc., or
+- Data that was initially personal data but was later made anonymous. “Data
+  which are aggregated and to which certain data transformation techniques are
+  applied, to the extent that individual specific events are no longer
+  identifiable, can be qualified as anonymous data”.
+#+END_QUOTE
+
+Every tech company, which collects non-personal data would be obliged to
+register itself as a *Data Business*.
+
+Access to non-personal data may be requested for three purposes, one of those
+being: [3]
+
+#+BEGIN_QUOTE
+1. *Sovereign purposes* such as national security, law enforcement, legal or
+   regulatory purposes. These purposes could include mapping physical and cyber
+   security vulnerabilities, mapping crime and taking preventive measures, a
+   regulator wanting to stay abreast of developments in the sector, or national
+   security (via telecommunications metadata, geospatial or financial data,
+   etc.)
+#+END_QUOTE
+
+Putting two plus two together, it is easy to understand that this could mean
+that the government could get private tech companies to anonymize and give data
+collected of its users, that could be private in nature, and hand it to them.
+Another failure here is that it is clearly understood by the tech community that
+using metadata, it is often trivial to de-anonymize data. Now the scope and
+urgency of the matter is not specified. Neither is any recommendation given by
+the report to limit the usage of this under exceptional circumstances, or maybe
+atleast only when warranted by say the judiciary. Even though the report has
+mentioned the need of "adequate checks against abuse of power by government or
+other representative agencies" there is little emphasis on what these will be.
+This was even mentioned in the Medianama article on the concerns [6].
+
+Here I would like to invoke the *Iron Law of Data Collection*, by Jon Snader [4],
+which states that no matter what the original rationale given for its collection
+new uses will be found for it and will eventually be abused.
+
+#+BEGIN_QUOTE
+DEA expresses an interest in providing its agents “ ‘unlimited access to patient
+de-identified data’ on re/filled prescriptions, daily supply, payment type,
+dosing information and gender, among other characteristics, until at least
+2025.” [5]
+#+END_QUOTE
+
+He gives a concrete example of how even anonymized data collected for the
+medical use is being appropriated by law enforcement and is going to be
+essentially abused.
+
+Now the issue here is that, when unlimited and multi-genre data collected by
+private entities, lands into the laps of the government; how creative will our
+government be?
+
+[1]: https://static.mygov.in/rest/s3fs-public/mygov_159453381955063671.pdf
+[2]: https://www.mygov.in/task/share-your-inputs-draft-non-personal-data-governance-framework/
+[3]: https://www.medianama.com/2020/07/223-summary-non-personal-data-report-meity/
+[4]: https://irreal.org/blog/?p=9319
+[5]: https://irreal.org/blog/?p=9321
+[6]: https://www.medianama.com/2020/07/223-five-key-concerns-with-indias-non-personal-data-report/
+
+* TODO Economics of AI, Social Networks, and Technology      :techpolicy:@notes:
+:PROPERTIES:
+:EXPORT_FILE_NAME: econ-ai-social-networks-tech
+:EXPORT_DATE: 2020-12-19
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :url blog/2020/12/19/econ-ai-social-networks-tech
+:END:
 
 * Footnotes
 
