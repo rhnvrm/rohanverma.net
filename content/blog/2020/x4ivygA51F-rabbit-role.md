@@ -2,6 +2,7 @@
 title: "The x4ivygA51F Rabbit Hole"
 author: ["rhnvrm"]
 date: 2020-11-25T23:25:00+05:30
+categories: ["notes"]
 draft: false
 url: "blog/2020/11/25/x4ivygA51F-rabbit-hole"
 ---

@@ -56,6 +56,12 @@ url = "/projects/twitter_bots"
 weight = 2
 
 [[menu.nav]]
+parent = "projects"
+name = "frozen lobster"
+url = "https://frozen-lobster.rohanverma.net"
+weight = 3
+
+[[menu.nav]]
 name = "blogs"
 url = "/blog"
 weight = 1
