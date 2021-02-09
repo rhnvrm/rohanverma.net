@@ -376,6 +376,66 @@ government be?
 :EXPORT_DATE: 2020-12-19
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :url blog/2020/12/19/econ-ai-social-networks-tech
 :END:
+* TODO A pragmatic guide to balance goals and systems
+:PROPERTIES:
+:EXPORT_FILE_NAME: goals-and-systems
+:EXPORT_DATE: 2020-12-31
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :url blog/2020/12/31/goals-and-systems
+:END:
+I recently received an email from a student studying at a university asking
+for advice/mentorship. Their question focused on how to get things
+done. Here is a excerpt from my reply, somewhat edited for the blog.
+
+Most people suggest to use either of these approaches to get stuff done. I
+think there is a middle ground that can help most people do things they always
+wanted to do. There is a time for everything. In my life, I have seen that a
+balanced approach is more sustainable.
+
+In my school life, I don't think I ever was able to reflect on what I was
+doing. Our school system unfortunately prepares us to do what we are told and
+not question it. There just is not enough time. I wish there would be time
+given to the next generation to introspect on what they are trying to achieve
+or what they want to do in the future. It is important to learn how to learn
+and what type of learning methods are suitable for you as an individual and
+what are not.
+
+After school, I joined a university which I did not like. I made a goal to
+join a different university which would align with what I wanted to do for the
+next few years. I did not have a system in place and the goal allowed me to
+distract myself from other things that did not align with my goal, and things
+often fell into place. Systems emerged out of thin air, allowing me to work
+toward my goal and enjoy other things in life which I like at the same time.
+Eventually, I ended up joining another university directly in the second year
+through a lateral credit transfer.
+
+In my bachelors degree, I set a system in place to contribute to open source
+and participate in events. There was no particular goal. The system was
+simple, I would do whatever was needed by the university till 7pm. After that
+I would go to the library and work on things related to open source and
+participate in online events. Even though I did not have a goal in place,
+goals like attending a hackathon every two weeks during the weekend and
+preparing for them emerged. Or trying to install open source projects that
+participate in GSoC from scratch on my machine by following the documentation
+and reporting bugs in that process emerged. Or even stealing internet from the
+library to use in the hostel after the library closed to bypass the bandwidth
+limits, emerged from the need to complete the other goals.
+
+It would be unfair to not talk about failures. As a goal, I decided to pursue
+more credits in a semester than humanly possible. There was caution from
+seniors as well as mentors in the faculty. I failed a course that semester and
+had to do it again, probably the first one in my life. No systems fell in from
+the sky to save me. Lesson to learn here is that moonshots are called
+moonshots for a reason, and things that are physically impossible should not
+be set as goals. Otherwise they are doomed to fail, from the start.
+
+I am neither a productivity guru nor a really productive person. All I wanted
+to highlight here is that for the past few years, I have followed an approach
+that utilizes both of these approaches, with a pinch of salt. This has helped
+me to complete a number of things that were important to me. Along the way, I
+also know the importance of cutting things that are not contributing to my
+ambitions or draining the energy out of me. So my suggestion to you is that
+try both approaches, you will understand what works for you. College is a good
+place to experiment and see what works best for you.
 
 * Footnotes
 
