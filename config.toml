@@ -10,7 +10,7 @@ rssLimit = 20
     author = "Rohan Verma"
     commentoSrc = "https://commento.rohanverma.net/js/commento.js"
     favicon = "/images/favicon.ico"
-    footerMessage = "Feel free to use the content of this website with approripate attribution to the author."
+    footerMessage = "Feel free to use the content of this website with appropriate attribution to the author."
     featherIconsCDN = true
     
 [[params.social]]
