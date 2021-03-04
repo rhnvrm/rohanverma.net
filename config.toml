@@ -57,6 +57,12 @@ weight = 2
 
 [[menu.nav]]
 parent = "projects"
+name = "nudrop"
+url = "/projects/nudrop"
+weight = 3
+
+[[menu.nav]]
+parent = "projects"
 name = "frozen lobster"
 url = "https://frozen-lobster.rohanverma.net"
 weight = 3
