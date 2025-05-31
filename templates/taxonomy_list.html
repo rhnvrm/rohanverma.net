@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="taxonomy-header">
+    <h1 class="taxonomy-title">{{ taxonomy.name | title }}</h1>
+    <p class="taxonomy-description">
+        {% if taxonomy.name == "tags" %}
+        Browse posts by topic and subject matter.
+        {% elif taxonomy.name == "categories" %}
+        Explore content organized by category.
+        {% else %}
+        Browse content by {{ taxonomy.name }}.
+        {% endif %}
+    </p>
+</div>
+
+<div class="taxonomy-list">
+    {% for term in terms %}
+    <div class="taxonomy-item">
+        <h2 class="term-name">
+            <a href="{{ term.permalink }}">{{ term.name }}</a>
+        </h2>
+        <span class="term-count">{{ term.pages | length }} {% if term.pages | length == 1 %}post{% else %}posts{% endif %}</span>
+    </div>
+    {% endfor %}
+</div>
+
+<style>
+.taxonomy-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.taxonomy-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text);
+}
+
+.taxonomy-description {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.taxonomy-list {
+    max-width: 65ch;
+    margin: 0 auto;
+    display: grid;
+    gap: var(--spacing-md);
+}
+
+.taxonomy-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.taxonomy-item:last-child {
+    border-bottom: none;
+}
+
+.term-name {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.term-name a {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.term-name a:hover {
+    color: var(--color-accent);
+}
+
+.term-count {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    background: var(--color-bg-secondary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 16px;
+    border: 1px solid var(--color-border);
+}
+
+@media (max-width: 768px) {
+    .taxonomy-title {
+        font-size: 2rem;
+    }
+    
+    .taxonomy-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+    
+    .term-count {
+        align-self: flex-end;
+    }
+}
+</style>
+{% endblock content %}

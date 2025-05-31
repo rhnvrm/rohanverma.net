@@ -1,8 +1,8 @@
----
-title: Bodhi - Hugo Theme
-layout: article
-summary: Bodhi is a simple, minimal, personal website theme for Hugo.
----
++++
+title = "Bodhi - Hugo Theme"
+description = "Bodhi is a simple, minimal, personal website theme for Hugo."
+weight = 1
++++
 
 Bodhi is a simple, minimal, personal website theme for Hugo.
 
@@ -10,7 +10,6 @@ Bodhi is a simple, minimal, personal website theme for Hugo.
 
 ## Previews
 
-![preview](https://rohanverma.net/projects/bodhi/preview.png)
+![preview](/projects/bodhi/preview.png)
 
-![previewdark](https://rohanverma.net/projects/bodhi/preview_dark.png)
-
+![previewdark](/projects/bodhi/preview_dark.png)

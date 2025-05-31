@@ -1,8 +1,8 @@
----
-title: NuDrop
-layout: article
-summary: Yet another FOSS SecureDrop built on top of NuCypher and Ethereum.
----
++++
+title = "Nudrop - File Sharing Tool"
+description = "A simple file sharing tool built with Go and React."
+weight = 2
++++
 
 Yet another FOSS SecureDrop built on top of NuCypher and Ethereum.
 

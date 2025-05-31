@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-content">
+    <!-- Section Header -->
+    <header class="section-header">
+        <h1 class="text-display">{{ section.title }}</h1>
+        {% if section.description %}
+        <p class="text-intro">{{ section.description }}</p>
+        {% endif %}
+    </header>
+
+    <!-- Projects Grid -->
+    {% if section.pages %}
+    <div class="project-grid spacing-component">
+        {% for page in section.pages %}
+        <article class="project-card">
+            <!-- Project Image/Cover if available -->
+            {% if page.extra.image %}
+            <div class="project-image">
+                <img src="{{ page.extra.image }}" alt="{{ page.title }}" loading="lazy">
+            </div>
+            {% endif %}
+            
+            <!-- Project Header -->
+            <div class="project-header">
+                <h2 class="project-title">
+                    <a href="{{ page.permalink }}" class="link-plain">{{ page.title }}</a>
+                </h2>
+                
+                <!-- Project Status -->
+                {% if page.extra.project_status %}
+                <span class="tag tag--status tag--{{ page.extra.project_status | slugify }}">
+                    {{ page.extra.project_status | title }}
+                </span>
+                {% endif %}
+            </div>
+            
+            <!-- Project Description -->
+            {% if page.description %}
+            <div class="project-description">
+                <p>{{ page.description }}</p>
+            </div>
+            {% endif %}
+            
+            <!-- Project Tech Stack -->
+            {% if page.extra.tech_stack %}
+            <div class="project-tech-stack">
+                <div class="text-caption">Built with:</div>
+                <div class="tag-list">
+                    {% for tech in page.extra.tech_stack %}
+                    <span class="tag tag--tech">{{ tech }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            
+            <!-- Project Links -->
+            <div class="project-links">
+                <!-- Primary Link to Project Page -->
+                <a href="{{ page.permalink }}" class="btn-secondary">View Details</a>
+                
+                <!-- External Links -->
+                {% if page.extra.github_url %}
+                <a href="{{ page.extra.github_url }}" class="btn-secondary" target="_blank" rel="noopener">
+                    <span class="btn-icon">{% include "icons/github.html" %}</span>
+                    Code
+                </a>
+                {% endif %}
+                
+                {% if page.extra.demo_url %}
+                <a href="{{ page.extra.demo_url }}" class="btn-secondary" target="_blank" rel="noopener">
+                    <span class="btn-icon">{% include "icons/external-link.html" %}</span>
+                    Demo
+                </a>
+                {% endif %}
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+    {% else %}
+    <!-- Empty State -->
+    <div class="content-center spacing-component">
+        <div class="text-center">
+            <div class="text-display">🚀</div>
+            <h3 class="text-heading">No projects yet</h3>
+            <p class="text-intro">
+                Projects will be added soon. Check back later for updates!
+            </p>
+            <a href="/" class="btn-primary">← Back to Home</a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock content %}

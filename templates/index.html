@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-main hero-enhanced">
+    <div class="container-full">
+        <div class="container-content">
+            <div class="hero-card">
+                <div class="hero-avatar">
+                    <img src="/images/avatar.jpg" alt="Rohan Verma" class="avatar-image">
+                </div>
+                <h1 class="text-display hero-title">Rohan Verma</h1>
+                <p class="text-intro hero-subtitle">Thoughts, Ideas, and Digital Wanderings</p>
+                <div class="text-body content-center hero-description">
+                    <p>
+                        Welcome to my corner of the internet where I share personal thoughts on technology, 
+                        travel experiences, and ideas worth exploring. This is a space for authentic writing 
+                        and meaningful conversations.
+                    </p>
+                </div>
+                <div class="text-center hero-cta">
+                    <a href="/blog/" class="btn-primary link-arrow">
+                        Read My Thoughts
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Sections -->
+<section class="section-features">
+    <div class="container-full">
+        <div class="container-wide">
+            <div class="feature-grid-enhanced">
+                <div class="feature-item-card">
+                    <div class="feature-icon-enhanced">✍️</div>
+                    <h3 class="feature-title">Writing & Thoughts</h3>
+                    <p class="feature-description">
+                        Personal reflections on technology, life, and experiences. 
+                        Long-form writing focused on sharing insights and ideas worth discussing.
+                    </p>
+                    <a href="/blog/" class="feature-link">
+                        Browse Articles
+                    </a>
+                </div>
+
+                <div class="feature-item-card">
+                    <div class="feature-icon-enhanced">🚀</div>
+                    <h3 class="feature-title">Projects & Experiments</h3>
+                    <p class="feature-description">
+                        Personal projects and technical experiments. 
+                        A showcase of things I've built, learned from, and found interesting to share.
+                    </p>
+                    <a href="/projects/" class="feature-link">
+                        View Projects
+                    </a>
+                </div>
+
+                <div class="feature-item-card">
+                    <div class="feature-icon-enhanced">🌍</div>
+                    <h3 class="feature-title">Travel & Experiences</h3>
+                    <p class="feature-description">
+                        Stories from travels and cultural experiences. 
+                        Personal observations and reflections from exploring different places and perspectives.
+                    </p>
+                    <a href="/blog/tags/travel/" class="feature-link">
+                        Travel Stories
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Latest Posts -->
+<section class="section-posts">
+    <div class="container-full">
+        <div class="container-wide">
+            <div class="section-header-enhanced">
+                <h2 class="text-heading section-title-prominent">Latest Thoughts</h2>
+                <p class="text-intro section-subtitle">
+                    Recent writing and ideas I've been exploring
+                </p>
+            </div>
+
+            <div class="content-grid-enhanced">
+                {% set blog_section = get_section(path="blog/_index.md") %}
+                {% for page in blog_section.pages | slice(end=6) %}
+                <article class="content-preview-enhanced">
+                    <div class="content-preview-meta-enhanced">
+                        <span class="meta-item-primary">
+                            <time datetime="{{ page.date }}">
+                                {{ page.date | date(format="%B %d, %Y") }}
+                            </time>
+                        </span>
+                        {% if page.reading_time %}
+                        <span class="meta-item-secondary read-time">{{ page.reading_time }} min read</span>
+                        {% endif %}
+                    </div>
+
+                    <h3 class="content-preview-title">
+                        <a href="{{ page.permalink }}" class="link-plain">{{ page.title }}</a>
+                    </h3>
+
+                    {% if page.description %}
+                    <p class="content-preview-excerpt">{{ page.description }}</p>
+                    {% elif page.summary %}
+                    <p class="content-preview-excerpt">{{ page.summary | safe }}</p>
+                    {% endif %}
+
+                    {% if page.taxonomies.tags %}
+                    <div class="content-preview-tags">
+                        <div class="tag-list">
+                            {% for tag in page.taxonomies.tags | slice(end=3) %}
+                            <a href="{{ get_taxonomy_url(kind='tags', name=tag) }}" class="tag-interactive tag-accent">{{ tag }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <a href="{{ page.permalink }}" class="content-preview-link">
+                        Read More
+                    </a>
+                </article>
+                {% endfor %}
+            </div>
+
+            <div class="text-center posts-cta">
+                <a href="/blog/" class="btn-secondary">
+                    View All Posts
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- What I'm Up To Section - Moved up -->
+<section class="section-now">
+    <div class="container-full">
+        <div class="container-content">
+            {% set now_page = get_page(path="now.md") %}
+            {% if now_page %}
+            <div class="now-card">
+                <h2 class="text-heading now-title">What I'm Up To</h2>
+                <div class="text-body content-center now-content">
+                    {% if now_page.summary %}
+                    {{ now_page.summary | safe }}
+                    {% else %}
+                    <p>Check out my now page to see what I'm currently working on and thinking about.</p>
+                    {% endif %}
+                </div>
+                <div class="now-meta">
+                    <a href="/now/" class="btn-secondary">
+                        View Full Now Page
+                    </a>
+                    {% if now_page.date %}
+                    <div class="text-caption now-updated">
+                        Last updated: {{ now_page.date | date(format="%B %d, %Y") }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock content %}

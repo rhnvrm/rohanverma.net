@@ -1,3 +1,21 @@
+# Build output
 public
-content-org/2020/*.png
+
+# Development artifacts
 .env
+
+# Nix
+result
+result-*
+
+# Editor files
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+ai

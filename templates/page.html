@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="container-content">
+    <header class="section-header">
+        <h1 class="text-display">{{ page.title }}</h1>
+        
+        <div class="content-preview-meta">
+            {% if page.date %}
+            <span class="meta-item">
+                <time datetime="{{ page.date }}">
+                    {{ page.date | date(format="%B %d, %Y") }}
+                </time>
+            </span>
+            {% endif %}
+            
+            {% if page.reading_time %}
+            <span class="meta-item read-time">{{ page.reading_time }} min read</span>
+            {% endif %}
+        </div>
+
+        {% if page.taxonomies.tags %}
+        <div class="tag-list spacing-top-element">
+            {% for tag in page.taxonomies.tags %}
+            <a href="{{ get_taxonomy_url(kind='tags', name=tag) }}" class="tag">{{ tag }}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </header>
+
+    <div class="content-readable spacing-component">
+        <div class="text-body">
+            {{ page.content | safe }}
+        </div>
+    </div>
+
+    {% if page.extra.toc %}
+    <aside class="card spacing-component">
+        <h3 class="text-title">Table of Contents</h3>
+        <div class="toc-content">
+            {{ page.toc | safe }}
+        </div>
+    </aside>
+    {% endif %}
+
+    <!-- Article Navigation -->
+    <nav class="spacing-component">
+        <div class="grid-2">
+            {% if page.earlier %}
+            <div class="card">
+                <div class="text-caption">Previous</div>
+                <h4 class="text-title">
+                    <a href="{{ page.earlier.permalink }}" class="link-plain">
+                        {{ page.earlier.title }}
+                    </a>
+                </h4>
+            </div>
+            {% else %}
+            <div></div>
+            {% endif %}
+
+            {% if page.later %}
+            <div class="card">
+                <div class="text-caption">Next</div>
+                <h4 class="text-title">
+                    <a href="{{ page.later.permalink }}" class="link-plain">
+                        {{ page.later.title }}
+                    </a>
+                </h4>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+
+    <!-- Back to Blog -->
+    <div class="text-center spacing-component">
+        <a href="/blog/" class="btn-secondary">
+            ← Back to Blog
+        </a>
+    </div>
+</article>
+{% endblock content %}

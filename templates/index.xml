@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>{{ config.title }}</title>
+        <link>{{ config.base_url | safe }}</link>
+        <description>{{ config.description }}</description>
+        <atom:link href="{{ get_url(path="index.xml") | safe }}" rel="self" type="application/rss+xml"/>
+        <language>{{ config.default_language }}</language>
+        <lastBuildDate>{{ now() | date(format="%a, %d %b %Y %H:%M:%S %z") }}</lastBuildDate>
+        <pubDate>{{ now() | date(format="%a, %d %b %Y %H:%M:%S %z") }}</pubDate>
+        <ttl>60</ttl>
+        {% for page in pages %}
+        <item>
+            <title>{{ page.title }}</title>
+            <description>{{ page.summary | default(value=page.content) | striptags | truncate(length=500) }}</description>
+            <pubDate>{{ page.date | date(format="%a, %d %b %Y %H:%M:%S %z") }}</pubDate>
+            <link>{{ page.permalink | safe }}</link>
+            <guid isPermaLink="true">{{ page.permalink | safe }}</guid>
+            {% if page.extra.author %}
+            <author>{{ page.extra.author }}</author>
+            {% endif %}
+            {% if page.taxonomies.tags %}
+            {% for tag in page.taxonomies.tags %}
+            <category>{{ tag }}</category>
+            {% endfor %}
+            {% endif %}
+        </item>
+        {% endfor %}
+    </channel>
+</rss>

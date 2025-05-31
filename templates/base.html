@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% elif section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
+    <meta name="author" content="{{ config.author }}">
+    
+    <title>{% if page.title %}{{ page.title }} | {{ config.title }}{% elif section.title %}{{ section.title }} | {{ config.title }}{% else %}{{ config.title }}{% if config.extra.subtitle %} {{ config.extra.subtitle }}{% endif %}{% endif %}</title>
+    
+    <!-- Favicon -->
+    {% if config.extra.favicon %}
+    <link rel="icon" href="{{ config.extra.favicon }}" type="image/x-icon">
+    {% endif %}
+    
+    <!-- RSS Feed -->
+    {% if config.generate_feeds %}
+    <link rel="alternate" type="application/rss+xml" title="{{ config.title }}" href="{{ get_url(path="index.xml") }}">
+    {% endif %}
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="{% if page %}article{% else %}website{% endif %}">
+    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ config.title }}{% endif %}">
+    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% elif section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
+    <meta property="og:url" content="{{ current_url }}">
+    <meta property="og:site_name" content="{{ config.title }}">
+    
+    {% if page.date %}
+    <meta property="article:published_time" content="{{ page.date | date(format='%Y-%m-%d') }}">
+    <meta property="article:author" content="{{ config.author }}">
+    {% endif %}
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ config.title }}{% endif %}">
+    <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% elif section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    
+    <!-- Design System Styles -->
+    <link rel="stylesheet" href="{{ get_url(path='main.css') }}">
+    
+    <!-- Theme Detection Script -->
+    <script>
+        // Detect theme preference and apply immediately to prevent flash
+        (function() {
+            const theme = localStorage.getItem('theme') || 
+                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.classList.toggle('dark', theme === 'dark');
+        })();
+    </script>
+</head>
+
+<body>
+
+
+    <!-- Header -->
+    <header class="header-main header-enhanced">
+        <div class="container-full">
+            <div class="container-wide">
+                <div class="header-content">
+                    <a href="/" class="nav-brand nav-brand-enhanced" aria-label="Home">
+                        {{ config.title }}
+                    </a>
+                    
+                    <!-- Mobile menu toggle -->
+                    <button class="theme-toggle hidden-desktop" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                        ☰
+                    </button>
+                    
+                    <!-- Navigation -->
+                    <div class="header-nav header-nav-enhanced" id="nav-menu">
+                        <nav class="nav-base nav-horizontal">
+                            <a href="/" class="nav-item {% if current_path == '/' %}active{% endif %}">Home</a>
+                            <a href="/blog/" class="nav-item {% if current_path is starting_with('/blog') %}active{% endif %}">Blog</a>
+                            <a href="/projects/" class="nav-item {% if current_path is starting_with('/projects') %}active{% endif %}">Projects</a>
+                            <a href="/now/" class="nav-item {% if current_path is starting_with('/now') %}active{% endif %}">Now</a>
+                            <a href="/contact/" class="nav-item {% if current_path is starting_with('/contact') %}active{% endif %}">Contact</a>
+                        </nav>
+                        
+                        <!-- Theme toggle -->
+                        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                            <span class="theme-icon-light">☀️</span>
+                            <span class="theme-icon-dark">🌙</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-content">
+        {% block content %}{% endblock content %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-main footer-enhanced">
+        <div class="container-full">
+            <div class="container-wide">
+                <div class="footer-content footer-content-compact">
+                    <p class="footer-copyright">&copy; {{ now() | date(format="%Y") }} {{ config.author }} (rhnvrm). Built with <a href="https://www.getzola.org" target="_blank" rel="noopener">Zola</a>.</p>
+                    
+                    <div class="footer-links-row">
+                        {% if config.extra.social %}
+                        {% for social in config.extra.social %}
+                        <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ social.name }}">
+                            {{ social.name }}
+                        </a>
+                        {% endfor %}
+                        {% endif %}
+                        
+                        <a href="{{ get_url(path='index.xml') }}" target="_blank" rel="noopener">RSS</a>
+                        {% if config.build_search_index %}
+                        <a href="/search/">Search</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Reading Progress Bar (Bottom) -->
+    {% if page %}
+    <div class="progress-container-bottom">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    {% endif %}
+
+    <!-- JavaScript -->
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const isDark = html.classList.contains('dark');
+                html.classList.toggle('dark', !isDark);
+                localStorage.setItem('theme', isDark ? 'light' : 'dark');
+            });
+        }
+
+        // Mobile menu functionality
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        
+        if (mobileMenuToggle && navMenu) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // Reading progress bar (for articles)
+        {% if page %}
+        function updateProgressBar() {
+            const progressBar = document.getElementById('progress-bar');
+            if (!progressBar) return;
+            
+            const totalHeight = document.body.scrollHeight - window.innerHeight;
+            const progress = (window.pageYOffset / totalHeight) * 100;
+            progressBar.style.width = Math.min(progress, 100) + '%';
+        }
+        
+        window.addEventListener('scroll', updateProgressBar);
+        window.addEventListener('resize', updateProgressBar);
+        {% endif %}
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Page loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Content is ready
+        });
+    </script>
+</body>
+</html>

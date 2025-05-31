@@ -1,109 +1,129 @@
-baseURL = "https://rohanverma.net/"
-languageCode = "en-us"
-title = "Rohan Verma"
-theme = "bodhi"
-rssLimit = 20
+# Zola Configuration for rohanverma.net
+# Migrated from Hugo config.toml
 
-[params]
-    subtitle = "(rhnvrm)"
-    avatar = "/images/avatar.jpg"
-    author = "Rohan Verma"
-    commentoSrc = "https://commento.rohanverma.net/js/commento.js"
-    favicon = "/images/favicon.ico"
-    footerMessage = "Feel free to use the content of this website with appropriate attribution to the author."
-    featherIconsCDN = true
-    
-[[params.social]]
+# Basic site configuration
+base_url = "https://rohanverma.net/"
+title = "Rohan Verma"
+description = "Personal website and blog of Rohan Verma, software developer at Zerodha Tech"
+author = "Rohan Verma"
+default_language = "en"
+
+# Build configuration
+compile_sass = true
+minify_html = true
+generate_feeds = true
+feed_filenames = ["index.xml"]
+build_search_index = true
+
+# Markdown configuration
+[markdown]
+highlight_code = true
+highlight_theme = "base16-ocean-dark"
+render_emoji = true
+external_links_target_blank = true
+external_links_no_follow = true
+external_links_no_referrer = true
+
+# Taxonomies configuration
+[[taxonomies]]
+name = "tags"
+
+[[taxonomies]]
+name = "categories"
+
+# Slugify configuration
+[slugify]
+paths = "on"
+taxonomies = "on"
+anchors = "on"
+
+# Extra configuration (equivalent to Hugo params)
+[extra]
+subtitle = "(rhnvrm)"
+avatar = "/images/avatar.jpg"
+commento_src = "https://commento.rohanverma.net/js/commento.js"
+favicon = "/images/favicon.ico"
+footer_message = "Feel free to use the content of this website with appropriate attribution to the author."
+feather_icons_cdn = true
+
+# Fathom Analytics configuration
+[extra.fathom_analytics]
+site_id = "REDBQ"
+server_url = "fathom.rohanverma.net"
+
+# Social links configuration
+[[extra.social]]
 name = "Github"
 icon = "github"
 url = "https://github.com/rhnvrm/"
 
-[[params.social]]
+[[extra.social]]
 name = "Twitter"
 icon = "twitter"
 url = "https://twitter.com/rhnvrm/"
 
-[[params.social]]
+[[extra.social]]
 name = "RSS Feed"
 icon = "rss"
 url = "/index.xml"
 
-[[menu.main]]
+# Navigation structure (replaces Hugo menu system)
+# These will be used in templates to build navigation
+[extra.navigation]
+
+# Main navigation
+[[extra.navigation.main]]
 name = "home"
 url = "/"
 weight = 1
 
-[[menu.main]]
+[[extra.navigation.main]]
 name = "contact"
 url = "/contact/"
 weight = 2
 
-[[menu.nav]]
+# Primary navigation with sub-items
+[[extra.navigation.primary]]
 name = "projects"
 url = "/projects"
 weight = 2
 
-[[menu.nav]]
-parent = "projects"
+[[extra.navigation.primary.children]]
 name = "bodhi"
 url = "/projects/bodhi"
 weight = 1
 
-[[menu.nav]]
-parent = "projects"
+[[extra.navigation.primary.children]]
 name = "twitter bots"
 url = "/projects/twitter_bots"
 weight = 2
 
-[[menu.nav]]
-parent = "projects"
+[[extra.navigation.primary.children]]
 name = "nudrop"
 url = "/projects/nudrop"
 weight = 3
 
-[[menu.nav]]
-parent = "projects"
+[[extra.navigation.primary.children]]
 name = "frozen lobster"
 url = "https://frozen-lobster.rohanverma.net"
-weight = 3
+weight = 4
 
-[[menu.nav]]
+[[extra.navigation.primary]]
 name = "blogs"
 url = "/blog"
 weight = 1
 
-[[menu.nav]]
-parent = "blogs"
+[[extra.navigation.primary.children]]
 name = "archive"
 url = "/archive"
 weight = 1
 
-[[menu.nav]]
-parent = "blogs"
+[[extra.navigation.primary.children]]
 name = "tags"
 url = "/tags"
 weight = 2
 
-[[menu.nav]]
-parent = "blogs"
+[[extra.navigation.primary.children]]
 name = "categories"
 url = "/categories"
 weight = 3
-
-[markup.goldmark.renderer]
-unsafe= true
-
-[outputs]
-  home = ["HTML", "RSS", "JSON"]
-
-[params.fathomAnalytics]
-    siteID = "REDBQ"
-    serverURL = "fathom.rohanverma.net"
-
-[markup]
-  [markup.highlight]
-    codeFences = true
-    guessSyntax = true
-    lineNoStart = 1
-    noClasses = false
-    tabWidth = 4

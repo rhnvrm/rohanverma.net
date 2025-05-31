@@ -1,51 +1,88 @@
----
-title: "Search Results"
-sitemap:
-  priority : 0.1
-layout: "search"
----
++++
+title = "Search"
++++
 
+# Search
 
-This file exists solely to respond to /search URL with the related `search` layout template.
+<div id="search-container">
+    <input type="text" id="search-input" placeholder="Search posts..." />
+    <div id="search-results"></div>
+</div>
 
-No content shown here is rendered, all content is based in the template layouts/page/search.html
+<script>
+// Search functionality will be implemented using Zola's built-in search index
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+    
+    if (searchInput && searchResults) {
+        // Load search index
+        fetch('/search_index.en.json')
+            .then(response => response.json())
+            .then(data => {
+                searchInput.addEventListener('input', function() {
+                    const query = this.value.toLowerCase();
+                    if (query.length > 2) {
+                        const results = data.filter(item => 
+                            item.title.toLowerCase().includes(query) ||
+                            item.body.toLowerCase().includes(query)
+                        );
+                        
+                        displayResults(results);
+                    } else {
+                        searchResults.innerHTML = '';
+                    }
+                });
+            });
+    }
+    
+    function displayResults(results) {
+        if (results.length === 0) {
+            searchResults.innerHTML = '<p>No results found.</p>';
+            return;
+        }
+        
+        const html = results.map(result => 
+            `<div class="search-result">
+                <h3><a href="${result.permalink}">${result.title}</a></h3>
+                <p>${result.body.substring(0, 150)}...</p>
+            </div>`
+        ).join('');
+        
+        searchResults.innerHTML = html;
+    }
+});
+</script>
 
-Setting a very low sitemap priority will tell search engines this is not important content.
+<style>
+#search-container {
+    max-width: 600px;
+    margin: 2rem auto;
+}
 
-This implementation uses Fusejs, jquery and mark.js
+#search-input {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+}
 
+.search-result {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
 
-## Initial setup
+.search-result h3 {
+    margin: 0 0 0.5rem 0;
+}
 
-Search  depends on additional output content type of JSON in config.toml
-\```
-[outputs]
-  home = ["HTML", "JSON"]
-\```
+.search-result a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
 
-## Searching additional fileds
-
-To search additional fields defined in front matter, you must add it in 2 places.
-
-### Edit layouts/_default/index.JSON
-This exposes the values in /index.json
-i.e. add `category`
-\```
-...
-  "contents":{{ .Content | plainify | jsonify }}
-  {{ if .Params.tags }},
-  "tags":{{ .Params.tags | jsonify }}{{end}},
-  "categories" : {{ .Params.categories | jsonify }},
-...
-\```
-
-### Edit fuse.js options to Search
-`static/js/search.js`
-\```
-keys: [
-  "title",
-  "contents",
-  "tags",
-  "categories"
-]
-\```
+.search-result a:hover {
+    text-decoration: underline;
+}
+</style>

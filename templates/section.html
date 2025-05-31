@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-content">
+    <!-- Section Header -->
+    <header class="section-header">
+        <h1 class="text-display">{{ section.title }}</h1>
+        {% if section.description %}
+        <p class="text-intro">{{ section.description }}</p>
+        {% endif %}
+    </header>
+
+    {% if section.path == "blog/" or section.path == "/blog/" %}
+    <!-- Filter Controls for Blog -->
+    <div class="filter-group spacing-component">
+        <!-- Year Filter -->
+        <div class="filter-panel card-base">
+            <h3 class="filter-heading">Filter by Year</h3>
+            <div class="tag-list">
+                <a href="{{ get_url(path='blog/') }}" class="tag {% if current_url is containing('/blog/') and not current_url is containing('/blog/20') %}tag--active{% endif %}">All</a>
+                <a href="{{ get_url(path='blog/2021/') }}" class="tag {% if current_url is containing('/blog/2021') %}tag--active{% endif %}">2021</a>
+                <a href="{{ get_url(path='blog/2020/') }}" class="tag {% if current_url is containing('/blog/2020') %}tag--active{% endif %}">2020</a>
+                <a href="{{ get_url(path='blog/2019/') }}" class="tag {% if current_url is containing('/blog/2019') %}tag--active{% endif %}">2019</a>
+                <a href="{{ get_url(path='blog/2018/') }}" class="tag {% if current_url is containing('/blog/2018') %}tag--active{% endif %}">2018</a>
+                <a href="{{ get_url(path='blog/2017/') }}" class="tag {% if current_url is containing('/blog/2017') %}tag--active{% endif %}">2017</a>
+                <a href="{{ get_url(path='blog/2016/') }}" class="tag {% if current_url is containing('/blog/2016') %}tag--active{% endif %}">2016</a>
+                <a href="{{ get_url(path='blog/2011/') }}" class="tag {% if current_url is containing('/blog/2011') %}tag--active{% endif %}">2011</a>
+                <a href="{{ get_url(path='blog/2010/') }}" class="tag {% if current_url is containing('/blog/2010') %}tag--active{% endif %}">2010</a>
+            </div>
+        </div>
+        
+        <!-- Tag Filter -->
+        <div class="filter-panel card-base">
+            <h3 class="filter-heading">Filter by Topic</h3>
+            <div class="tag-list">
+                <a href="{{ get_url(path='blog/') }}" class="tag {% if not current_taxonomy %}tag--active{% endif %}">All</a>
+                <a href="{{ get_url(path='tags/golang/') }}" class="tag">golang</a>
+                <a href="{{ get_url(path='tags/blog/') }}" class="tag">blog</a>
+                <a href="{{ get_url(path='tags/ai/') }}" class="tag">ai</a>
+                <a href="{{ get_url(path='tags/ml/') }}" class="tag">ml</a>
+                <a href="{{ get_url(path='tags/gsoc/') }}" class="tag">gsoc</a>
+                <a href="{{ get_url(path='tags/hackathon/') }}" class="tag">hackathon</a>
+                <a href="{{ get_url(path='tags/opensource/') }}" class="tag">opensource</a>
+                <a href="{{ get_url(path='tags/python/') }}" class="tag">python</a>
+                <a href="{{ get_url(path='tags/project/') }}" class="tag">project</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    <!-- Blog Post Listing -->
+    {% if paginator and paginator.pages %}
+    <div class="grid spacing-component">
+        {% for page in paginator.pages %}
+        <article class="card content-preview-enhanced">
+            <!-- Post Metadata -->
+            <div class="content-preview-meta-enhanced">
+                {% if page.date %}
+                <span class="meta-item-primary">
+                    <time datetime="{{ page.date }}">
+                        {{ page.date | date(format="%B %d, %Y") }}
+                    </time>
+                </span>
+                {% endif %}
+                {% if page.reading_time and page.reading_time > 0 %}
+                <span class="meta-item-secondary read-time">
+                    {{ page.reading_time }} min read
+                </span>
+                {% endif %}
+            </div>
+
+            <!-- Title -->
+            <h2 class="content-preview-title">
+                <a href="{{ page.permalink }}" class="link-plain">{{ page.title }}</a>
+            </h2>
+
+            <!-- Description -->
+            {% if page.description %}
+            <p class="content-preview-excerpt">{{ page.description }}</p>
+            {% elif page.summary %}
+            <p class="content-preview-excerpt">{{ page.summary | safe }}</p>
+            {% endif %}
+
+            <!-- Tags -->
+            {% if page.taxonomies and page.taxonomies.tags %}
+            <div class="content-preview-tags">
+                <div class="tag-list">
+                    {% for tag in page.taxonomies.tags | slice(end=3) %}
+                    <a href="{{ get_url(path='tags/' ~ tag ~ '/') }}" class="tag-interactive tag-accent">
+                        {{ tag }}
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Read More Link -->
+            <div class="spacing-top-element">
+                <a href="{{ page.permalink }}" class="content-preview-link">
+                    Read More
+                </a>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    <nav class="pagination spacing-component">
+        <div class="pagination-controls">
+            {% if paginator.previous %}
+            <a href="{{ paginator.previous }}" class="btn-secondary">
+                ← Previous
+            </a>
+            {% else %}
+            <span class="btn-secondary disabled">
+                ← Previous
+            </span>
+            {% endif %}
+            
+            <div class="text-meta">
+                Page {{ paginator.current_index }} of {{ paginator.number_pagers | default(value=1) }}
+            </div>
+            
+            {% if paginator.next %}
+            <a href="{{ paginator.next }}" class="btn-secondary">
+                Next →
+            </a>
+            {% else %}
+            <span class="btn-secondary disabled">
+                Next →
+            </span>
+            {% endif %}
+        </div>
+    </nav>
+    {% else %}
+    <!-- Empty State -->
+    <div class="content-center spacing-component">
+        <div class="text-center">
+            <div class="text-display">📝</div>
+            <h3 class="text-heading">No content yet</h3>
+            <p class="text-intro">
+                {% if section.path == "blog/" %}
+                No blog posts have been published yet. Check back soon for new content!
+                {% elif section.path == "projects/" %}
+                No projects have been added yet. Check back soon for new work!
+                {% else %}
+                No content available in this section yet.
+                {% endif %}
+            </p>
+            <a href="/" class="btn-primary">← Back to Home</a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<!-- No inline styles, using design language CSS classes -->
+{% endblock content %}
