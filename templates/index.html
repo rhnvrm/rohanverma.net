@@ -7,20 +7,22 @@
         <div class="container-content">
             <div class="hero-card">
                 <div class="hero-avatar">
-                    <img src="/images/avatar.jpg" alt="Rohan Verma" class="avatar-image">
+                    <img src="/images/avatar.jpg" alt="Rohan Verma (@rhnvrm), software engineer from Bangalore" class="avatar-image">
                 </div>
-                <h1 class="text-display hero-title">Rohan Verma</h1>
-                <p class="text-intro hero-subtitle">Thoughts, Ideas, and Digital Wanderings</p>
+                <h1 class="text-display hero-title">
+                  Rohan Verma <span class="text-caption muted">(@rhnvrm)</span>
+                </h1>
+                <p class="text-intro hero-subtitle">
+                  I build systems, write essays, and keep notes on the way.
+                </p>
                 <div class="text-body content-center hero-description">
                     <p>
-                        Welcome to my corner of the internet where I share personal thoughts on technology, 
-                        travel experiences, and ideas worth exploring. This is a space for authentic writing 
-                        and meaningful conversations.
+                      I'm a software engineer at Zerodha. I work on trading infrastructure using Go, Docker, and Nix. This is my home on the internet — a quiet place for code, writing, experiments, and the occasional rabbit hole.
                     </p>
                 </div>
                 <div class="text-center hero-cta">
                     <a href="/blog/" class="btn-primary link-arrow">
-                        Read My Thoughts
+                        Read the Blog
                     </a>
                 </div>
             </div>
@@ -35,37 +37,34 @@
             <div class="feature-grid-enhanced">
                 <div class="feature-item-card">
                     <div class="feature-icon-enhanced">✍️</div>
-                    <h3 class="feature-title">Writing & Thoughts</h3>
+                    <h3 class="feature-title">Writing on Systems & Self</h3>
                     <p class="feature-description">
-                        Personal reflections on technology, life, and experiences. 
-                        Long-form writing focused on sharing insights and ideas worth discussing.
+                        Essays on infrastructure, productivity, and the art of building things for humans.
                     </p>
                     <a href="/blog/" class="feature-link">
-                        Browse Articles
+                        Read the Blog
                     </a>
                 </div>
 
                 <div class="feature-item-card">
                     <div class="feature-icon-enhanced">🚀</div>
-                    <h3 class="feature-title">Projects & Experiments</h3>
+                    <h3 class="feature-title">Open Source & Experiments</h3>
                     <p class="feature-description">
-                        Personal projects and technical experiments. 
-                        A showcase of things I've built, learned from, and found interesting to share.
+                        Tools, libraries, and infrastructure I've built or contributed to. Mostly Go and Nix — some weird stuff too.
                     </p>
                     <a href="/projects/" class="feature-link">
-                        View Projects
+                        See the Code
                     </a>
                 </div>
 
                 <div class="feature-item-card">
                     <div class="feature-icon-enhanced">🌍</div>
-                    <h3 class="feature-title">Travel & Experiences</h3>
+                    <h3 class="feature-title">Travel & Quiet Logs</h3>
                     <p class="feature-description">
-                        Stories from travels and cultural experiences. 
-                        Personal observations and reflections from exploring different places and perspectives.
+                        Notes and reflections from trips around the world, trains I've taken, and thoughts I've carried.
                     </p>
                     <a href="/blog/tags/travel/" class="feature-link">
-                        Travel Stories
+                        Travel Posts
                     </a>
                 </div>
             </div>
@@ -78,15 +77,13 @@
     <div class="container-full">
         <div class="container-wide">
             <div class="section-header-enhanced">
-                <h2 class="text-heading section-title-prominent">Latest Thoughts</h2>
-                <p class="text-intro section-subtitle">
-                    Recent writing and ideas I've been exploring
-                </p>
+                <h2 class="text-heading section-title-prominent">Selected Writing</h2>
+                <p class="text-intro section-subtitle">Essays I keep coming back to — and hope you might too.</p>
             </div>
 
             <div class="content-grid-enhanced">
                 {% set blog_section = get_section(path="blog/_index.md") %}
-                {% for page in blog_section.pages | slice(end=6) %}
+                {% for page in blog_section.pages | filter(attribute="extra.highlight") | slice(end=6) %}
                 <article class="content-preview-enhanced">
                     <div class="content-preview-meta-enhanced">
                         <span class="meta-item-primary">
@@ -147,12 +144,12 @@
                     {% if now_page.summary %}
                     {{ now_page.summary | safe }}
                     {% else %}
-                    <p>Check out my now page to see what I'm currently working on and thinking about.</p>
+                    <p>Building real-time alerting systems at Zerodha, exploring declarative NixOS, and documenting a life offline.</p>
                     {% endif %}
                 </div>
                 <div class="now-meta">
-                    <a href="/now/" class="btn-secondary">
-                        View Full Now Page
+                    <a href="/now/" class="btn-secondary link-arrow">
+                        See Full Now Page
                     </a>
                     {% if now_page.date %}
                     <div class="text-caption now-updated">

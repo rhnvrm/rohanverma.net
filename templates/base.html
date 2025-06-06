@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{% if page.description %}{{ page.description }}{% elif section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
     <meta name="author" content="{{ config.author }}">
+    <meta name="theme-color" content="#14171c" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     
     <title>{% if page.title %}{{ page.title }} | {{ config.title }}{% elif section.title %}{{ section.title }} | {{ config.title }}{% else %}{{ config.title }}{% if config.extra.subtitle %} {{ config.extra.subtitle }}{% endif %}{% endif %}</title>
     
@@ -38,7 +40,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..700&family=JetBrains+Mono:ital,wght@0,400..600;1,400..600&display=swap" rel="stylesheet">
     
     <!-- Design System Styles -->
     <link rel="stylesheet" href="{{ get_url(path='main.css') }}">
@@ -50,6 +52,7 @@
             const theme = localStorage.getItem('theme') || 
                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
             document.documentElement.classList.toggle('dark', theme === 'dark');
+            document.documentElement.setAttribute('data-theme', theme);
         })();
     </script>
 </head>
@@ -98,28 +101,15 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer-main footer-enhanced">
-        <div class="container-full">
-            <div class="container-wide">
-                <div class="footer-content footer-content-compact">
-                    <p class="footer-copyright">&copy; {{ now() | date(format="%Y") }} {{ config.author }} (rhnvrm). Built with <a href="https://www.getzola.org" target="_blank" rel="noopener">Zola</a>.</p>
-                    
-                    <div class="footer-links-row">
-                        {% if config.extra.social %}
-                        {% for social in config.extra.social %}
-                        <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ social.name }}">
-                            {{ social.name }}
-                        </a>
-                        {% endfor %}
-                        {% endif %}
-                        
-                        <a href="{{ get_url(path='index.xml') }}" target="_blank" rel="noopener">RSS</a>
-                        {% if config.build_search_index %}
-                        <a href="/search/">Search</a>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
+    <footer class="footer-main">
+        <div class="footer-content">
+            <p>© {{ now() | date(format="%Y") }} Rohan Verma — built with <a href="https://www.getzola.org">Zola</a> · deployed via Nix</p>
+            <p class="footer-links-row">
+                <a href="https://github.com/rhnvrm">GitHub</a>
+                <a href="/rss.xml">RSS</a>
+                <a href="mailto:rohan@rohanverma.net">Email</a>
+            </p>
+            <p class="text-caption muted">All content is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC BY-SA 4.0</a> unless otherwise noted.</p>
         </div>
     </footer>
 
@@ -135,12 +125,14 @@
         // Theme toggle functionality
         const themeToggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
-        
+
         if (themeToggle) {
             themeToggle.addEventListener('click', () => {
                 const isDark = html.classList.contains('dark');
+                const newTheme = isDark ? 'light' : 'dark';
                 html.classList.toggle('dark', !isDark);
-                localStorage.setItem('theme', isDark ? 'light' : 'dark');
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
             });
         }
 
