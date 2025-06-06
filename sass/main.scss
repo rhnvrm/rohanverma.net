@@ -63,8 +63,9 @@
   --transition: 0.17s cubic-bezier(.43,.09,.43,.97);
 }
 
+// Dark theme - both system preference and manual toggle
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --c-text-main: #ececf2;
     --c-text-secondary: #b6bedb;
     --c-text-muted: #83899c;
@@ -81,6 +82,25 @@
     --c-border-med: #282a36;
     --c-border-dark: #36394b;
   }
+}
+
+// Manual dark theme toggle
+:root[data-theme="dark"] {
+  --c-text-main: #ececf2;
+  --c-text-secondary: #b6bedb;
+  --c-text-muted: #83899c;
+  --c-text-light: #505667;
+  --c-bg-main: #14171c;
+  --c-bg-alt: #20232b;
+  --c-bg-tertiary: #232634;
+  --c-bg-code: #181a20;
+  --c-bg-hero: #171920;
+  --c-accent: #6ca7ff;
+  --c-accent-hover: #4e82d6;
+  --c-accent-light: #21304d;
+  --c-border-light: #23253a;
+  --c-border-med: #282a36;
+  --c-border-dark: #36394b;
 }
 
 // ========== BASE STYLES ==========
@@ -465,24 +485,54 @@ a {
   }
 }
 
+// Manual dark theme header background
+:root[data-theme="dark"] .header-main {
+  background: rgba(20,23,28,0.93);
+}
+
 .header-content {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: var(--space-sm);
-  }
 }
 
 .header-nav {
   @media (max-width: 768px) {
     display: none;
-    width: 100%;
-    
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--c-bg-main);
+    border-top: 1px solid var(--c-border-light);
+    padding: var(--space-md);
+    z-index: 100;
+
     &.active {
       display: block;
+    }
+
+    .nav-horizontal {
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--space-sm);
+    }
+
+    .nav-item {
+      padding: var(--space-sm);
+      text-align: center;
+      border-radius: var(--radius-sm);
+      transition: background var(--transition);
+
+      &:hover {
+        background: var(--c-bg-alt);
+      }
+    }
+
+    .theme-toggle {
+      align-self: center;
+      margin-top: var(--space-sm);
     }
   }
 }
@@ -1293,6 +1343,103 @@ blockquote {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+}
+
+// Theme Toggle Button
+.theme-toggle {
+  background: none;
+  border: 2px solid var(--c-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-xs);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    border-color: var(--c-accent);
+    background: var(--c-bg-alt);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  // Icon styling
+  .theme-icon-light,
+  .theme-icon-dark {
+    font-size: 18px;
+    transition: all 0.3s ease;
+    position: absolute;
+    opacity: 0;
+    transform: rotate(180deg) scale(0.5);
+  }
+
+  .theme-icon-light {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+// Dark mode icon states
+:root[data-theme="dark"] .theme-toggle {
+  .theme-icon-light {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0.5);
+  }
+
+  .theme-icon-dark {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+// System dark mode icon states (when no manual preference set)
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle {
+    .theme-icon-light {
+      opacity: 0;
+      transform: rotate(-180deg) scale(0.5);
+    }
+
+    .theme-icon-dark {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
+  }
+}
+
+// Mobile Menu Toggle Button
+#mobile-menu-toggle {
+  background: none;
+  border: 2px solid var(--c-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-xs);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  transition: all var(--transition);
+  color: var(--c-text-main);
+
+  &:hover {
+    border-color: var(--c-accent);
+    background: var(--c-bg-alt);
+    color: var(--c-accent);
+  }
+
+  @media (min-width: 769px) {
+    display: none;
+  }
 }
 
 // Footer Enhancements
