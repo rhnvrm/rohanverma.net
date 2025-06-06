@@ -498,6 +498,10 @@ a {
 }
 
 .header-nav {
+  @media (min-width: 769px) {
+    display: flex;
+  }
+
   @media (max-width: 768px) {
     display: none;
     position: absolute;
@@ -508,6 +512,7 @@ a {
     border-top: 1px solid var(--c-border-light);
     padding: var(--space-md);
     z-index: 100;
+    box-shadow: var(--c-shadow-soft);
 
     &.active {
       display: block;
@@ -1334,9 +1339,11 @@ blockquote {
 }
 
 .header-nav-enhanced {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
+  @media (min-width: 769px) {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
 }
 
 .nav-horizontal {
@@ -1416,6 +1423,7 @@ blockquote {
 }
 
 // Mobile Menu Toggle Button
+.mobile-menu-toggle,
 #mobile-menu-toggle {
   background: none;
   border: 2px solid var(--c-border-light);
