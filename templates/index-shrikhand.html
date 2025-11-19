@@ -6,46 +6,20 @@
     <div class="content-container">
         <div class="hero-card">
             <img src="/assets/avatar-sketch.svg" alt="Rohan's avatar (hand‐drawn)" class="avatar--handdrawn">
-            
-
-            
-            <!-- Title with different wobble effects -->
-            <h1 class="title handwritten" id="main-title">{{ config.extra.author }}</h1>
-            
-            <div class="hero-subtitle">Hello World 👋</div>
+            <h1 class="title handwritten handwritten-alt">{{ config.extra.author }}</h1>
+            <div class="hero-subtitle">Curious coder crafting digital experiments and late-night thoughts.</div>
             <p class="hero-description">
-                I'm Rohan, a Software Engineer at <strong>Zerodha Tech</strong> in Bengaluru. I write code, share thoughts, and document my journey in tech. Welcome to my digital scrapbook.
+                I'm Rohan, a curious coder who writes late-night notes and sketches side projects. I build tools, explore ideas, and document the journey. Welcome to my digital scrapbook.
             </p>
             <a href="/blog/" class="btn-marker">Dive into Essays</a>
         </div>
     </div>
 </section>
 
-<script>
-// Initialize with character wobble effect
-document.addEventListener('DOMContentLoaded', function() {
-    const title = document.getElementById('main-title');
-    const originalText = title.textContent;
-    
-    title.innerHTML = '';
-    for (let i = 0; i < originalText.length; i++) {
-        const char = originalText[i];
-        if (char === ' ') {
-            title.appendChild(document.createTextNode(' '));
-        } else {
-            const span = document.createElement('span');
-            span.textContent = char;
-            span.className = 'char-wobble';
-            title.appendChild(span);
-        }
-    }
-});
-</script>
-
 <section class="fun-fact-section section-spacing">
     <div class="content-container">
         <div class="fun-fact-card handdrawn-border">
-            <p>🚀 <em>Currently:</em> Building scalable backend systems with Go at Zerodha, contributing to projects that serve millions of users in Indian financial markets.</p>
+            <p>🎲 <em>Fun Fact:</em> On April 27, I debugged a NixOS build by drawing the entire dependency graph on a napkin in the train station.</p>
         </div>
     </div>
 </section>

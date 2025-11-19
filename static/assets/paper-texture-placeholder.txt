@@ -1,0 +1,6 @@
+PLACEHOLDER: Replace with a subtle scanned paper background image (2000x2000px, repeatable pattern).
+You can use a light paper texture from sources like:
+- Scan actual notebook paper
+- Use free textures from Unsplash/Pexels
+- Generate with AI tools
+File should be named: paper-texture.png

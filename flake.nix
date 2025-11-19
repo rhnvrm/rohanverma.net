@@ -19,9 +19,13 @@
             nodejs_20
             yarn
             just
+            playwright-driver
           ];
 
           shellHook = ''
+            export PLAYWRIGHT_BROWSERS_PATH="${pkgs.playwright-driver.browsers}"
+            export PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=true
+
             echo "Development environment loaded!"
             echo "Available tools:"
             echo "  - Zola: $(zola --version)"
@@ -31,6 +35,19 @@
             echo "  zola serve - Start development server"
             echo "  zola build - Build site for production"
             echo "  zola init <new-site> - Create new site"
+          '';
+        };
+
+        # A silent shell for MCP servers (avoids breaking JSON-RPC with stdout noise)
+        devShells.mcp = pkgs.mkShell {
+          buildInputs = with pkgs; [
+            nodejs_20
+            playwright-driver
+          ];
+
+          shellHook = ''
+            export PLAYWRIGHT_BROWSERS_PATH="${pkgs.playwright-driver.browsers}"
+            export PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=true
           '';
         };
       });

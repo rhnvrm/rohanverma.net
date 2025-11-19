@@ -37,93 +37,54 @@ paths = "on"
 taxonomies = "on"
 anchors = "on"
 
-# Extra configuration (equivalent to Hugo params)
+# Extra configuration
 [extra]
-subtitle = "(rhnvrm)"
+author = "Rohan Verma"
+bio = "I scribble about code, trains, and random rabbit‐holes."
 avatar = "/images/avatar.jpg"
 commento_src = "https://commento.rohanverma.net/js/commento.js"
 favicon = "/images/favicon.ico"
 footer_message = "Feel free to use the content of this website with appropriate attribution to the author."
-feather_icons_cdn = true
+handwritten_font = "https://fonts.googleapis.com/css2?family=Shrikhand&display=swap"
+
+# Main navigation menu
+[[extra.menu_main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[extra.menu_main]]
+name = "Blog"
+url = "/blog/"
+weight = 2
+
+[[extra.menu_main]]
+name = "Projects"
+url = "/projects/"
+weight = 3
+
+[[extra.menu_main]]
+name = "Now"
+url = "/now/"
+weight = 4
+
+[[extra.menu_main]]
+name = "Contact"
+url = "/contact/"
+weight = 5
 
 # Fathom Analytics configuration
 [extra.fathom_analytics]
 site_id = "REDBQ"
 server_url = "fathom.rohanverma.net"
 
-# Social links configuration
-[[extra.social]]
-name = "Github"
-icon = "github"
-url = "https://github.com/rhnvrm/"
+# Now section dynamic content
+[extra.now]
+items = [
+    "Today I spent 2 hours debugging a NixOS flake only to forget a semicolon.",
+    "Sketchbook: Mafia‐inspired art WIP (#7).",
+    "Listening to Tezpur → Guwahati train announcements."
+]
 
-[[extra.social]]
-name = "Twitter"
-icon = "twitter"
-url = "https://twitter.com/rhnvrm/"
-
-[[extra.social]]
-name = "RSS Feed"
-icon = "rss"
-url = "/index.xml"
-
-# Navigation structure (replaces Hugo menu system)
-# These will be used in templates to build navigation
-[extra.navigation]
-
-# Main navigation
-[[extra.navigation.main]]
-name = "home"
-url = "/"
-weight = 1
-
-[[extra.navigation.main]]
-name = "contact"
-url = "/contact/"
-weight = 2
-
-# Primary navigation with sub-items
-[[extra.navigation.primary]]
-name = "projects"
-url = "/projects"
-weight = 2
-
-[[extra.navigation.primary.children]]
-name = "bodhi"
-url = "/projects/bodhi"
-weight = 1
-
-[[extra.navigation.primary.children]]
-name = "twitter bots"
-url = "/projects/twitter_bots"
-weight = 2
-
-[[extra.navigation.primary.children]]
-name = "nudrop"
-url = "/projects/nudrop"
-weight = 3
-
-[[extra.navigation.primary.children]]
-name = "frozen lobster"
-url = "https://frozen-lobster.rohanverma.net"
-weight = 4
-
-[[extra.navigation.primary]]
-name = "blogs"
-url = "/blog"
-weight = 1
-
-[[extra.navigation.primary.children]]
-name = "archive"
-url = "/archive"
-weight = 1
-
-[[extra.navigation.primary.children]]
-name = "tags"
-url = "/tags"
-weight = 2
-
-[[extra.navigation.primary.children]]
-name = "categories"
-url = "/categories"
-weight = 3
+# Social links
+github = "https://github.com/rhnvrm/"

@@ -1,0 +1,12 @@
+PLACEHOLDER: Replace with a hand-drawn version of your avatar image.
+Create a sketched avatar (about 200x200px) that looks like:
+- Hand-drawn or sketched style, not a perfect photo
+- Can be based on your existing avatar but with artistic, imperfect lines
+- Black ink on white/transparent background
+- Slightly irregular, personal feel
+- Can be created by:
+  - Drawing your avatar by hand and scanning
+  - Using digital art tools with sketch brushes
+  - Converting existing photo to sketch style
+  - AI tools for sketch conversion
+File should be named: avatar-sketch.png

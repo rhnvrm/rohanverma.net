@@ -1,0 +1,28 @@
+PLACEHOLDER: Replace with hand-drawn sketch icons for the feature cards.
+
+Create these sketch-style icons (about 64x64px each):
+
+1. pen-sketch.png - A hand-drawn pen or pencil icon
+   - Simple line drawing of a pen/pencil
+   - Slightly irregular lines, sketchy feel
+   - Black ink on transparent background
+
+2. lab-sketch.png - A hand-drawn laboratory/experiment icon  
+   - Simple beaker, flask, or test tube sketch
+   - Rough, hand-drawn lines
+   - Could include bubbles or simple lab equipment
+   - Black ink on transparent background
+
+3. train-sketch.png - A hand-drawn train icon
+   - Simple side view of a train or locomotive
+   - Sketchy, imperfect lines
+   - Can be minimalist but recognizable
+   - Black ink on transparent background
+
+These can be created by:
+- Hand-drawing with pen and scanning
+- Digital sketching with rough brushes
+- Converting existing icons to sketch style
+- AI tools for sketch generation
+
+All icons should have a consistent hand-drawn aesthetic that matches the notebook theme.

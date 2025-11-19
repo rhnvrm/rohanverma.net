@@ -18,4 +18,9 @@ result-*
 .DS_Store
 Thumbs.db
 
-ai
+.memory
+.amp/
+out.txt
+test-results/
+node_modules/
+npm-debug.log

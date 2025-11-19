@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container-content">
+<div class="content-container">
     <!-- Section Header -->
     <header class="section-header">
         <h1 class="text-display">{{ section.title }}</h1>
@@ -11,9 +11,9 @@
 
     <!-- Projects Grid -->
     {% if section.pages %}
-    <div class="project-grid spacing-component">
+    <div class="content-grid-responsive spacing-component">
         {% for page in section.pages %}
-        <article class="project-card">
+        <article class="project-card card-content">
             <!-- Project Image/Cover if available -->
             {% if page.extra.image %}
             <div class="project-image">
@@ -23,7 +23,7 @@
             
             <!-- Project Header -->
             <div class="project-header">
-                <h2 class="project-title">
+                <h2 class="project-title card-title">
                     <a href="{{ page.permalink }}" class="link-plain">{{ page.title }}</a>
                 </h2>
                 
@@ -37,7 +37,7 @@
             
             <!-- Project Description -->
             {% if page.description %}
-            <div class="project-description">
+            <div class="project-description card-description">
                 <p>{{ page.description }}</p>
             </div>
             {% endif %}
@@ -55,21 +55,19 @@
             {% endif %}
             
             <!-- Project Links -->
-            <div class="project-links">
+            <div class="project-links card-action">
                 <!-- Primary Link to Project Page -->
                 <a href="{{ page.permalink }}" class="btn-secondary">View Details</a>
                 
                 <!-- External Links -->
                 {% if page.extra.github_url %}
                 <a href="{{ page.extra.github_url }}" class="btn-secondary" target="_blank" rel="noopener">
-                    <span class="btn-icon">{% include "icons/github.html" %}</span>
                     Code
                 </a>
                 {% endif %}
                 
                 {% if page.extra.demo_url %}
                 <a href="{{ page.extra.demo_url }}" class="btn-secondary" target="_blank" rel="noopener">
-                    <span class="btn-icon">{% include "icons/external-link.html" %}</span>
                     Demo
                 </a>
                 {% endif %}

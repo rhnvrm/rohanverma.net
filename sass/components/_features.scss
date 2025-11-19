@@ -1,0 +1,93 @@
+// Feature & Fun Fact Components
+// Moved from grid.scss
+
+.feature-card {
+  @extend %note-card;
+  @extend %note-card-interactive;
+  background: var(--c-bg-hero);
+  padding: 1rem;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  h2 {
+    margin: 0.5rem 0;
+    font-family: var(--font-serif);
+  }
+  
+  p {
+    margin: 0.25rem 0 1rem 0;
+    color: var(--c-text-secondary);
+  }
+}
+
+.feature-item {
+  text-align: center;
+}
+
+.feature-icon {
+  font-size: var(--font-size-3xl);
+  color: var(--c-link-mono);
+  margin-bottom: var(--space-sm);
+}
+
+.feature-title {
+  margin-top: var(--space-sm);
+  font-size: var(--font-size-xl);
+  font-family: var(--font-serif);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-sm);
+  color: var(--c-text-main);
+  letter-spacing: -0.015em;
+}
+
+.feature-description {
+  color: var(--c-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-sm);
+}
+
+.icon-sketch {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto var(--space-sm) auto;
+  display: block;
+}
+
+.fun-fact-card {
+  @extend %note-card;
+  background: var(--c-bg-hero);
+  padding: 1rem;
+  margin: 1rem auto;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  transform: rotate(var(--note-rotation-large));
+  
+  p {
+    margin: 0;
+    font-style: italic;
+    color: var(--c-text-main);
+  }
+}
+
+.fun-fact-section {
+  @extend .container;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.avatar--handdrawn {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto var(--space-md) auto;
+  display: block;
+  box-shadow: var(--c-shadow-soft);
+  transform: rotate(var(--note-rotation-large));
+}

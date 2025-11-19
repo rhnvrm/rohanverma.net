@@ -1,0 +1,136 @@
+// ==========================
+// Base Reset & Layout Styles
+// ==========================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// Remove all default browser blue styling
+*:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+*:focus-visible {
+  outline: 2px dashed var(--c-link-mono);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+button, input, textarea, select {
+  border: none;
+  outline: none;
+  
+  &:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: var(--c-link-mono);
+  }
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: 
+    repeating-linear-gradient(
+      transparent,
+      transparent 23px,
+      rgba(0, 0, 0, 0.04) 23px,
+      rgba(0, 0, 0, 0.04) 24px
+    ),
+    #fefefe;
+  color: var(--c-text-main);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-relaxed);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// Dark mode lined paper background
+:root[data-theme="dark"] body {
+  background: 
+    repeating-linear-gradient(
+      transparent,
+      transparent 23px,
+      rgba(255, 255, 255, 0.08) 23px,
+      rgba(255, 255, 255, 0.08) 24px
+    ),
+    var(--c-bg-main);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) body {
+    background: 
+      repeating-linear-gradient(
+        transparent,
+        transparent 23px,
+        rgba(255, 255, 255, 0.08) 23px,
+        rgba(255, 255, 255, 0.08) 24px
+      ),
+      var(--c-bg-main);
+  }
+}
+
+// ========== CONTAINERS ==========
+.container,
+.content,
+.container-content {
+  max-width: var(--max-content);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.container-wide {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.container-full {
+  width: 100%;
+  padding-inline: 0;
+}
+
+.container-narrow {
+  max-width: var(--container-narrow-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.content-readable {
+  max-width: var(--text-measure);
+}
+
+.content-center {
+  text-align: center;
+}
+
+// ========== SPACING UTILITIES ==========
+.spacing-section { margin-bottom: 2rem; }
+.spacing-component { margin-bottom: var(--grid-gap); }
+.spacing-element { margin-bottom: var(--space-lg); }
+.spacing-tight { margin-bottom: var(--container-padding); }
+.spacing-loose { margin-bottom: var(--space-2xl); }
+
+.spacing-top-section { margin-top: 2rem; }
+.spacing-top-component { margin-top: var(--grid-gap); }
+.spacing-top-element { margin-top: var(--space-lg); }
+
+// ========== RESPONSIVE UTILITIES ==========
+@media (max-width: 768px) {
+  .spacing-section { margin-bottom: var(--grid-gap); }
+  .spacing-top-section { margin-top: var(--grid-gap); }
+}

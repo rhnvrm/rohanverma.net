@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container-content">
+<div class="content-container">
     <!-- Section Header -->
     <header class="section-header">
         <h1 class="text-display">{{ section.title }}</h1>
@@ -10,11 +10,19 @@
     </header>
 
     {% if section.path == "blog/" or section.path == "/blog/" %}
+    <!-- Personal highlight box -->
+    <div class="personal-highlight-box spacing-component">
+        <div class="highlight-content">
+            <span class="highlight-icon">✨</span>
+            <p class="highlight-text">Welcome to my digital scrapbook! Here you'll find thoughts on code, travel, and life's little discoveries.</p>
+        </div>
+    </div>
+    
     <!-- Filter Controls for Blog -->
     <div class="filter-group spacing-component">
         <!-- Year Filter -->
         <div class="filter-panel card-base">
-            <h3 class="filter-heading">Filter by Year</h3>
+            <h3 class="filter-heading">📅 Filter by Year</h3>
             <div class="tag-list">
                 <a href="{{ get_url(path='blog/') }}" class="tag {% if current_url is containing('/blog/') and not current_url is containing('/blog/20') %}tag--active{% endif %}">All</a>
                 <a href="{{ get_url(path='blog/2021/') }}" class="tag {% if current_url is containing('/blog/2021') %}tag--active{% endif %}">2021</a>
@@ -30,7 +38,7 @@
         
         <!-- Tag Filter -->
         <div class="filter-panel card-base">
-            <h3 class="filter-heading">Filter by Topic</h3>
+            <h3 class="filter-heading">🏷️ Filter by Topic</h3>
             <div class="tag-list">
                 <a href="{{ get_url(path='blog/') }}" class="tag {% if not current_taxonomy %}tag--active{% endif %}">All</a>
                 <a href="{{ get_url(path='tags/golang/') }}" class="tag">golang</a>
@@ -49,13 +57,14 @@
     
     <!-- Blog Post Listing -->
     {% if paginator and paginator.pages %}
-    <div class="grid spacing-component">
+    <div class="content-grid-responsive spacing-component">
         {% for page in paginator.pages %}
-        <article class="card content-preview-enhanced">
-            <!-- Post Metadata -->
+        <article class="card content-preview-enhanced card-content">
+            <!-- Post Metadata with hand-drawn icons -->
             <div class="content-preview-meta-enhanced">
                 {% if page.date %}
                 <span class="meta-item-primary">
+                    <span class="meta-icon">📝</span>
                     <time datetime="{{ page.date }}">
                         {{ page.date | date(format="%B %d, %Y") }}
                     </time>
@@ -63,27 +72,29 @@
                 {% endif %}
                 {% if page.reading_time and page.reading_time > 0 %}
                 <span class="meta-item-secondary read-time">
+                    <span class="meta-icon">⏱️</span>
                     {{ page.reading_time }} min read
                 </span>
                 {% endif %}
             </div>
 
             <!-- Title -->
-            <h2 class="content-preview-title">
+            <h2 class="content-preview-title card-title">
                 <a href="{{ page.permalink }}" class="link-plain">{{ page.title }}</a>
             </h2>
 
             <!-- Description -->
             {% if page.description %}
-            <p class="content-preview-excerpt">{{ page.description }}</p>
+            <p class="content-preview-excerpt card-description">{{ page.description }}</p>
             {% elif page.summary %}
-            <p class="content-preview-excerpt">{{ page.summary | safe }}</p>
+            <p class="content-preview-excerpt card-description">{{ page.summary | safe }}</p>
             {% endif %}
 
-            <!-- Tags -->
+            <!-- Tags with icons -->
             {% if page.taxonomies and page.taxonomies.tags %}
             <div class="content-preview-tags">
                 <div class="tag-list">
+                    <span class="tag-icon">🏷️</span>
                     {% for tag in page.taxonomies.tags | slice(end=3) %}
                     <a href="{{ get_url(path='tags/' ~ tag ~ '/') }}" class="tag-interactive tag-accent">
                         {{ tag }}
@@ -94,7 +105,7 @@
             {% endif %}
 
             <!-- Read More Link -->
-            <div class="spacing-top-element">
+            <div class="spacing-top-element card-action">
                 <a href="{{ page.permalink }}" class="content-preview-link">
                     Read More
                 </a>
@@ -111,7 +122,7 @@
                 ← Previous
             </a>
             {% else %}
-            <span class="btn-secondary disabled">
+            <span class="btn-secondary disabled" title="No previous pages available">
                 ← Previous
             </span>
             {% endif %}
@@ -125,7 +136,7 @@
                 Next →
             </a>
             {% else %}
-            <span class="btn-secondary disabled">
+            <span class="btn-secondary disabled" title="No more pages available">
                 Next →
             </span>
             {% endif %}

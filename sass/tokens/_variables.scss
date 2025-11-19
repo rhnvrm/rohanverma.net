@@ -1,0 +1,139 @@
+// ==========================
+// Design Tokens & Variables
+// RohanVerma.net Design System
+// ==========================
+
+// Import handwritten fonts
+@import url("https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
+
+// ========== DESIGN TOKENS ==========
+:root {
+  // ——— Colors
+  --c-text-main: #2b2b2b;
+  --c-text-secondary: #51576d;
+  --c-text-muted: #9097a1;
+  --c-text-light: #b7bfc7;
+
+  --c-bg-main: #fff;
+  --c-bg-alt: #f8f9fb;
+  --c-bg-tertiary: #f3f4f6;
+  --c-bg-code: #f2f5f9;
+  --c-bg-hero: rgba(255, 255, 255, 0.9);
+
+  // Monochrome accent colors for consistent theme
+  --c-accent: #404040;
+  --c-accent-hover: #2b2b2b;
+  --c-accent-light: rgba(242, 201, 76, 0.1);
+
+  // Notebook-style highlight color (mustard yellow for "hand-drawn" feel)
+  --c-highlight: #f2c94c;
+  --c-highlight-hover: #f0c43d;
+  
+  // Monochrome palette for links
+  --c-link-mono: #404040;
+  --c-link-mono-hover: #2b2b2b;
+
+  // Borders/shadows
+  --c-border-light: #e6e7ea;
+  --c-border-med: #c2c7cf;
+  --c-border-dark: #9097a1;
+  --c-shadow-soft: 2px 2px 6px rgba(0, 0, 0, 0.1);
+
+  // ——— Typography
+  --font-handwritten: "Reenie Beanie", cursive;
+  --font-handwritten-alt: "Shrikhand", cursive;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Noto Serif", Georgia, ui-serif, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Monaco, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+
+  // Improved type scale with better proportions
+  --font-size-xs: 0.8rem;
+  --font-size-sm: 0.9rem;
+  --font-size-base: 1.0rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  
+  // Typography weights
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  // Line heights
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2.0;
+
+  // ——— Layout
+  --max-content: 720px;
+  --max-wide: 940px;
+  --reading-line-height: 1.7;
+  --text-measure: 68ch;
+
+  // ——— Spacing
+  --space-2xs: .33rem;
+  --space-xs: .5rem;
+  --space-sm: .9rem;
+  --space-md: 1.4rem;
+  --space-lg: 2.1rem;
+  --space-xl: 3.2rem;
+  --space-2xl: 4.6rem;
+
+  // ——— Responsive Grid Spacing
+  --grid-gap: 1.5rem;
+  --container-padding: 1rem;
+  --container-max-width: 1200px;
+  --container-narrow-width: 800px;
+
+  // ——— Misc
+  --radius: 6px;
+  --radius-lg: 12px;
+  --transition: 0.17s cubic-bezier(.43,.09,.43,.97);
+
+  // ——— Notebook Rotations
+  --note-rotation-small: -0.4deg;
+  --note-rotation-medium: -1.2deg;
+  --note-rotation-large: -2deg;
+  --note-rotation-hover: 0.3deg;
+}
+
+// Dark theme - both system preference and manual toggle
+@mixin dark-theme-tokens {
+    --c-text-main: #ececf2;
+    --c-text-secondary: #b6bedb;
+    --c-text-muted: #83899c;
+    --c-text-light: #505667;
+    --c-bg-main: #14171c;
+    --c-bg-alt: #20232b;
+    --c-bg-tertiary: #232634;
+    --c-bg-code: #181a20;
+    --c-bg-hero: #171920;
+    --c-accent: #b0b0b0;
+    --c-accent-hover: #d0d0d0;
+    --c-accent-light: rgba(242, 201, 76, 0.2);
+    --c-highlight: #d4a017;
+    --c-highlight-hover: #c89617;
+    --c-link-mono: #b0b0b0;
+    --c-link-mono-hover: #d0d0d0;
+    --c-border-light: #23253a;
+    --c-border-med: #282a36;
+    --c-border-dark: #36394b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    @include dark-theme-tokens;
+  }
+}
+
+// Manual dark theme toggle
+:root[data-theme="dark"] {
+  @include dark-theme-tokens;
+}

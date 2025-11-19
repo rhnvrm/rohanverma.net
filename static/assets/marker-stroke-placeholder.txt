@@ -1,0 +1,10 @@
+PLACEHOLDER: Replace with a small rough yellow highlighter marker stroke image.
+Create a hand-drawn yellow marker rectangle (about 300x100px) that looks like:
+- Irregular edges, slightly tilted
+- Semi-transparent yellow color (#f2c94c with some opacity)
+- Rough, organic stroke texture
+- Can be created by:
+  - Scanning actual highlighter marks
+  - Digital painting with textured brushes
+  - AI generation tools
+File should be named: marker-stroke.png

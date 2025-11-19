@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content-container-narrow">
+    <article>
+        <header class="section-header">
+            <h1 class="text-display">{{ page.title }}</h1>
+            
+            {% if page.reading_time %}
+            <div class="content-preview-meta">
+                <span class="meta-item read-time">{{ page.reading_time }} min read</span>
+            </div>
+            {% endif %}
+        </header>
+
+        <div class="text-content spacing-component">
+            <div class="text-body">
+                {{ page.content | safe }}
+            </div>
+            <p class="text-caption muted">This post is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC BY-SA 4.0</a>.</p>
+        </div>
+
+        <!-- Navigation appropriate for contact page -->
+        <div class="text-center section-spacing">
+            <a href="/" class="btn-secondary">
+                ← Back to Home
+            </a>
+        </div>
+    </article>
+</div>
+
+<!-- No article navigation for contact page -->
+<div class="content-container">
+    <nav class="section-spacing">
+        <div class="content-grid-responsive">
+            <div></div>
+        </div>
+    </nav>
+</div>
+{% endblock content %}

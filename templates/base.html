@@ -40,20 +40,35 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="{{ config.extra.handwritten_font }}" rel="stylesheet">
     
     <!-- Design System Styles -->
     <link rel="stylesheet" href="{{ get_url(path='main.css') }}">
     
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
     <!-- Theme Detection Script -->
     <script>
         // Detect theme preference and apply immediately to prevent flash
-        (function() {
-            const theme = localStorage.getItem('theme') || 
-                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            document.documentElement.classList.toggle('dark', theme === 'dark');
-            document.documentElement.setAttribute('data-theme', theme);
-        })();
+        window.themeStore = {
+            theme: localStorage.getItem('theme') || 
+                   (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
+            
+            toggle() {
+                this.theme = this.theme === 'dark' ? 'light' : 'dark';
+                this.apply();
+            },
+            
+            apply() {
+                document.documentElement.setAttribute('data-theme', this.theme);
+                localStorage.setItem('theme', this.theme);
+            }
+        };
+        
+        // Apply initial theme
+        document.documentElement.setAttribute('data-theme', window.themeStore.theme);
     </script>
 </head>
 
@@ -66,28 +81,31 @@
             <div class="container-wide">
                 <div class="header-content">
                     <a href="/" class="nav-brand nav-brand-enhanced" aria-label="Home">
-                        {{ config.title }}
+                        ~/rhnvrm
                     </a>
                     
                     <!-- Mobile menu toggle -->
-                    <button class="mobile-menu-toggle hidden-desktop" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                    <button class="mobile-menu-toggle hidden-desktop" id="mobile-menu-toggle" 
+                            aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-menu">
                         ☰
                     </button>
                     
                     <!-- Navigation -->
-                    <div class="header-nav header-nav-enhanced" id="nav-menu">
+                    <div class="header-nav header-nav-enhanced" id="nav-menu" role="navigation" aria-label="Main navigation">
                         <nav class="nav-base nav-horizontal">
-                            <a href="/" class="nav-item {% if current_path == '/' %}active{% endif %}">Home</a>
-                            <a href="/blog/" class="nav-item {% if current_path is starting_with('/blog') %}active{% endif %}">Blog</a>
-                            <a href="/projects/" class="nav-item {% if current_path is starting_with('/projects') %}active{% endif %}">Projects</a>
-                            <a href="/now/" class="nav-item {% if current_path is starting_with('/now') %}active{% endif %}">Now</a>
-                            <a href="/contact/" class="nav-item {% if current_path is starting_with('/contact') %}active{% endif %}">Contact</a>
+                            {% for item in config.extra.menu_main %}
+                            <a href="{{ item.url }}" class="nav-item {% if current_path == item.url %}active{% endif %}"
+                               {% if current_path == item.url %}aria-current="page"{% endif %}>{{ item.name }}</a>
+                            {% endfor %}
                         </nav>
                         
-                        <!-- Theme toggle -->
-                        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                            <span class="theme-icon-light">☀️</span>
-                            <span class="theme-icon-dark">🌙</span>
+                        <!-- Theme Toggle -->
+                        <button class="theme-toggle" 
+                                x-data="{ theme: window.themeStore.theme }"
+                                @click="window.themeStore.toggle(); theme = window.themeStore.theme"
+                                :aria-label="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'">
+                            <span x-show="theme === 'light'" x-transition>☀️</span>
+                            <span x-show="theme === 'dark'" x-transition>🌙</span>
                         </button>
                     </div>
                 </div>
@@ -103,63 +121,85 @@
     <!-- Footer -->
     <footer class="footer-main">
         <div class="footer-content">
-            <p>© {{ now() | date(format="%Y") }} Rohan Verma — built with <a href="https://www.getzola.org">Zola</a> · deployed via Nix</p>
-            <p class="footer-links-row">
-                <a href="https://github.com/rhnvrm">GitHub</a>
-                <a href="/rss.xml">RSS</a>
-                <a href="mailto:rohan@rohanverma.net">Email</a>
-            </p>
-            <p class="text-caption muted">All content is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC BY-SA 4.0</a> unless otherwise noted.</p>
+            <p>© {{ now() | date(format="%Y") }} Rohan Verma — my digital scrapbook. <a href="/feedback/">Send feedback</a> or <a href="/view-source/">view source</a>.</p>
+            <p>All content is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+            <ul class="social-links">
+                <li><a href="https://github.com/rhnvrm">GitHub</a></li>
+                <li><a href="/rss.xml">RSS</a></li>
+                <li><a href="/contact/">Email</a></li>
+            </ul>
         </div>
     </footer>
 
     <!-- Reading Progress Bar (Bottom) -->
-    {% if page %}
+    {% if page and current_path != "/" %}
     <div class="progress-container-bottom">
         <div class="progress-bar" id="progress-bar"></div>
     </div>
     {% endif %}
 
-    <!-- JavaScript -->
     <script>
-        // Theme toggle functionality
-        const themeToggle = document.getElementById('theme-toggle');
-        const html = document.documentElement;
-
-        if (themeToggle) {
-            themeToggle.addEventListener('click', () => {
-                const isDark = html.classList.contains('dark');
-                const newTheme = isDark ? 'light' : 'dark';
-                html.classList.toggle('dark', !isDark);
-                html.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-            });
-        }
-
         // Mobile menu functionality
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
         const navMenu = document.getElementById('nav-menu');
         
         if (mobileMenuToggle && navMenu) {
             mobileMenuToggle.addEventListener('click', () => {
+                const isOpen = navMenu.classList.contains('active');
                 navMenu.classList.toggle('active');
+                
+                // Update ARIA attributes for accessibility
+                mobileMenuToggle.setAttribute('aria-expanded', (!isOpen).toString());
+                mobileMenuToggle.setAttribute('aria-label', 
+                    isOpen ? 'Open navigation menu' : 'Close navigation menu'
+                );
+                
+                // Focus management
+                if (!isOpen) {
+                    // Menu is opening, focus first nav item
+                    const firstNavItem = navMenu.querySelector('.nav-item a');
+                    if (firstNavItem) {
+                        setTimeout(() => firstNavItem.focus(), 100);
+                    }
+                }
+            });
+            
+            // Close menu on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenuToggle.setAttribute('aria-label', 'Open navigation menu');
+                    mobileMenuToggle.focus();
+                }
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileMenuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                        mobileMenuToggle.setAttribute('aria-label', 'Open navigation menu');
+                    }
+                }
             });
         }
 
         // Reading progress bar (for articles)
-        {% if page %}
-        function updateProgressBar() {
-            const progressBar = document.getElementById('progress-bar');
-            if (!progressBar) return;
+        if (document.getElementById('progress-bar')) {
+            function updateProgressBar() {
+                const progressBar = document.getElementById('progress-bar');
+                if (!progressBar) return;
+                
+                const totalHeight = document.body.scrollHeight - window.innerHeight;
+                const progress = (window.pageYOffset / totalHeight) * 100;
+                progressBar.style.width = Math.min(progress, 100) + '%';
+            }
             
-            const totalHeight = document.body.scrollHeight - window.innerHeight;
-            const progress = (window.pageYOffset / totalHeight) * 100;
-            progressBar.style.width = Math.min(progress, 100) + '%';
+            window.addEventListener('scroll', updateProgressBar);
+            window.addEventListener('resize', updateProgressBar);
         }
-        
-        window.addEventListener('scroll', updateProgressBar);
-        window.addEventListener('resize', updateProgressBar);
-        {% endif %}
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {

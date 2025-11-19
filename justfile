@@ -8,15 +8,16 @@ _in-nix-shell := `command -v zola >/dev/null 2>&1 && echo "true" || echo "false"
 _run-in-nix *ARGS:
     #!/usr/bin/env bash
     if [ "{{_in-nix-shell}}" = "true" ]; then
-        {{ ARGS }}
+        exec {{ARGS}}
     else
         echo -e "\033[1;33m⚠️  Required tools not available, entering Nix shell...\033[0m"
-        nix develop --command just {{ ARGS }}
+        exec nix develop --command just {{ARGS}}
     fi
 
 # Default recipe to display help
 default:
-    @just --list
+    #!/usr/bin/env bash
+    just --list
 
 # Start Zola development server
 serve:

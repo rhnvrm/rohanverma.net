@@ -1,0 +1,32 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="roughPaper">
+      <feTurbulence baseFrequency="0.04" numOctaves="3" result="noise" seed="2"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1"/>
+    </filter>
+  </defs>
+  
+  <!-- Face circle -->
+  <circle cx="60" cy="55" r="35" fill="none" stroke="#2b2b2b" stroke-width="2.5" stroke-dasharray="2,1" filter="url(#roughPaper)" transform="rotate(-1 60 55)"/>
+  
+  <!-- Hair -->
+  <path d="M30 35 Q60 20 90 35 Q85 30 60 25 Q35 30 30 35" fill="none" stroke="#2b2b2b" stroke-width="2" stroke-linecap="round" transform="rotate(1 60 30)"/>
+  
+  <!-- Eyes -->
+  <circle cx="50" cy="50" r="2" fill="#2b2b2b" transform="rotate(-1 50 50)"/>
+  <circle cx="70" cy="48" r="2" fill="#2b2b2b" transform="rotate(1 70 48)"/>
+  
+  <!-- Nose -->
+  <path d="M58 55 L62 58" stroke="#2b2b2b" stroke-width="1.5" stroke-linecap="round" transform="rotate(-2 60 56)"/>
+  
+  <!-- Mouth -->
+  <path d="M52 65 Q60 70 68 65" fill="none" stroke="#2b2b2b" stroke-width="1.5" stroke-linecap="round" transform="rotate(1 60 67)"/>
+  
+  <!-- Neck/shoulders -->
+  <path d="M45 85 Q60 95 75 85" fill="none" stroke="#2b2b2b" stroke-width="2" stroke-linecap="round" transform="rotate(-1 60 90)"/>
+  
+  <!-- Sketch lines for texture -->
+  <path d="M25 40 L30 45" stroke="#2b2b2b" stroke-width="0.5" opacity="0.3"/>
+  <path d="M85 42 L90 38" stroke="#2b2b2b" stroke-width="0.5" opacity="0.3"/>
+  <path d="M35 75 L40 80" stroke="#2b2b2b" stroke-width="0.5" opacity="0.3"/>
+</svg>

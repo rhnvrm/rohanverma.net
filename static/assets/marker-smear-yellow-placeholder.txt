@@ -1,0 +1,12 @@
+PLACEHOLDER: Replace with a rough yellow marker smear image for button backgrounds.
+Create a hand-drawn yellow smear (about 300x100px) that looks like:
+- Irregular, organic shape like a highlighter swipe
+- Yellow color (#f2c94c) with texture variations
+- Rough edges, not perfectly smooth
+- Should work as button background with text overlaid
+- Can be created by:
+  - Scanning actual highlighter smears on paper
+  - Digital painting with rough brushes
+  - AI image generation
+  - Hand-drawing and scanning
+File should be named: marker-smear-yellow.png
