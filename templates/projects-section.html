@@ -24,7 +24,7 @@
             <!-- Project Header -->
             <div class="project-header">
                 <h2 class="project-title card-title">
-                    <a href="{{ page.permalink }}" class="link-plain">{{ page.title }}</a>
+                    <a href="{{ page.permalink }}" class="link--plain">{{ page.title }}</a>
                 </h2>
                 
                 <!-- Project Status -->
@@ -57,17 +57,17 @@
             <!-- Project Links -->
             <div class="project-links card-action">
                 <!-- Primary Link to Project Page -->
-                <a href="{{ page.permalink }}" class="btn-secondary">View Details</a>
-                
+                <a href="{{ page.permalink }}" class="btn btn--secondary">View Details</a>
+
                 <!-- External Links -->
                 {% if page.extra.github_url %}
-                <a href="{{ page.extra.github_url }}" class="btn-secondary" target="_blank" rel="noopener">
+                <a href="{{ page.extra.github_url }}" class="btn btn--secondary" target="_blank" rel="noopener">
                     Code
                 </a>
                 {% endif %}
-                
+
                 {% if page.extra.demo_url %}
-                <a href="{{ page.extra.demo_url }}" class="btn-secondary" target="_blank" rel="noopener">
+                <a href="{{ page.extra.demo_url }}" class="btn btn--secondary" target="_blank" rel="noopener">
                     Demo
                 </a>
                 {% endif %}
@@ -84,7 +84,7 @@
             <p class="text-intro">
                 Projects will be added soon. Check back later for updates!
             </p>
-            <a href="/" class="btn-primary">← Back to Home</a>
+            <a href="/" class="btn btn--primary">← Back to Home</a>
         </div>
     </div>
     {% endif %}

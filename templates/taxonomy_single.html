@@ -15,7 +15,7 @@
         </p>
         <div class="section-meta">
             <span class="tag">{{ term.pages | length }} {% if term.pages | length == 1 %}post{% else %}posts{% endif %}</span>
-            <a href="/{{ taxonomy.name }}" class="btn-secondary">← All {{ taxonomy.name }}</a>
+            <a href="/{{ taxonomy.name }}" class="btn btn--secondary">← All {{ taxonomy.name }}</a>
         </div>
     </header>
 
@@ -34,7 +34,7 @@
             </div>
             
             <h2 class="card-title">
-                <a href="{{ post.permalink }}" class="link-plain">{{ post.title }}</a>
+                <a href="{{ post.permalink }}" class="link--plain">{{ post.title }}</a>
             </h2>
             
             {% if post.description %}
@@ -47,7 +47,7 @@
             <div class="content-preview-tags">
                 <div class="tag-list">
                     {% for tag in post.taxonomies.tags | slice(end=3) %}
-                    <a href="{{ get_taxonomy_url(kind='tags', name=tag) }}" class="tag-interactive tag-accent">{{ tag }}</a>
+                    <a href="{{ get_taxonomy_url(kind='tags', name=tag) }}" class="tag tag--interactive">{{ tag }}</a>
                     {% endfor %}
                 </div>
             </div>

@@ -5,7 +5,7 @@
 <section class="hero-section">
     <div class="content-container">
         <div class="hero-card">
-            <img src="/assets/avatar-sketch.svg" alt="Rohan's avatar (hand‐drawn)" class="avatar--handdrawn">
+            <img src="https://github.com/rhnvrm.png" alt="Rohan Verma's profile photo" class="avatar--handdrawn">
             
 
             
@@ -16,7 +16,7 @@
             <p class="hero-description">
                 I'm Rohan, a Software Engineer at <strong>Zerodha Tech</strong> in Bengaluru. I write code, share thoughts, and document my journey in tech. Welcome to my digital scrapbook.
             </p>
-            <a href="/blog/" class="btn-marker">Dive into Essays</a>
+            <a href="/blog/" class="btn btn--highlight">Dive into Essays</a>
         </div>
     </div>
 </section>
@@ -54,24 +54,24 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="content-container">
         <div class="content-grid-responsive">
             <div class="feature-card handdrawn-border" style="transform: rotate(-1deg);">
-                <img src="/assets/pen-sketch.svg" alt="Writing icon (hand‐drawn)" class="icon-sketch">
+                <i data-lucide="pen-line" class="feature-icon"></i>
                 <h2>Writing on Systems & Self</h2>
                 <p>Essays on infrastructure, productivity, and the art of building things.</p>
-                <a href="/blog/" class="link-sketch">Dive into Essays →</a>
+                <a href="/blog/" class="link--arrow">Dive into Essays</a>
             </div>
 
             <div class="feature-card handdrawn-border" style="transform: rotate(1deg);">
-                <img src="/assets/lab-sketch.svg" alt="Open Source icon (hand‐drawn)" class="icon-sketch">
+                <i data-lucide="flask-conical" class="feature-icon"></i>
                 <h2>Open Source & Experiments</h2>
                 <p>Projects and tools I've built—hacks, libraries, and side projects.</p>
-                <a href="/projects/" class="link-sketch">Explore Projects →</a>
+                <a href="/projects/" class="link--arrow">Explore Projects</a>
             </div>
 
             <div class="feature-card handdrawn-border" style="transform: rotate(-2deg);">
-                <img src="/assets/train-sketch.svg" alt="Travel icon (hand‐drawn)" class="icon-sketch">
+                <i data-lucide="train-front" class="feature-icon"></i>
                 <h2>Travel & Quiet Logs</h2>
                 <p>Notes and reflections from trips—routes, stations, and thoughts.</p>
-                <a href="/blog/tags/travel/" class="link-sketch">🚂 Travel Notes →</a>
+                <a href="/blog/tags/travel/" class="link--arrow">🚂 Travel Notes</a>
             </div>
         </div>
     </div>
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <li>✏️ {{ item }}</li>
                 {% endfor %}
             </ul>
-            <a href="/now/" class="btn-marker">Full Now Page →</a>
+            <a href="/now/" class="btn btn--highlight">Full Now Page →</a>
             <p class="last-updated">Last updated: {{ now() | date(format="January %d, %Y") }}</p>
         </div>
     </div>

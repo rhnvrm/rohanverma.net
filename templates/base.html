@@ -24,7 +24,7 @@
     <meta property="og:type" content="{% if page %}article{% else %}website{% endif %}">
     <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ config.title }}{% endif %}">
     <meta property="og:description" content="{% if page.description %}{{ page.description }}{% elif section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
-    <meta property="og:url" content="{{ current_url }}">
+    <meta property="og:url" content="{% if current_url %}{{ current_url }}{% else %}{{ config.base_url }}{% endif %}">
     <meta property="og:site_name" content="{{ config.title }}">
     
     {% if page.date %}
@@ -48,19 +48,34 @@
     
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <!-- Theme Detection Script -->
     <script>
         // Detect theme preference and apply immediately to prevent flash
         window.themeStore = {
-            theme: localStorage.getItem('theme') || 
+            theme: localStorage.getItem('theme') ||
                    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
-            
+
             toggle() {
+                const oldTheme = this.theme;
                 this.theme = this.theme === 'dark' ? 'light' : 'dark';
+
+                // Add power-on/off animation class
+                if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    const body = document.body;
+                    body.classList.add(this.theme === 'dark' ? 'theme-switching-to-dark' : 'theme-switching-to-light');
+
+                    setTimeout(() => {
+                        body.classList.remove('theme-switching-to-dark', 'theme-switching-to-light');
+                    }, 500);
+                }
+
                 this.apply();
             },
-            
+
             apply() {
                 document.documentElement.setAttribute('data-theme', this.theme);
                 localStorage.setItem('theme', this.theme);
@@ -73,7 +88,8 @@
 </head>
 
 <body>
-
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
     <!-- Header -->
     <header class="header-main header-enhanced">
@@ -94,8 +110,8 @@
                     <div class="header-nav header-nav-enhanced" id="nav-menu" role="navigation" aria-label="Main navigation">
                         <nav class="nav-base nav-horizontal">
                             {% for item in config.extra.menu_main %}
-                            <a href="{{ item.url }}" class="nav-item {% if current_path == item.url %}active{% endif %}"
-                               {% if current_path == item.url %}aria-current="page"{% endif %}>{{ item.name }}</a>
+                            <a href="{{ item.url }}" class="nav-item {% if current_path and current_path == item.url %}active{% endif %}"
+                               {% if current_path and current_path == item.url %}aria-current="page"{% endif %}>{{ item.name }}</a>
                             {% endfor %}
                         </nav>
                         
@@ -132,7 +148,7 @@
     </footer>
 
     <!-- Reading Progress Bar (Bottom) -->
-    {% if page and current_path != "/" %}
+    {% if page and current_path and current_path != "/" %}
     <div class="progress-container-bottom">
         <div class="progress-bar" id="progress-bar"></div>
     </div>
@@ -217,8 +233,14 @@
 
         // Page loaded
         document.addEventListener('DOMContentLoaded', () => {
-            // Content is ready
+            // Initialize Lucide icons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
         });
     </script>
+
+    <!-- Easter Eggs -->
+    <script src="{{ get_url(path='js/easter-eggs.js') }}"></script>
 </body>
 </html>

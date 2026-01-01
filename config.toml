@@ -2,7 +2,7 @@
 # Migrated from Hugo config.toml
 
 # Basic site configuration
-base_url = "https://rohanverma.net/"
+base_url = "file:///home/rhnvrm/Documents/Code/github.com/rhnvrm/rohanverma.net/public"
 title = "Rohan Verma"
 description = "Personal website and blog of Rohan Verma, software developer at Zerodha Tech"
 author = "Rohan Verma"

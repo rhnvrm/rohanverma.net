@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "chrome-devtools": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--wsEndpoint",
+        "ws://127.0.0.1:9222/devtools/browser/6a24dde1-13ec-4d2f-8c8f-79d20c1e2b83"
+      ]
+    }
+  }
+}

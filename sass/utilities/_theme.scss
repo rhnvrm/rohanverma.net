@@ -1,40 +1,30 @@
 // ==========================
-// Theme & Utilities
+// Minimal Theme Utilities
 // ==========================
 
-// ========== THEME TOGGLE ==========
+// Theme toggle
 .theme-toggle {
-  background: none;
-  border: 2px solid var(--c-border-light);
-  border-radius: var(--radius);
-  padding: var(--space-xs);
+  background: transparent;
+  border: 1px solid var(--c-border);
+  padding: var(--space-2);
   cursor: pointer;
+  color: var(--c-text-primary);
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  transition: all var(--transition);
-  font-size: 18px;
-  color: var(--c-text-secondary);
+  transition: background var(--transition);
 
   &:hover {
-    border-color: var(--c-accent);
-    background: var(--c-bg-alt);
-    transform: translateY(-1px);
-    color: var(--c-text-main);
+    background: var(--c-bg-subtle);
   }
 
-  &:active {
-    transform: translateY(0);
-  }
-
-  &:focus {
-    outline: 2px solid var(--c-accent);
+  &:focus-visible {
+    outline: 2px solid var(--c-text-primary);
     outline-offset: 2px;
   }
 
-  // Alpine.js transitions will handle icon switching
   span {
     display: flex;
     align-items: center;
@@ -42,74 +32,31 @@
   }
 }
 
-// ========== PROGRESS BAR ==========
+// Progress bar
 .progress-container-bottom {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 3px;
-  background: var(--c-bg-tertiary);
+  height: 1px;
+  background: var(--c-border);
   z-index: 1000;
 }
 
 .progress-bar {
   height: 100%;
-  background: var(--c-highlight);
+  background: var(--c-text-primary);
   width: 0%;
   transition: width 0.1s ease;
 }
 
-// ========== CODE & BLOCKS ==========
-code {
-  font-family: var(--font-mono);
-  background: var(--c-bg-code);
-  color: var(--c-accent-hover);
-  font-size: var(--font-size-sm);
-  border-radius: var(--radius);
-  padding: .2em .5em;
-  border: 1px solid var(--c-border-light);
-}
-
-pre {
-  font-family: var(--font-mono);
-  background: #1a1a1a;
-  color: #f8f8f2;
-  font-size: var(--font-size-sm);
-  border-radius: var(--radius);
-  overflow-x: auto;
-  padding: var(--space-md);
-  line-height: 1.5;
-  border: 1px solid var(--c-border-dark);
-  
-  code {
-    background: transparent;
-    color: inherit;
-    padding: 0;
-    border: none;
-  }
-}
-
-.highlight pre {
-  background: #1a1a1a;
-}
-
-blockquote {
-  font-style: italic;
-  color: var(--c-text-secondary);
-  border-left: 3.5px solid var(--c-accent);
-  background: var(--c-bg-tertiary);
-  margin: var(--space-lg) 0;
-  padding: var(--space-sm) var(--space-md);
-  border-radius: var(--radius);
-}
-
-// ========== ACCESSIBILITY ==========
+// Accessibility
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
-    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }

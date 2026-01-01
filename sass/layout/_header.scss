@@ -1,145 +1,77 @@
 // ==========================
-// Header & Footer Layout
+// Minimal Header & Footer
 // ==========================
 
 // ========== HEADER ==========
-.header-main {
+.header-main,
+.header-enhanced {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: var(--c-bg-main);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  backdrop-filter: blur(8px);
-  transition: background var(--transition);
-  padding: 1rem 0;
-  
-  @media (prefers-color-scheme: dark) {
-    // background: rgba(20,23,28,0.95); 
-    // Handled by variable now, or keep if you need specific transparency
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
-}
-
-// Manual dark theme header background
-:root[data-theme="dark"] .header-main {
-  // background: rgba(20,23,28,0.93);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  background: var(--c-bg);
+  border-bottom: 1px solid var(--c-border);
+  padding: var(--space-4) 0;
+  transition: background-color var(--transition), border-color var(--transition);
 }
 
 .header-content {
-  position: relative;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--space-md);
 }
 
-.header-nav {
-  @media (min-width: 769px) {
-    display: flex;
-    align-items: center;
-    gap: var(--space-lg);
-    
-    .nav-horizontal {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-    
-    .theme-toggle {
-      margin-left: var(--space-md);
-    }
-  }
+.header-nav,
+.header-nav-enhanced {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
 
-  @media (max-width: 768px) {
+  @media (max-width: 640px) {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    background: var(--c-bg-main);
-    border-top: 1px solid rgba(0,0,0,0.06);
-    padding: var(--space-md);
-    z-index: 100;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background: var(--c-bg);
+    border-top: 1px solid var(--c-border);
+    padding: var(--space-4);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
 
-    &.active {
-      display: block;
-    }
-
-    .nav-horizontal {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--space-md);
-    }
-
-    .nav-item {
-      width: 100%;
-      justify-content: flex-start;
-      gap: 0;
-      
-      a {
-        padding: 12px 0;
-        width: 100%;
-        font-size: 18px;
-        
-        &:hover {
-          background: transparent;
-        }
-      }
-    }
-
-    .theme-toggle {
-      margin-top: var(--space-md);
-      align-self: flex-start;
+    &.mobile-menu-open {
+      display: flex;
     }
   }
-}
-
-// Dark theme mobile menu
-:root[data-theme="dark"] .header-nav {
-  background: rgba(20,23,28,0.95);
-  border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 // ========== FOOTER ==========
 .footer-main {
-  margin-top: var(--space-2xl);
-  padding: var(--space-lg) 0;
-  border-top: 1px solid var(--c-border-light);
-  background: var(--c-bg-alt);
-  font-family: var(--font-sans);
+  margin-top: auto;
+  padding: var(--space-12) 0 var(--space-8);
+  border-top: 1px solid var(--c-border);
+  transition: border-color var(--transition);
 }
 
 .footer-content {
-  text-align: center;
-  font-size: var(--font-size-sm);
-  color: var(--c-text-muted);
-  
-  p {
-    margin-bottom: var(--space-xs);
-  }
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  font-size: var(--text-sm);
+  color: var(--c-text-secondary);
 }
 
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-md);
-  margin-top: var(--space-sm);
-  
-  a {
-    color: var(--c-link-mono);
-    text-decoration: none;
-    font-size: var(--font-size-sm);
-    border-bottom: 1px dashed transparent;
-    transition: all var(--transition);
-    
-    &:hover {
-      color: var(--c-link-mono-hover);
-      background: var(--c-highlight);
-      border-bottom-color: var(--c-link-mono-hover);
-    }
-  }
+// ========== CONTAINER OVERRIDES ==========
+// Ensure all container classes are properly constrained
+.container,
+.container-content,
+.container-narrow,
+.container-wide,
+.container-full {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
 }

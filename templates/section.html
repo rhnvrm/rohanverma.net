@@ -80,7 +80,7 @@
 
             <!-- Title -->
             <h2 class="content-preview-title card-title">
-                <a href="{{ page.permalink }}" class="link-plain">{{ page.title }}</a>
+                <a href="{{ page.permalink }}" class="link--plain">{{ page.title }}</a>
             </h2>
 
             <!-- Description -->
@@ -96,7 +96,7 @@
                 <div class="tag-list">
                     <span class="tag-icon">🏷️</span>
                     {% for tag in page.taxonomies.tags | slice(end=3) %}
-                    <a href="{{ get_url(path='tags/' ~ tag ~ '/') }}" class="tag-interactive tag-accent">
+                    <a href="{{ get_url(path='tags/' ~ tag ~ '/') }}" class="tag tag--interactive">
                         {{ tag }}
                     </a>
                     {% endfor %}
@@ -118,25 +118,25 @@
     <nav class="pagination spacing-component">
         <div class="pagination-controls">
             {% if paginator.previous %}
-            <a href="{{ paginator.previous }}" class="btn-secondary">
+            <a href="{{ paginator.previous }}" class="btn btn--secondary">
                 ← Previous
             </a>
             {% else %}
-            <span class="btn-secondary disabled" title="No previous pages available">
+            <span class="btn btn--secondary disabled" title="No previous pages available">
                 ← Previous
             </span>
             {% endif %}
-            
+
             <div class="text-meta">
                 Page {{ paginator.current_index }} of {{ paginator.number_pagers | default(value=1) }}
             </div>
-            
+
             {% if paginator.next %}
-            <a href="{{ paginator.next }}" class="btn-secondary">
+            <a href="{{ paginator.next }}" class="btn btn--secondary">
                 Next →
             </a>
             {% else %}
-            <span class="btn-secondary disabled" title="No more pages available">
+            <span class="btn btn--secondary disabled" title="No more pages available">
                 Next →
             </span>
             {% endif %}
@@ -157,7 +157,7 @@
                 No content available in this section yet.
                 {% endif %}
             </p>
-            <a href="/" class="btn-primary">← Back to Home</a>
+            <a href="/" class="btn btn--primary">← Back to Home</a>
         </div>
     </div>
     {% endif %}

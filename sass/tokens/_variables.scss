@@ -1,139 +1,94 @@
 // ==========================
-// Design Tokens & Variables
-// RohanVerma.net Design System
+// Minimal Monotone Design System
+// ==========================
+//
+// Philosophy: Less is more
+// - Single monospace font for everything
+// - Minimal color palette (black/white/gray)
+// - Perfect typography spacing
+// - No decoration, just content
+//
 // ==========================
 
-// Import handwritten fonts
-@import url("https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
+// Single font: IBM Plex Mono for everything
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
 // ========== DESIGN TOKENS ==========
 :root {
-  // ——— Colors
-  --c-text-main: #2b2b2b;
-  --c-text-secondary: #51576d;
-  --c-text-muted: #9097a1;
-  --c-text-light: #b7bfc7;
+  // ——— Minimal grayscale palette
+  --c-text-primary: #000000;
+  --c-text-secondary: #666666;
+  --c-text-tertiary: #999999;
 
-  --c-bg-main: #fff;
-  --c-bg-alt: #f8f9fb;
-  --c-bg-tertiary: #f3f4f6;
-  --c-bg-code: #f2f5f9;
-  --c-bg-hero: rgba(255, 255, 255, 0.9);
+  --c-bg: #ffffff;
+  --c-bg-subtle: #fafafa;
 
-  // Monochrome accent colors for consistent theme
-  --c-accent: #404040;
-  --c-accent-hover: #2b2b2b;
-  --c-accent-light: rgba(242, 201, 76, 0.1);
+  --c-border: #e0e0e0;
+  --c-border-strong: #000000;
 
-  // Notebook-style highlight color (mustard yellow for "hand-drawn" feel)
-  --c-highlight: #f2c94c;
-  --c-highlight-hover: #f0c43d;
-  
-  // Monochrome palette for links
-  --c-link-mono: #404040;
-  --c-link-mono-hover: #2b2b2b;
+  // ——— Typography: One font, perfect hierarchy
+  --font-mono: "IBM Plex Mono", monospace;
 
-  // Borders/shadows
-  --c-border-light: #e6e7ea;
-  --c-border-med: #c2c7cf;
-  --c-border-dark: #9097a1;
-  --c-shadow-soft: 2px 2px 6px rgba(0, 0, 0, 0.1);
+  // Type scale - mathematical harmony (1.25 ratio)
+  --text-xs: 0.75rem;      // 12px
+  --text-sm: 0.875rem;     // 14px
+  --text-base: 1rem;       // 16px
+  --text-lg: 1.125rem;     // 18px
+  --text-xl: 1.25rem;      // 20px
+  --text-2xl: 1.5rem;      // 24px
+  --text-3xl: 2rem;        // 32px
+  --text-4xl: 2.5rem;      // 40px
 
-  // ——— Typography
-  --font-handwritten: "Reenie Beanie", cursive;
-  --font-handwritten-alt: "Shrikhand", cursive;
-  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  --font-serif: "Noto Serif", Georgia, ui-serif, "Times New Roman", serif;
-  --font-mono: "JetBrains Mono", "SF Mono", Monaco, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  // Font weights
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-bold: 600;
 
-  // Improved type scale with better proportions
-  --font-size-xs: 0.8rem;
-  --font-size-sm: 0.9rem;
-  --font-size-base: 1.0rem;
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.25rem;
-  --font-size-2xl: 1.5rem;
-  --font-size-3xl: 1.875rem;
-  --font-size-4xl: 2.25rem;
-  --font-size-5xl: 3rem;
-  
-  // Typography weights
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-  
-  // Line heights
-  --line-height-tight: 1.2;
-  --line-height-snug: 1.375;
-  --line-height-normal: 1.5;
-  --line-height-relaxed: 1.625;
-  --line-height-loose: 2.0;
+  // Line heights - perfect rhythm
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+
+  // ——— Spacing - 8px base scale
+  --space-1: 0.25rem;   // 4px
+  --space-2: 0.5rem;    // 8px
+  --space-3: 0.75rem;   // 12px
+  --space-4: 1rem;      // 16px
+  --space-6: 1.5rem;    // 24px
+  --space-8: 2rem;      // 32px
+  --space-12: 3rem;     // 48px
+  --space-16: 4rem;     // 64px
+  --space-24: 6rem;     // 96px
 
   // ——— Layout
-  --max-content: 720px;
-  --max-wide: 940px;
-  --reading-line-height: 1.7;
-  --text-measure: 68ch;
+  --max-width: 680px;
+  --container-padding: clamp(1rem, 5vw, 2rem);
 
-  // ——— Spacing
-  --space-2xs: .33rem;
-  --space-xs: .5rem;
-  --space-sm: .9rem;
-  --space-md: 1.4rem;
-  --space-lg: 2.1rem;
-  --space-xl: 3.2rem;
-  --space-2xl: 4.6rem;
-
-  // ——— Responsive Grid Spacing
-  --grid-gap: 1.5rem;
-  --container-padding: 1rem;
-  --container-max-width: 1200px;
-  --container-narrow-width: 800px;
-
-  // ——— Misc
-  --radius: 6px;
-  --radius-lg: 12px;
-  --transition: 0.17s cubic-bezier(.43,.09,.43,.97);
-
-  // ——— Notebook Rotations
-  --note-rotation-small: -0.4deg;
-  --note-rotation-medium: -1.2deg;
-  --note-rotation-large: -2deg;
-  --note-rotation-hover: 0.3deg;
+  // ——— Transitions
+  --transition: 150ms ease;
 }
 
-// Dark theme - both system preference and manual toggle
-@mixin dark-theme-tokens {
-    --c-text-main: #ececf2;
-    --c-text-secondary: #b6bedb;
-    --c-text-muted: #83899c;
-    --c-text-light: #505667;
-    --c-bg-main: #14171c;
-    --c-bg-alt: #20232b;
-    --c-bg-tertiary: #232634;
-    --c-bg-code: #181a20;
-    --c-bg-hero: #171920;
-    --c-accent: #b0b0b0;
-    --c-accent-hover: #d0d0d0;
-    --c-accent-light: rgba(242, 201, 76, 0.2);
-    --c-highlight: #d4a017;
-    --c-highlight-hover: #c89617;
-    --c-link-mono: #b0b0b0;
-    --c-link-mono-hover: #d0d0d0;
-    --c-border-light: #23253a;
-    --c-border-med: #282a36;
-    --c-border-dark: #36394b;
+// Dark theme: Inverted monotone
+@mixin dark-theme {
+  --c-text-primary: #ffffff;
+  --c-text-secondary: #a0a0a0;
+  --c-text-tertiary: #707070;
+
+  --c-bg: #000000;
+  --c-bg-subtle: #0a0a0a;
+
+  --c-border: #2a2a2a;
+  --c-border-strong: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    @include dark-theme-tokens;
+  :root:not([data-theme="light"]) {
+    @include dark-theme;
   }
 }
 
-// Manual dark theme toggle
 :root[data-theme="dark"] {
-  @include dark-theme-tokens;
+  @include dark-theme;
 }

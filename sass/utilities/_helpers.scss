@@ -81,7 +81,7 @@
     transition: color var(--transition);
     
     &:hover {
-      color: var(--c-accent);
+      color: var(--c-text-primary);
     }
   }
 }
@@ -154,6 +154,6 @@
 
 // Handdrawn border styling
 .handdrawn-border {
-  border: 2px dashed rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--c-border-med);
   border-radius: 8px 4px 8px 4px;
 }

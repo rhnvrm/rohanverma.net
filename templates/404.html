@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="error-404-container">
+    <div class="error-404-content">
+        <!-- Terminal Error Message -->
+        <pre class="error-404-terminal"><code>$ cd /page/not/found
+bash: cd: /page/not/found: No such file or directory
+
+$ ls -la /page/not/found
+ls: cannot access '/page/not/found': No such file or directory
+
+$ cat /page/not/found
+cat: /page/not/found: No such file or directory
+
+$ █</code></pre>
+
+        <div class="error-404-message">
+            <h1>404: Page Not Found</h1>
+            <p>The page you're looking for doesn't exist in this repository.</p>
+
+            <div class="error-404-suggestions">
+                <h2>Try these commands:</h2>
+                <ul>
+                    <li><a href="/">$ cd ~</a> — Go to homepage</li>
+                    <li><a href="/blog/">$ ls blog/</a> — View all blog posts</li>
+                    <li><a href="/projects/">$ ls projects/</a> — Browse projects</li>
+                    <li><a href="javascript:history.back()">$ cd -</a> — Go back to previous page</li>
+                </ul>
+            </div>
+
+            <div class="error-404-search">
+                <p>Or search the site:</p>
+                <form action="https://www.google.com/search" method="get" target="_blank">
+                    <input type="hidden" name="q" value="site:rohanverma.net" />
+                    <input
+                        type="text"
+                        name="q"
+                        placeholder="Search rohanverma.net..."
+                        aria-label="Search the site"
+                        class="error-404-search-input"
+                    />
+                    <button type="submit" class="error-404-search-button">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .error-404-container {
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-xl) 0;
+    }
+
+    .error-404-content {
+        max-width: var(--max-content);
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 var(--space-md);
+    }
+
+    .error-404-terminal {
+        background: var(--c-bg-alt);
+        border: 2px solid var(--c-border-heavy);
+        border-left: 4px solid var(--c-accent);
+        padding: var(--space-md);
+        margin-bottom: var(--space-lg);
+        font-family: var(--font-mono);
+        font-size: var(--font-size-sm);
+        line-height: var(--line-height-loose);
+        color: var(--c-text-main);
+        overflow-x: auto;
+        position: relative;
+    }
+
+    :root[data-theme="dark"] .error-404-terminal {
+        background: var(--c-bg-alt);
+        border-color: var(--c-border-heavy);
+        border-left-color: var(--c-accent);
+        text-shadow: 0 0 2px var(--c-glow);
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) .error-404-terminal {
+            background: var(--c-bg-alt);
+            border-color: var(--c-border-heavy);
+            border-left-color: var(--c-accent);
+            text-shadow: 0 0 2px var(--c-glow);
+        }
+    }
+
+    .error-404-terminal code {
+        font-family: var(--font-mono);
+        background: transparent;
+        color: inherit;
+        padding: 0;
+    }
+
+    .error-404-message h1 {
+        font-size: var(--font-size-2xl);
+        margin-bottom: var(--space-md);
+        color: var(--c-text-main);
+    }
+
+    .error-404-message p {
+        font-size: var(--font-size-base);
+        margin-bottom: var(--space-lg);
+        color: var(--c-text-secondary);
+    }
+
+    .error-404-suggestions {
+        margin-bottom: var(--space-lg);
+    }
+
+    .error-404-suggestions h2 {
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--space-sm);
+        text-transform: none;
+        border-bottom: 1px solid var(--c-border);
+        padding-bottom: var(--space-xs);
+    }
+
+    .error-404-suggestions ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .error-404-suggestions li {
+        margin-bottom: var(--space-sm);
+        padding-left: var(--space-md);
+        position: relative;
+    }
+
+    .error-404-suggestions li::before {
+        content: ">";
+        position: absolute;
+        left: 0;
+        color: var(--c-accent);
+    }
+
+    .error-404-suggestions a {
+        color: var(--c-accent);
+        text-decoration: none;
+        font-family: var(--font-mono);
+        transition: var(--transition);
+    }
+
+    .error-404-suggestions a:hover {
+        color: var(--c-accent-hover);
+        text-decoration: underline;
+    }
+
+    .error-404-search {
+        margin-top: var(--space-lg);
+        padding-top: var(--space-md);
+        border-top: 1px solid var(--c-border);
+    }
+
+    .error-404-search p {
+        margin-bottom: var(--space-sm);
+        font-size: var(--font-size-sm);
+    }
+
+    .error-404-search form {
+        display: flex;
+        gap: var(--space-sm);
+    }
+
+    .error-404-search-input {
+        flex: 1;
+        padding: var(--space-sm) var(--space-md);
+        font-family: var(--font-mono);
+        font-size: var(--font-size-sm);
+        background: var(--c-bg-alt);
+        border: 1px solid var(--c-border);
+        color: var(--c-text-main);
+        transition: var(--transition);
+    }
+
+    .error-404-search-input:focus {
+        outline: 2px dashed var(--c-accent);
+        outline-offset: 2px;
+        border-color: var(--c-accent);
+    }
+
+    .error-404-search-button {
+        padding: var(--space-sm) var(--space-md);
+        font-family: var(--font-mono);
+        font-size: var(--font-size-sm);
+        background: var(--c-accent);
+        color: var(--c-bg-main);
+        border: 1px solid var(--c-accent-hover);
+        cursor: pointer;
+        transition: var(--transition);
+        font-weight: var(--font-weight-bold);
+    }
+
+    .error-404-search-button:hover {
+        background: var(--c-accent-hover);
+    }
+
+    .error-404-search-button:focus-visible {
+        outline: 2px dashed var(--c-accent-hover);
+        outline-offset: 2px;
+    }
+
+    @media (max-width: 768px) {
+        .error-404-terminal {
+            font-size: var(--font-size-xs);
+            padding: var(--space-sm);
+        }
+
+        .error-404-search form {
+            flex-direction: column;
+        }
+
+        .error-404-search-button {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock content %}

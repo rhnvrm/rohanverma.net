@@ -19,7 +19,7 @@
         {% for term in terms %}
         <div class="card card-content">
             <h2 class="card-title">
-                <a href="{{ term.permalink }}" class="link-plain">{{ term.name }}</a>
+                <a href="{{ term.permalink }}" class="link--plain">{{ term.name }}</a>
             </h2>
             <div class="card-action">
                 <span class="tag">{{ term.pages | length }} {% if term.pages | length == 1 %}post{% else %}posts{% endif %}</span>
