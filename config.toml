@@ -64,14 +64,9 @@ url = "/projects/"
 weight = 3
 
 [[extra.menu_main]]
-name = "Now"
-url = "/now/"
-weight = 4
-
-[[extra.menu_main]]
 name = "Contact"
 url = "/contact/"
-weight = 5
+weight = 4
 
 # Fathom Analytics configuration
 [extra.fathom_analytics]
