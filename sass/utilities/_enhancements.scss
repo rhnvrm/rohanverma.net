@@ -39,13 +39,7 @@ article li a {
   text-decoration: none;
 }
 
-// ========== SMOOTH THEME TOGGLE ==========
-// Simple transition - no janky animations
-body.theme-switching-to-dark,
-body.theme-switching-to-light {
-  // Colors transition smoothly via CSS variables
-  // No animation needed - instant switch is cleaner
-}
+// Theme toggle is instant - no animations needed
 
 // ========== ASCII ART ENHANCEMENTS ==========
 .ascii-logo {

@@ -60,19 +60,7 @@
                    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
 
             toggle() {
-                const oldTheme = this.theme;
                 this.theme = this.theme === 'dark' ? 'light' : 'dark';
-
-                // Add power-on/off animation class
-                if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                    const body = document.body;
-                    body.classList.add(this.theme === 'dark' ? 'theme-switching-to-dark' : 'theme-switching-to-light');
-
-                    setTimeout(() => {
-                        body.classList.remove('theme-switching-to-dark', 'theme-switching-to-light');
-                    }, 500);
-                }
-
                 this.apply();
             },
 
@@ -116,12 +104,12 @@
                         </nav>
                         
                         <!-- Theme Toggle -->
-                        <button class="theme-toggle" 
+                        <button class="theme-toggle"
                                 x-data="{ theme: window.themeStore.theme }"
                                 @click="window.themeStore.toggle(); theme = window.themeStore.theme"
                                 :aria-label="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'">
-                            <span x-show="theme === 'light'" x-transition>☀️</span>
-                            <span x-show="theme === 'dark'" x-transition>🌙</span>
+                            <span x-show="theme === 'light'">☀️</span>
+                            <span x-show="theme === 'dark'">🌙</span>
                         </button>
                     </div>
                 </div>
