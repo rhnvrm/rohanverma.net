@@ -1,12 +1,12 @@
 // ==========================
-// Refined Terminal Design System
+// Retro Indian Terminal Design System
 // ==========================
 //
-// Philosophy: Developer elegance
+// Philosophy: Doordarshan meets Developer
 // - Monospace typography with weight hierarchy
-// - Signature accent color (terracotta)
-// - Intentional negative space
-// - Subtle craft in details
+// - Indian color palette (terracotta, saffron, peacock)
+// - Jali patterns + halftone textures
+// - Playful retro energy
 //
 // ==========================
 
@@ -29,6 +29,14 @@
   // Signature accent: warm terracotta
   --c-accent: #c44536;
   --c-accent-hover: #a33a2d;
+
+  // ——— Retro Indian palette
+  --c-saffron: #FF9933;        // Indian flag saffron
+  --c-marigold: #EAA221;       // Temple marigold
+  --c-peacock: #006D77;        // Peacock teal
+  --c-magenta: #D81159;        // Shaktimaan energy
+  --c-cream: #FFF8E7;          // Old paper / dhurrie
+  --c-henna: #8B4513;          // Mehndi brown
 
   // ——— Typography: One font, perfect hierarchy
   --font-mono: "IBM Plex Mono", monospace;

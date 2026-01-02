@@ -1,5 +1,5 @@
 // ==========================
-// Minimal Header & Footer
+// Retro Indian Header & Footer
 // ==========================
 
 // ========== HEADER ==========
@@ -12,6 +12,25 @@
   border-bottom: 1px solid var(--c-border);
   padding: var(--space-4) 0;
   transition: background-color var(--transition), border-color var(--transition);
+
+  // DD-style tricolor top border
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      var(--c-saffron) 0%,
+      var(--c-saffron) 33.33%,
+      var(--c-cream) 33.33%,
+      var(--c-cream) 66.66%,
+      var(--c-peacock) 66.66%,
+      var(--c-peacock) 100%
+    );
+  }
 }
 
 .header-content {

@@ -1,33 +1,51 @@
 // ==========================
-// Minimal Homepage
+// Retro Indian Homepage
 // ==========================
 
-// Hero - centered, minimal
+// Hero - centered with retro textures
 .hero-section {
   padding: var(--space-24) 0;
   text-align: center;
+  position: relative;
+  z-index: 1;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   @media (max-width: 640px) {
     padding: var(--space-16) 0;
+    min-height: auto;
   }
 }
 
 .hero-card {
   max-width: 500px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+// Avatar with Mughal arch frame
+.avatar-frame {
+  position: relative;
+  display: inline-block;
+  margin-bottom: var(--space-8);
+  padding-top: var(--space-6);
 }
 
 .avatar {
-  width: 96px;
-  height: 96px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  margin-bottom: var(--space-6);
-  border: 2px solid var(--c-border);
-  transition: border-color var(--transition), transform var(--transition);
+  border: 3px solid var(--c-saffron);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
 
   &:hover {
-    border-color: var(--c-accent);
-    transform: scale(1.02);
+    border-color: var(--c-marigold);
+    transform: scale(1.05);
   }
 }
 
@@ -56,28 +74,8 @@
 .hero-links {
   display: flex;
   justify-content: center;
-  gap: var(--space-6);
-
-  a {
-    font-size: var(--text-sm);
-    font-weight: var(--weight-medium);
-    color: var(--c-text-primary);
-    text-decoration: none;
-    padding: var(--space-2) var(--space-4);
-    border: 1px solid var(--c-border);
-    transition: border-color var(--transition), color var(--transition);
-    background-image: none !important;
-
-    &::after {
-      display: none !important;
-    }
-
-    &:hover {
-      border-color: var(--c-accent);
-      color: var(--c-accent);
-      background: none;
-    }
-  }
+  gap: var(--space-4);
+  flex-wrap: wrap;
 }
 
 // Features
