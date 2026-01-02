@@ -5,61 +5,20 @@
     <header class="section-header">
         <h1 class="text-display">{{ term.name }}</h1>
         <p class="text-intro">
-            {% if taxonomy.name == "tags" %}
-            Posts tagged with "{{ term.name }}"
-            {% elif taxonomy.name == "categories" %}
-            Posts in category "{{ term.name }}"
-            {% else %}
-            Posts in {{ taxonomy.name }}: {{ term.name }}
-            {% endif %}
+            {{ term.pages | length }} {% if term.pages | length == 1 %}post{% else %}posts{% endif %} tagged "{{ term.name }}"
         </p>
-        <div class="section-meta">
-            <span class="tag">{{ term.pages | length }} {% if term.pages | length == 1 %}post{% else %}posts{% endif %}</span>
-            <a href="/{{ taxonomy.name }}" class="btn btn--secondary">← All {{ taxonomy.name }}</a>
+        <div class="section-nav">
+            <a href="/{{ taxonomy.name }}/">← All {{ taxonomy.name }}</a>
         </div>
     </header>
 
-    <div class="content-grid-responsive spacing-component">
+    <div class="blog-list spacing-component">
         {% for post in term.pages %}
-        <article class="card content-preview-enhanced card-content">
-            <div class="content-preview-meta-enhanced">
-                <time datetime="{{ post.date | date(format='%Y-%m-%d') }}">
-                    {{ post.date | date(format="%B %d, %Y") }}
-                </time>
-                {% if post.extra.reading_time %}
-                <span class="read-time">{{ post.extra.reading_time }} min read</span>
-                {% elif post.word_count %}
-                <span class="read-time">{{ post.word_count / 200 | round }} min read</span>
-                {% endif %}
-            </div>
-            
-            <h2 class="card-title">
-                <a href="{{ post.permalink }}" class="link--plain">{{ post.title }}</a>
-            </h2>
-            
-            {% if post.description %}
-            <p class="card-description">{{ post.description }}</p>
-            {% elif post.summary %}
-            <p class="card-description">{{ post.summary }}</p>
-            {% endif %}
-            
-            {% if post.taxonomies.tags and taxonomy.name != "tags" %}
-            <div class="content-preview-tags">
-                <div class="tag-list">
-                    {% for tag in post.taxonomies.tags | slice(end=3) %}
-                    <a href="{{ get_taxonomy_url(kind='tags', name=tag) }}" class="tag tag--interactive">{{ tag }}</a>
-                    {% endfor %}
-                </div>
-            </div>
-            {% endif %}
-            
-            <div class="card-action">
-                <a href="{{ post.permalink }}" class="content-preview-link">Read more →</a>
-            </div>
+        <article class="blog-item">
+            <time datetime="{{ post.date }}">{{ post.date | date(format="%Y-%m-%d") }}</time>
+            <a href="{{ post.permalink }}" class="blog-item-title">{{ post.title }}</a>
         </article>
         {% endfor %}
     </div>
 </div>
-
-
 {% endblock content %}

@@ -6,25 +6,19 @@
         <h1 class="text-display">{{ taxonomy.name | title }}</h1>
         <p class="text-intro">
             {% if taxonomy.name == "tags" %}
-            Browse posts by topic and subject matter.
-            {% elif taxonomy.name == "categories" %}
-            Explore content organized by category.
+            Browse posts by topic.
             {% else %}
             Browse content by {{ taxonomy.name }}.
             {% endif %}
         </p>
     </header>
 
-    <div class="content-grid-responsive spacing-component">
+    <div class="tags-index spacing-component">
         {% for term in terms %}
-        <div class="card card-content">
-            <h2 class="card-title">
-                <a href="{{ term.permalink }}" class="link--plain">{{ term.name }}</a>
-            </h2>
-            <div class="card-action">
-                <span class="tag">{{ term.pages | length }} {% if term.pages | length == 1 %}post{% else %}posts{% endif %}</span>
-            </div>
-        </div>
+        <a href="{{ term.permalink }}" class="tag-index-item">
+            <span class="tag-name">{{ term.name }}</span>
+            <span class="tag-count">{{ term.pages | length }}</span>
+        </a>
         {% endfor %}
     </div>
 </div>
