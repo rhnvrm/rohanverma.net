@@ -51,18 +51,4 @@ document.addEventListener('DOMContentLoaded', function() {
 </section>
 
 
-<section class="now-section section-spacing">
-    <div class="content-container-narrow">
-        <div class="now-card handdrawn-border" style="transform: rotate(2deg);">
-            <h2>What I'm Up To</h2>
-            <ul class="now-list">
-                {% for item in config.extra.now.items %}
-                <li>✏️ {{ item }}</li>
-                {% endfor %}
-            </ul>
-            <a href="/now/" class="btn btn--highlight">Full Now Page →</a>
-            <p class="last-updated">Last updated: {{ now() | date(format="January %d, %Y") }}</p>
-        </div>
-    </div>
-</section>
 {% endblock content %}

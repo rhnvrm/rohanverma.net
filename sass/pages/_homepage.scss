@@ -221,22 +221,14 @@
 }
 
 .now-list {
-  list-style: none;
-  padding-left: 0;
+  list-style: disc;
+  padding-left: var(--space-4);
   margin-bottom: var(--space-4);
 
   li {
-    font-size: var(--text-sm);
+    font-size: var(--text-base);
     line-height: var(--leading-relaxed);
-    margin-bottom: var(--space-3);
-    padding-left: var(--space-4);
-    position: relative;
-
-    &::before {
-      content: "–";
-      position: absolute;
-      left: 0;
-    }
+    margin-bottom: var(--space-2);
   }
 }
 
