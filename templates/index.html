@@ -1,54 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!-- Hero Section -->
 <section class="hero-section">
     <div class="content-container">
         <div class="hero-card">
-            <img src="https://github.com/rhnvrm.png" alt="Rohan Verma's profile photo" class="avatar--handdrawn">
-            
-
-            
-            <!-- Title with different wobble effects -->
-            <h1 class="title handwritten" id="main-title">{{ config.extra.author }}</h1>
-            
-            <div class="hero-subtitle">Hello World 👋</div>
+            <img src="https://github.com/rhnvrm.png" alt="Rohan Verma" class="avatar">
+            <h1 class="hero-title">{{ config.extra.author }}</h1>
             <p class="hero-description">
-                I'm Rohan, a Software Engineer at <strong>Zerodha Tech</strong> in Bengaluru. I write code, share thoughts, and document my journey in tech. Welcome to my digital scrapbook.
+                Software Engineer at <strong>Zerodha</strong>. I write code, share thoughts, and document my journey in tech.
             </p>
-            <a href="/blog/" class="btn btn--highlight">Dive into Essays</a>
+            <nav class="hero-links">
+                <a href="/blog/">Blog</a>
+                <a href="/projects/">Projects</a>
+                <a href="/contact/">Contact</a>
+            </nav>
         </div>
     </div>
 </section>
-
-<script>
-// Initialize with character wobble effect
-document.addEventListener('DOMContentLoaded', function() {
-    const title = document.getElementById('main-title');
-    const originalText = title.textContent;
-    
-    title.innerHTML = '';
-    for (let i = 0; i < originalText.length; i++) {
-        const char = originalText[i];
-        if (char === ' ') {
-            title.appendChild(document.createTextNode(' '));
-        } else {
-            const span = document.createElement('span');
-            span.textContent = char;
-            span.className = 'char-wobble';
-            title.appendChild(span);
-        }
-    }
-});
-</script>
-
-<section class="fun-fact-section section-spacing">
-    <div class="content-container">
-        <div class="fun-fact-card handdrawn-border">
-            <p>🚀 <em>Currently:</em> Building scalable backend systems with Go at Zerodha, contributing to projects that serve millions of users in Indian financial markets.</p>
-        </div>
-    </div>
-</section>
-
-
 {% endblock content %}

@@ -103,55 +103,12 @@ a {
   }
 }
 
-// ========== POWER ON THEME TOGGLE EFFECT ==========
-@keyframes powerOn {
-  0% {
-    opacity: 0;
-    transform: scale(1, 0.01);
-    filter: brightness(3);
-  }
-  50% {
-    transform: scale(1, 0.5);
-    filter: brightness(2);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1, 1);
-    filter: brightness(1);
-  }
-}
-
-@keyframes powerOff {
-  0% {
-    opacity: 1;
-    transform: scale(1, 1);
-    filter: brightness(1);
-  }
-  50% {
-    transform: scale(1, 0.5);
-    filter: brightness(2);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1, 0.01);
-    filter: brightness(3);
-  }
-}
-
-// Apply power effect when theme changes
-body.theme-switching-to-dark {
-  animation: powerOn 0.5s cubic-bezier(0.87, 0, 0.13, 1);
-}
-
+// ========== SMOOTH THEME TOGGLE ==========
+// Simple transition - no janky animations
+body.theme-switching-to-dark,
 body.theme-switching-to-light {
-  animation: powerOff 0.3s cubic-bezier(0.87, 0, 0.13, 1) reverse;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body.theme-switching-to-dark,
-  body.theme-switching-to-light {
-    animation: none;
-  }
+  // Colors transition smoothly via CSS variables
+  // No animation needed - instant switch is cleaner
 }
 
 // ========== ASCII ART ENHANCEMENTS ==========

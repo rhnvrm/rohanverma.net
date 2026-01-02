@@ -2,79 +2,60 @@
 // Minimal Homepage
 // ==========================
 
-// Hero
-.hero-enhanced,
+// Hero - centered, minimal
 .hero-section {
-  padding: var(--space-16) 0;
+  padding: var(--space-24) 0;
+  text-align: center;
 
   @media (max-width: 640px) {
-    padding: var(--space-12) 0;
+    padding: var(--space-16) 0;
   }
 }
 
 .hero-card {
-  max-width: var(--max-width);
+  max-width: 500px;
   margin: 0 auto;
 }
 
-.hero-avatar {
-  margin-bottom: var(--space-6);
-}
-
-.avatar-image {
-  width: 64px;
-  height: 64px;
-  object-fit: cover;
+.avatar {
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
-  border: 1px solid var(--c-border);
-
-  @media (max-width: 640px) {
-    width: 56px;
-    height: 56px;
-  }
+  margin-bottom: var(--space-6);
 }
 
 .hero-title {
-  margin-bottom: var(--space-6);
-
-  .handwritten {
-    font-size: var(--text-3xl);
-    font-weight: var(--weight-bold);
-    line-height: var(--leading-tight);
-    display: block;
-    margin-bottom: var(--space-2);
-
-    @media (max-width: 640px) {
-      font-size: var(--text-2xl);
-    }
-  }
-
-  .muted {
-    font-size: var(--text-base);
-    font-weight: var(--weight-normal);
-    color: var(--c-text-secondary);
-    display: block;
-  }
-}
-
-.hero-subtitle {
-  font-size: var(--text-base);
-  color: var(--c-text-secondary);
-  line-height: var(--leading-relaxed);
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-bold);
   margin-bottom: var(--space-4);
+
+  @media (max-width: 640px) {
+    font-size: var(--text-2xl);
+  }
 }
 
 .hero-description {
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);
-  padding: var(--space-4);
-  background: var(--c-bg-subtle);
-  border-left: 2px solid var(--c-text-primary);
+  color: var(--c-text-secondary);
   margin-bottom: var(--space-6);
 }
 
-.hero-cta {
-  margin: var(--space-6) 0;
+.hero-links {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-6);
+
+  a {
+    font-size: var(--text-sm);
+    color: var(--c-text-primary);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+
+    &:hover {
+      text-decoration-thickness: 2px;
+    }
+  }
 }
 
 // Features
