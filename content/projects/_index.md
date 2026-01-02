@@ -3,7 +3,7 @@ title = "Projects"
 description = "Open source projects, experiments, and tools I've built. From fintech systems to developer utilities."
 sort_by = "weight"
 template = "projects-section.html"
-page_template = "page.html"
+page_template = "project-page.html"
 +++
 
 A collection of projects I've worked on over the years, ranging from open source contributions to personal experiments. These showcase my work in backend development, developer tooling, and various technical explorations.

@@ -7,22 +7,30 @@ weight = 2
 github_url = "https://github.com/rhnvrm/linkpage"
 +++
 
-A free and open source, self-hosted alternative to link listing websites like LinkTree and Campsite.bio.
-
-## Why LinkPage?
-
-Link-in-bio services charge monthly fees for what is essentially a static page with links. LinkPage gives you the same functionality with full control over your data, hosted wherever you want.
+A beautiful, self-hosted link-in-bio page built with Go. Own your data instead of paying monthly fees for what's essentially a static page with links.
 
 ## Features
 
-- **Self-hosted**: Run on your own server or any static hosting
-- **Customizable**: Full control over styling and layout
-- **No vendor lock-in**: Your data, your rules
-- **Simple setup**: Single binary or static files
+- **Editorial Design** - Professional, magazine-inspired aesthetic with clean typography
+- **Self-Hosted** - Own your data, customize everything
+- **Lightning Fast** - Minimal JavaScript, cached Go templates
+- **Admin Panel** - Intuitive card-based interface with drag-to-reorder
+- **Auto-Fetch Metadata** - Grab titles, descriptions, and images from URLs via OpenGraph
+- **Click Analytics** - Track link performance with anonymized statistics
+- **Simple SQLite** - No complex database configuration required
 
-## Use Cases
+## Quick Start
 
-- Personal landing pages
-- Creator link collections
-- Business contact pages
-- Portfolio link hubs
+```bash
+# Download from releases, then:
+./linkpage --init
+./linkpage
+```
+
+Access at `http://localhost:8000`, admin at `/admin`.
+
+## Docker
+
+```bash
+docker run -v linkpage:/linkpage -p 8000:8000 rhnvrm/linkpage:latest
+```

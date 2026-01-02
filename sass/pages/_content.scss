@@ -151,6 +151,28 @@
   opacity: 0.7;
 }
 
+// Project page links
+.project-links {
+  display: flex;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.project-link {
+  font-size: var(--text-sm);
+  font-family: var(--font-mono);
+  color: var(--c-text-secondary);
+  text-decoration: none;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--c-border);
+  transition: border-color 150ms ease, color 150ms ease;
+
+  &:hover {
+    border-color: var(--c-accent);
+    color: var(--c-accent);
+  }
+}
+
 .project-desc {
   font-size: var(--text-sm);
   color: var(--c-text-secondary);
