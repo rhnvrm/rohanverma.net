@@ -1,13 +1,14 @@
 +++
-title = "Nudrop - File Sharing Tool"
-description = "A simple file sharing tool built with Go and React."
-weight = 2
+title = "Nudrop"
+description = "Hackathon project: SecureDrop alternative using NuCypher. Prototype only."
+weight = 12
+
+[extra]
+status = "archived"
 +++
 
-Yet another FOSS SecureDrop built on top of NuCypher and Ethereum.
+*Hackathon prototype, not actively developed.*
 
-## Background
+A SecureDrop alternative built on NuCypher and Ethereum during a hackathon. Aimed to help whistleblowers submit data anonymously using decentralized cryptographic infrastructure.
 
-Securedrop is a self-hostable web 2.0 app created originally by Aaron Swartz and now maintained by the Freedom of Press Foundation. It helps whistle-blowers submit data anonymously to media organizations.
-
-NuDrop will utilize the cryptographic infra of NuCypher network and allow users to share and submit data anonymously by people such as whistleblowers and journalists to organizations such as media outlets. It provides a side-channel app on top of NuCypher which facilitates the communication.
+Never moved beyond prototype stage.

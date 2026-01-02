@@ -1,15 +1,15 @@
 +++
-title = "Bodhi - Hugo Theme"
-description = "Bodhi is a simple, minimal, personal website theme for Hugo."
-weight = 1
+title = "Bodhi"
+description = "A minimal Hugo theme for personal websites. No longer maintained."
+weight = 10
+
+[extra]
+github_url = "https://github.com/rhnvrm/bodhi"
+status = "archived"
 +++
 
-Bodhi is a simple, minimal, personal website theme for Hugo.
+*This project is no longer actively maintained.*
 
-[Demo](https://themes.gohugo.io//theme/bodhi/blog) | [Github](https://github.com/rhnvrm/bodhi)
+A simple, minimal personal website theme for Hugo. Built this when I was using Hugo for my own site before migrating to Zola.
 
-## Previews
-
-![preview](/projects/bodhi/preview.png)
-
-![previewdark](/projects/bodhi/preview_dark.png)
+Features minimal design, dark mode support, and clean typography.

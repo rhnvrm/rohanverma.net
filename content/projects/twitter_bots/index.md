@@ -1,15 +1,15 @@
 +++
-title = "Twitter Bots Collection"
-description = "A collection of Twitter bots built with Python and Tweepy."
-weight = 3
+title = "ConstAssemblyBot"
+description = "Twitter bot that tweeted lines from Indian Constituent Assembly Debates. Inactive."
+weight = 11
+
+[extra]
+github_url = "https://github.com/rhnvrm/ConstAssemblyBot"
+status = "archived"
 +++
 
-I maintain a couple of twitter bots. Here are a few of them:
+*This bot is no longer active due to Twitter API changes.*
 
-## Constituent Assembly Debates
+A Twitter bot that tweeted lines from the Indian Constituent Assembly Debates every 10 minutes. Content was curated by [@memeghnad](https://twitter.com/memeghnad).
 
-[Github](https://github.com/rhnvrm/ConstAssemblyBot) | [Twitter](https://twitter.com/ConstAssembly)
-
-Tweets out lines from the Indian Constituent Assembly Debates every 10 minutes. Content is curated by [@memeghnad](https://twitter.com/memeghnad). The bot was written using Tweepy and runs as a cronjob. 
-
-![image](constituent.png)
+Built with Python and Tweepy, ran as a cronjob.
