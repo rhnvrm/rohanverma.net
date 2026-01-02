@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="content-container">
-    <!-- Section Header -->
     <header class="section-header">
         <h1 class="text-display">{{ section.title }}</h1>
         {% if section.description %}
@@ -9,83 +8,31 @@
         {% endif %}
     </header>
 
-    <!-- Projects Grid -->
     {% if section.pages %}
-    <div class="content-grid-responsive spacing-component">
+    <div class="projects-list spacing-component">
         {% for page in section.pages %}
-        <article class="project-card card-content">
-            <!-- Project Image/Cover if available -->
-            {% if page.extra.image %}
-            <div class="project-image">
-                <img src="{{ page.extra.image }}" alt="{{ page.title }}" loading="lazy">
-            </div>
-            {% endif %}
-            
-            <!-- Project Header -->
-            <div class="project-header">
-                <h2 class="project-title card-title">
-                    <a href="{{ page.permalink }}" class="link--plain">{{ page.title }}</a>
-                </h2>
-                
-                <!-- Project Status -->
-                {% if page.extra.project_status %}
-                <span class="tag tag--status tag--{{ page.extra.project_status | slugify }}">
-                    {{ page.extra.project_status | title }}
-                </span>
-                {% endif %}
-            </div>
-            
-            <!-- Project Description -->
+        <article class="project-item">
+            <h2 class="project-name">
+                <a href="{{ page.permalink }}">{{ page.title }}</a>
+            </h2>
             {% if page.description %}
-            <div class="project-description card-description">
-                <p>{{ page.description }}</p>
-            </div>
+            <p class="project-desc">{{ page.description }}</p>
             {% endif %}
-            
-            <!-- Project Tech Stack -->
-            {% if page.extra.tech_stack %}
-            <div class="project-tech-stack">
-                <div class="text-caption">Built with:</div>
-                <div class="tag-list">
-                    {% for tech in page.extra.tech_stack %}
-                    <span class="tag tag--tech">{{ tech }}</span>
-                    {% endfor %}
-                </div>
-            </div>
-            {% endif %}
-            
-            <!-- Project Links -->
-            <div class="project-links card-action">
-                <!-- Primary Link to Project Page -->
-                <a href="{{ page.permalink }}" class="btn btn--secondary">View Details</a>
-
-                <!-- External Links -->
+            <div class="project-meta">
                 {% if page.extra.github_url %}
-                <a href="{{ page.extra.github_url }}" class="btn btn--secondary" target="_blank" rel="noopener">
-                    Code
-                </a>
+                <a href="{{ page.extra.github_url }}" target="_blank" rel="noopener">Code</a>
                 {% endif %}
-
                 {% if page.extra.demo_url %}
-                <a href="{{ page.extra.demo_url }}" class="btn btn--secondary" target="_blank" rel="noopener">
-                    Demo
-                </a>
+                <a href="{{ page.extra.demo_url }}" target="_blank" rel="noopener">Demo</a>
                 {% endif %}
             </div>
         </article>
         {% endfor %}
     </div>
     {% else %}
-    <!-- Empty State -->
-    <div class="content-center spacing-component">
-        <div class="text-center">
-            <div class="text-display">🚀</div>
-            <h3 class="text-heading">No projects yet</h3>
-            <p class="text-intro">
-                Projects will be added soon. Check back later for updates!
-            </p>
-            <a href="/" class="btn btn--primary">← Back to Home</a>
-        </div>
+    <div class="empty-state">
+        <p>No projects yet.</p>
+        <a href="/">← Home</a>
     </div>
     {% endif %}
 </div>
