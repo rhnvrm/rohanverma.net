@@ -10,109 +10,41 @@
     </header>
 
     {% if section.path == "blog/" or section.path == "/blog/" %}
-    <!-- Filter Controls for Blog -->
-    <div class="filter-group spacing-component">
-        <!-- Year Filter -->
-        <div class="filter-panel card-base">
-            <h3 class="filter-heading">Year</h3>
-            <div class="tag-list">
-                <a href="{{ get_url(path='blog/') }}" class="tag {% if current_url is containing('/blog/') and not current_url is containing('/blog/20') %}tag--active{% endif %}">All</a>
-                <a href="{{ get_url(path='blog/2021/') }}" class="tag {% if current_url is containing('/blog/2021') %}tag--active{% endif %}">2021</a>
-                <a href="{{ get_url(path='blog/2020/') }}" class="tag {% if current_url is containing('/blog/2020') %}tag--active{% endif %}">2020</a>
-                <a href="{{ get_url(path='blog/2019/') }}" class="tag {% if current_url is containing('/blog/2019') %}tag--active{% endif %}">2019</a>
-                <a href="{{ get_url(path='blog/2018/') }}" class="tag {% if current_url is containing('/blog/2018') %}tag--active{% endif %}">2018</a>
-                <a href="{{ get_url(path='blog/2017/') }}" class="tag {% if current_url is containing('/blog/2017') %}tag--active{% endif %}">2017</a>
-                <a href="{{ get_url(path='blog/2016/') }}" class="tag {% if current_url is containing('/blog/2016') %}tag--active{% endif %}">2016</a>
-                <a href="{{ get_url(path='blog/2011/') }}" class="tag {% if current_url is containing('/blog/2011') %}tag--active{% endif %}">2011</a>
-                <a href="{{ get_url(path='blog/2010/') }}" class="tag {% if current_url is containing('/blog/2010') %}tag--active{% endif %}">2010</a>
-            </div>
-        </div>
-        
-        <!-- Tag Filter -->
-        <div class="filter-panel card-base">
-            <h3 class="filter-heading">Topic</h3>
-            <div class="tag-list">
-                <a href="{{ get_url(path='blog/') }}" class="tag {% if not current_taxonomy %}tag--active{% endif %}">All</a>
-                <a href="{{ get_url(path='tags/golang/') }}" class="tag">golang</a>
-                <a href="{{ get_url(path='tags/blog/') }}" class="tag">blog</a>
-                <a href="{{ get_url(path='tags/ai/') }}" class="tag">ai</a>
-                <a href="{{ get_url(path='tags/ml/') }}" class="tag">ml</a>
-                <a href="{{ get_url(path='tags/gsoc/') }}" class="tag">gsoc</a>
-                <a href="{{ get_url(path='tags/hackathon/') }}" class="tag">hackathon</a>
-                <a href="{{ get_url(path='tags/opensource/') }}" class="tag">opensource</a>
-                <a href="{{ get_url(path='tags/python/') }}" class="tag">python</a>
-                <a href="{{ get_url(path='tags/project/') }}" class="tag">project</a>
-            </div>
+    <!-- Filter Controls -->
+    <div class="blog-filters spacing-component">
+        <div class="filter-row">
+            <span class="filter-label">Year:</span>
+            <a href="{{ get_url(path='blog/') }}" class="filter-link {% if current_url is containing('/blog/') and not current_url is containing('/blog/20') %}active{% endif %}">All</a>
+            <a href="{{ get_url(path='blog/2021/') }}" class="filter-link {% if current_url is containing('/blog/2021') %}active{% endif %}">2021</a>
+            <a href="{{ get_url(path='blog/2020/') }}" class="filter-link {% if current_url is containing('/blog/2020') %}active{% endif %}">2020</a>
+            <a href="{{ get_url(path='blog/2019/') }}" class="filter-link {% if current_url is containing('/blog/2019') %}active{% endif %}">2019</a>
+            <a href="{{ get_url(path='blog/2018/') }}" class="filter-link {% if current_url is containing('/blog/2018') %}active{% endif %}">2018</a>
+            <a href="{{ get_url(path='blog/2017/') }}" class="filter-link {% if current_url is containing('/blog/2017') %}active{% endif %}">2017</a>
+            <a href="{{ get_url(path='blog/2016/') }}" class="filter-link {% if current_url is containing('/blog/2016') %}active{% endif %}">2016</a>
         </div>
     </div>
     {% endif %}
     
     <!-- Blog Post Listing -->
     {% if paginator and paginator.pages %}
-    <div class="content-grid-responsive spacing-component">
+    <div class="blog-list spacing-component">
         {% for page in paginator.pages %}
-        <article class="card content-preview-enhanced card-content">
-            <div class="content-preview-meta">
-                {% if page.date %}
-                <time datetime="{{ page.date }}">{{ page.date | date(format="%Y-%m-%d") }}</time>
-                {% endif %}
-                {% if page.reading_time and page.reading_time > 0 %}
-                <span class="read-time">{{ page.reading_time }} min</span>
-                {% endif %}
-            </div>
-
-            <!-- Title -->
-            <h2 class="content-preview-title card-title">
-                <a href="{{ page.permalink }}" class="link--plain">{{ page.title }}</a>
-            </h2>
-
-            <!-- Description -->
-            {% if page.description %}
-            <p class="content-preview-excerpt card-description">{{ page.description }}</p>
-            {% elif page.summary %}
-            <p class="content-preview-excerpt card-description">{{ page.summary | safe }}</p>
-            {% endif %}
-
-            {% if page.taxonomies and page.taxonomies.tags %}
-            <div class="tag-list">
-                {% for tag in page.taxonomies.tags | slice(end=3) %}
-                <a href="{{ get_url(path='tags/' ~ tag ~ '/') }}" class="tag">{{ tag }}</a>
-                {% endfor %}
-            </div>
-            {% endif %}
-
-            <a href="{{ page.permalink }}" class="read-more-link">→</a>
+        <article class="blog-item">
+            <time datetime="{{ page.date }}">{{ page.date | date(format="%Y-%m-%d") }}</time>
+            <a href="{{ page.permalink }}" class="blog-item-title">{{ page.title }}</a>
         </article>
         {% endfor %}
     </div>
 
     <!-- Pagination -->
-    <nav class="pagination spacing-component">
-        <div class="pagination-controls">
-            {% if paginator.previous %}
-            <a href="{{ paginator.previous }}" class="btn btn--secondary">
-                ← Previous
-            </a>
-            {% else %}
-            <span class="btn btn--secondary disabled" title="No previous pages available">
-                ← Previous
-            </span>
-            {% endif %}
-
-            <div class="text-meta">
-                Page {{ paginator.current_index }} of {{ paginator.number_pagers | default(value=1) }}
-            </div>
-
-            {% if paginator.next %}
-            <a href="{{ paginator.next }}" class="btn btn--secondary">
-                Next →
-            </a>
-            {% else %}
-            <span class="btn btn--secondary disabled" title="No more pages available">
-                Next →
-            </span>
-            {% endif %}
-        </div>
+    <nav class="blog-pagination spacing-component">
+        {% if paginator.previous %}
+        <a href="{{ paginator.previous }}">← Prev</a>
+        {% endif %}
+        <span class="page-info">{{ paginator.current_index }}/{{ paginator.number_pagers | default(value=1) }}</span>
+        {% if paginator.next %}
+        <a href="{{ paginator.next }}">Next →</a>
+        {% endif %}
     </nav>
     {% else %}
     <div class="empty-state">

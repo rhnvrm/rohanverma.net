@@ -70,8 +70,14 @@
 .container-content,
 .container-narrow,
 .container-wide,
-.container-full {
+.container-full,
+.content-container,
+.content-container-narrow {
   max-width: var(--max-width);
   margin-inline: auto;
   padding-inline: var(--container-padding);
+}
+
+.content-container-narrow {
+  max-width: 720px;
 }

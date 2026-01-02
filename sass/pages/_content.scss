@@ -2,45 +2,95 @@
 // Blog & Content Pages
 // ==========================
 
-// Blog listing page
-.content-preview,
-.content-preview-enhanced {
-  padding-bottom: var(--space-8);
-  border-bottom: 1px solid var(--c-border);
+// Blog filters - inline row
+.blog-filters {
   margin-bottom: var(--space-8);
+}
 
-  &:last-child {
-    border-bottom: none;
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+}
+
+.filter-label {
+  color: var(--c-text-tertiary);
+  margin-right: var(--space-2);
+}
+
+.filter-link {
+  color: var(--c-text-secondary);
+  text-decoration: none;
+  padding: var(--space-1) var(--space-2);
+
+  &:hover {
+    color: var(--c-text-primary);
   }
 
-  h2, h3 {
-    font-size: var(--text-xl);
-    font-weight: var(--weight-bold);
-    margin-bottom: var(--space-2);
+  &.active {
+    color: var(--c-text-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
 
-    a {
-      color: inherit;
-      text-decoration: none;
-      transition: opacity var(--transition);
+// Blog list - simple terminal-style listing
+.blog-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: stretch;
+}
 
-      &:hover {
-        opacity: 0.6;
-      }
+.blog-item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--c-border);
+  // Override article defaults
+  max-width: none;
+  margin: 0;
+
+  time {
+    font-size: var(--text-sm);
+    color: var(--c-text-tertiary);
+    font-family: var(--font-mono);
+    min-width: 6.5em;
+    flex-shrink: 0;
+  }
+}
+
+.blog-item-title {
+  color: var(--c-text-primary);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--c-accent);
+  }
+}
+
+// Blog pagination
+.blog-pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: var(--text-sm);
+
+  a {
+    color: var(--c-text-secondary);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--c-accent);
     }
   }
 
-  .meta {
-    font-size: var(--text-xs);
+  .page-info {
     color: var(--c-text-tertiary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: var(--space-2);
-  }
-
-  p {
-    font-size: var(--text-base);
-    line-height: var(--leading-relaxed);
-    color: var(--c-text-secondary);
+    font-family: var(--font-mono);
   }
 }
 
