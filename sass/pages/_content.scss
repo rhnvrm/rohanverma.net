@@ -97,6 +97,66 @@ article {
   }
 }
 
+// Post footer and navigation
+.post-footer {
+  margin-top: var(--space-12);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--c-border);
+}
+
+.back-link {
+  font-size: var(--text-sm);
+  color: var(--c-text-secondary);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--c-accent);
+  }
+}
+
+// Read more arrow link
+.read-more-link {
+  display: inline-block;
+  font-size: var(--text-lg);
+  color: var(--c-text-tertiary);
+  text-decoration: none;
+  transition: var(--transition);
+  margin-top: auto;
+
+  &:hover {
+    color: var(--c-accent);
+    transform: translateX(4px);
+  }
+}
+
+// Content meta (date, reading time)
+.content-preview-meta {
+  display: flex;
+  gap: var(--space-4);
+  font-size: var(--text-xs);
+  color: var(--c-text-tertiary);
+  font-family: var(--font-mono);
+  margin-bottom: var(--space-3);
+
+  .read-time {
+    &::before {
+      content: "·";
+      margin-right: var(--space-2);
+    }
+  }
+}
+
+// Empty state
+.empty-state {
+  text-align: center;
+  padding: var(--space-16) 0;
+  color: var(--c-text-tertiary);
+
+  a {
+    color: var(--c-text-secondary);
+  }
+}
+
 // Contact page
 .contact-page {
   .contact-email-card {

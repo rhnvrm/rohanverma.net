@@ -14,8 +14,8 @@
   transition: all var(--transition);
 
   &:hover {
-    border-color: var(--c-text-primary);
-    color: var(--c-text-primary);
+    border-color: var(--c-accent);
+    color: var(--c-accent);
   }
 }
 
