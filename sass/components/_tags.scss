@@ -11,7 +11,7 @@
   border: 1px solid var(--c-border);
   text-decoration: none;
   color: var(--c-text-secondary);
-  transition: all var(--transition);
+  transition: border-color var(--transition), color var(--transition);
 
   &:hover {
     border-color: var(--c-accent);

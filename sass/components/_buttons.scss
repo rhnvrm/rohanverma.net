@@ -13,7 +13,7 @@ button,
   background: var(--c-bg);
   color: var(--c-text-primary);
   cursor: pointer;
-  transition: all var(--transition);
+  transition: background-color var(--transition), border-color var(--transition), color var(--transition);
 
   &:hover {
     border-color: var(--c-text-primary);

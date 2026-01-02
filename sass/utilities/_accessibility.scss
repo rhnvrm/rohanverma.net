@@ -16,7 +16,7 @@
   font-weight: var(--font-weight-bold);
   text-decoration: none;
   border: 2px solid var(--c-accent-hover);
-  transition: var(--transition);
+  transition: top var(--transition);
 
   &:focus {
     top: var(--space-sm);

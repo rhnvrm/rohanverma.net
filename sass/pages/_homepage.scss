@@ -23,7 +23,7 @@
   border-radius: 50%;
   margin-bottom: var(--space-6);
   border: 2px solid var(--c-border);
-  transition: var(--transition);
+  transition: border-color var(--transition), transform var(--transition);
 
   &:hover {
     border-color: var(--c-accent);
@@ -65,7 +65,7 @@
     text-decoration: none;
     padding: var(--space-2) var(--space-4);
     border: 1px solid var(--c-border);
-    transition: var(--transition);
+    transition: border-color var(--transition), color var(--transition);
     background-image: none !important;
 
     &::after {

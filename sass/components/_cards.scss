@@ -12,7 +12,7 @@
   border: 1px solid var(--c-border);
   padding: var(--space-6);
   margin-bottom: var(--space-6);
-  transition: border-color var(--transition);
+  transition: border-color 150ms ease;
 
   &:hover {
     border-color: var(--c-text-primary);

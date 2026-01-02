@@ -120,7 +120,7 @@ article {
   font-size: var(--text-lg);
   color: var(--c-text-tertiary);
   text-decoration: none;
-  transition: var(--transition);
+  transition: color var(--transition), transform var(--transition);
   margin-top: auto;
 
   &:hover {

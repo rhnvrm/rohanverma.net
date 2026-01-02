@@ -9,7 +9,7 @@
 a {
   text-decoration: none;
   color: inherit;
-  transition: var(--transition);
+  transition: color var(--transition);
 }
 
 // Content links get simple underlines
