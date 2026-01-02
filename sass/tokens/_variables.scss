@@ -1,30 +1,34 @@
 // ==========================
-// Minimal Monotone Design System
+// Refined Terminal Design System
 // ==========================
 //
-// Philosophy: Less is more
-// - Single monospace font for everything
-// - Minimal color palette (black/white/gray)
-// - Perfect typography spacing
-// - No decoration, just content
+// Philosophy: Developer elegance
+// - Monospace typography with weight hierarchy
+// - Signature accent color (terracotta)
+// - Intentional negative space
+// - Subtle craft in details
 //
 // ==========================
 
-// Single font: IBM Plex Mono for everything
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+// IBM Plex Mono with full weight range
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap');
 
 // ========== DESIGN TOKENS ==========
 :root {
-  // ——— Minimal grayscale palette
-  --c-text-primary: #000000;
-  --c-text-secondary: #666666;
-  --c-text-tertiary: #999999;
+  // ——— Color palette with signature accent
+  --c-text-primary: #1a1a1a;
+  --c-text-secondary: #555555;
+  --c-text-tertiary: #888888;
 
-  --c-bg: #ffffff;
-  --c-bg-subtle: #fafafa;
+  --c-bg: #fefefe;
+  --c-bg-subtle: #f8f8f8;
 
-  --c-border: #e0e0e0;
-  --c-border-strong: #000000;
+  --c-border: #e8e8e8;
+  --c-border-strong: #1a1a1a;
+
+  // Signature accent: warm terracotta
+  --c-accent: #c44536;
+  --c-accent-hover: #a33a2d;
 
   // ——— Typography: One font, perfect hierarchy
   --font-mono: "IBM Plex Mono", monospace;

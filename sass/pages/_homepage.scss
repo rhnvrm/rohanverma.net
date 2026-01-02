@@ -22,6 +22,13 @@
   height: 96px;
   border-radius: 50%;
   margin-bottom: var(--space-6);
+  border: 2px solid var(--c-border);
+  transition: var(--transition);
+
+  &:hover {
+    border-color: var(--c-accent);
+    transform: scale(1.02);
+  }
 }
 
 .hero-title {
@@ -39,6 +46,11 @@
   line-height: var(--leading-relaxed);
   color: var(--c-text-secondary);
   margin-bottom: var(--space-6);
+
+  .highlight {
+    color: var(--c-accent);
+    font-weight: var(--weight-medium);
+  }
 }
 
 .hero-links {
@@ -48,12 +60,22 @@
 
   a {
     font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
     color: var(--c-text-primary);
-    text-decoration: underline;
-    text-underline-offset: 4px;
+    text-decoration: none;
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--c-border);
+    transition: var(--transition);
+    background-image: none !important;
+
+    &::after {
+      display: none !important;
+    }
 
     &:hover {
-      text-decoration-thickness: 2px;
+      border-color: var(--c-accent);
+      color: var(--c-accent);
+      background: none;
     }
   }
 }
