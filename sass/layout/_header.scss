@@ -19,10 +19,10 @@
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 var(--container-padding);
-  display: flex;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: auto 1fr auto;  // brand | nav (centered) | toggle
   align-items: center;
-  gap: var(--space-6);
+  gap: var(--space-4);
 }
 
 // Terminal prompt before brand
@@ -45,6 +45,7 @@
 .header-nav,
 .header-nav-enhanced {
   display: flex;
+  justify-content: center;  // Center nav links
   align-items: center;
   gap: var(--space-4);
 

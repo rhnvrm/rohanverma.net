@@ -137,21 +137,19 @@
             <button class="mobile-menu-toggle hidden-desktop" id="mobile-menu-toggle"
                     aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-menu">☰</button>
 
-            <!-- Navigation -->
-            <div class="header-nav header-nav-enhanced" id="nav-menu" role="navigation" aria-label="Main navigation">
-                <nav class="nav-base nav-horizontal">
-                    {% for item in config.extra.menu_main %}
-                    <a href="{{ item.url }}" class="nav-item {% if current_path and current_path == item.url %}active{% endif %}"
-                       {% if current_path and current_path == item.url %}aria-current="page"{% endif %}>{{ item.name }}</a>
-                    {% endfor %}
-                </nav>
+            <!-- Navigation (centered) -->
+            <nav class="header-nav header-nav-enhanced nav-base nav-horizontal" id="nav-menu" role="navigation" aria-label="Main navigation">
+                {% for item in config.extra.menu_main %}
+                <a href="{{ item.url }}" class="nav-item {% if current_path and current_path == item.url %}active{% endif %}"
+                   {% if current_path and current_path == item.url %}aria-current="page"{% endif %}>{{ item.name }}</a>
+                {% endfor %}
+            </nav>
 
-                <!-- Theme Toggle -->
-                <button class="theme-toggle" onclick="window.themeStore.toggle()" aria-label="Toggle theme">
-                    <span class="theme-icon-light">☀️</span>
-                    <span class="theme-icon-dark">🌙</span>
-                </button>
-            </div>
+            <!-- Theme Toggle (right) -->
+            <button class="theme-toggle" onclick="window.themeStore.toggle()" aria-label="Toggle theme">
+                <span class="theme-icon-light">☀️</span>
+                <span class="theme-icon-dark">🌙</span>
+            </button>
         </div>
     </header>
 
