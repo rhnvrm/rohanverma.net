@@ -5,5 +5,5 @@ weight = 10
 
 [extra]
 github_url = "https://github.com/zed-industries/zed"
-context = "My daily driver editor - fast, Rust-based, great AI integration"
+context = "My daily driver editor - fast, Rust-based, good AI integration"
 +++

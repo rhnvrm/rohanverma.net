@@ -5,5 +5,5 @@ weight = 13
 
 [extra]
 github_url = "https://github.com/steveyegge/beads"
-context = "Interesting approach to persistent context for AI coding assistants"
+context = "Persistent context for AI coding assistants - I use this daily"
 +++

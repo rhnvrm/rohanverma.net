@@ -5,5 +5,5 @@ weight = 19
 
 [extra]
 github_url = "https://github.com/pocketbase/pocketbase"
-context = "Impressive single-file backend with auth, DB, and realtime - great for side projects"
+context = "Single-file backend with auth, DB, realtime - good for side projects"
 +++

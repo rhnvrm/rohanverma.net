@@ -5,5 +5,5 @@ weight = 26
 
 [extra]
 github_url = "https://github.com/diagram-chasing/site"
-context = "Beautiful mathematical visualizations and category theory explorations"
+context = "Math visualizations and category theory"
 +++
