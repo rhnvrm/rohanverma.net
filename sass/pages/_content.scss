@@ -195,6 +195,55 @@
   }
 }
 
+// Starred projects context
+.starred-context {
+  font-size: var(--text-sm);
+  color: var(--c-text-secondary);
+  font-style: italic;
+  margin-bottom: var(--space-2);
+
+  &::before {
+    content: '→ ';
+    color: var(--c-marigold);
+  }
+}
+
+.starred-context-section {
+  margin: var(--space-6) 0;
+  padding: var(--space-4);
+  background: var(--c-bg-subtle);
+  border-left: 2px solid var(--c-marigold);
+
+  h2 {
+    font-size: var(--text-base);
+    margin: 0 0 var(--space-2);
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+// Projects subsection link
+.projects-subsection-link {
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--c-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+
+  a {
+    font-weight: var(--weight-medium);
+    color: var(--c-text-primary);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--c-accent);
+    }
+  }
+}
+
 // Section navigation
 .section-nav {
   margin-top: var(--space-4);

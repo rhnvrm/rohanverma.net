@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="content-container">
+    <header class="article-header">
+        <h1 class="text-display">{{ page.title }}</h1>
+        {% if page.description %}
+        <p class="text-intro">{{ page.description }}</p>
+        {% endif %}
+        <div class="project-meta">
+            {% if page.extra.github_url %}
+            <a href="{{ page.extra.github_url }}" target="_blank" rel="noopener">View on GitHub →</a>
+            {% endif %}
+        </div>
+    </header>
+
+    {% if page.extra.context %}
+    <section class="starred-context-section">
+        <h2>Why I starred this</h2>
+        <p>{{ page.extra.context }}</p>
+    </section>
+    {% endif %}
+
+    {% if page.content %}
+    <div class="article-content">
+        {{ page.content | safe }}
+    </div>
+    {% endif %}
+
+    <nav class="back-nav">
+        <a href="/projects/starred/">← Starred Projects</a>
+    </nav>
+</article>
+{% endblock content %}
