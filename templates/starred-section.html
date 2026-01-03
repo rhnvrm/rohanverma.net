@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="content-container">
+    <nav class="section-nav">
+        <a href="/projects/">← Projects</a>
+    </nav>
+
     <header class="section-header">
         <h1 class="text-display">{{ section.title }}</h1>
         {% if section.description %}
@@ -8,14 +12,10 @@
         {% endif %}
     </header>
 
-    <nav class="section-nav">
-        <a href="/projects/">← Projects</a>
-    </nav>
-
     {% if section.pages %}
     <div class="projects-list spacing-component">
         {% for page in section.pages %}
-        <article class="project-item starred-item">
+        <article class="project-item">
             <h2 class="project-name">
                 {% if page.extra.github_url %}
                 <a href="{{ page.extra.github_url }}" target="_blank" rel="noopener">{{ page.title }}</a>
@@ -29,17 +29,13 @@
             {% if page.extra.context %}
             <p class="starred-context">{{ page.extra.context }}</p>
             {% endif %}
-            <div class="project-meta">
-                {% if page.extra.github_url %}
-                <a href="{{ page.extra.github_url }}" target="_blank" rel="noopener">Code</a>
-                {% endif %}
-            </div>
         </article>
         {% endfor %}
     </div>
     {% else %}
     <div class="empty-state">
         <p>No starred projects yet.</p>
+        <a href="/projects/">← Back to Projects</a>
     </div>
     {% endif %}
 </div>
