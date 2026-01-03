@@ -3,9 +3,38 @@
 // ==========================
 // Jali patterns, halftone textures, Doordarshan nostalgia
 // Shaktimaan energy, playful interactions
+// Oddship-inspired terminal + Indian retro fusion
+
+// ========== BODY SCAN LINES ==========
+// Subtle CRT/Doordarshan TV effect
+body {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.015) 2px,
+      rgba(0, 0, 0, 0.015) 4px
+    );
+}
+
+// ========== ASCII DECORATION LINE ==========
+// Decorative border before header - Indian motif
+body::before {
+  content: '॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰';
+  display: block;
+  color: var(--c-border);
+  font-size: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 4px 0;
+  text-align: center;
+  letter-spacing: -1px;
+}
 
 // ========== JALI LATTICE PATTERN ==========
 // Geometric lattice inspired by Mughal architecture
+// Star/flower pattern like traditional Indian tile work
 
 .jali-bg {
   position: relative;
@@ -14,14 +43,31 @@
     content: '';
     position: absolute;
     inset: 0;
+    // Hexagonal star/flower pattern - like rangoli or tile work
     background-image:
-      linear-gradient(45deg, var(--c-border) 25%, transparent 25%),
-      linear-gradient(-45deg, var(--c-border) 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, var(--c-border) 75%),
-      linear-gradient(-45deg, transparent 75%, var(--c-border) 75%);
-    background-size: 16px 16px;
-    background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
-    opacity: 0.08;
+      // 6-pointed star centers
+      radial-gradient(circle at 50% 50%, var(--c-marigold) 3px, transparent 3px),
+      radial-gradient(circle at 0% 50%, var(--c-marigold) 3px, transparent 3px),
+      radial-gradient(circle at 100% 50%, var(--c-marigold) 3px, transparent 3px),
+      // Petals/rays radiating outward
+      radial-gradient(ellipse 8px 2px at 50% 50%, var(--c-marigold) 100%, transparent 100%),
+      radial-gradient(ellipse 2px 8px at 50% 50%, var(--c-marigold) 100%, transparent 100%),
+      radial-gradient(ellipse 6px 2px at 50% 50%, var(--c-marigold) 100%, transparent 100%);
+    background-size:
+      60px 52px,
+      60px 52px,
+      60px 52px,
+      60px 52px,
+      60px 52px,
+      60px 52px;
+    background-position:
+      30px 26px,
+      0px 0px,
+      60px 0px,
+      30px 26px,
+      30px 26px,
+      30px 0px;
+    opacity: 0.15;
     pointer-events: none;
     z-index: 0;
   }
@@ -37,9 +83,9 @@
     content: '';
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(circle, var(--c-accent) 1px, transparent 1px);
-    background-size: 8px 8px;
-    opacity: 0.06;
+    background-image: radial-gradient(circle, var(--c-accent) 1.5px, transparent 1.5px);
+    background-size: 10px 10px;
+    opacity: 0.12;
     pointer-events: none;
     z-index: 0;
   }
@@ -78,10 +124,10 @@
     transform: translateX(-50%);
     width: 140px;
     height: 70px;
-    border: 2px solid var(--c-saffron);
+    border: 2px solid var(--c-marigold);
     border-bottom: none;
     border-radius: 70px 70px 0 0;
-    opacity: 0.6;
+    opacity: 0.5;
   }
 
   // Inner arch detail
@@ -93,10 +139,10 @@
     transform: translateX(-50%);
     width: 100px;
     height: 50px;
-    border: 1px solid var(--c-marigold);
+    border: 1px solid var(--c-accent);
     border-bottom: none;
     border-radius: 50px 50px 0 0;
-    opacity: 0.4;
+    opacity: 0.3;
   }
 }
 
@@ -217,18 +263,18 @@
     content: '';
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(circle, var(--c-saffron) 1.5px, transparent 1.5px);
-    background-size: 6px 6px;
+    background-image: radial-gradient(circle, var(--c-marigold) 2px, transparent 2px);
+    background-size: 8px 8px;
     opacity: 0;
     transition: opacity 0.2s ease;
   }
 
   &:hover {
-    border-color: var(--c-saffron);
-    color: var(--c-saffron);
+    border-color: var(--c-marigold);
+    color: var(--c-marigold);
 
     &::before {
-      opacity: 0.15;
+      opacity: 0.25;
     }
   }
 
@@ -323,7 +369,7 @@
 
   .rangoli-symbol {
     font-size: var(--text-lg);
-    color: var(--c-saffron);
+    color: var(--c-marigold);
     animation: rangoli-pulse 3s ease-in-out infinite;
   }
 }

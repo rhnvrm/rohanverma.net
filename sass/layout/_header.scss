@@ -1,6 +1,7 @@
 // ==========================
-// Retro Indian Header & Footer
+// Header & Footer
 // ==========================
+// Oddship-inspired terminal aesthetic with Indian retro flair
 
 // ========== HEADER ==========
 .header-main,
@@ -10,27 +11,8 @@
   z-index: 40;
   background: var(--c-bg);
   border-bottom: 1px solid var(--c-border);
-  padding: var(--space-4) 0;
+  padding: var(--space-3) 0;
   transition: background-color var(--transition), border-color var(--transition);
-
-  // DD-style tricolor top border
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(
-      90deg,
-      var(--c-saffron) 0%,
-      var(--c-saffron) 33.33%,
-      var(--c-cream) 33.33%,
-      var(--c-cream) 66.66%,
-      var(--c-peacock) 66.66%,
-      var(--c-peacock) 100%
-    );
-  }
 }
 
 .header-content {
@@ -42,11 +24,21 @@
   align-items: center;
 }
 
+// Terminal prompt before brand
+.nav-brand,
+.nav-brand-enhanced {
+  &::before {
+    content: '॰ ';
+    color: var(--c-marigold);
+    font-weight: var(--weight-bold);
+  }
+}
+
 .header-nav,
 .header-nav-enhanced {
   display: flex;
   align-items: center;
-  gap: var(--space-6);
+  gap: var(--space-4);
 
   @media (max-width: 640px) {
     display: none;
@@ -67,10 +59,34 @@
   }
 }
 
+// Bracketed nav links - oddship style
+.nav-item {
+  &::before {
+    content: '[';
+    color: var(--c-text-tertiary);
+  }
+
+  &::after {
+    content: ']';
+    color: var(--c-text-tertiary);
+  }
+
+  &:hover,
+  &.active,
+  &[aria-current="page"] {
+    color: var(--c-marigold);
+
+    &::before,
+    &::after {
+      color: var(--c-marigold);
+    }
+  }
+}
+
 // ========== FOOTER ==========
 .footer-main {
   margin-top: auto;
-  padding: var(--space-12) 0 var(--space-8);
+  padding: var(--space-8) 0 var(--space-6);
   border-top: 1px solid var(--c-border);
   transition: border-color var(--transition);
 }
@@ -80,7 +96,29 @@
   margin: 0 auto;
   padding: 0 var(--container-padding);
   font-size: var(--text-sm);
-  color: var(--c-text-secondary);
+  color: var(--c-text-tertiary);
+  text-align: center;
+
+  // Comment-wrapped style like oddship
+  &::before {
+    content: '/* ';
+    color: var(--c-text-tertiary);
+  }
+
+  &::after {
+    content: ' */';
+    color: var(--c-text-tertiary);
+  }
+
+  p {
+    display: inline;
+  }
+}
+
+// ========== MAIN CONTENT SPACING ==========
+.main-content {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
 }
 
 // ========== CONTAINER OVERRIDES ==========
