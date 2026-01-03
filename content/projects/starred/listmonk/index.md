@@ -5,5 +5,5 @@ weight = 1
 
 [extra]
 github_url = "https://github.com/knadh/listmonk"
-context = "Contributor - helped with various features and improvements"
+context = "Active contributor - presigned URL handling, added listmonk-mcp to SDK docs"
 +++
