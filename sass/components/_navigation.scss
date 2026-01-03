@@ -19,9 +19,12 @@
 }
 
 .nav a,
-.nav-item a {
+.nav-item a,
+a.nav-item {
   color: var(--c-text-secondary);
   text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   transition: color var(--transition);
 
   &:hover {

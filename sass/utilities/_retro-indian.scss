@@ -42,6 +42,8 @@ body {
   background: transparent;
   font-family: var(--font-mono);
   font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   color: var(--c-text-primary);
   text-decoration: none;
   cursor: pointer;
