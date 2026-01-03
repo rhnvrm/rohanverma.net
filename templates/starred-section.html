@@ -8,6 +8,10 @@
         {% endif %}
     </header>
 
+    <nav class="section-nav">
+        <a href="/projects/">← Projects</a>
+    </nav>
+
     {% if section.pages %}
     <div class="projects-list spacing-component">
         {% for page in section.pages %}
@@ -38,9 +42,5 @@
         <p>No starred projects yet.</p>
     </div>
     {% endif %}
-
-    <nav class="back-nav">
-        <a href="/projects/">← Projects</a>
-    </nav>
 </div>
 {% endblock content %}
