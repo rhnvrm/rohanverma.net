@@ -8,10 +8,13 @@
         {% endif %}
     </header>
 
-    <nav class="projects-subsection-link">
-        <a href="/projects/starred/">Starred Projects →</a>
-        <span class="text-sm">Projects I contribute to or find interesting</span>
-    </nav>
+    <a href="/projects/starred/" class="projects-subsection-link">
+        <div class="subsection-content">
+            <span class="subsection-title">Starred Projects</span>
+            <span class="subsection-desc">Projects I contribute to or find interesting</span>
+        </div>
+        <span class="subsection-arrow">→</span>
+    </a>
 
     {% if section.pages %}
     <div class="projects-list spacing-component">
