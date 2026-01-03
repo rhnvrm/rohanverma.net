@@ -1,6 +1,5 @@
 +++
 title = "Contact"
-description = "Say hello"
 template = "contact.html"
 +++
 
