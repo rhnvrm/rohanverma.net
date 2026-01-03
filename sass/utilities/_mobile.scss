@@ -4,53 +4,8 @@
 
 // ========== MOBILE OVERRIDES ==========
 @media (max-width: 768px) {
-  // Remove margin line on mobile - save precious horizontal space
-  body {
-    background:
-      repeating-linear-gradient(
-        transparent,
-        transparent calc(1.6rem - 1px),
-        var(--c-ruled-line) calc(1.6rem - 1px),
-        var(--c-ruled-line) 1.6rem
-      ),
-      var(--c-bg-main);
-  }
-
-  :root[data-theme="dark"] body {
-    background:
-      repeating-linear-gradient(
-        transparent,
-        transparent 2px,
-        var(--c-scanline) 2px,
-        var(--c-scanline) 4px
-      ),
-      repeating-linear-gradient(
-        transparent,
-        transparent calc(1.6rem - 1px),
-        var(--c-ruled-line) calc(1.6rem - 1px),
-        var(--c-ruled-line) 1.6rem
-      ),
-      var(--c-bg-main);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) body {
-      background:
-        repeating-linear-gradient(
-          transparent,
-          transparent 2px,
-          var(--c-scanline) 2px,
-          var(--c-scanline) 4px
-        ),
-        repeating-linear-gradient(
-          transparent,
-          transparent calc(1.6rem - 1px),
-          var(--c-ruled-line) calc(1.6rem - 1px),
-          var(--c-ruled-line) 1.6rem
-        ),
-        var(--c-bg-main);
-    }
-  }
+  // Body background is inherited from _reset.scss - no override needed
+  // The scanline effect from _retro-indian.scss works at all sizes
 
   // Increase base font size for better readability
   :root {

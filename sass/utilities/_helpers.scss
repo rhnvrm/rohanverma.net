@@ -38,11 +38,11 @@
   gap: 1rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .hidden-mobile { display: none; }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 641px) {
   .hidden-desktop { display: none; }
 }
 

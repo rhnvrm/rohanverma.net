@@ -74,6 +74,16 @@
   --space-16: 4rem;     // 64px
   --space-24: 6rem;     // 96px
 
+  // Legacy spacing aliases (used in _mobile.scss, _helpers.scss)
+  --space-xs: var(--space-1);
+  --space-sm: var(--space-2);
+  --space-md: var(--space-4);
+  --space-lg: var(--space-6);
+  --space-xl: var(--space-8);
+
+  // Legacy line-height alias
+  --line-height-loose: var(--leading-loose);
+
   // ——— Layout
   --max-width: 720px;
   --container-padding: clamp(1rem, 5vw, 2rem);

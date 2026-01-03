@@ -138,7 +138,7 @@
                     aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-menu">☰</button>
 
             <!-- Navigation (centered) -->
-            <nav class="header-nav header-nav-enhanced nav-base nav-horizontal" id="nav-menu" role="navigation" aria-label="Main navigation">
+            <nav class="header-nav header-nav-enhanced" id="nav-menu" role="navigation" aria-label="Main navigation">
                 {% for item in config.extra.menu_main %}
                 <a href="{{ item.url }}" class="nav-item {% if current_path and current_path == item.url %}active{% endif %}"
                    {% if current_path and current_path == item.url %}aria-current="page"{% endif %}>{{ item.name }}</a>
@@ -183,8 +183,8 @@
         
         if (mobileMenuToggle && navMenu) {
             mobileMenuToggle.addEventListener('click', () => {
-                const isOpen = navMenu.classList.contains('active');
-                navMenu.classList.toggle('active');
+                const isOpen = navMenu.classList.contains('mobile-menu-open');
+                navMenu.classList.toggle('mobile-menu-open');
                 
                 // Update ARIA attributes for accessibility
                 mobileMenuToggle.setAttribute('aria-expanded', (!isOpen).toString());
@@ -204,8 +204,8 @@
             
             // Close menu on Escape key
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && navMenu.classList.contains('active')) {
-                    navMenu.classList.remove('active');
+                if (e.key === 'Escape' && navMenu.classList.contains('mobile-menu-open')) {
+                    navMenu.classList.remove('mobile-menu-open');
                     mobileMenuToggle.setAttribute('aria-expanded', 'false');
                     mobileMenuToggle.setAttribute('aria-label', 'Open navigation menu');
                     mobileMenuToggle.focus();
@@ -215,8 +215,8 @@
             // Close menu when clicking outside
             document.addEventListener('click', (e) => {
                 if (!mobileMenuToggle.contains(e.target) && !navMenu.contains(e.target)) {
-                    if (navMenu.classList.contains('active')) {
-                        navMenu.classList.remove('active');
+                    if (navMenu.classList.contains('mobile-menu-open')) {
+                        navMenu.classList.remove('mobile-menu-open');
                         mobileMenuToggle.setAttribute('aria-expanded', 'false');
                         mobileMenuToggle.setAttribute('aria-label', 'Open navigation menu');
                     }
