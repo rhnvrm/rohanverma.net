@@ -127,11 +127,18 @@
     gap: var(--space-sm);
   }
 
-  // Better mobile touch targets
-  a, button {
+  // Better mobile touch targets (exclude tags and inline code links)
+  a:not(.tag):not(.tag-item):not(.tag-index-item),
+  button {
     min-height: 44px;
     display: inline-flex;
     align-items: center;
+  }
+
+  // Tags keep their original styling
+  .tag, .tag-item {
+    display: inline-block;
+    min-height: auto;
   }
 
   .nav-item a {
