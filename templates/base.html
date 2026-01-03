@@ -152,13 +152,12 @@
                             {% endfor %}
                         </nav>
                         
-                        <!-- Theme Toggle -->
+                        <!-- Theme Toggle (CSS-only visibility, no Alpine flicker) -->
                         <button class="theme-toggle"
-                                x-data="{ theme: window.themeStore.theme }"
-                                @click="window.themeStore.toggle(); theme = window.themeStore.theme"
-                                :aria-label="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'">
-                            <span x-show="theme === 'light'">☀️</span>
-                            <span x-show="theme === 'dark'">🌙</span>
+                                onclick="window.themeStore.toggle()"
+                                aria-label="Toggle theme">
+                            <span class="theme-icon-light">☀️</span>
+                            <span class="theme-icon-dark">🌙</span>
                         </button>
                     </div>
                 </div>

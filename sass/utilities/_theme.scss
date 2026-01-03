@@ -30,6 +30,24 @@
     align-items: center;
     justify-content: center;
   }
+
+  // CSS-only icon visibility (no Alpine flicker)
+  .theme-icon-light {
+    display: none;
+  }
+  .theme-icon-dark {
+    display: flex;
+  }
+}
+
+// Light theme: show sun, hide moon
+:root[data-theme="light"] .theme-toggle {
+  .theme-icon-light {
+    display: flex;
+  }
+  .theme-icon-dark {
+    display: none;
+  }
 }
 
 // Progress bar

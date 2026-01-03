@@ -161,6 +161,8 @@
 .project-link {
   font-size: var(--text-sm);
   font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   color: var(--c-text-secondary);
   text-decoration: none;
   padding: var(--space-2) var(--space-4);
@@ -188,6 +190,8 @@
   a {
     color: var(--c-text-tertiary);
     text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 
     &:hover {
       color: var(--c-accent);
@@ -313,6 +317,8 @@
   align-items: center;
   gap: var(--space-4);
   font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   padding-top: var(--space-6);
   margin-top: var(--space-2);
   border-top: 1px solid var(--c-border);
