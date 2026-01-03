@@ -32,7 +32,11 @@ template = "contact.html"
     <ul class="link-list">
         <li><a href="https://github.com/rhnvrm">GitHub</a> <span class="link-desc">code & projects</span></li>
         <li><a href="https://twitter.com/rhnvrm">Twitter</a> <span class="link-desc">thoughts & updates</span></li>
+        <li><a href="https://fosstodon.org/@rhnvrm">Mastodon</a> <span class="link-desc">fediverse</span></li>
         <li><a href="https://www.linkedin.com/in/rhnvrm/">LinkedIn</a> <span class="link-desc">professional</span></li>
+        <li><a href="https://www.youtube.com/TheRohanVerma">YouTube</a> <span class="link-desc">videos</span></li>
+        <li><a href="https://zerodha.tech/authors/rhnvrm/">Zerodha Tech</a> <span class="link-desc">work blog</span></li>
+        <li><a href="https://floss.fund/blog/">FLOSS Fund</a> <span class="link-desc">open source</span></li>
         <li><a href="https://keybase.io/rhnvrm">Keybase</a> <span class="link-desc">secure contact</span></li>
     </ul>
 </div>
