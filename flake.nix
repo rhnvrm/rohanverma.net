@@ -12,6 +12,19 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in
       {
+        packages.default = pkgs.stdenv.mkDerivation {
+          pname = "rohanverma-site";
+          version = "1.0.0";
+          src = ./.;
+          nativeBuildInputs = [ pkgs.zola ];
+          buildPhase = ''
+            zola build
+          '';
+          installPhase = ''
+            cp -r public $out
+          '';
+        };
+
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             zola
