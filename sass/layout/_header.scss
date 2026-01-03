@@ -140,6 +140,4 @@
   padding-inline: var(--container-padding);
 }
 
-.content-container-narrow {
-  max-width: 720px;
-}
+// .content-container-narrow now uses --max-width (720px) like all containers
