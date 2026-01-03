@@ -8,9 +8,24 @@ template = "contact.html"
 
 <div class="contact-primary">
     <p class="contact-intro">Want to chat about code, collaborate on a project, or just say hello?</p>
-    <a href="mailto:hello@rohanverma.net" class="contact-email">hello@rohanverma.net</a>
+    <a href="#" class="contact-email" id="email-link" data-user="olleh" data-domain="ten.amrevnahor">
+        <span class="email-placeholder">Enable JavaScript to see email</span>
+    </a>
     <p class="contact-note">I usually respond within a day or two.</p>
 </div>
+
+<script>
+(function() {
+    var link = document.getElementById('email-link');
+    if (link) {
+        var user = link.dataset.user.split('').reverse().join('');
+        var domain = link.dataset.domain.split('').reverse().join('');
+        var email = user + '@' + domain;
+        link.href = 'mailto:' + email;
+        link.textContent = email;
+    }
+})();
+</script>
 
 <div class="contact-links">
     <h2>Elsewhere</h2>
