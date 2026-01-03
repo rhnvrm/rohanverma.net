@@ -5,5 +5,5 @@ weight = 9
 
 [extra]
 github_url = "https://github.com/mr-karan/toru"
-context = "Contributor - added GitLab authentication support"
+context = "Go module proxy with caching - useful for private module hosting"
 +++

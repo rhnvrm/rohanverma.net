@@ -5,5 +5,5 @@ weight = 20
 
 [extra]
 github_url = "https://github.com/NixOS/nixpkgs"
-context = "Contributor - fixed netbird desktop file name pattern"
+context = "The package collection powering NixOS - reproducible builds done right"
 +++

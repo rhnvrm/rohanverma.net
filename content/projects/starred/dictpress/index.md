@@ -5,5 +5,5 @@ weight = 22
 
 [extra]
 github_url = "https://github.com/knadh/dictpress"
-context = "Contributor - migrated CI workflows from Go to Rust"
+context = "Elegant way to build and publish dictionary websites from Markdown"
 +++

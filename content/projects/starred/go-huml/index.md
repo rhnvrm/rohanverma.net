@@ -5,5 +5,5 @@ weight = 18
 
 [extra]
 github_url = "https://github.com/huml-lang/go-huml"
-context = "Contributor - fixed decode bugs, added example tests, CI improvements"
+context = "Human-friendly config format - cleaner than YAML, simpler than TOML"
 +++

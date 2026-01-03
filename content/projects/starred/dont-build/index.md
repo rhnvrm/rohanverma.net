@@ -5,5 +5,5 @@ weight = 23
 
 [extra]
 github_url = "https://github.com/knadh/dont.build"
-context = "Contributor - added quick copy and copy markdown buttons"
+context = "Minimal, no-frills link shortener - does one thing well"
 +++

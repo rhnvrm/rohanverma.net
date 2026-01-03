@@ -5,5 +5,5 @@ weight = 26
 
 [extra]
 github_url = "https://github.com/diagram-chasing/site"
-context = "Contributor - replaced default Svelte favicon with custom logo"
+context = "Beautiful mathematical visualizations and category theory explorations"
 +++
