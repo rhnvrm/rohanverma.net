@@ -19,6 +19,47 @@
     {% if config.generate_feeds %}
     <link rel="alternate" type="application/rss+xml" title="{{ config.title }}" href="{{ get_url(path="index.xml") }}">
     {% endif %}
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{% if current_url %}{{ current_url }}{% else %}{{ config.base_url }}{% endif %}">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "{{ config.base_url }}/#website",
+                "url": "{{ config.base_url }}",
+                "name": "{{ config.title }}",
+                "description": "{{ config.description }}",
+                "publisher": { "@id": "{{ config.base_url }}/#person" }
+            },
+            {
+                "@type": "Person",
+                "@id": "{{ config.base_url }}/#person",
+                "name": "{{ config.author }}",
+                "url": "{{ config.base_url }}",
+                "sameAs": [
+                    "https://github.com/rhnvrm",
+                    "https://fosstodon.org/@rhnvrm",
+                    "https://twitter.com/rhnvrm"
+                ]
+            }
+            {% if page and page.date %},
+            {
+                "@type": "Article",
+                "headline": "{{ page.title }}",
+                "datePublished": "{{ page.date | date(format='%Y-%m-%d') }}",
+                "author": { "@id": "{{ config.base_url }}/#person" },
+                "publisher": { "@id": "{{ config.base_url }}/#person" },
+                "mainEntityOfPage": "{{ current_url }}"
+            }
+            {% endif %}
+        ]
+    }
+    </script>
     
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="{% if page %}article{% else %}website{% endif %}">
@@ -26,7 +67,7 @@
     <meta property="og:description" content="{% if page.description %}{{ page.description }}{% elif section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
     <meta property="og:url" content="{% if current_url %}{{ current_url }}{% else %}{{ config.base_url }}{% endif %}">
     <meta property="og:site_name" content="{{ config.title }}">
-    <meta property="og:image" content="{{ config.base_url }}/images/social-card.svg">
+    <meta property="og:image" content="{{ config.base_url }}/images/social-card.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
@@ -41,12 +82,11 @@
     <meta name="twitter:creator" content="@rhnvrm">
     <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ config.title }}{% endif %}">
     <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% elif section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
-    <meta name="twitter:image" content="{{ config.base_url }}/images/social-card.svg">
+    <meta name="twitter:image" content="{{ config.base_url }}/images/social-card.png">
     
-    <!-- Fonts -->
+    <!-- Fonts (IBM Plex Mono loaded via SCSS, Shrikhand for accent) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link href="{{ config.extra.handwritten_font }}" rel="stylesheet">
     
     <!-- Design System Styles -->
@@ -58,8 +98,8 @@
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Lucide Icons (pinned version to avoid redirect) -->
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
 
     <!-- Theme Detection Script -->
     <script>
