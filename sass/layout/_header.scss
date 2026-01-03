@@ -20,13 +20,16 @@
   margin: 0 auto;
   padding: 0 var(--container-padding);
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  gap: var(--space-6);
 }
 
 // Terminal prompt before brand
 .nav-brand,
 .nav-brand-enhanced {
+  white-space: nowrap;
+
   &::before {
     content: '॰ ';
     color: var(--c-marigold);
