@@ -26,16 +26,22 @@
     <meta property="og:description" content="{% if page.description %}{{ page.description }}{% elif section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
     <meta property="og:url" content="{% if current_url %}{{ current_url }}{% else %}{{ config.base_url }}{% endif %}">
     <meta property="og:site_name" content="{{ config.title }}">
-    
+    <meta property="og:image" content="{{ config.base_url }}/images/social-card.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
     {% if page.date %}
     <meta property="article:published_time" content="{{ page.date | date(format='%Y-%m-%d') }}">
     <meta property="article:author" content="{{ config.author }}">
     {% endif %}
-    
+
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@rhnvrm">
+    <meta name="twitter:creator" content="@rhnvrm">
     <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ config.title }}{% endif %}">
     <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% elif section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
+    <meta name="twitter:image" content="{{ config.base_url }}/images/social-card.svg">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

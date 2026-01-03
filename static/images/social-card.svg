@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;display=swap');
+      .bg { fill: #14171c; }
+      .accent { fill: #ffb000; }
+      .text-primary { fill: #d4d4d4; font-family: 'JetBrains Mono', monospace; }
+      .text-secondary { fill: #737373; font-family: 'JetBrains Mono', monospace; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect class="bg" width="1200" height="630"/>
+
+  <!-- Accent bar -->
+  <rect class="accent" x="0" y="0" width="4" height="630"/>
+
+  <!-- Terminal prompt style -->
+  <text class="accent" x="80" y="280" font-size="24">$</text>
+  <text class="text-primary" x="110" y="280" font-size="24">cd ~/rhnvrm</text>
+
+  <!-- Main title -->
+  <text class="text-primary" x="80" y="340" font-size="48" font-weight="500">Rohan Verma</text>
+
+  <!-- Subtitle -->
+  <text class="text-secondary" x="80" y="390" font-size="24">Software Engineer @ Zerodha</text>
+
+  <!-- URL -->
+  <text class="text-secondary" x="80" y="550" font-size="20">rohanverma.net</text>
+</svg>
