@@ -1,90 +1,77 @@
 ---
 name: site-dev
 description: |
-  Development skill for rohanverma.net Zola static site with retro Indian terminal aesthetic.
+  Development skill for rohanverma.net Zola static site.
   Use when: editing styles, fixing responsive issues, adding pages, modifying templates.
-  Keywords: zola, scss, css, mobile, responsive, template, design system, theme.
+  Keywords: zola, scss, css, mobile, responsive, template, design, theme, blog, project.
 ---
 
 # Site Development
 
-## Purpose
+> **Philosophy:** Developer's Notebook (light) × Vintage Terminal (dark)
+> Minimal, functional, memorable. Monospace everything.
 
-Guide development of rohanverma.net - a Zola static site with "Doordarshan meets Developer" aesthetic (retro Indian terminal design).
+## Quick Reference
 
-## Architecture
+| Task | Location |
+|------|----------|
+| Colors/tokens | `sass/tokens/_variables.scss` |
+| Mobile fixes | `sass/utilities/_mobile.scss` |
+| Header/nav | `sass/layout/_header.scss` |
+| Components | `sass/components/` |
+| Templates | `templates/` |
+| Config | `config.toml` |
 
-### Directory Structure
+## Design System
+
+### Colors
+
+**Light Mode (Notebook Ink):**
 ```
-sass/
-├── tokens/_variables.scss    # Design tokens, CSS custom properties
-├── base/                     # Reset, typography base
-├── components/               # Cards, tags, buttons, etc.
-├── layout/_header.scss       # Header, footer, containers
-├── utilities/_mobile.scss    # Responsive overrides
-├── utilities/_helpers.scss   # Utility classes
-└── pages/                    # Page-specific styles
-
-templates/
-├── base.html                 # Base template with theme toggle
-├── index.html                # Homepage
-├── blog.html                 # Blog listing
-├── blog-page.html            # Single post
-└── projects-*.html           # Project templates
-
-static/
-├── js/easter-eggs.js
-└── images/
+Text:   #1e1e1e → #525252 → #737373
+Paper:  #f7f5f0 (cream) | #eae7df (shadow)
+Accent: #1a4d7a (blue-black ink)
+Lines:  #e8a5a5 (red margin) | rgba(180,160,140,0.25) (ruled)
 ```
 
-### CSS Custom Properties
+**Dark Mode (Amber Terminal):**
+```
+Text:   #ffb000 → #ff9500 → #cc7a00
+Screen: #000000 (pure black)
+Accent: #ffcc00 (bright amber)
+FX:     text-shadow glow + scanlines + flicker
+```
 
-**Colors** (defined in `_variables.scss`):
+**Indian Palette (accents):**
+- `--c-saffron: #FF9933`
+- `--c-marigold: #EAA221`
+- `--c-peacock: #006D77`
+- `--c-accent: #c44536` (terracotta)
+
+### Typography
+
 ```scss
-// Monotone
---c-text-primary: #1a1a1a;
---c-text-secondary: #555555;
---c-text-tertiary: #888888;
---c-bg: #fefefe;
---c-bg-subtle: #f8f8f8;
---c-border: #e8e8e8;
-
-// Indian palette
---c-saffron: #FF9933;
---c-marigold: #EAA221;
---c-peacock: #006D77;
---c-magenta: #D81159;
---c-cream: #FFF8E7;
---c-henna: #8B4513;
---c-accent: #c44536;  // Terracotta
+Display: "Courier Prime"     // Typewriter headings
+Body:    "IBM Plex Mono"     // Refined monospace
+Never:   Inter, Roboto, Arial, System fonts
 ```
 
-**Typography**:
-```scss
---font-mono: "IBM Plex Mono", monospace;
---text-base: 1rem;
---text-sm: 0.875rem;
---text-lg: 1.125rem;
-// ... up to --text-4xl: 2.5rem
-```
+Rules: All monospace, line-height 1.8, letter-spacing -0.02em on headings, blinking cursor `▌` after h1.
 
-**Spacing** (8px base scale):
-```scss
---space-1: 0.25rem;  // 4px
---space-2: 0.5rem;   // 8px
---space-4: 1rem;     // 16px
---space-6: 1.5rem;   // 24px
---space-8: 2rem;     // 32px
-// Legacy aliases: --space-xs, --space-sm, --space-md, --space-lg, --space-xl
-```
+### Signature Elements
 
-**Layout**:
-```scss
---max-width: 720px;
---container-padding: clamp(1rem, 5vw, 2rem);
-```
+**Notebook (Light):** Red margin at 60px, ruled lines, hole punches, post-it notes, notebook tape on avatar.
 
-### Responsive Breakpoints
+**Terminal (Dark):** CRT scanlines, text glow, flicker animation, terminal window with `● ● ●`, amber phosphor (NOT green).
+
+### Icons
+
+**Library:** Lucide Icons (https://lucide.dev)
+- `pen-line` - Writing/Blog
+- `flask-conical` - Projects
+- `train-front` - Travel
+
+## Responsive Breakpoints
 
 | Breakpoint | Target |
 |------------|--------|
@@ -93,144 +80,113 @@ static/
 | max-width: 768px | Mobile overrides |
 | 769px-1024px | Tablet |
 
-**Critical**: Mobile nav hides at 640px. Helper classes use same breakpoint.
-
-### Dark Theme
-
-Applied via `data-theme="dark"` on `:root` or `prefers-color-scheme: dark`:
-```scss
-@mixin dark-theme {
-  --c-text-primary: #ffffff;
-  --c-bg: #000000;
-  --c-border: #2a2a2a;
-  // ...
-}
-```
-
-## Common Tasks
-
-### Adding a New Page
-
-1. Create content file: `content/{section}/{slug}.md`
-2. Add frontmatter with title, description, date
-3. Use existing template or create new in `templates/`
-
-### Fixing Mobile Issues
-
-1. Check `sass/utilities/_mobile.scss` for overrides
-2. Verify CSS variable is defined in `_variables.scss`
-3. Check selector specificity - broad selectors can override component styles
-4. Test at 640px breakpoint (nav hide point)
-
-### Adding a Component Style
-
-1. Create/edit file in `sass/components/`
-2. Use CSS variables for colors, spacing
-3. Add mobile override in `_mobile.scss` if needed
-4. Import in main.scss if new file
+**Critical:** Nav hides at 640px. JS toggles `.mobile-menu-open` (not `.active`).
 
 ## Gotchas
 
-### CSS Variable Undefined
-Variables like `--c-ruled-line` may not exist. Always check `_variables.scss` before using.
-
-### Selector Specificity
-Broad selectors like `a, button { display: inline-flex }` can break component styles. Use `:not()` exclusions:
+**Selector Specificity:**
 ```scss
-a:not(.tag):not(.special-class),
-button {
-  min-height: 44px;
-}
+// WRONG - breaks tags
+a, button { display: inline-flex }
+
+// CORRECT
+a:not(.tag):not(.tag-item), button { min-height: 44px; }
 ```
 
-### Mobile Nav Class
-JavaScript toggles `.mobile-menu-open` class (not `.active`). CSS must match.
-
-### Touch Targets
-Mobile links need 44px min-height, but exclude inline elements like tags.
-
-## Tera Templates
-
-### Conditional Gotcha
-Check `is defined` before comparing values:
+**Tera Conditionals:**
 ```jinja
-{# WRONG - fails if field undefined #}
+{# WRONG - fails if undefined #}
 {% if page.extra.status == 'archived' %}
 
 {# CORRECT #}
 {% if page.extra.status is defined and page.extra.status == 'archived' %}
 ```
 
-### Common Patterns
-```jinja
-{# Optional extra field with default #}
-{{ page.extra.demo_url | default(value="") }}
+**CSS Variables:** Always check `_variables.scss` before using. Legacy aliases: `--space-xs/sm/md/lg/xl`.
 
-{# Loop with index #}
-{% for item in items %}{{ loop.index }}. {{ item }}{% endfor %}
+## Zola Config Patterns
 
-{# Include partial #}
-{% include "partials/card.html" %}
+```toml
+[extra]
+avatar = "/images/avatar.jpg"
+handwritten_font = "https://fonts.googleapis.com/css2?family=Shrikhand&display=swap"
+commento_src = "https://commento.rohanverma.net/js/commento.js"
+
+[[extra.menu_main]]
+name = "Blog"
+url = "/blog/"
+weight = 2
+
+[extra.fathom_analytics]
+site_id = "REDBQ"
+server_url = "fathom.rohanverma.net"
+
+[extra.now]
+items = ["Item 1", "Item 2"]
 ```
 
-## Content Workflow
+Access: `{{ config.extra.avatar }}`, `{{ config.extra.menu_main }}`
 
-### Blog Post Frontmatter
+## Frontmatter
+
+**Blog:**
 ```toml
 +++
 title = "Post Title"
 date = 2026-01-03
-description = "Brief description for SEO"
+description = "SEO description"
 [taxonomies]
 tags = ["tag1", "tag2"]
 +++
 ```
 
-### Project Frontmatter
+**Project:**
 ```toml
 +++
-title = "Project Name"
-description = "What it does"
-weight = 1  # for ordering
+title = "Project"
+weight = 1
 [extra]
-github_url = "https://github.com/rhnvrm/project"
-demo_url = "https://demo.example.com"  # optional
-status = "archived"  # optional, shows badge
+github_url = "https://github.com/..."
+demo_url = "https://..."  # optional
+status = "archived"       # optional
 +++
 ```
 
-### Writing Style
+## Writing Style
+
 - First-person, pragmatic voice
 - Simple sentences, no em-dashes
 - Real examples over theory
-- "Try it out" encouraging tone
 
-### GitHub Data
-```bash
-# List repos by stars
-gh api users/rhnvrm/repos --jq '.[] | select(.fork == false) | "\(.stargazers_count)★ \(.name)"' | sort -rn
-
-# Fetch README for description
-curl -s https://raw.githubusercontent.com/rhnvrm/project/main/README.md
-```
-
-## Build & Preview
+## Build
 
 ```bash
-# Development server
-zola serve
-
-# Build for production
-zola build
+zola serve   # Development
+zola build   # Production
 ```
 
-## Quick Reference
+## Directory Structure
 
-| Task | Location |
-|------|----------|
-| Change colors | `sass/tokens/_variables.scss` |
-| Mobile overrides | `sass/utilities/_mobile.scss` |
-| Header/nav | `sass/layout/_header.scss` |
-| Base template | `templates/base.html` |
-| Add page template | `templates/{name}.html` |
-| Utility classes | `sass/utilities/_helpers.scss` |
+```
+sass/
+├── tokens/_variables.scss    # Design tokens
+├── base/                     # Reset, typography
+├── components/               # Cards, tags, buttons
+├── layout/                   # Header, footer
+├── utilities/
+│   ├── _mobile.scss          # @media overrides
+│   └── _helpers.scss         # Utilities
+└── pages/                    # Page-specific
+
+templates/
+├── base.html                 # Theme toggle, scripts
+├── blog.html, blog-page.html
+└── projects-*.html
+```
+
+## Related Docs
+
+- `DESIGN.md` - Full design system
+- `DESIGN_PATTERNS.md` - Visual examples
+- `DESIGN_DECISIONS.md` - Philosophy
+- `AGENTS.md` - Workflow
