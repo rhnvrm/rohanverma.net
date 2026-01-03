@@ -18,7 +18,11 @@ build_search_index = true
 # Markdown configuration
 [markdown]
 highlight_code = true
-highlight_theme = "base16-ocean-dark"
+highlight_theme = "css"
+highlight_themes_css = [
+  { theme = "gruvbox-dark", filename = "syntax-dark.css" },
+  { theme = "gruvbox-light", filename = "syntax-light.css" },
+]
 render_emoji = true
 external_links_target_blank = true
 external_links_no_follow = true
