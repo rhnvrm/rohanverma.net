@@ -346,6 +346,12 @@ article {
   margin: 0 auto;
   padding: var(--space-8) var(--container-padding);
 
+  // When inside a container, don't add horizontal padding (container handles it)
+  .content-container &,
+  .content-container-narrow & {
+    padding-inline: 0;
+  }
+
   h1 {
     margin-bottom: var(--space-6);
   }
