@@ -149,6 +149,71 @@ JavaScript toggles `.mobile-menu-open` class (not `.active`). CSS must match.
 ### Touch Targets
 Mobile links need 44px min-height, but exclude inline elements like tags.
 
+## Tera Templates
+
+### Conditional Gotcha
+Check `is defined` before comparing values:
+```jinja
+{# WRONG - fails if field undefined #}
+{% if page.extra.status == 'archived' %}
+
+{# CORRECT #}
+{% if page.extra.status is defined and page.extra.status == 'archived' %}
+```
+
+### Common Patterns
+```jinja
+{# Optional extra field with default #}
+{{ page.extra.demo_url | default(value="") }}
+
+{# Loop with index #}
+{% for item in items %}{{ loop.index }}. {{ item }}{% endfor %}
+
+{# Include partial #}
+{% include "partials/card.html" %}
+```
+
+## Content Workflow
+
+### Blog Post Frontmatter
+```toml
++++
+title = "Post Title"
+date = 2026-01-03
+description = "Brief description for SEO"
+[taxonomies]
+tags = ["tag1", "tag2"]
++++
+```
+
+### Project Frontmatter
+```toml
++++
+title = "Project Name"
+description = "What it does"
+weight = 1  # for ordering
+[extra]
+github_url = "https://github.com/rhnvrm/project"
+demo_url = "https://demo.example.com"  # optional
+status = "archived"  # optional, shows badge
++++
+```
+
+### Writing Style
+- First-person, pragmatic voice
+- Simple sentences, no em-dashes
+- Real examples over theory
+- "Try it out" encouraging tone
+
+### GitHub Data
+```bash
+# List repos by stars
+gh api users/rhnvrm/repos --jq '.[] | select(.fork == false) | "\(.stargazers_count)★ \(.name)"' | sort -rn
+
+# Fetch README for description
+curl -s https://raw.githubusercontent.com/rhnvrm/project/main/README.md
+```
+
 ## Build & Preview
 
 ```bash
