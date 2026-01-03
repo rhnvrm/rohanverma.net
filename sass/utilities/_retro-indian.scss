@@ -17,20 +17,6 @@ body {
     );
 }
 
-// ========== ASCII DECORATION LINE ==========
-// Decorative border before header - Indian motif
-body::before {
-  content: '॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰';
-  display: block;
-  color: var(--c-text-tertiary);
-  font-size: 10px;
-  overflow: hidden;
-  white-space: nowrap;
-  padding: 4px 0;
-  text-align: center;
-  letter-spacing: -1px;
-  opacity: 0.6;
-}
 
 // ========== SHAKTIMAAN ENERGY EFFECTS ==========
 // Playful hover state for avatar
