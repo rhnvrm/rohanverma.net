@@ -133,13 +133,22 @@ pre.z-code {
 
   code {
     background: transparent;
+    color: inherit; // Use pre's Gruvbox fg, not accent color
     padding: 0;
     border: none;
   }
 }
 
 // ========== SYNTAX HIGHLIGHTING ==========
-// Ensure punctuation (colons, brackets, etc.) is visible on dark bg
+// Ensure all syntax highlighting spans use Gruvbox colors on dark bg
+pre, pre.z-code {
+  // Reset ALL nested spans to inherit the Gruvbox foreground
+  span, code span {
+    color: #ebdbb2; // Gruvbox fg - override any inherited page colors
+  }
+}
+
+// Punctuation slightly muted
 .z-punctuation {
   color: #a89984 !important; // Gruvbox gray
 }
