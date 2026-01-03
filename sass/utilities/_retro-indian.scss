@@ -1,20 +1,19 @@
 // ==========================
 // Retro Indian Design Elements
 // ==========================
-// Jali patterns, halftone textures, Doordarshan nostalgia
-// Shaktimaan energy, playful interactions
 // Oddship-inspired terminal + Indian retro fusion
+// Minimal, playful, distinctive
 
 // ========== BODY SCAN LINES ==========
-// Subtle CRT/Doordarshan TV effect
+// Subtle CRT/Doordarshan TV effect - works in both themes
 body {
   background-image:
     repeating-linear-gradient(
       0deg,
       transparent,
       transparent 2px,
-      rgba(0, 0, 0, 0.015) 2px,
-      rgba(0, 0, 0, 0.015) 4px
+      rgba(128, 128, 128, 0.02) 2px,
+      rgba(128, 128, 128, 0.02) 4px
     );
 }
 
@@ -23,237 +22,42 @@ body {
 body::before {
   content: '॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰·॰';
   display: block;
-  color: var(--c-border);
+  color: var(--c-text-tertiary);
   font-size: 10px;
   overflow: hidden;
   white-space: nowrap;
   padding: 4px 0;
   text-align: center;
   letter-spacing: -1px;
-}
-
-// ========== JALI LATTICE PATTERN ==========
-// Geometric lattice inspired by Mughal architecture
-// Star/flower pattern like traditional Indian tile work
-
-.jali-bg {
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    // Hexagonal star/flower pattern - like rangoli or tile work
-    background-image:
-      // 6-pointed star centers
-      radial-gradient(circle at 50% 50%, var(--c-marigold) 3px, transparent 3px),
-      radial-gradient(circle at 0% 50%, var(--c-marigold) 3px, transparent 3px),
-      radial-gradient(circle at 100% 50%, var(--c-marigold) 3px, transparent 3px),
-      // Petals/rays radiating outward
-      radial-gradient(ellipse 8px 2px at 50% 50%, var(--c-marigold) 100%, transparent 100%),
-      radial-gradient(ellipse 2px 8px at 50% 50%, var(--c-marigold) 100%, transparent 100%),
-      radial-gradient(ellipse 6px 2px at 50% 50%, var(--c-marigold) 100%, transparent 100%);
-    background-size:
-      60px 52px,
-      60px 52px,
-      60px 52px,
-      60px 52px,
-      60px 52px,
-      60px 52px;
-    background-position:
-      30px 26px,
-      0px 0px,
-      60px 0px,
-      30px 26px,
-      30px 26px,
-      30px 0px;
-    opacity: 0.15;
-    pointer-events: none;
-    z-index: 0;
-  }
-}
-
-// ========== HALFTONE PATTERN ==========
-// Retro print aesthetic - dots like old newspapers
-
-.halftone-bg {
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle, var(--c-accent) 1.5px, transparent 1.5px);
-    background-size: 10px 10px;
-    opacity: 0.12;
-    pointer-events: none;
-    z-index: 0;
-  }
-}
-
-// Combined jali + halftone for extra texture
-.retro-texture {
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(circle at 50% 50%, var(--c-saffron) 1px, transparent 1px),
-      linear-gradient(45deg, var(--c-border) 1px, transparent 1px),
-      linear-gradient(-45deg, var(--c-border) 1px, transparent 1px);
-    background-size: 12px 12px, 24px 24px, 24px 24px;
-    opacity: 0.05;
-    pointer-events: none;
-    z-index: 0;
-  }
-}
-
-// ========== MUGHAL ARCH FRAME ==========
-// Cusped arch shape for framing elements
-
-.mughal-arch {
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 140px;
-    height: 70px;
-    border: 2px solid var(--c-marigold);
-    border-bottom: none;
-    border-radius: 70px 70px 0 0;
-    opacity: 0.5;
-  }
-
-  // Inner arch detail
-  &::after {
-    content: '';
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 50px;
-    border: 1px solid var(--c-accent);
-    border-bottom: none;
-    border-radius: 50px 50px 0 0;
-    opacity: 0.3;
-  }
-}
-
-// ========== DOORDARSHAN BORDER ==========
-// Iconic geometric border like DD logo patterns
-
-.dd-border-top {
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(
-      90deg,
-      var(--c-saffron) 0%,
-      var(--c-saffron) 33%,
-      var(--c-cream) 33%,
-      var(--c-cream) 66%,
-      var(--c-peacock) 66%,
-      var(--c-peacock) 100%
-    );
-  }
-}
-
-// Animated DD stripe
-.dd-stripe {
-  position: relative;
-  overflow: hidden;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: repeating-linear-gradient(
-      90deg,
-      var(--c-saffron) 0px,
-      var(--c-saffron) 10px,
-      transparent 10px,
-      transparent 20px,
-      var(--c-peacock) 20px,
-      var(--c-peacock) 30px,
-      transparent 30px,
-      transparent 40px
-    );
-    animation: dd-scroll 20s linear infinite;
-  }
-}
-
-@keyframes dd-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-40px); }
+  opacity: 0.6;
 }
 
 // ========== SHAKTIMAAN ENERGY EFFECTS ==========
-// Bold, playful hover states
+// Playful hover state for avatar
 
 .energy-glow {
   transition: all 0.3s ease;
 
   &:hover {
     box-shadow:
-      0 0 20px rgba(255, 153, 51, 0.3),
-      0 0 40px rgba(255, 153, 51, 0.1);
+      0 0 20px rgba(234, 162, 33, 0.3),
+      0 0 40px rgba(234, 162, 33, 0.1);
     transform: translateY(-2px);
   }
-}
-
-// Chakra spin effect
-.chakra-spin {
-  position: relative;
-
-  &::before {
-    content: '॰';
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 24px;
-    color: var(--c-saffron);
-    opacity: 0;
-    transition: all 0.3s ease;
-  }
-
-  &:hover::before {
-    opacity: 1;
-    animation: chakra-rotate 2s linear infinite;
-  }
-}
-
-@keyframes chakra-rotate {
-  0% { transform: translateX(-50%) rotate(0deg); }
-  100% { transform: translateX(-50%) rotate(360deg); }
 }
 
 // ========== PLAYFUL BUTTON STYLES ==========
 
 .btn-retro {
   position: relative;
+  display: inline-block;
   padding: var(--space-2) var(--space-4);
-  border: 2px solid var(--c-border);
+  border: 1px solid var(--c-border);
   background: transparent;
   font-family: var(--font-mono);
   font-size: var(--text-sm);
   color: var(--c-text-primary);
+  text-decoration: none;
   cursor: pointer;
   transition: all 0.2s ease;
   overflow: hidden;
@@ -263,8 +67,8 @@ body::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(circle, var(--c-marigold) 2px, transparent 2px);
-    background-size: 8px 8px;
+    background-image: radial-gradient(circle, var(--c-marigold) 1.5px, transparent 1.5px);
+    background-size: 6px 6px;
     opacity: 0;
     transition: opacity 0.2s ease;
   }
@@ -274,71 +78,12 @@ body::before {
     color: var(--c-marigold);
 
     &::before {
-      opacity: 0.25;
+      opacity: 0.2;
     }
   }
 
   &:active {
     transform: scale(0.98);
-  }
-}
-
-// Accent variant
-.btn-retro--accent {
-  border-color: var(--c-accent);
-
-  &:hover {
-    border-color: var(--c-magenta);
-    color: var(--c-magenta);
-    box-shadow: 0 0 15px rgba(216, 17, 89, 0.2);
-  }
-}
-
-// ========== CRT SCANLINE EFFECT ==========
-// Subtle Doordarshan TV nostalgia
-
-.crt-scanlines {
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0, 0, 0, 0.03) 2px,
-      rgba(0, 0, 0, 0.03) 4px
-    );
-    pointer-events: none;
-    z-index: 10;
-  }
-}
-
-// ========== DECORATIVE CORNER FLOURISHES ==========
-// Inspired by Indian manuscript borders
-
-.corner-flourish {
-  position: relative;
-
-  &::before,
-  &::after {
-    content: '❊';
-    position: absolute;
-    font-size: 12px;
-    color: var(--c-marigold);
-    opacity: 0.5;
-  }
-
-  &::before {
-    top: -8px;
-    left: -8px;
-  }
-
-  &::after {
-    bottom: -8px;
-    right: -8px;
   }
 }
 
@@ -350,7 +95,7 @@ body::before {
   align-items: center;
   justify-content: center;
   gap: var(--space-4);
-  margin: var(--space-8) 0;
+  margin: var(--space-6) 0;
   color: var(--c-text-tertiary);
 
   &::before,
@@ -368,7 +113,7 @@ body::before {
   }
 
   .rangoli-symbol {
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
     color: var(--c-marigold);
     animation: rangoli-pulse 3s ease-in-out infinite;
   }

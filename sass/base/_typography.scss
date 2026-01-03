@@ -102,27 +102,35 @@ ol {
   list-style-type: decimal;
 }
 
-// Code
+// Code - inline code with accent styling
 code {
   font-family: var(--font-mono);
-  font-size: 0.9em;
+  font-size: 0.875em;
   background: var(--c-bg-subtle);
-  padding: 0.2em 0.4em;
-  border: 1px solid var(--c-border);
+  color: var(--c-accent);
+  padding: 0.15em 0.4em;
+  border-radius: 2px;
+  // Subtle border matching accent
+  border: 1px solid color-mix(in srgb, var(--c-accent) 20%, transparent);
 }
 
+// Code blocks - terminal style
 pre {
   font-family: var(--font-mono);
   font-size: var(--text-sm);
-  line-height: var(--leading-normal);
-  background: var(--c-bg-subtle);
+  line-height: var(--leading-relaxed);
+  background: #1a1a1a;
   padding: var(--space-4);
   border: 1px solid var(--c-border);
+  border-radius: 2px;
   overflow-x: auto;
   margin: var(--space-6) 0;
+  // Subtle left accent border
+  border-left: 3px solid var(--c-marigold);
 
   code {
     background: transparent;
+    color: #e6e6e6;
     padding: 0;
     border: none;
   }
