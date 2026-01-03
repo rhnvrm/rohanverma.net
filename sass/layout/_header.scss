@@ -26,14 +26,19 @@
 }
 
 // Terminal prompt before brand
+// Pseudo-element positioned absolutely to not affect text alignment
 .nav-brand,
 .nav-brand-enhanced {
+  position: relative;
   white-space: nowrap;
 
   &::before {
-    content: '॰ ';
+    content: '॰';
     color: var(--c-marigold);
     font-weight: var(--weight-bold);
+    position: absolute;
+    right: 100%;
+    margin-right: 0.35em;
   }
 }
 
