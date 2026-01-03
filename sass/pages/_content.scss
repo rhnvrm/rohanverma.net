@@ -447,47 +447,89 @@ article {
 
 // Contact page
 .contact-page {
-  .contact-email-card {
-    text-align: center;
-    margin: var(--space-8) 0;
-    padding: var(--space-6);
-    border: 1px solid var(--c-border);
+  max-width: 42rem;
+}
 
-    h3 {
-      margin-bottom: var(--space-4);
-    }
+.contact-content {
+  margin-top: var(--space-8);
+}
 
-    .email-note {
-      font-size: var(--text-sm);
-      color: var(--c-text-secondary);
+.contact-primary {
+  text-align: center;
+  padding: var(--space-12) 0;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.contact-intro {
+  font-size: var(--text-lg);
+  color: var(--c-text-secondary);
+  margin-bottom: var(--space-6);
+  line-height: var(--leading-relaxed);
+}
+
+.contact-email {
+  display: inline-block;
+  font-size: var(--text-xl);
+  font-family: var(--font-mono);
+  color: var(--c-text-primary);
+  text-decoration: none;
+  padding: var(--space-4) var(--space-6);
+  border: 2px solid var(--c-marigold);
+  transition: background 150ms ease, color 150ms ease;
+
+  &:hover {
+    background: var(--c-marigold);
+    color: var(--c-bg);
+  }
+}
+
+.contact-note {
+  margin-top: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--c-text-tertiary);
+}
+
+.contact-links {
+  padding: var(--space-8) 0;
+
+  h2 {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--c-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-4);
+    border: none;
+    padding: 0;
+  }
+}
+
+.link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+
+  li {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+  }
+
+  a {
+    color: var(--c-text-primary);
+    text-decoration: none;
+    font-weight: var(--weight-medium);
+
+    &:hover {
+      color: var(--c-accent);
     }
   }
 
-  .social-cards-grid {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-6);
-
-    .social-card {
-      padding: var(--space-6);
-      border: 1px solid var(--c-border);
-
-      .social-header {
-        display: flex;
-        align-items: center;
-        gap: var(--space-3);
-        margin-bottom: var(--space-3);
-
-        h3 {
-          margin: 0;
-          font-size: var(--text-lg);
-        }
-      }
-
-      p {
-        font-size: var(--text-sm);
-        color: var(--c-text-secondary);
-      }
-    }
+  .link-desc {
+    font-size: var(--text-sm);
+    color: var(--c-text-tertiary);
   }
 }
