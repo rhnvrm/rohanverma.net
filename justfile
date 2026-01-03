@@ -31,7 +31,7 @@ _serve:
         echo -e "\033[0;31mNo config.toml found. Cannot start server.\033[0m"
         exit 1
     fi
-    zola serve --interface 0.0.0.0 --port 1111
+    zola serve --interface 127.0.0.1 --port 1111
 
 # Build Zola site
 build:
