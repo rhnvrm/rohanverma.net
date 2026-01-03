@@ -10,18 +10,9 @@
     </header>
 
     {% if section.path == "blog/" or section.path == "/blog/" %}
-    <!-- Filter Controls -->
-    <div class="blog-filters spacing-component">
-        <div class="filter-row">
-            <span class="filter-label">Year:</span>
-            <a href="{{ get_url(path='blog/') }}" class="filter-link {% if current_url is containing('/blog/') and not current_url is containing('/blog/20') %}active{% endif %}">All</a>
-            <a href="{{ get_url(path='blog/2021/') }}" class="filter-link {% if current_url is containing('/blog/2021') %}active{% endif %}">2021</a>
-            <a href="{{ get_url(path='blog/2020/') }}" class="filter-link {% if current_url is containing('/blog/2020') %}active{% endif %}">2020</a>
-            <a href="{{ get_url(path='blog/2019/') }}" class="filter-link {% if current_url is containing('/blog/2019') %}active{% endif %}">2019</a>
-            <a href="{{ get_url(path='blog/2018/') }}" class="filter-link {% if current_url is containing('/blog/2018') %}active{% endif %}">2018</a>
-            <a href="{{ get_url(path='blog/2017/') }}" class="filter-link {% if current_url is containing('/blog/2017') %}active{% endif %}">2017</a>
-            <a href="{{ get_url(path='blog/2016/') }}" class="filter-link {% if current_url is containing('/blog/2016') %}active{% endif %}">2016</a>
-        </div>
+    <!-- Archive Link -->
+    <div class="blog-archive-link spacing-component">
+        <a href="{{ get_url(path='blog/archive/') }}" class="archive-link">View all posts by year →</a>
     </div>
     {% endif %}
     
