@@ -1,5 +1,6 @@
 +++
 title = "Goodbye upi.link"
+description = "Shutting down my indie UPI payment link shortener after NPCI trademark takedown"
 date = "2020-02-24T12:38:24+00:00"
 draft = false
 path = "blog/2020/02/24/goodbye-upi-link/"

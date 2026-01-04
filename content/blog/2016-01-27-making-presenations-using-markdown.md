@@ -1,5 +1,5 @@
 +++
-title = "Making Presenations using Markdown"
+title = "Making Presentations using Markdown"
 date = "2016-01-27T00:00:00+00:00"
 path = "blog/2016/01/27/making-presenations-using-markdown/"
 
@@ -7,9 +7,9 @@ path = "blog/2016/01/27/making-presenations-using-markdown/"
   author = "rhnvrm"
 +++
 
-It’s often a pain to make presenations. How many times have you just wanted to make a simple presentation but have had to deal with bulky software like MS Office?
+It's often a pain to make presentations. How many times have you just wanted to make a simple presentation but have had to deal with bulky software like MS Office?
 
-Well markdown alternatives exist for presenations also, you can focus on your content and make your presentations simply in markdown.
+Well markdown alternatives exist for presentations also, you can focus on your content and make your presentations simply in markdown.
   
 If you don’t know what markdown is you can see this wonderful [cheatsheet][1] and
   
@@ -25,7 +25,7 @@ Although there are many solutions, I found [RemarkJS][2] to be a good product. T
    
 > 3. Edit the Markdown and/or CSS styles as needed, save and refresh!
 
-They also have a wonderful [website][3] which is acutally a presentation which you can use as an introduction.
+They also have a wonderful [website][3] which is actually a presentation which you can use as an introduction.
   
 Many tools have also been built around it like [Remarkise][4] which can be used to render your Markdown-based slideshow on the fly.
 

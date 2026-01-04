@@ -1,5 +1,6 @@
 +++
 title = "The x4ivygA51F Rabbit Hole"
+description = "Investigating a mysterious password from the 2020 most common passwords list, traced to Chinese Discuz forum software"
 date = "2020-11-25T23:25:00+05:30"
 draft = false
 path = "blog/2020/11/25/x4ivygA51F-rabbit-hole/"
