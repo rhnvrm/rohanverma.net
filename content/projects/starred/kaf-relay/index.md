@@ -5,5 +5,5 @@ weight = 8
 
 [extra]
 github_url = "https://github.com/zerodha/kaf-relay"
-context = "Built at Zerodha - topic re-mapping, healthchecks, and hot failovers for HA"
+context = "By [Lakshay](https://kalbhor.xyz) - topic re-mapping, healthchecks, and hot failovers for HA"
 +++
