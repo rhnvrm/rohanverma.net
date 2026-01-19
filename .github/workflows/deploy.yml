@@ -1,0 +1,17 @@
+name: Trigger Deploy
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  trigger-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger nix-system deployment
+        run: |
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.NIX_SYSTEM_PAT }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/oddship/nix-system/dispatches \
+            -d '{"event_type":"deploy-rohanverma-site"}'
