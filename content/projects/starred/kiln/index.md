@@ -5,5 +5,5 @@ weight = 6
 
 [extra]
 github_url = "https://github.com/Thunderbottom/kiln"
-context = "By colleague Chinmay - secure env var management from the command line"
+context = "By [Chinmay](https://maych.in) - secure env var management from the command line"
 +++

@@ -5,5 +5,5 @@ weight = 4
 
 [extra]
 github_url = "https://github.com/mr-karan/logchef"
-context = "By colleague Karan - single binary, high-performance log querying and visualization"
+context = "By [Karan](https://mrkaran.dev) - single binary, high-performance log querying and visualization"
 +++

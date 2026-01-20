@@ -5,5 +5,5 @@ weight = 7
 
 [extra]
 github_url = "https://github.com/abhinavxd/libredesk"
-context = "By colleague Abhinav - single binary customer support solution"
+context = "By [Abhinav](https://github.com/abhinavxd) - single binary customer support solution"
 +++
