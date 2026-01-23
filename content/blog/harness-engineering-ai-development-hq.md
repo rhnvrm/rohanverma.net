@@ -42,9 +42,11 @@ The result was 511 test scenarios covering the full jq expression language. The 
 
 ## The harness
 
-The test harness uses [koanf](https://github.com/knadh/koanf) for parsing inputs and comparing outputs. This wasn't in the original plan - the agent was struggling with format comparison (expected values in JSON, actual output in HUML). I saw the struggle, suggested koanf, and the agent ran with it.
+The test harness does semantic comparison - parsing expected and actual values, then comparing the resulting structures rather than raw strings. `42` equals `42.0`, object key order doesn't matter, whitespace is irrelevant. This meant I could write expected values in whatever format was convenient (usually JSON, since it's familiar) while the actual output could be HUML.
 
-The choice turned out to be important. koanf auto-detects format (HUML, JSON, YAML) and parses to Go maps/slices, so comparison is semantic rather than textual. `42` equals `42.0`, object key order doesn't matter, whitespace is irrelevant. This meant I could write expected values in whatever format was convenient (usually JSON, since it's familiar) while the actual output could be HUML. The harness doesn't care as long as they parse to the same structure. One steering insight, problem solved.
+Early on, when the agent was struggling with format comparison, I suggested using [koanf](https://github.com/knadh/koanf) since it handles multiple config formats. The agent implemented it in the initial harness. But as it debugged test failures and added HUML/YAML support, it ended up replacing koanf with explicit parsers (`encoding/json`, `yaml.v3`, `go-huml`). The tests didn't care *how* comparison worked, only that it worked. Fewer dependencies, same functionality.
+
+This is what I mean by the test harness being self-correcting. My initial suggestion wasn't wrong, but it wasn't optimal either. The agent didn't need me to tell it "remove koanf" - the pressure of making 500+ tests pass drove it toward explicit, deterministic parsing. The plan defined what should happen; the tests validated it; implementation details followed.
 
 Each test is a struct:
 
@@ -132,7 +134,7 @@ Complete phase → verify (must pass) → review (must pass) → commit → next
 
 **Gates catch things you miss.** The format bug wasn't something I would have spotted in a code review - 200 test files with JSON syntax where HUML was needed. The review agent found the pattern, the orchestrator fixed it systematically. Running verification in a separate agent session means fresh eyes on every check.
 
-**Stay out of the loop, but watch for steering opportunities.** I wasn't reviewing code. I was watching progress, noticing when the agent struggled, and dropping hints. "Could koanf be useful?" was one sentence that solved an hour of format-comparison wrestling. Progress visibility lets you give insights without micromanaging. The goal is to provide direction, not instructions.
+**Stay out of the loop, but watch for steering opportunities.** I wasn't reviewing code. I was watching progress, noticing when the agent struggled, and dropping hints. When format comparison was failing, I suggested koanf - the agent implemented it, then replaced it with something simpler as it worked through test failures. My suggestion unblocked progress; the tests refined the solution. You don't need to micromanage if you can see what's happening.
 
 **Put detailed decisions in the plan file.** High-level goals go in prompts ("continue until tests pass"). The LLM can reference the plan; it can't reference what's in your head. Everything the agent needs to work independently should be written down.
 
