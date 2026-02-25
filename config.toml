@@ -3,6 +3,7 @@
 
 # Basic site configuration
 base_url = "https://rohanverma.net"
+theme = "doordarshan"
 title = "Rohan Verma"
 description = "Personal website and blog of Rohan Verma, software developer at Zerodha Tech"
 author = "Rohan Verma"
@@ -50,6 +51,7 @@ commento_src = "https://commento.rohanverma.net/js/commento.js"
 favicon = "/images/favicon.ico"
 footer_message = "Feel free to use the content of this website with appropriate attribution to the author."
 handwritten_font = "https://fonts.googleapis.com/css2?family=Shrikhand&display=swap"
+nav_brand = "~/rhnvrm"
 
 # Main navigation menu
 [[extra.menu_main]]
@@ -87,3 +89,4 @@ items = [
 
 # Social links
 github = "https://github.com/rhnvrm/"
+twitter_handle = "@rhnvrm"
