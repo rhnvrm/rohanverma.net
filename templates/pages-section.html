@@ -1,0 +1,50 @@
+{% extends "pages-base.html" %}
+
+{% block body %}
+<div data-sidebar-layout>
+    <!-- Top navigation bar -->
+    <nav data-topnav>
+        <button data-sidebar-toggle>☰</button>
+        <a href="/pages/" class="pages-brand">{{ config.extra.nav_brand | default(value="~/rhnvrm") }}</a>
+        <a href="/" class="pages-back">← main site</a>
+        <button class="pages-theme-toggle" onclick="window.themeStore.toggle()" aria-label="Toggle theme">
+            <span class="theme-icon-light">☀️</span>
+            <span class="theme-icon-dark">🌙</span>
+        </button>
+    </nav>
+
+    <!-- Sidebar with auto-generated navigation -->
+    <aside data-sidebar>
+        {% if section.extra.section_title %}
+        <div class="sidebar-section-title">{{ section.extra.section_title }}</div>
+        {% elif section.title %}
+        <div class="sidebar-section-title">{{ section.title }}</div>
+        {% endif %}
+        <nav>
+            <ul>
+                {% for pg in section.pages %}
+                <li>
+                    <a href="{{ pg.permalink }}"
+                       {% if current_path == pg.path %}aria-current="page"{% endif %}>
+                        {{ pg.title }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main content -->
+    <main>
+        {% block page_content %}
+        {# Default: show section index content #}
+        <article class="pages-article">
+            {% if section.title %}
+            <h1>{{ section.title }}</h1>
+            {% endif %}
+            {{ section.content | safe }}
+        </article>
+        {% endblock page_content %}
+    </main>
+</div>
+{% endblock body %}

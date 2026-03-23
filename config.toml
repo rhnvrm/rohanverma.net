@@ -47,7 +47,6 @@ anchors = "on"
 author = "Rohan Verma"
 bio = "I scribble about code, trains, and random rabbit‐holes."
 avatar = "/images/avatar.jpg"
-commento_src = "https://commento.rohanverma.net/js/commento.js"
 favicon = "/images/favicon.ico"
 footer_message = "Feel free to use the content of this website with appropriate attribution to the author."
 handwritten_font = "https://fonts.googleapis.com/css2?family=Shrikhand&display=swap"
@@ -73,6 +72,11 @@ weight = 3
 name = "Contact"
 url = "/contact/"
 weight = 4
+
+[[extra.menu_main]]
+name = "Pages"
+url = "/pages/"
+weight = 5
 
 # Fathom Analytics configuration
 [extra.fathom_analytics]

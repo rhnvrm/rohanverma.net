@@ -1,0 +1,204 @@
+/*
+ * doordarshan-oat.css
+ * Bridge between oat.ink's design system and doordarshan's aesthetic.
+ * Overrides oat CSS variables to match the site's terracotta/monospace/gruvbox look.
+ * Dark mode: since oat uses light-dark() which relies on color-scheme,
+ * we force color-scheme per data-theme and also set explicit variable overrides.
+ */
+
+/* ---- Light mode (default) ---- */
+:root {
+  color-scheme: light;
+
+  --primary: #c44536;
+  --primary-foreground: #fefefe;
+  --foreground: #1a1a1a;
+  --background: #fefefe;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --secondary: #f5f0eb;
+  --secondary-foreground: #1a1a1a;
+  --muted: #f5f0eb;
+  --muted-foreground: #555555;
+  --faint: #faf7f4;
+  --faint-foreground: #888888;
+  --accent: #f5f0eb;
+  --border: #e0d8d0;
+  --input: #e0d8d0;
+  --ring: #c44536;
+
+  --font-sans: 'IBM Plex Mono', ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
+}
+
+/* ---- Dark mode ---- */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --background: #0a0a0a;
+  --foreground: #e0d8d0;
+  --card: #1a1a1a;
+  --card-foreground: #e0d8d0;
+  --secondary: #1e1e1e;
+  --secondary-foreground: #e0d8d0;
+  --muted: #1e1e1e;
+  --muted-foreground: #999999;
+  --faint: #141414;
+  --faint-foreground: #666666;
+  --accent: #1e1e1e;
+  --border: #333333;
+  --input: #333333;
+  --ring: #e05a4b;
+  --primary: #e05a4b;
+  --primary-foreground: #fefefe;
+}
+
+/* ---- Gruvbox code blocks ---- */
+pre {
+  background: #1d2021 !important;
+  color: #ebdbb2 !important;
+  border-left: 3px solid #EAA221;
+  border-radius: 2px !important;
+}
+
+pre code {
+  background: none !important;
+  color: inherit !important;
+}
+
+/* ---- Sidebar active link accent ---- */
+[data-sidebar] nav a[aria-current="page"] {
+  background-color: var(--accent);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ---- Topnav brand ---- */
+.pages-brand {
+  font-weight: 600;
+  color: var(--foreground) !important;
+  text-decoration: none !important;
+  font-size: var(--text-7);
+}
+
+.pages-back {
+  color: var(--muted-foreground) !important;
+  text-decoration: none !important;
+  font-size: var(--text-8);
+}
+
+.pages-back:hover {
+  color: var(--primary) !important;
+}
+
+/* ---- Theme toggle button ---- */
+.pages-theme-toggle {
+  margin-inline-start: auto;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-small);
+  padding: var(--space-1) var(--space-2);
+  cursor: pointer;
+  font-size: var(--text-7);
+  line-height: 1;
+}
+
+/* Show/hide sun/moon based on theme */
+[data-theme="dark"] .theme-icon-light { display: none; }
+[data-theme="light"] .theme-icon-dark,
+:root:not([data-theme="dark"]) .theme-icon-dark { display: none; }
+
+/* ---- Main content area padding ---- */
+[data-sidebar-layout] > main {
+  padding: var(--space-8) var(--space-8);
+  max-width: 52rem;
+}
+
+@media (max-width: 768px) {
+  [data-sidebar-layout] > main {
+    padding: var(--space-4) var(--space-4);
+  }
+}
+
+/* ---- Article styling within pages ---- */
+.pages-article h1:first-child {
+  margin-block-start: 0;
+}
+
+.pages-article {
+  line-height: 1.7;
+}
+
+/* ---- Section index page list ---- */
+.pages-section-list {
+  list-style: none;
+  padding: 0;
+}
+
+.pages-section-list li {
+  margin-block-end: var(--space-4);
+}
+
+.pages-section-list a {
+  font-size: var(--text-5);
+  font-weight: 500;
+}
+
+.pages-section-list .section-desc {
+  color: var(--muted-foreground);
+  font-size: var(--text-7);
+  margin-block-start: var(--space-1);
+}
+
+/* ---- Sidebar section title ---- */
+.sidebar-section-title {
+  font-size: var(--text-8);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted-foreground);
+  padding: var(--space-2) var(--space-3) var(--space-1);
+}
+
+/* ---- Footnotes (simplified from doordarshan) ---- */
+.footnote-definition {
+  font-size: var(--text-7);
+  color: var(--muted-foreground);
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--border);
+  margin-block-start: var(--space-2);
+}
+
+.footnote-definition-label {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.footnote-reference a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.8em;
+  vertical-align: super;
+}
+
+/* ---- Pages index (top-level /pages/) ---- */
+.pages-index-list {
+  list-style: none;
+  padding: 0;
+}
+
+.pages-index-list li {
+  margin-block-end: var(--space-6);
+}
+
+.pages-index-list a {
+  font-size: var(--text-4);
+  font-weight: 600;
+}
+
+.pages-index-list .section-desc {
+  color: var(--muted-foreground);
+  font-size: var(--text-regular);
+  margin-block-start: var(--space-1);
+}
