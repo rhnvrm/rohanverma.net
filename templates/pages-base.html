@@ -55,11 +55,18 @@
     <!-- oat.ink JS (sidebar toggle, tabs, etc.) -->
     <script src="https://unpkg.com/@knadh/oat/oat.min.js"></script>
 
-    <!-- Footnotes: collapsible + margin-note positioning -->
+    <!-- Footnotes: collapsible, collected at bottom of article -->
     <script>
     (function() {
       var defs = document.querySelectorAll('.footnote-definition');
       if (!defs.length) return;
+
+      // Create a container at the bottom of the article
+      var article = document.querySelector('.pages-article');
+      if (!article) return;
+
+      var container = document.createElement('section');
+      container.className = 'footnotes-section';
 
       defs.forEach(function(def) {
         // Wrap all content after the label in a collapsible body
@@ -83,25 +90,17 @@
 
         // Click to expand/collapse
         def.addEventListener('click', function(e) {
-          // Don't toggle if clicking a link inside the footnote
           if (e.target.tagName === 'A') return;
           def.classList.toggle('is-expanded');
         });
 
-        // Widescreen: reposition next to reference paragraph
-        if (window.innerWidth >= 1100) {
-          var id = def.id;
-          var ref = document.querySelector('.footnote-reference a[href="#' + id + '"]');
-          if (!ref) return;
-
-          var refParagraph = ref.closest('p') || ref.parentElement;
-          if (refParagraph && refParagraph.parentNode) {
-            refParagraph.parentNode.insertBefore(def, refParagraph.nextSibling);
-          }
-        }
+        // Move to bottom container
+        container.appendChild(def);
       });
 
-      // Also make inline references toggle their footnote on click
+      article.appendChild(container);
+
+      // Inline references toggle + scroll to their footnote
       document.querySelectorAll('.footnote-reference a').forEach(function(a) {
         a.addEventListener('click', function(e) {
           e.preventDefault();
