@@ -199,6 +199,8 @@ pre code {
   font-size: var(--text-8);
   user-select: none;
   vertical-align: baseline;
+  position: static;
+  top: auto;
   flex-shrink: 0;
 }
 
@@ -248,8 +250,8 @@ pre code {
 /* Inline footnotes — below referencing paragraph */
 .footnote-definition {
   display: flex;
-  align-items: baseline;
-  gap: var(--space-1);
+  align-items: center;
+  gap: 0.25rem;
   flex-wrap: wrap;
   margin: var(--space-2) 0 var(--space-4);
   padding: var(--space-2) var(--space-4);
