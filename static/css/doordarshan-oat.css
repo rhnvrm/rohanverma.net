@@ -241,6 +241,7 @@ pre code {
   transition: transform 200ms ease;
   display: inline-block;
   flex-shrink: 0;
+  margin-left: 0.25rem;
 }
 
 .footnote-definition.is-expanded .footnote-toggle {
@@ -275,6 +276,10 @@ pre code {
 
 .footnote-definition.is-expanded {
   background: var(--faint);
+}
+
+.footnote-definition.is-expanded .footnote-body {
+  color: var(--foreground);
 }
 
 .footnote-definition.is-expanded .footnote-preview {
