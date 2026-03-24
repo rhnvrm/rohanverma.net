@@ -55,34 +55,25 @@
     <!-- oat.ink JS (sidebar toggle, tabs, etc.) -->
     <script src="https://unpkg.com/@knadh/oat/oat.min.js"></script>
 
-    <!-- Footnotes: collapsible, collected at bottom of article -->
+    <!-- Footnotes: collapsible inline below referencing paragraph -->
     <script>
     (function() {
       var defs = document.querySelectorAll('.footnote-definition');
       if (!defs.length) return;
 
-      // Create a container at the bottom of the article
-      var article = document.querySelector('.pages-article');
-      if (!article) return;
-
-      var container = document.createElement('section');
-      container.className = 'footnotes-section';
-
       defs.forEach(function(def) {
-        // Wrap all content after the label in a collapsible body
         var label = def.querySelector('.footnote-definition-label');
         if (!label) return;
 
+        // Wrap content after label in collapsible body
         var body = document.createElement('div');
         body.className = 'footnote-body';
-
-        // Move all siblings after label into body
         while (label.nextSibling) {
           body.appendChild(label.nextSibling);
         }
         def.appendChild(body);
 
-        // Add toggle indicator after label
+        // Toggle indicator
         var toggle = document.createElement('span');
         toggle.className = 'footnote-toggle';
         toggle.textContent = '▸';
@@ -93,14 +84,9 @@
           if (e.target.tagName === 'A') return;
           def.classList.toggle('is-expanded');
         });
-
-        // Move to bottom container
-        container.appendChild(def);
       });
 
-      article.appendChild(container);
-
-      // Inline references toggle + scroll to their footnote
+      // Clicking superscript reference toggles its footnote
       document.querySelectorAll('.footnote-reference a').forEach(function(a) {
         a.addEventListener('click', function(e) {
           e.preventDefault();
