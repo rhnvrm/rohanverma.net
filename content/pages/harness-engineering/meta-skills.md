@@ -19,6 +19,6 @@ Maybe 15 minutes saved per skill. Across 38 skills, plus every future one, that 
 
 ---
 
-This is the pattern I keep coming back to in [the loop](@/pages/harness-engineering/the-loop.md): make the thing that makes the things. Invest in the tooling that produces more tooling. It feels slow at first — you could just write the skill directly. But the meta-skill ensures consistency, and consistency matters when you have 38 skills that need to compose with each other.
+I keep coming back to this pattern from [the loop](@/pages/harness-engineering/the-loop.md): make the thing that makes the things. Invest in the tooling that produces more tooling. It feels slow at first — you could just write the skill directly. But the meta-skill ensures consistency, and consistency matters when you have 38 skills that need to compose with each other.
 
 The system builds itself. Not autonomously — I still decide what skills to create and when. But the mechanical parts of creating them are handled. I focus on what the skill should *teach*, not how to format it.

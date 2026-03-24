@@ -19,9 +19,9 @@ This sounds like a minor abstraction. It's not. The cost variance between tiers 
 
 ---
 
-The deeper value is provider decoupling. Agent definitions are markdown files with `${models.high}` variables. A preprocessor interpolates them against `config.toml` and writes the final definitions. Swap Anthropic for OpenAI by changing 4 lines in config, not editing 40 agent files. When a new model drops — or a provider changes pricing — the update is mechanical.
+Provider decoupling matters more than the tiers themselves. Agent definitions are markdown files with `${models.high}` variables. A preprocessor interpolates them against `config.toml` and writes the final definitions. Swap Anthropic for OpenAI by changing 4 lines in config, not editing 40 agent files. When a new model drops — or a provider changes pricing — the update is mechanical.
 
-This is how [Pi](@/pages/harness-engineering/pi.md) and [the sandbox](@/pages/harness-engineering/the-sandbox.md) work together. Pi defines agents as markdown. The sandbox's config preprocessor resolves the variables. The result is deterministic: same config, same agents, every time.
+[Pi](@/pages/harness-engineering/pi.md) and [the sandbox](@/pages/harness-engineering/the-sandbox.md) connect here. Pi defines agents as markdown. The sandbox's config preprocessor resolves the variables. The result is deterministic: same config, same agents, every time.
 
 ---
 

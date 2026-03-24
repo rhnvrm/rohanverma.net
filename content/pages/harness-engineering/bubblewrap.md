@@ -21,9 +21,9 @@ The deny and allow lists live in [config.toml](@/pages/harness-engineering/confi
 
 ---
 
-Network isn't restricted. Your code reaches model APIs in every prompt — that's an inherent tradeoff of using hosted models. There's been exploration of network monitoring (Suricata IDS) to at least *observe* what's going out, but restricting network access would break the fundamental workflow.
+Network isn't restricted. Your code reaches model APIs in every prompt — that's an inherent tradeoff of using hosted models. I've looked at network monitoring (Suricata IDS) to at least *observe* what's going out, but restricting network access would break the basic workflow.
 
-Active work: nested bubblewrap for a read-only bash tool. Multiple layers of isolation for different tool capabilities — an agent with `bash` gets a more restricted filesystem view than one with only `read` and `write`. Layers on layers.
+I'm working on nested bubblewrap for a read-only bash tool. The idea: an agent with `bash` gets a more restricted filesystem view than one with only `read` and `write`. Layers on layers.
 
 ---
 

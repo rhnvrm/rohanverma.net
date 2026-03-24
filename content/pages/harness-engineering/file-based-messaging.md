@@ -13,7 +13,7 @@ No daemon. No server. No central orchestrator. Everything in `.pi/mesh/`: a regi
 
 ---
 
-You can debug the entire [coordination](@/pages/harness-engineering/coordination.md) system with `cat` and `ls`. That's [the sandbox](@/pages/harness-engineering/the-sandbox.md) philosophy applied to multi-agent work. No hidden state. No process you need to keep running. If something goes wrong, the evidence is right there in the filesystem.
+You can debug the entire [coordination](@/pages/harness-engineering/coordination.md) system with `cat` and `ls`. [The sandbox](@/pages/harness-engineering/the-sandbox.md) philosophy, applied to multi-agent work. No hidden state. No process you need to keep running. If something goes wrong, the evidence is right there in the filesystem.
 
 Five tools: `mesh_peers` (who's active, what model), `mesh_reserve` and `mesh_release` (claim files before editing), `mesh_send` (message another agent), and `mesh_manage` (rename, set status, view feed). Messages are delivered between turns — agent A finishes work and sends results, agent B receives the message on its next turn. No polling, no webhooks.
 
@@ -27,4 +27,4 @@ Early bug: duplicate reservations were allowed. Two agents could reserve the sam
 
 [Pi-mesh](https://github.com/rhnvrm/pi-mesh) started as a Pi extension, built on Nico Bailon's [pi-messenger](https://github.com/nicobailon/pi-messenger) work. He'd already solved the hard problems: file-based messaging, presence detection, the overlay UI. I estimated about 1,400 lines. It ended up at 2,750 lines of source and 240 lines of tests. The overlay UI and tab-completion were most of the overrun.
 
-The choice to use files wasn't ideological. It was practical. Agents already live in the filesystem. [The daemon](@/pages/harness-engineering/the-daemon.md) already watches files. Adding a message broker or database would mean one more thing to start, monitor, and debug. Files are boring. Boring is [the point](@/pages/harness-engineering/the-boring-stuff.md).
+Files weren't an ideological choice. Agents already live in the filesystem. [The daemon](@/pages/harness-engineering/the-daemon.md) already watches files. Adding a message broker or database would mean one more thing to start, monitor, and debug. Files are boring. Boring is [the point](@/pages/harness-engineering/the-boring-stuff.md).

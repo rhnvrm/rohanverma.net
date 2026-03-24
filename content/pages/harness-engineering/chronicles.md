@@ -15,13 +15,13 @@ Chronicles are not [session summaries](@/pages/harness-engineering/session-summa
 
 A two-agent pipeline produces them. The chronicle-analyzer runs hourly, reads session summaries, and produces a JSON analysis — which sessions belong to which journey, what the arc is, what's significant. The chronicle-scribe watches the analysis directory and generates prose. Markdown output, organized by month, landing in `workspace/users/{you}/public/chronicles/`.
 
-32 bosun chronicles and 234 older ones from before this setup existed. That's the accumulated record of eight months of work — not just what I did, but the narrative of *why* decisions got made, what went wrong, what worked.
+32 bosun chronicles and 234 older ones from before this setup existed. Eight months of work in there — what I did, why decisions got made, what went wrong, what worked.
 
 ---
 
-Use cases keep expanding. Standup briefings — "what did I actually ship this week?" without reconstructing it from git logs and memory. Decision audit trails — "why did we switch from channels to sync.Cond and then back?" Progress tracking across long-running projects. [Handoff](@/pages/harness-engineering/handoffs.md) documentation for threads of work that span weeks.
+I keep finding uses. Standup briefings — "what did I actually ship this week?" without reconstructing it from git logs and memory. Decision audit trails — "why did we switch from channels to sync.Cond and then back?" Progress tracking across long-running projects. [Handoff](@/pages/harness-engineering/handoffs.md) documentation for threads of work that span weeks.
 
-The public chronicles feed the [builder's log](https://oddship.net/chronicles/) — an external-facing record of the work. Writing about what you're building while you're building it, except the writing is automated.
+The public chronicles feed the [builder's log](https://oddship.net/chronicles/). Writing about what you're building while you're building it — except the agents do the writing.
 
 ---
 

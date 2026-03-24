@@ -17,7 +17,7 @@ Agent templates use `${models.high}` variables. A preprocessor (`just init`) int
 
 The agent `.md` files *are* checked in. Those are the system prompts, the actual agent definitions. The generated JSON configs are the glue that connects definitions to the local environment. Edit `config.toml`, run `just init`, everything updates.
 
-Change models for every agent by editing one line. Swap providers, adjust context windows, toggle [skills](@/pages/harness-engineering/skills.md). Same config, same output, every time. This is what makes [the sandbox](@/pages/harness-engineering/the-sandbox.md) deterministic.
+Change models for every agent by editing one line. Swap providers, adjust context windows, toggle [skills](@/pages/harness-engineering/skills.md). Same config, same output, every time. That determinism is what makes [the sandbox](@/pages/harness-engineering/the-sandbox.md) work.
 
 ---
 
@@ -27,4 +27,4 @@ Change models for every agent by editing one line. Swap providers, adjust contex
 
 The config-as-code approach has a specific advantage for [model tiers](@/pages/harness-engineering/model-tiers.md): the tier abstraction lives in config, not in agent definitions. When a new model drops, or a provider changes pricing, the update is one line in `config.toml` — not editing every agent file. When I want to test whether Sonnet 4 works as well as Opus for coding tasks, I change the `high` tier definition and run `just init`. Every agent using `${models.high}` picks up the change.
 
-This is the Nix philosophy applied to agent configuration. Declarative, reproducible, diffable. The config is version-controlled. The generated output is deterministic. If something breaks, `git diff config.toml` tells you exactly what changed.
+Nix philosophy, applied to agent configuration. Declarative, reproducible, diffable. The config is version-controlled. The generated output is deterministic. If something breaks, `git diff config.toml` tells you exactly what changed.

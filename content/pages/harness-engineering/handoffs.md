@@ -27,4 +27,4 @@ The handoff captures the mechanical parts: session state, file diffs, known issu
 
 Handoffs are one piece of [the loop](@/pages/harness-engineering/the-loop.md). [Session summaries](@/pages/harness-engineering/session-summarization.md) capture what happened across *all* sessions. Handoffs capture what's *in flight* for a specific thread of work. Summaries feed [session history](@/pages/harness-engineering/session-history.md) — the long-term corpus. Handoffs feed continuity — the short-term context.
 
-Both are examples of [starting manual and automating later](@/pages/harness-engineering/start-manual-automate-later.md). I used to write handoff notes by hand. Then I automated the filling. The notes got better when the daemon wrote them, because it doesn't forget to mention the uncommitted files.
+Like everything else here, handoffs [started manual](@/pages/harness-engineering/start-manual-automate-later.md). I used to write the notes by hand. The daemon writes better ones — it doesn't forget to mention the uncommitted files.

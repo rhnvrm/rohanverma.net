@@ -15,7 +15,7 @@ Every AI coding session produces a conversation log. Most people throw these awa
 
 ---
 
-The volume matters. Not because every session is productive — many are short interactions, experiments, throwaway explorations. But they're all searchable. When an agent needs "have we worked on this before?", it finds relevant past work regardless of which session it happened in. The corpus makes future sessions more informed.
+The volume matters, even though most sessions aren't remarkable — short interactions, experiments, throwaway explorations. But they're all searchable. When an agent needs "have we worked on this before?", it finds relevant past work regardless of which session it happened in. The corpus makes future sessions more informed.
 
 Month by month: 19 sessions in August 2025 (just getting started), 57 in September, 18 in October, 62 in November, 146 in December. A brief OpenCode bridge in late January. Under bosun, the daemon summarized 745 sessions in January and hundreds more since. The count kept climbing.
 
@@ -29,4 +29,4 @@ What I can say: context recovery is faster (handoffs mean I don't re-read conver
 
 [Amp](https://ampcode.com/) gets a lot of things right here: session history, conversation threads, good UX for managing context. But their features are in the backend with lock-in. Having all the session data as local files means I can analyze, search, and feed them back into agents using whatever tools I want. That's the difference between [renting and owning](@/pages/harness-engineering/the-omakase-tradeoff.md).
 
-Session history feeds into [the loop](@/pages/harness-engineering/the-loop.md). [The daemon](@/pages/harness-engineering/the-daemon.md) summarizes sessions automatically. [Q](@/pages/harness-engineering/q-the-task-agent.md) reads those summaries and updates task status. The whole chain starts with keeping the logs.
+Session history feeds [the loop](@/pages/harness-engineering/the-loop.md). [The daemon](@/pages/harness-engineering/the-daemon.md) summarizes sessions automatically. [Q](@/pages/harness-engineering/q-the-task-agent.md) reads those summaries and updates task status. The chain starts with keeping the logs.

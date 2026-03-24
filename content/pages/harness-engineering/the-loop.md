@@ -15,11 +15,11 @@ Sessions produce artifacts. Artifacts become searchable knowledge. Knowledge fee
 
 ---
 
-The loop: sessions → [summaries](@/pages/harness-engineering/the-daemon.md) → searchable knowledge → better sessions. No magic flywheel. Each piece makes the next session a bit better than the last.
+The loop: sessions → [summaries](@/pages/harness-engineering/the-daemon.md) → searchable knowledge → better sessions. Nothing magical about it. Each piece makes the next session a bit better than the last.
 
 [The daemon](@/pages/harness-engineering/the-daemon.md) summarizes sessions automatically. [Q](@/pages/harness-engineering/q-the-task-agent.md) reads those summaries and updates task status, notes progress, flags blockers. The memory tool makes it all searchable: keyword, semantic, hybrid with LLM reranking. When an agent needs "have we worked on this before?", it finds relevant past work regardless of which session it happened in.
 
-The key difference from traditional note-taking: the LLM writes the notes, not me. I don't decide what's worth capturing after each session. The daemon summarizes automatically, and the summaries are good enough that future agents can act on them.
+Unlike traditional note-taking, the LLM writes the notes, not me. I don't decide what's worth capturing after each session. The daemon summarizes automatically, and the summaries are good enough that future agents can act on them.
 
 ---
 

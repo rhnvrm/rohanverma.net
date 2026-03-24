@@ -17,9 +17,9 @@ There are 38 skills in `.pi/skills/`. Pi loads them based on trigger keywords wh
 
 Three kinds:
 
-- **General-purpose** (21 skills): git, GitHub, context management, session analysis, mesh [coordination](@/pages/harness-engineering/coordination.md), browser automation, background processes, tmux orchestration.
-- **Project-specific** (12 skills): conventions for specific codebases. Worktree paths, build commands, deployment pipelines, debugging playbooks. These encode tribal knowledge — the kind of thing that lives in Slack threads and gets lost.
-- **[Meta-skills](@/pages/harness-engineering/meta-skills.md)** (5 skills): skills for creating skills, agents, extensions, commands, tools. The multiplier.
+- *General-purpose* (21 skills): git, GitHub, context management, session analysis, mesh [coordination](@/pages/harness-engineering/coordination.md), browser automation, background processes, tmux orchestration.
+- *Project-specific* (12 skills): conventions for specific codebases. Worktree paths, build commands, deployment pipelines, debugging playbooks. Tribal knowledge — the kind of thing that lives in Slack threads and gets lost.
+- *[Meta-skills](@/pages/harness-engineering/meta-skills.md)* (5 skills): skills for creating skills, agents, extensions, commands, tools. The multiplier.
 
 12 of the 38 show multiple commits of active refinement. These aren't write-once-forget. They evolve as I learn what the agent gets wrong.
 

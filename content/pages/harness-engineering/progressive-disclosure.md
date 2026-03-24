@@ -21,10 +21,10 @@ The file structure supports this too. `SKILL.md` is always loaded — the overvi
 
 ---
 
-This is also how the agent reads Pi's own documentation. Paths to docs are injected into the system prompt, but the agent reads them only when needed. A well-structured harness that an agent can inspect on demand is qualitatively different from one that dumps its entire manual into every prompt.
+Same principle for Pi's own documentation. Paths to docs are injected into the system prompt, but the agent reads them only when needed. A harness the agent can inspect on demand works better than one that dumps its entire manual into every prompt.
 
 ---
 
 Progressive disclosure combined with agent-based skill loading, matched with an orchestrator spawning specialist agents, works better than trying to front-load everything. The orchestrator agent loads the planning skills. The coding agent loads the git and project skills. The review agent loads the editorial skills. Each agent's context is focused on what it's actually doing.
 
-As these models improve, skill loading will only get better. The agent gets smarter about *when* to load *what*. The disclosure structure gives it something good to load. That's why [well-structured skills](@/pages/harness-engineering/meta-skills.md) are worth the effort now.
+As models improve, skill loading gets better too — the agent gets smarter about *when* to load *what*. The disclosure structure gives it something worth loading. [Well-structured skills](@/pages/harness-engineering/meta-skills.md) are worth the effort now because they'll work even better later.

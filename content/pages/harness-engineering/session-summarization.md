@@ -11,7 +11,7 @@ section_title = "Harness Engineering"
 
 When a session goes idle, [the daemon](@/pages/harness-engineering/the-daemon.md) spawns a Haiku agent to generate a structured summary. Cheap model, fast turnaround. The summary has YAML frontmatter — tags, files touched, duration — and a narrative section: what worked, what didn't, key insights. These accumulate in `workspace/users/{you}/sessions/`.
 
-That uniform frontmatter matters more than it seems. Consistent schema plus predictable filename patterns means tools can discover, filter, and aggregate sessions without manual intervention. [Q](@/pages/harness-engineering/q-the-task-agent.md) reads these summaries. The memory tool searches them. Future agents draw on them. The structure is what makes [the loop](@/pages/harness-engineering/the-loop.md) mechanical instead of aspirational.
+The uniform frontmatter matters. Consistent schema plus predictable filenames means tools can discover, filter, and aggregate sessions without manual intervention. [Q](@/pages/harness-engineering/q-the-task-agent.md) reads these summaries. The memory tool searches them. Future agents draw on them. The structure is what makes [the loop](@/pages/harness-engineering/the-loop.md) mechanical instead of aspirational.
 
 ---
 
@@ -25,6 +25,6 @@ Early on, the daemon kept timing out on summarization. I assumed the summarizer 
 
 ---
 
-This is the engine behind [session history](@/pages/harness-engineering/session-history.md). The raw JSONL logs are the data. The summaries are the knowledge. Without summarization, you have 4,000 conversation logs nobody reads. With it, you have a searchable corpus that makes every future session a bit more informed.
+Session summarization is the engine behind [session history](@/pages/harness-engineering/session-history.md). The raw JSONL logs are the data. The summaries are the knowledge. Without summarization, you have 4,000 conversation logs nobody reads. With it, you have a searchable corpus that makes every future session a bit more informed.
 
 And like everything else in this system, it [started manual](@/pages/harness-engineering/start-manual-automate-later.md). A slash command I ran by hand at the end of each session. Then hooks. Then a plugin. Then file watchers. Each step just automated what I was already doing.

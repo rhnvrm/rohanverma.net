@@ -27,6 +27,6 @@ Tuition, not overhead. That framing matters. I'm not optimizing for ROI on a per
 
 ---
 
-The economics will catch up. Models get cheaper. Context windows get larger. The harder questions will be about what to do with these tools, not whether you can afford them. The people who spent the "expensive" period learning the paradigm will have an advantage when the costs drop — because they'll know what to build, not just how to prompt.
+The economics will catch up. Models get cheaper. Context windows get larger. The harder questions will be about what to do with these tools, not whether you can afford them. Spending the "expensive" period learning how they work should pay off when the costs drop.
 
-That's the same bet as [the loop](@/pages/harness-engineering/the-loop.md): invest now, compound later.
+Same bet as [the loop](@/pages/harness-engineering/the-loop.md): invest now, compound later.

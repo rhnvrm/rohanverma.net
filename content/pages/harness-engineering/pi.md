@@ -15,7 +15,7 @@ section_title = "Harness Engineering"
 
 Clean codebase. Extension API. Agents defined as markdown files with system prompts and model assignments. Extensions get lifecycle hooks and can register custom tools the LLM sees alongside built-in ones. Pi also has a subagent system: sequential chains, parallel fan-out, single-shot calls.
 
-One thing that stands out: the core agent runs in the browser too. Pi's system prompt includes paths to its own documentation, so agents can read the harness source to understand how things work. A well-structured harness that an agent can inspect is qualitatively different from a black box that happens to work.
+One thing that stands out: the core agent runs in the browser too. Pi's system prompt includes paths to its own documentation, so agents can read the harness source to understand how things work. When something breaks, an agent that can read the harness source has a real advantage over one running inside a black box.
 
 ---
 

@@ -13,11 +13,11 @@ The daemon runs in its own tmux session, watching for file changes. It's the bac
 
 ---
 
-**Session summarization.** When a session goes idle, the daemon spawns a Haiku agent to generate a structured summary. YAML frontmatter with tags, files touched, duration. Narrative with "what worked", "what didn't", "key insights." These accumulate in `workspace/users/{you}/sessions/`.
+*Session summarization.* When a session goes idle, the daemon spawns a Haiku agent to generate a structured summary. YAML frontmatter with tags, files touched, duration. Narrative with "what worked", "what didn't", "key insights." These accumulate in `workspace/users/{you}/sessions/`.
 
-**Handoff filling.** `/handoff` checkpoints your work. The daemon detects the new file and fills in context: what you were working on, where you left off, what's next. `/pickup` loads it when you're back. No re-reading conversation history.
+*Handoff filling.* `/handoff` checkpoints your work. The daemon detects the new file and fills in context: what you were working on, where you left off, what's next. `/pickup` loads it when you're back. No re-reading conversation history.
 
-**Chronicles.** Session summaries feed into longer [builder's log](https://oddship.net/chronicles/) narratives, grouped by journey.
+*Chronicles.* Session summaries feed into longer [builder's log](https://oddship.net/chronicles/) narratives, grouped by journey.
 
 ---
 
@@ -29,4 +29,4 @@ Getting it reliable took some debugging. Early on, the daemon kept timing out su
 
 This didn't start with the daemon. Back in August with claude-manager, I was manually running a slash command at the end of each session to write learnings to a file. Then I automated it with Claude hooks. Then an OpenCode plugin to trigger on session idle. Now with [Pi](@/pages/harness-engineering/pi.md), file watchers on the raw session JSONL trigger summarization automatically.
 
-Each step was just automating what I was already doing by hand. Start manual, observe what's valuable, automate the valuable parts. That's [the loop](@/pages/harness-engineering/the-loop.md) applied to itself.
+Each step was just automating what I was already doing by hand. Start manual, observe what's valuable, automate the valuable parts. [The loop](@/pages/harness-engineering/the-loop.md), applied to itself.

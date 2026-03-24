@@ -17,7 +17,7 @@ Quinn Slack [pointed out](https://x.com/sqs/status/2018640734732382558/photo/1) 
 
 The [meta-skills](@/pages/harness-engineering/meta-skills.md) math: about 15 minutes saved per skill. Across 38 [skills](@/pages/harness-engineering/skills.md), that's roughly 9.5 hours. Plus every future skill. The xkcd math says this is worth it if you create skills frequently enough. I do.
 
-But the real shift: the cost of automation dropped. When the agent scaffolds new skills, when [the daemon](@/pages/harness-engineering/the-daemon.md) automates [summarization](@/pages/harness-engineering/session-summarization.md), the "time to automate" column in the xkcd table shrinks dramatically. Automation that used to take an afternoon now takes a prompt.
+What changed: the cost of automation dropped. When the agent scaffolds new skills, when [the daemon](@/pages/harness-engineering/the-daemon.md) automates [summarization](@/pages/harness-engineering/session-summarization.md), the "time to automate" column in the xkcd table shrinks dramatically. Automation that used to take an afternoon now takes a prompt.
 
 ---
 
@@ -27,4 +27,4 @@ Weekly cost efficiency improved about 30% over time — from $0.079 to $0.054 pe
 
 The honest caveat: I'm treating the total spend as tuition, not overhead. [The economics](@/pages/harness-engineering/the-economics.md) page has the numbers. The xkcd math works for the mechanical parts — summarization, skill creation, deployment automation. For learning this way of working, the calculation is different. It's an investment in understanding, not a time-saving optimization.
 
-The xkcd table asks "is it worth the time?" [The loop](@/pages/harness-engineering/the-loop.md) asks a different question: "does it compound?" Time saved is linear. Knowledge that compounds into better future sessions is something else entirely. The math is harder but the payoff is bigger. That's [the boring stuff](@/pages/harness-engineering/the-boring-stuff.md) thesis reframed as arithmetic.
+The xkcd table asks "is it worth the time?" [The loop](@/pages/harness-engineering/the-loop.md) asks "does it compound?" Time saved is linear. Knowledge that compounds into better future sessions is different. The math is harder but the payoff is bigger — [the boring stuff](@/pages/harness-engineering/the-boring-stuff.md) thesis as arithmetic.

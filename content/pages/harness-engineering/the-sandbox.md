@@ -27,6 +27,6 @@ The entry point is a [justfile](https://github.com/casey/just). `just start` cre
 
 ---
 
-Real quirk: `whoami` doesn't work inside the sandbox (no `/etc/passwd`). Agents use `$USER` instead. This is the kind of thing a [skill](@/pages/harness-engineering/skills.md) documents so the agent doesn't waste time debugging it.
+Quirks exist — `whoami` doesn't work (no `/etc/passwd`), so agents use `$USER`. The kind of thing a [skill](@/pages/harness-engineering/skills.md) documents once and nobody hits again. More on isolation details in the [bubblewrap](@/pages/harness-engineering/bubblewrap.md) page.
 
-There's a bit of the Nix philosophy here. You do it once, the hard way, and the deterministic nature compounds over time. Infrastructure I control compounds differently than infrastructure I rent.
+Same logic as Nix itself: do it once, the hard way, and every session after that inherits the work. Owning the infrastructure means the compounding is mine, not someone else's.

@@ -21,10 +21,10 @@ During one session, Q autonomously synced 15 session summaries into task updates
 
 ---
 
-The `qmd` tool searches across everything: tasks, sessions, handoffs, chronicles. Keyword search (fast, grep-based), semantic search (embedding-based), and hybrid with LLM reranking. When an agent needs "have we worked on X before?", `qmd` finds it regardless of which session it happened in.
+`qmd` searches across tasks, sessions, handoffs, chronicles. Keyword search (grep-based, fast), semantic search (embedding-based), or hybrid with LLM reranking. When an agent needs "have we worked on X before?", it finds relevant work regardless of which session it happened in.
 
 ---
 
-Q is the piece that makes [the loop](@/pages/harness-engineering/the-loop.md) feel less like a pipe dream and more like a system. Without Q, session summaries accumulate but nobody reads them. With Q, they get processed into task updates that future agents actually use.
+Without Q, [the loop](@/pages/harness-engineering/the-loop.md) is aspirational — session summaries accumulate but nobody reads them. With Q, they get processed into task updates that future agents actually use. That's when the loop started feeling like a system instead of a pipe dream.
 
-The 115 tracked tasks, 27 handoff files, and 120 chronicle entries didn't organize themselves. Q did. While I was doing other things. That's [the boring stuff](@/pages/harness-engineering/the-boring-stuff.md) thesis applied to project management.
+The 115 tracked tasks, 27 handoff files, and 120 chronicle entries didn't organize themselves. Q did. While I was doing other things. [The boring stuff](@/pages/harness-engineering/the-boring-stuff.md) thesis, except for project management instead of code.

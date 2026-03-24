@@ -21,10 +21,10 @@ Task tracking. Started as manual notes in claude-manager — daily logs mixing o
 
 ---
 
-This is the opposite of "automate everything from day one." Premature automation is premature abstraction. You encode the wrong thing, or worse, you encode something that doesn't matter. The manual phase reveals what's actually valuable versus what only *seemed* valuable.
+The opposite of "automate everything from day one." Premature automation is premature abstraction. You encode the wrong thing, or worse, you encode something that doesn't matter. The manual phase reveals what's actually valuable versus what only *seemed* valuable.
 
 ---
 
 The catchup-sessions daemon workflow replaced manual summarization only after months of doing it by hand. By then I knew: which sessions are worth summarizing (not the 1-3 message throwaway ones), what the summary should contain (frontmatter schema, narrative structure), and what [model tier](@/pages/harness-engineering/model-tiers.md) is cost-effective for the task (Haiku, not Opus).
 
-Every piece of [the loop](@/pages/harness-engineering/the-loop.md) went through this. The loop looks automatic now. It wasn't always. Each automated step started as a manual habit that proved its worth first.
+Every piece of [the loop](@/pages/harness-engineering/the-loop.md) went through this. It looks automatic now. It wasn't always.

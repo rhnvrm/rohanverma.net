@@ -25,6 +25,6 @@ I also moved here from [OpenCode](https://opencode.ai), which had a proper plugi
 
 ---
 
-The tradeoff is real: I'm maintaining more infrastructure. There's a bit of the Nix philosophy here — do it once, the hard way, and the deterministic nature compounds over time. Infrastructure I control compounds differently than infrastructure I rent.
+The tradeoff is real: I'm maintaining more infrastructure. But infrastructure I own and version-control compounds in ways rented infrastructure can't. The upfront cost is higher. The long-term cost is lower.
 
 Whether this is worth it depends on how much you care about the [loop](@/pages/harness-engineering/the-loop.md). If you're running a single agent for a single project, Claude Code is probably better. If you're running multiple agents across multiple projects with shared knowledge and background automation, the control matters.

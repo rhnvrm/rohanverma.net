@@ -23,7 +23,7 @@ Provider TTLs vary: 5 minutes (Anthropic), 1 hour (OpenAI), 24 hours (self-hoste
 
 ---
 
-The forward-looking idea: cache-aware forking. Read a 10,000-token codebase once (cached), then branch into three parallel investigations that all reuse the cached context. Each branch pays only for its unique input, not the shared base. This is where [coordination](@/pages/harness-engineering/coordination.md) and caching intersect — multi-agent work gets cheaper when agents share a cached context foundation.
+Something I want to try: cache-aware forking. Read a 10,000-token codebase once (cached), then branch into three parallel investigations that all reuse the cached context. Each branch pays only for its unique input, not the shared base. [Coordination](@/pages/harness-engineering/coordination.md) and caching overlap here — multi-agent work gets cheaper when agents share a cached context foundation.
 
 ---
 
