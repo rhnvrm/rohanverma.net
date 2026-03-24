@@ -160,26 +160,135 @@ pre code {
   padding: var(--space-2) var(--space-3) var(--space-1);
 }
 
-/* ---- Footnotes (simplified from doordarshan) ---- */
+/* ---- Footnote references (superscript numbers) ---- */
+.footnote-reference a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: var(--text-8);
+  padding: 0 2px;
+  position: relative;
+  top: -1px;
+  transition: color 150ms ease;
+}
+
+.footnote-reference a:hover {
+  color: var(--foreground);
+}
+
+/* ---- Footnote definitions — collapsible ---- */
 .footnote-definition {
   font-size: var(--text-7);
+  line-height: 1.6;
   color: var(--muted-foreground);
-  padding: var(--space-2) 0;
-  border-top: 1px solid var(--border);
-  margin-block-start: var(--space-2);
+  position: relative;
+  cursor: pointer;
+  scroll-margin-top: 80px;
+}
+
+.footnote-definition img {
+  max-width: 100%;
+  height: auto;
+  margin: var(--space-2) 0;
+  border: 1px solid var(--border);
 }
 
 .footnote-definition-label {
-  font-weight: 600;
   color: var(--primary);
+  font-weight: 600;
+  font-size: var(--text-8);
+  user-select: none;
 }
 
-.footnote-reference a {
+/* Collapsed: hide body */
+.footnote-body {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 300ms ease, opacity 200ms ease, margin 200ms ease;
+  margin-top: 0;
+}
+
+/* Expanded: show body */
+.footnote-definition.is-expanded .footnote-body {
+  max-height: 500px;
+  opacity: 1;
+  margin-top: var(--space-2);
+}
+
+.footnote-definition p {
+  margin: 0;
+}
+
+.footnote-definition a[href^="#"] {
   color: var(--primary);
-  font-weight: 600;
   text-decoration: none;
-  font-size: 0.8em;
+  font-size: var(--text-8);
+}
+
+.footnote-definition a[href^="#"]:hover {
+  text-decoration: underline;
+}
+
+/* Toggle indicator */
+.footnote-toggle {
+  font-size: var(--text-8);
+  color: var(--muted-foreground);
+  margin-left: var(--space-1);
+  transition: transform 200ms ease;
+  display: inline-block;
   vertical-align: super;
+}
+
+.footnote-definition.is-expanded .footnote-toggle {
+  transform: rotate(90deg);
+}
+
+/* Narrow: callout boxes */
+@media (max-width: 1099px) {
+  .footnote-definition {
+    margin: var(--space-4) 0;
+    padding: var(--space-3) var(--space-4);
+    background: var(--faint);
+    border-left: 3px solid var(--primary);
+    border-radius: 0;
+  }
+
+  .footnote-definition-label {
+    margin-right: var(--space-2);
+  }
+}
+
+/* Widescreen: Tufte-style margin notes */
+@media (min-width: 1100px) {
+  .footnote-definition {
+    float: right;
+    clear: right;
+    width: 240px;
+    margin-right: -280px;
+    margin-bottom: var(--space-4);
+    margin-top: var(--space-1);
+    padding: var(--space-3);
+    background: var(--faint);
+    border: 1px solid var(--border);
+    font-size: var(--text-8);
+    line-height: 1.5;
+    transition: border-color 150ms ease, background 150ms ease;
+  }
+
+  .footnote-definition-label {
+    display: inline;
+    margin-right: var(--space-1);
+  }
+
+  .footnote-definition:hover,
+  .footnote-definition:target {
+    border-color: var(--primary);
+  }
+
+  .footnote-definition.is-expanded {
+    background: var(--background);
+  }
 }
 
 /* ---- Pages index (top-level /pages/) ---- */
