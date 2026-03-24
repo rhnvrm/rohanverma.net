@@ -34,13 +34,33 @@ The value isn't in any single session. It's in the loop. Every skill you encode,
 
 [The Sandbox](@/pages/harness-engineering/the-sandbox.md) — Nix + bubblewrap + config.toml. Why isolation matters.
 
+[Bubblewrap](@/pages/harness-engineering/bubblewrap.md) — filesystem isolation via bwrap.
+
+[Nix for Dev Envs](@/pages/harness-engineering/nix-for-dev-envs.md) — reproducible tooling. No "works on my machine."
+
+[Config as Code](@/pages/harness-engineering/config-as-code.md) — config.toml, single source of truth.
+
 [Skills](@/pages/harness-engineering/skills.md) — markdown docs an LLM interprets with judgment.
 
+[Progressive Disclosure](@/pages/harness-engineering/progressive-disclosure.md) — load what the agent needs now, not everything.
+
+[Agent as Reader](@/pages/harness-engineering/agent-as-reader.md) — skills as docs an LLM interprets like a new team member.
+
 [The Day-50 Problem](@/pages/harness-engineering/the-day-50-problem.md) — agents work on greenfield, break on mature projects.
+
+[Silent Failures](@/pages/harness-engineering/silent-failures.md) — when code compiles but behavior is wrong.
 
 [Meta-Skills](@/pages/harness-engineering/meta-skills.md) — a skill for creating skills. The multiplier.
 
 [Coordination](@/pages/harness-engineering/coordination.md) — pi-mesh, file-based messaging, reservations.
+
+[File-Based Messaging](@/pages/harness-engineering/file-based-messaging.md) — no server, just files on disk.
+
+[Tmux as Process Model](@/pages/harness-engineering/tmux-as-process-model.md) — visible agents, not hidden processes.
+
+[Model Tiers](@/pages/harness-engineering/model-tiers.md) — decoupling agents from model names.
+
+[Context Windows](@/pages/harness-engineering/context-windows.md) — the constraint that shapes everything.
 
 [The Omakase Tradeoff](@/pages/harness-engineering/the-omakase-tradeoff.md) — why control matters more than defaults.
 
@@ -50,7 +70,15 @@ The value isn't in any single session. It's in the loop. Every skill you encode,
 
 [The Daemon](@/pages/harness-engineering/the-daemon.md) — background automation. Session summarization, handoffs, chronicles.
 
+[Session Summarization](@/pages/harness-engineering/session-summarization.md) — how the daemon auto-summarizes sessions into knowledge.
+
+[Handoffs](@/pages/harness-engineering/handoffs.md) — /handoff and /pickup for context transfer between sessions.
+
+[Chronicles](@/pages/harness-engineering/chronicles.md) — builder's logs generated from session data.
+
 [Q, the Task Agent](@/pages/harness-engineering/q-the-task-agent.md) — executive function for agents.
+
+[Token Caching](@/pages/harness-engineering/token-caching.md) — cache reads at 1/10th the cost.
 
 ### Context
 
@@ -59,5 +87,9 @@ The value isn't in any single session. It's in the loop. Every skill you encode,
 [How It Evolved](@/pages/harness-engineering/how-it-evolved.md) — from copy-paste to multi-agent, Aug 2025 to now.
 
 [The Economics](@/pages/harness-engineering/the-economics.md) — costs, model choices, tuition not overhead.
+
+[Start Manual, Automate Later](@/pages/harness-engineering/start-manual-automate-later.md) — the recurring pattern.
+
+[The XKCD Math](@/pages/harness-engineering/the-xkcd-math.md) — is it worth automating?
 
 [Where to Start](@/pages/harness-engineering/where-to-start.md) — you don't need all of this.
