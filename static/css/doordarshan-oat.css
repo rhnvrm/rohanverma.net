@@ -111,7 +111,6 @@ pre code {
 /* ---- Main content area padding ---- */
 [data-sidebar-layout] > main {
   padding: var(--space-8) var(--space-8);
-  max-width: 52rem;
 }
 
 @media (max-width: 768px) {
