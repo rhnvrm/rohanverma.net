@@ -120,12 +120,13 @@ pre code {
 }
 
 /* ---- Article styling within pages ---- */
-.pages-article h1:first-child {
-  margin-block-start: 0;
+.pages-article {
+  max-width: 52rem;
+  line-height: 1.7;
 }
 
-.pages-article {
-  line-height: 1.7;
+.pages-article h1:first-child {
+  margin-block-start: 0;
 }
 
 /* ---- Section index page list ---- */
