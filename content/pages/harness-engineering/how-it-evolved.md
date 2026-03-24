@@ -2,6 +2,7 @@
 title = "How It Evolved"
 weight = 13
 template = "pages-page.html"
+date = 2026-03-23
 draft = true
 
 [extra]

@@ -2,6 +2,7 @@
 title = "The Loop"
 weight = 2
 template = "pages-page.html"
+date = 2026-03-23
 draft = true
 
 [extra]

@@ -2,6 +2,7 @@
 title = "The Economics"
 weight = 14
 template = "pages-page.html"
+date = 2026-03-23
 draft = true
 
 [extra]

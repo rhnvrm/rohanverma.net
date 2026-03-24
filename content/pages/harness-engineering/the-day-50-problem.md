@@ -2,6 +2,7 @@
 title = "The Day-50 Problem"
 weight = 5
 template = "pages-page.html"
+date = 2026-03-23
 draft = true
 
 [extra]

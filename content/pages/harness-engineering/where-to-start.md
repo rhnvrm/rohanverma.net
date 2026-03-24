@@ -2,6 +2,7 @@
 title = "Where to Start"
 weight = 15
 template = "pages-page.html"
+date = 2026-03-23
 draft = true
 
 [extra]

@@ -2,6 +2,7 @@
 title = "Skills"
 weight = 4
 template = "pages-page.html"
+date = 2026-03-23
 draft = true
 
 [extra]

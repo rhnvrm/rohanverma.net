@@ -2,6 +2,7 @@
 title = "Q, the Task Agent"
 weight = 11
 template = "pages-page.html"
+date = 2026-03-23
 draft = true
 
 [extra]
