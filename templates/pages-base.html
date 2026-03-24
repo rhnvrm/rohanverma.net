@@ -79,6 +79,17 @@
         toggle.textContent = '▸';
         label.after(toggle);
 
+        // Preview: first ~100 chars of footnote text
+        var fullText = body.textContent.trim();
+        if (fullText) {
+          var preview = document.createElement('span');
+          preview.className = 'footnote-preview';
+          var truncated = fullText.substring(0, 100);
+          if (fullText.length > 100) truncated += '…';
+          preview.textContent = truncated;
+          toggle.after(preview);
+        }
+
         // Click to expand/collapse
         def.addEventListener('click', function(e) {
           if (e.target.tagName === 'A') return;

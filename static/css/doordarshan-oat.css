@@ -252,8 +252,24 @@ pre code {
   border-radius: 0;
 }
 
+.footnote-preview {
+  color: var(--muted-foreground);
+  font-size: var(--text-8);
+  margin-left: var(--space-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+  max-width: calc(100% - 4rem);
+  vertical-align: bottom;
+}
+
 .footnote-definition.is-expanded {
   background: var(--faint);
+}
+
+.footnote-definition.is-expanded .footnote-preview {
+  display: none;
 }
 
 /* ---- Pages index (top-level /pages/) ---- */
