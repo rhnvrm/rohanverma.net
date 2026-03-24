@@ -24,10 +24,40 @@ The value isn't in any single session. It's in the loop. Every skill you encode,
 
 ---
 
+### The Thesis
+
 [The Boring Stuff](@/pages/harness-engineering/the-boring-stuff.md) — the split between what the agent does and what I do.
 
-[The Loop](@/pages/harness-engineering/the-loop.md) — why session history is the multiplier.
+[The Loop](@/pages/harness-engineering/the-loop.md) — why compounding knowledge is the real bet.
 
-[Architecture](@/pages/harness-engineering/architecture.md) — how the pieces fit together.
+### The System
+
+[The Sandbox](@/pages/harness-engineering/the-sandbox.md) — Nix + bubblewrap + config.toml. Why isolation matters.
+
+[Skills](@/pages/harness-engineering/skills.md) — markdown docs an LLM interprets with judgment.
+
+[The Day-50 Problem](@/pages/harness-engineering/the-day-50-problem.md) — agents work on greenfield, break on mature projects.
+
+[Meta-Skills](@/pages/harness-engineering/meta-skills.md) — a skill for creating skills. The multiplier.
+
+[Coordination](@/pages/harness-engineering/coordination.md) — pi-mesh, file-based messaging, reservations.
+
+[The Omakase Tradeoff](@/pages/harness-engineering/the-omakase-tradeoff.md) — why control matters more than defaults.
+
+### The Feedback Loop
+
+[Session History](@/pages/harness-engineering/session-history.md) — the first thing that paid off.
+
+[The Daemon](@/pages/harness-engineering/the-daemon.md) — background automation. Session summarization, handoffs, chronicles.
+
+[Q, the Task Agent](@/pages/harness-engineering/q-the-task-agent.md) — executive function for agents.
+
+### Context
+
+[Pi](@/pages/harness-engineering/pi.md) — the harness this runs on.
+
+[How It Evolved](@/pages/harness-engineering/how-it-evolved.md) — from copy-paste to multi-agent, Aug 2025 to now.
+
+[The Economics](@/pages/harness-engineering/the-economics.md) — costs, model choices, tuition not overhead.
 
 [Where to Start](@/pages/harness-engineering/where-to-start.md) — you don't need all of this.

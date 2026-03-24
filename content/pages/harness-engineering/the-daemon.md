@@ -1,0 +1,31 @@
++++
+title = "The Daemon"
+weight = 10
+template = "pages-page.html"
+draft = true
+
+[extra]
+section_title = "Harness Engineering"
++++
+
+The daemon runs in its own tmux session, watching for file changes. It's the background automation that turns raw [session history](@/pages/harness-engineering/session-history.md) into structured knowledge.
+
+---
+
+**Session summarization.** When a session goes idle, the daemon spawns a Haiku agent to generate a structured summary. YAML frontmatter with tags, files touched, duration. Narrative with "what worked", "what didn't", "key insights." These accumulate in `workspace/users/{you}/sessions/`.
+
+**Handoff filling.** `/handoff` checkpoints your work. The daemon detects the new file and fills in context: what you were working on, where you left off, what's next. `/pickup` loads it when you're back. No re-reading conversation history.
+
+**Chronicles.** Session summaries feed into longer [builder's log](https://oddship.net/chronicles/) narratives, grouped by journey.
+
+---
+
+The daemon doesn't use cron. Cron schedules break when the laptop sleeps. Instead, a heartbeat-based rules engine polls on an interval, evaluating TypeScript predicates against current state. File watchers set trigger flags, rules check flags on each heartbeat. Watches are declarative in `config.toml`. The daemon talks to the active agent through filesystem IPC: JSON command files watched with chokidar.
+
+Getting it reliable took some debugging. Early on, the daemon kept timing out summarizing sessions. I assumed the summarizer was slow. The actual problem: I was loading the full agent system prompt plus the entire session JSONL into the LLM context. Switching to a lite agent (smaller prompt, less overhead) fixed it immediately. I still added dynamic timeouts (60s base + 15s per 100 messages) because an 1,800-message session genuinely takes a while, but the initial timeouts were self-inflicted.
+
+---
+
+This didn't start with the daemon. Back in August with claude-manager, I was manually running a slash command at the end of each session to write learnings to a file. Then I automated it with Claude hooks. Then an OpenCode plugin to trigger on session idle. Now with [Pi](@/pages/harness-engineering/pi.md), file watchers on the raw session JSONL trigger summarization automatically.
+
+Each step was just automating what I was already doing by hand. Start manual, observe what's valuable, automate the valuable parts. That's [the loop](@/pages/harness-engineering/the-loop.md) applied to itself.
