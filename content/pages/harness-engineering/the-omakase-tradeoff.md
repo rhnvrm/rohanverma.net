@@ -25,6 +25,8 @@ I also moved here from [OpenCode](https://opencode.ai), which had a proper plugi
 
 ---
 
+Anthropic's own harness work validates the problem space. Their ["Harness Design for Long-Running Apps"](https://www.anthropic.com/engineering/harness-design-long-running-apps) describes a planner/generator/evaluator architecture built on the Claude Agent SDK — structured, proprietary, and tightly integrated with their models. It's good work. But it's their kitchen, their menu. Bosun is open-source on Pi with file-based coordination: I can see the code, modify the orchestration, swap the models. Different tradeoffs for the same underlying problem: how do you keep agents coherent across long tasks? They solve it with SDK abstractions. I solve it with files on disk and markdown skills. Neither approach is wrong. The question is whether you want to build on a foundation you can inspect and change, or one that's maintained for you.
+
 The tradeoff is real: I'm maintaining more infrastructure. But infrastructure I own and version-control compounds in ways rented infrastructure can't. The upfront cost is higher. The long-term cost is lower.
 
 Whether this is worth it depends on how much you care about the [loop](@/pages/harness-engineering/the-loop.md). If you're running a single agent for a single project, Claude Code is probably better. If you're running multiple agents across multiple projects with shared knowledge and background automation, the control matters.

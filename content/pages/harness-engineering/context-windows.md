@@ -21,6 +21,8 @@ The fundamental constraint. Everything fits in the context window or it doesn't.
 
 And when a session's context fills up, [session summarization](@/pages/harness-engineering/session-summarization.md) kicks in — Pi compacts it. The compaction summary carries forward as a lossy compression of everything that happened. Auto-resume sends a follow-up prompt so the agent continues working. The summary quality determines how much knowledge survives.
 
+Anthropic found something interesting here: compaction alone isn't enough. They documented "context anxiety" — models start wrapping up work prematurely as they approach what they believe is their context limit, even when there's room left. Sonnet 4.5 exhibited this strongly enough that compaction couldn't fix it. Their solution was context resets: kill the session entirely, write a structured handoff artifact, start a fresh agent with a clean slate. It costs more in orchestration complexity and token overhead, but it works where compaction doesn't. That's essentially what [handoffs](@/pages/harness-engineering/handoffs.md) do in this system — `/handoff` captures the state, `/pickup` starts fresh. The insight is the same: sometimes you need a clean break, not a compressed continuation.
+
 ---
 
 86% of sessions are simple — one or two user messages. They barely touch the context limit. 5% are marathons at 50+ messages that push against it constantly. The system handles both because the constraints are visible, not hidden behind abstractions.

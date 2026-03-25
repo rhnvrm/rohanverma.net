@@ -29,4 +29,12 @@ Each step was just automating what I was already doing by hand. Start manual, ob
 
 ---
 
+The loop closes when a future session draws on past work without being told to. The multi-agent evaluation chronicle captures this happening: one agent conducted a technical review, another evaluated from a user perspective, and a synthesis session brought both together. The contradiction between "technically production-ready" and "not adoptable" was something no single perspective would have surfaced.
+
+> Multi-agent evaluation is more powerful than single-perspective review. Technical agent: "It's production-ready." User agent: "It's not adoptable." Both true. Different domains. The synthesis revealed the real issue: priority misalignment, not quality failure.
+>
+> — *Chronicle: Multi-Agent Evaluation & Chronicle Synthesis, Feb 2026*
+
+---
+
 The details of each piece have their own pages: [session history](@/pages/harness-engineering/session-history.md) for the raw numbers, [the daemon](@/pages/harness-engineering/the-daemon.md) for background automation, [Q](@/pages/harness-engineering/q-the-task-agent.md) for task management. [The economics](@/pages/harness-engineering/the-economics.md) covers what this costs. But the core idea fits in one sentence: **make every session slightly better than the last, and let it compound.**

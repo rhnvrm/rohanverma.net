@@ -28,3 +28,7 @@ The opposite of "automate everything from day one." Premature automation is prem
 The catchup-sessions daemon workflow replaced manual summarization only after months of doing it by hand. By then I knew: which sessions are worth summarizing (not the 1-3 message throwaway ones), what the summary should contain (frontmatter schema, narrative structure), and what [model tier](@/pages/harness-engineering/model-tiers.md) is cost-effective for the task (Haiku, not Opus).
 
 Every piece of [the loop](@/pages/harness-engineering/the-loop.md) went through this. It looks automatic now. It wasn't always.
+
+---
+
+Anthropic went through the same cycle with their long-running coding harness. They started complex: sprints, per-sprint QA contracts, negotiation phases between generator and evaluator agents. Then they methodically stripped it back. Their first attempt — cutting radically and trying creative new ideas — failed. They couldn't tell which pieces were load-bearing. So they switched to removing one component at a time and reviewing the impact. Sprints turned out to be unnecessary once Opus 4.6 shipped, because the model could sustain coherence without decomposition. The evaluator remained valuable, but only for tasks at the edge of what the model handled well solo. They describe the principle directly: "find the simplest solution possible, and only increase complexity when needed." Same pattern. You can't know what's load-bearing until you try removing it, and you can't try removing it until you've built it and watched it work.

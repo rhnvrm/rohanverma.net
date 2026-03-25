@@ -30,3 +30,9 @@ When a feature spans backend and frontend, I run two agents in separate worktree
 No server. No database. Just files. You can debug the entire coordination system with `cat` and `ls`. That's the [sandbox](@/pages/harness-engineering/the-sandbox.md) philosophy applied to multi-agent work.
 
 I estimated about 1,400 lines. It ended up at 2,750 lines of source and 240 lines of tests. The overlay UI and tab-completion were most of the overrun. A previous session actually crashed at message 898 when a lite agent's mesh message overflowed the TUI by two characters. [The daemon](@/pages/harness-engineering/the-daemon.md) auto-summarized the crashed session afterwards — a nice end-to-end validation of the whole setup.
+
+> Then, at message 898, everything went sideways. The TUI crashed. The session was gone. The crash wasn't a pi-mesh bug — it was a TUI rendering bug I'd inadvertently triggered. A long mesh message exposed a flaw in Pi's text truncation logic: it used `line.length` (JavaScript character count) instead of Unicode display width. A message that was "short" in characters but wide in display overflowed the terminal by exactly 2 characters, and the renderer panicked.
+>
+> — *Chronicle: Pi-Mesh Development, Feb 2026*
+
+The recovery session fixed the truncation bug, finished every loose thread from the crashed session, and ran two rounds of parallel multi-agent code reviews on the mesh code itself. That last part was satisfying — using the coordination system to review the coordination system.

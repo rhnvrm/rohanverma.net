@@ -25,4 +25,6 @@ Provider decoupling matters more than the tiers themselves. Agent definitions ar
 
 ---
 
+Anthropic's own harness work illustrates why tiers matter in a different way. Their long-running coding harness required sprint decomposition on Opus 4.5 — the model couldn't sustain coherence across a full build without breaking the work into chunks. Opus 4.6 removed that need entirely. The model could run for over two hours coherently without sprints. Their takeaway: "every component in a harness encodes an assumption about what the model can't do on its own, and those assumptions are worth stress testing, both because they may be incorrect, and because they can quickly go stale as models improve." Tiers make this practical. When a new model drops, you test whether the high-tier tasks still need a high-tier model, or whether medium handles them now. The abstraction layer means you're testing capability, not rewriting agent definitions.
+
 The 55x cost variance also explains why [the economics](@/pages/harness-engineering/the-economics.md) look the way they do. Cost is extremely top-heavy — the top 10% of sessions account for almost all spend. Those are the high and oracle tier sessions. The hundreds of lite sessions that keep the system running are nearly free. The tier system makes this explicit rather than accidental.

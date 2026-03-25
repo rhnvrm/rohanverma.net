@@ -25,6 +25,12 @@ The daemon doesn't use cron. Cron schedules break when the laptop sleeps. Instea
 
 Getting it reliable took some debugging. Early on, the daemon kept timing out summarizing sessions. I assumed the summarizer was slow. The actual problem: I was loading the full agent system prompt plus the entire session JSONL into the LLM context. Switching to a lite agent (smaller prompt, less overhead) fixed it immediately. I still added dynamic timeouts (60s base + 15s per 100 messages) because an 1,800-message session genuinely takes a while, but the initial timeouts were self-inflicted.
 
+The daemon went through a clean architectural transition too. About 1,000 lines of legacy event-handler code got replaced by the workflow system, and the `catchup-sessions` workflow replaced manual summarization.
+
+> I reviewed the Pi update changelog and identified the implications for bosun. The new version is stable enough to remove the old event-handler style daemon system. Deleted approximately 1000 lines of old TypeScript daemon handlers. These had been redundant with the workflow system for some time. Added a `catchup-sessions` workflow for automated session summarization.
+>
+> — *Chronicle: Daemon Infrastructure Modernization, Feb 2026*
+
 ---
 
 This didn't start with the daemon. Back in August with claude-manager, I was manually running a slash command at the end of each session to write learnings to a file. Then I automated it with Claude hooks. Then an OpenCode plugin to trigger on session idle. Now with [Pi](@/pages/harness-engineering/pi.md), file watchers on the raw session JSONL trigger summarization automatically.

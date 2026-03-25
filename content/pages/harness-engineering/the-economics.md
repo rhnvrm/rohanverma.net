@@ -29,4 +29,6 @@ Tuition, not overhead. That framing matters. I'm not optimizing for ROI on a per
 
 The economics will catch up. Models get cheaper. Context windows get larger. The harder questions will be about what to do with these tools, not whether you can afford them. Spending the "expensive" period learning how they work should pay off when the costs drop.
 
+For reference, Anthropic published numbers from their harness work: a solo agent built a retro game maker in 20 minutes for $9. Their full planner/generator/evaluator harness took 6 hours and cost $200 — over 20x more expensive. A DAW (digital audio workstation) run cost $124 across nearly 4 hours. The output quality difference was obvious in both cases: the solo run produced a game where the core gameplay was broken, while the harness version actually worked. That tracks with what I see. The expensive sessions aren't waste. They're the ones where the agent does real work instead of producing something that looks right but falls apart when you use it.
+
 Same bet as [the loop](@/pages/harness-engineering/the-loop.md): invest now, compound later.

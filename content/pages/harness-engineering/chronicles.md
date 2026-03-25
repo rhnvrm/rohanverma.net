@@ -26,3 +26,11 @@ The public chronicles feed the [builder's log](https://oddship.net/chronicles/).
 ---
 
 Chronicles are part of [the loop](@/pages/harness-engineering/the-loop.md): sessions produce JSONL, [the daemon](@/pages/harness-engineering/the-daemon.md) summarizes them, summaries feed chronicles, chronicles become searchable knowledge in [session history](@/pages/harness-engineering/session-history.md). Each layer adds more structure. Raw logs → structured summaries → narrative chronicles. The further up the chain, the more useful for humans. The further down, the more useful for agents.
+
+---
+
+Building the chronicle system was itself a chronicle-worthy story. The first implementation dumped everything into one expensive Sonnet call — read all session files, analyze, synthesize. $0.15 per chronicle. The fix: delegate the reading to Haiku, parallelize the writing across multiple Haiku scribes, use Sonnet only for orchestration. A single documentation fix unlocked the proper architecture, and costs dropped 12x.
+
+> The realization hit when I calculated token usage. The first chronicle consumed ~50K tokens, mostly reading session files into the expensive Sonnet model. The fix was obvious in hindsight: delegate file reading to a cheaper model. Not all work should be done by the most capable model.
+>
+> — *Chronicle: Building the Chronicle System, Jan 2026*

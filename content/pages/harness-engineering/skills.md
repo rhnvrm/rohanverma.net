@@ -34,3 +34,11 @@ Skills compose. Git + deployment conventions + infrastructure knowledge = the ag
 A new engineer loading a project skill immediately knows the worktree path, build command, and why the dev server needs to run in tmux. No Slack archaeology required. A skill compresses weeks of learning into minutes.
 
 But skills don't solve everything. That's [the Day-50 problem](@/pages/harness-engineering/the-day-50-problem.md).
+
+---
+
+The context management skill was a case study in how skills evolve through friction. The original plan was to document a `/pickup` command. The post-mortem analysis revealed that five commands were broken (stored in the wrong directory), the specification wasn't being followed, and there was a 17x performance inefficiency. The skill that emerged was fundamentally different from the one that was planned.
+
+> I analyzed what it would actually take to implement the documented `/pickup` command. The numbers were shocking. To list documents, a subagent would need 17-27 tool calls for what should be a single operation. The architecture was creating a 17-27x inefficiency.
+>
+> — *Chronicle: Context Management Skill Implementation, Jan 2026*

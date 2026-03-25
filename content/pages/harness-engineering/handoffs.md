@@ -28,3 +28,11 @@ The handoff captures the mechanical parts: session state, file diffs, known issu
 Handoffs are one piece of [the loop](@/pages/harness-engineering/the-loop.md). [Session summaries](@/pages/harness-engineering/session-summarization.md) capture what happened across *all* sessions. Handoffs capture what's *in flight* for a specific thread of work. Summaries feed [session history](@/pages/harness-engineering/session-history.md) — the long-term corpus. Handoffs feed continuity — the short-term context.
 
 Like everything else here, handoffs [started manual](@/pages/harness-engineering/start-manual-automate-later.md). I used to write the notes by hand. The daemon writes better ones — it doesn't forget to mention the uncommitted files.
+
+---
+
+The context management skill itself went through a revealing design process. Early on, the `/pickup` command required 17-27 tool calls to list available handoffs — one bash call for the username, multiple globs, 11 separate reads to extract metadata. The architecture was creating a 17x inefficiency for what should have been a single operation. The fix came from discovering inline shell execution: inject the file listing into the prompt before the LLM even sees it. Zero tool calls. The handoff system didn't just need to work — it needed to be cheap enough that agents would actually use it.
+
+> We set out to build comprehensive context management infrastructure: the ability to pause work with handoffs, explore alternatives with forks, and resume with pickups. But the plan revealed something deeper: five critical commands were completely broken, the specification wasn't being followed, and there was a 17-27x performance inefficiency hiding in the architecture.
+>
+> — *Chronicle: Context Management Skill Implementation, Jan 2026*

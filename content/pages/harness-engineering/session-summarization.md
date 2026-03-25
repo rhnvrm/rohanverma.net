@@ -28,3 +28,11 @@ Early on, the daemon kept timing out on summarization. I assumed the summarizer 
 Session summarization is the engine behind [session history](@/pages/harness-engineering/session-history.md). The raw JSONL logs are the data. The summaries are the knowledge. Without summarization, you have 4,000 conversation logs nobody reads. With it, you have a searchable corpus that makes every future session a bit more informed.
 
 And like everything else in this system, it [started manual](@/pages/harness-engineering/start-manual-automate-later.md). A slash command I ran by hand at the end of each session. Then hooks. Then a plugin. Then file watchers. Each step just automated what I was already doing.
+
+---
+
+When I finally measured the backlog, the numbers were humbling. 401 JSONL files over 5KB, 263 unsummarized — a 65% backlog. The bulk analysis confirmed what I suspected: most sessions are noise (greetings, navigation), and only about 30% warrant documentation. That's what made the filtering worthwhile.
+
+> The numbers were striking: 401 JSONL files > 5KB across the entire sessions directory, with 263 remaining unsummarized (~65% backlog). Most sessions are trivial single-message interactions. Only a subset have substantive work worth documenting.
+>
+> — *Chronicle: Session Summarization & Analysis Automation, Feb 2026*

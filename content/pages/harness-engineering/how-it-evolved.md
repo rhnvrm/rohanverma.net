@@ -28,3 +28,13 @@ Each removal made the system simpler. Unix philosophy: if two things can be one 
 ---
 
 Same lesson each time: **the model isn't the bottleneck. The harness is.** Claude was smart enough in August 2025. What it lacked was knowledge of conventions, access to tools, and continuity between sessions. That's what [the loop](@/pages/harness-engineering/the-loop.md) provides.
+
+---
+
+The OpenCode-to-Pi migration was the most intense transition. The persistent server architecture in OpenCode had seemed elegant — run the server inside the sandbox, connect lightweight clients from outside. But the separation introduced its own problems: servers crashed, clients didn't reconnect, and multi-process load ate memory. Pi replaced all of that with a single process.
+
+> OpenCode's client-server model achieves complete sandbox isolation through server-side execution, not client-side sandboxing. The architecture is fundamentally sound.
+>
+> — *Chronicle: Persistent Server Architecture Design, Jan 2026*
+
+That was the assessment at the time. It was sound, but "sound" wasn't enough when agents were crashing the server under load. Pi's single-process model traded architectural elegance for reliability, and reliability won.

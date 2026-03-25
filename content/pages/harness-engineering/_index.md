@@ -90,6 +90,10 @@ The value isn't in any single session. It's in the loop. Every skill you encode,
 
 [Start Manual, Automate Later](@/pages/harness-engineering/start-manual-automate-later.md) — the recurring pattern.
 
+[Evaluator as QA](@/pages/harness-engineering/evaluator-as-qa.md) — why the agent judging work shouldn't be the one doing it.
+
+[Harness Assumptions Decay](@/pages/harness-engineering/harness-assumptions-decay.md) — every component encodes a model limitation that may already be stale.
+
 [The XKCD Math](@/pages/harness-engineering/the-xkcd-math.md) — is it worth automating?
 
 [Where to Start](@/pages/harness-engineering/where-to-start.md) — you don't need all of this.
