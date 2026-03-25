@@ -12,7 +12,7 @@ section_title = "Harness Engineering"
 
 Most writing about AI coding comes from two ends: people excited about generating code, or experienced engineers explaining why it doesn't replace thinking. The middle is underrepresented. People with enough experience to build real infrastructure but who haven't stopped experimenting. That's where I am, and I think the perspective is useful.
 
-![bell curve](/images/pages/bell-curve.png)
+![bell curve](/images/pages/bell-curve.webp)
 
 ---
 
