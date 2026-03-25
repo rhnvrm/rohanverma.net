@@ -26,9 +26,9 @@
     <aside data-sidebar>
         {% if parent_section %}
         {% if parent_section.extra.section_title %}
-        <div class="sidebar-section-title">{{ parent_section.extra.section_title }}</div>
+        <a href="{{ parent_section.permalink }}" class="sidebar-section-title">{{ parent_section.extra.section_title }}</a>
         {% elif parent_section.title %}
-        <div class="sidebar-section-title">{{ parent_section.title }}</div>
+        <a href="{{ parent_section.permalink }}" class="sidebar-section-title">{{ parent_section.title }}</a>
         {% endif %}
         <nav>
             <ul>

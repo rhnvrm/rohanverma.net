@@ -16,9 +16,9 @@
     <!-- Sidebar with auto-generated navigation -->
     <aside data-sidebar>
         {% if section.extra.section_title %}
-        <div class="sidebar-section-title">{{ section.extra.section_title }}</div>
+        <a href="{{ section.permalink }}" class="sidebar-section-title">{{ section.extra.section_title }}</a>
         {% elif section.title %}
-        <div class="sidebar-section-title">{{ section.title }}</div>
+        <a href="{{ section.permalink }}" class="sidebar-section-title">{{ section.title }}</a>
         {% endif %}
         <nav>
             <ul>
