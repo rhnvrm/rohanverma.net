@@ -15,9 +15,9 @@ The split is simple: the agent does the boring stuff, I do the hard stuff.
 
 ---
 
-Working on a feature, I ran `/handoff` before stopping for the night. [The daemon](@/pages/harness-engineering/the-daemon.md) auto-filled the handoff: what I was working on, which files were uncommitted, which bugs were identified — three specific ones with file paths — what was left to do. Next morning, `/pickup` loaded all of it. No re-reading conversation history. The agent started on the first remaining bug immediately.
+Planning a framework migration, I ran `/handoff` before stopping. [The daemon](@/pages/harness-engineering/the-daemon.md) analyzed the session and filled in context: the key discovery (bosun's init script already had dependency mode built in), the decision to use npm over git submodules, the files that had been modified, what was left to do. Next session, `/pickup` loaded all of it. The agent had the full picture without re-reading conversation history.
 
-The boring stuff: summarizing session state, tracking uncommitted files, cataloging known bugs. The hard stuff: deciding when to stop. Knowing which bugs matter most the next morning. Picking up where judgment left off, not where the cursor was.
+The boring stuff: extracting decisions from a long session, tracking what changed, structuring the next steps. The hard stuff: making the architectural call in the first place. Deciding npm over submodules. Recognizing that the dependency mode discovery changed the whole migration strategy.
 
 ---
 
