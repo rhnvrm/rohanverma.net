@@ -24,7 +24,7 @@
     {% endif %}
   {% endif %}
   {# Find back link: go up from sidebar_section to its parent #}
-  {% if sidebar_section and sidebar_section.ancestors | length > 2 %}
+  {% if sidebar_section and sidebar_section.ancestors | length > 1 %}
     {% set back_path = sidebar_section.ancestors | last %}
     {% if back_path %}
       {% set_global back_section = get_section(path=back_path) %}
