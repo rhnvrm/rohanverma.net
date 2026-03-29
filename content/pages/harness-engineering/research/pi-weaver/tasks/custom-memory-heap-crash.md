@@ -9,7 +9,6 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-# custom-memory-heap-crash
 
 This task is the cleanest example I found of weaver turning into overthinking.
 

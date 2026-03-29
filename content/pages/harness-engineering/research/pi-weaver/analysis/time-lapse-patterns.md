@@ -9,7 +9,6 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-# When to Rewind
 
 Pi-weaver called `time_lapse` **17 times** across these 15 Sonnet 4.6 runs.
 

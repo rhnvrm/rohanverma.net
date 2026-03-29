@@ -9,7 +9,6 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-# build-pmars
 
 **Category**: Build/Compilation  **Difficulty**: Medium
 **Result**: Plain pass (92s, $0.09) | Weaver pass (110s, $0.13)

@@ -9,7 +9,6 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-# The Architecture
 
 Three tools. That's it.
 

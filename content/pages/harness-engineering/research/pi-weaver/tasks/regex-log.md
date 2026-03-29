@@ -9,7 +9,6 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-# regex-log
 
 **Category**: Text Processing / Regex  **Difficulty**: Medium
 **Result**: Plain pass (217s, $0.35) | Weaver pass (191s, $0.30)

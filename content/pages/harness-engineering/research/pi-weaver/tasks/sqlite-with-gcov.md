@@ -9,7 +9,6 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-# sqlite-with-gcov
 
 **Category**: Build/Compilation  **Difficulty**: Medium
 **Result**: Plain fail (178s, $0.15) | Weaver fail (110s, $0.11)

@@ -9,7 +9,6 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-# polyglot-c-py
 
 **Category**: Creative Programming / Polyglot  **Difficulty**: Medium
 **Result**: Plain fail (69s, $0.09) | Weaver fail (439s, $0.58)

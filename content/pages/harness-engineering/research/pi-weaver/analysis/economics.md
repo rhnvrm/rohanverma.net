@@ -9,7 +9,6 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-# The Cache Economics
 
 When I first added rewind to pi-weaver, I thought about the extra tokens the way most people would: overhead.
 

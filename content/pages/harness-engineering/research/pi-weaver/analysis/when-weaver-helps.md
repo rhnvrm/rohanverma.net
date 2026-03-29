@@ -9,7 +9,6 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-# The Decision Framework
 
 After reading all 30 sessions, I don't think "use weaver" is the right default question.
 

@@ -9,7 +9,6 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-# The Idea
 
 On March 27, 2026, antirez posted about agent harnesses:
 

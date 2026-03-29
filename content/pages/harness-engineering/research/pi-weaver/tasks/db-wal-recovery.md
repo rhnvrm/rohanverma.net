@@ -9,7 +9,6 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-# db-wal-recovery
 
 I like this task because it makes the difference between *searching harder* and *thinking better* painfully obvious.
 

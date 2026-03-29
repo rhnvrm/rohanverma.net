@@ -9,7 +9,6 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-# The Task Spectrum
 
 After the first few runs, I kept wanting to sort tasks into a clean binary:
 

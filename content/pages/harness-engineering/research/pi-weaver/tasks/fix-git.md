@@ -9,7 +9,6 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-# fix-git
 
 **Category**: Git/Version Control  **Difficulty**: Easy-Medium
 **Result**: Plain pass (43s, $0.07) | Weaver pass (67s, $0.10)

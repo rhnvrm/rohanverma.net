@@ -9,7 +9,6 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-# chess-best-move
 
 **Category**: Vision/Reasoning  **Difficulty**: Hard
 **Result**: Plain fail (901s timeout, $0.51) | Weaver fail (901s timeout, $0.80)

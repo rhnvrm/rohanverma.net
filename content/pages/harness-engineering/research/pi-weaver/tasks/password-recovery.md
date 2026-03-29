@@ -9,7 +9,6 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-# password-recovery
 
 This one is my favorite example of weaver helping without doing anything flashy.
 

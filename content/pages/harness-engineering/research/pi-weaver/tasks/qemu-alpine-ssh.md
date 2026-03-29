@@ -9,7 +9,6 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-# qemu-alpine-ssh
 
 This is the task I keep coming back to when someone assumes more scaffolding always means better outcomes.
 

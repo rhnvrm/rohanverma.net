@@ -9,7 +9,6 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-# configure-git-webserver
 
 **Category**: DevOps / System Administration  **Difficulty**: Medium
 **Result**: Plain pass (75s, $0.06) | Weaver pass (106s, $0.16)

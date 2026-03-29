@@ -9,7 +9,6 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-# build-cython-ext
 
 **Category**: Build Systems / Compatibility  **Difficulty**: Hard
 **Result**: Plain pass (247s, $0.63) | Weaver pass (355s, $0.83)
