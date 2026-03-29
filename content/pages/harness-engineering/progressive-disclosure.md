@@ -9,7 +9,7 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-At 38 [skills](@/pages/harness-engineering/skills.md) and 6,800 lines, you can't load everything into one context. Progressive disclosure isn't a nicety — it's a context window constraint. A skill that dumps everything upfront wastes tokens. One that reveals details based on what the agent is actually doing stays useful longer.
+At 38 [skills](@/pages/harness-engineering/skills.md) and 6,800 lines, you can't load everything into one context. Progressive disclosure isn't a nicety — it's a [context window](@/pages/harness-engineering/context-windows.md) constraint. A skill that dumps everything upfront wastes tokens. One that reveals details based on what the agent is actually doing stays useful longer.
 
 ---
 

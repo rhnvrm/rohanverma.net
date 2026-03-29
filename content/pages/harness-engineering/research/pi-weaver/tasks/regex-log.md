@@ -9,7 +9,7 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-This task cost enough that weaver's overhead disappeared into the noise. $0.35 plain, $0.30 weaver — both passed, weaver slightly faster. When a task already takes three minutes and costs a third of a dollar, a checkpoint and rewind are rounding errors.
+This task cost enough that weaver's overhead disappeared into the noise. $0.35 plain, $0.30 weaver. Both passed, weaver slightly faster. When a task already takes three minutes and costs a third of a dollar, a checkpoint and rewind are rounding errors.
 
 **Category**: Text Processing · **Difficulty**: Medium · **Verdict**: neutral
 
@@ -24,17 +24,17 @@ Write a single regex that matches the last YYYY-MM-DD date on log lines containi
 
 ## What happened without weaver
 
-The plain agent spent most of its time thinking. Turn 1 was a massive output — 16K tokens of chain-of-thought reasoning about the regex structure. IPv4 lookahead, month validation (01–12), day validation (01–28/29/30/31 per month), greedy `.*` to match the *last* date, word boundary guards. Then it tested iteratively over 6 bash turns, fixing edge cases one at a time.
+The plain agent spent most of its time thinking. Turn 1 was a massive output: 16K tokens of chain-of-thought reasoning about the regex structure. IPv4 lookahead, month validation (01–12), day validation (01–28/29/30/31 per month), greedy `.*` to match the *last* date, word boundary guards. Then it tested iteratively over 6 bash turns, fixing edge cases one at a time.
 
 Eight turns total. All 27 test cases pass. $0.35.
 
-The cost is high for such a short session because the output tokens dominate — the model essentially wrote a regex essay before producing the actual regex.
+The cost is high for such a short session because the output tokens dominate. The model essentially wrote a regex essay before producing the actual regex.
 
 ## What happened with weaver
 
 Checkpoint "start" (task requirements, output file path). Then the same kind of reasoning, spread across more turns. The agent built a test harness in Bun (regex syntax is compatible enough with Python `re` for these constructs), iterated on edge cases, and converged.
 
-No time_lapse. The model never felt the need to rewind. There was nothing to rewind from — no exploration phase, no wrong turns, just iterative refinement of a single artifact.
+No time_lapse. The model never felt the need to rewind. There was nothing to rewind from: no exploration phase, no wrong turns, just iterative refinement of a single artifact.
 
 Twelve turns, $0.30. The checkpoint and `done()` call added 2 turns of overhead but the model's output was more concise (13K vs 16K tokens), which more than compensated.
 

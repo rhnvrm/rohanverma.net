@@ -24,7 +24,7 @@ The [antirez insight](https://x.com/antirez/status/2037488794379653620) reframed
 
 > One thing agent harnesses should be able to do is: to jump back in history trimming what follows, just injecting some self-steering text.
 
-Instead of imposing structure, give the model tools to manage its own context. Let it decide when to save, when to rewind, when it's done. 1,656 lines collapsed into 410.
+Instead of imposing structure, give the model tools to manage its own [context](@/pages/harness-engineering/context-windows.md). Let it decide when to save, when to rewind, when it's done. 1,656 lines collapsed into 410.
 
 ---
 
@@ -37,7 +37,7 @@ The model calls `time_lapse("ready", "Found the bug. Fix _hkey/_hval.")`. Here's
 3. Before the next LLM call, the `context` event fires. It finds the checkpoint message, truncates everything after it, appends the steering text as a user message
 4. The model's next turn sees a clean context: system prompt → task → checkpoint → steering. Everything between is gone.
 
-The cache prefix through the checkpoint stays warm. Anthropic's prompt caching recognizes the shared prefix. So the model sheds context without losing cache — that's where the [economics](economics.md) get interesting.
+The cache prefix through the checkpoint stays warm. Anthropic's prompt caching recognizes the shared prefix. So the model sheds context without losing cache. That's where the [economics](economics.md) get interesting.
 
 ---
 
@@ -59,7 +59,7 @@ The lesson: agent extension APIs have sharp edges that only show up in productio
 
 Seven versions of the system prompt, each solving a different failure mode:
 
-The model ignored abstract pseudocode patterns. It responded to concrete examples with tool call sequences. It couldn't count turns ("time_lapse after 3-5 failures") but it could respond to observable events ("your test just failed after edits"). It needed to understand context economics — *why* early checkpointing matters, not just that it should checkpoint.
+The model ignored abstract pseudocode patterns. It responded to concrete examples with tool call sequences. It couldn't count turns ("time_lapse after 3-5 failures") but it could respond to observable events ("your test just failed after edits"). It needed to understand context economics. *Why* early checkpointing matters, not just that it should checkpoint.
 
 The current prompt teaches deterministic rules: `edit → test → fail → time_lapse`. No judgment call. The model sees a test failure after edits, it rewinds. That's the rule.
 

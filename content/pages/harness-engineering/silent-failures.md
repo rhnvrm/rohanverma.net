@@ -13,7 +13,7 @@ No exceptions. No stack traces. The code compiles, the tests pass, and the behav
 
 ---
 
-A data store silently returning stale results. Two versions of the same library imported across different modules — one from a direct dependency, one transitive. When comparisons crossed the library boundary, equality checks silently failed. No error. No crash. Just wrong results. The kind of bug where the symptom (data not updating) is layers removed from the cause (import mismatch).
+A data store silently returning stale results. Two versions of the same library imported across different modules: one from a direct dependency, one transitive. When comparisons crossed the library boundary, equality checks silently failed. No error. No crash. Just wrong results. The kind of bug where the symptom (data not updating) is layers removed from the cause (import mismatch).
 
 When there are no exceptions, stack traces can't guide you. You're doing detective work, not debugging. Following data flows, checking assumptions, asking "what would have to be true for this behavior to make sense?" That's a fundamentally different skill than reading an error message and fixing the line it points to.
 

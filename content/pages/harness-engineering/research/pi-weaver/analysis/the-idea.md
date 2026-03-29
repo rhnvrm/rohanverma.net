@@ -22,7 +22,7 @@ That's the question pi-weaver tries to answer.
 
 ---
 
-The name comes from Dota 2. Weaver's ultimate ability, Time Lapse, reverses position, health, and mana to 5 seconds ago. Everything that happened in those 5 seconds is undone — damage taken, mana spent, distance traveled. But the player's *knowledge* of what happened persists.
+The name comes from Dota 2. Weaver's ultimate ability, Time Lapse, reverses position, health, and mana to 5 seconds ago. Everything that happened in those 5 seconds is undone: damage taken, mana spent, distance traveled. But the player's *knowledge* of what happened persists.
 
 That's the exact mechanic we wanted. The agent reverses to a checkpoint. Conversation context rewinds. Structured state (the model's knowledge) is preserved. Everything between — the failed grep, the wrong edit, the misleading error — is gone.
 
@@ -34,7 +34,7 @@ It maps to programming primitives:
 
 ---
 
-The bet was specific: give the model these tools and a good prompt, and it will use them without reinforcement learning. No fine-tuning, no RLHF on rewind behavior. Just tool descriptions and a cookbook of when to use them.
+The bet was specific: give the model these tools and a good prompt, and it will use them without reinforcement learning. No fine-tuning, no RLHF on rewind behavior. Just tool descriptions and a cookbook of when to use them. Another bet on [assumptions that might decay](@/pages/harness-engineering/harness-assumptions-decay.md) if models get RL for this.
 
 Whether the bet paid off is [more complicated than a yes or no](when-weaver-helps.md). The model does use the tools — [17 time_lapse calls across 15 tasks](time-lapse-patterns.md). But using them well is harder. The [polyglot-c-py](../tasks/polyglot-c-py.md) session shows the model rewinding correctly from a broken rewrite, then immediately re-entering the same trap. The tool works. The judgment doesn't always.
 
@@ -54,7 +54,7 @@ It's three tools and a prompt. The model does the rest. That's the experiment.
 
 ### What came before
 
-[pi-exec](https://github.com/oddship/bosun/tree/main/packages/pi-exec) was the predecessor — a 1,656-line structured executor with rigid phases and gate calls. It worked well on controlled tasks but couldn't adapt mid-run. The [architecture page](architecture.md) covers why we threw it away.
+[pi-exec](https://github.com/oddship/bosun/tree/main/packages/pi-exec) was the predecessor, a 1,656-line structured executor with rigid phases and gate calls. It worked well on controlled tasks but couldn't adapt mid-run. The [architecture page](architecture.md) covers why we threw it away.
 
 ### The evaluation
 

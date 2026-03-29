@@ -9,7 +9,7 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-The agent used weaver's tools in exactly the wrong order. It did the work first, then called time_lapse, then checkpointed — backwards from the intended flow. The fix still landed, but the ceremony cost more than it saved because the model hadn't internalized the checkpoint-before-attempt pattern.
+The agent used weaver's tools in exactly the wrong order. It did the work first, then called time_lapse, then checkpointed. Backwards from the intended flow. The fix still landed, but the ceremony cost more than it saved because the model hadn't internalized the checkpoint-before-attempt pattern.
 
 **Category**: Git/Version Control · **Difficulty**: Easy-Medium · **Verdict**: weaver-hurts
 
@@ -24,19 +24,19 @@ Find changes that were lost after checking out master in a personal site git rep
 
 ## What happened
 
-Both agents nailed the diagnosis. The user made a commit in detached HEAD state (checked out `HEAD~1`, then committed "Move to Stanford"). When they switched back to master, the commit became orphaned — still in the reflog, but not reachable from any branch. Classic git footgun.
+Both agents nailed the diagnosis. The user made a commit in detached HEAD state (checked out `HEAD~1`, then committed "Move to Stanford"). When they switched back to master, the commit became orphaned, still in the reflog, but not reachable from any branch. Classic git footgun.
 
 **Plain** found it in 4 turns: `git log --all`, `git reflog`, spot `650dba4`, `git cherry-pick`. Hit a conflict in `about.md`, resolved it (keep the Stanford version), done. Eleven turns total, 43 seconds.
 
 **Weaver** found it just as fast, also via reflog. But then things got weird.
 
-The agent set a "start" checkpoint, found the orphaned commit, tried `git merge 650dba4` (merge instead of cherry-pick — both valid), resolved the conflict. So far so good. Then at T10, *after the merge was already resolved and staged*, it called `time_lapse`. After that, it created a "ready" checkpoint recording the completed resolution. Then at T12 it tried `git merge 650dba4` *again* — the merge was already in progress, which caused confusion for two turns before it figured out it just needed to `git commit --no-edit`.
+The agent set a "start" checkpoint, found the orphaned commit, tried `git merge 650dba4` (merge instead of cherry-pick, both valid), resolved the conflict. So far so good. Then at T10, *after the merge was already resolved and staged*, it called `time_lapse`. After that, it created a "ready" checkpoint recording the completed resolution. Then at T12 it tried `git merge 650dba4` *again* — the merge was already in progress, which caused confusion for two turns before it figured out it just needed to `git commit --no-edit`.
 
 The sequence was: do the work → call time_lapse → checkpoint → redo the work (fail) → recover → done.
 
 ## The Backwards Ceremony
 
-In every other weaver session I analyzed, the pattern is checkpoint→time_lapse→work→done. Here it was work→time_lapse→checkpoint→confused-work→done. The agent treated weaver as an *afterthought* — documentation of what it already did, not planning for what it's about to do.
+In every other weaver session I analyzed, the pattern is checkpoint→time_lapse→work→done. Here it was work→time_lapse→checkpoint→confused-work→done. The agent treated weaver as an *afterthought*, counter to [the architecture's](../analysis/architecture.md) design — documentation of what it already did, not planning for what it's about to do.
 
 This is [the-idea](../analysis/the-idea.md) in reverse. The time_lapse is supposed to prune context *before* execution, keeping only the structured state from the checkpoint. When you call it *after* doing the work, you prune... the work you just did. And then you try to redo it with only the checkpoint state, which may not capture the current git state accurately.
 

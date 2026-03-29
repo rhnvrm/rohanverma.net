@@ -70,7 +70,7 @@ This is a learnable skill. The model needs to understand: checkpoint *after* you
 | Cost | $0.63 | $0.83 |
 | Time | 247s | 355s |
 
-The cache read difference, 370K extra tokens — is the cost of four rewinds. Each rewind forces the model to re-process everything from the checkpoint forward, and each re-application of edits adds to the context that subsequent turns must read.
+The [cache read](@/pages/harness-engineering/token-caching.md) difference, 370K extra tokens — is the cost of four rewinds. Each rewind forces the model to re-process everything from the checkpoint forward, and each re-application of edits adds to the context that subsequent turns must read.
 
 ## The lesson
 

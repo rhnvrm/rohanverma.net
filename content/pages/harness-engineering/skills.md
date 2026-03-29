@@ -13,7 +13,7 @@ Skills are documentation. We've had READMEs and runbooks forever. The difference
 
 ---
 
-There are 38 skills in `.pi/skills/`. Pi loads them based on trigger keywords when a task matches. They're markdown files, not tied to any specific harness. At 38 skills and 6,800 lines, you can't load everything into one context. Progressive disclosure isn't a nicety — it's a context window constraint. A skill that dumps everything upfront wastes tokens. One that reveals details based on what the agent is actually doing stays useful longer.
+There are 38 skills in `.pi/skills/`. Pi loads them based on trigger keywords when a task matches. They're markdown files, not tied to any specific harness. At 38 skills and 6,800 lines, you can't load everything into one context. Progressive disclosure isn't a nicety — it's a [context window](@/pages/harness-engineering/context-windows.md) constraint. A skill that dumps everything upfront wastes tokens. One that reveals details based on what the agent is actually doing stays useful longer.
 
 Three kinds:
 

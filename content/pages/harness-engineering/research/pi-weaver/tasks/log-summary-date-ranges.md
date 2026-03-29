@@ -9,7 +9,7 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-Weaver does ceremony on easy tasks and skips it on hard ones. That's backwards. This 34-second task didn't need a checkpoint-rewind cycle, and the $0.02 overhead is the smallest in the eval — but it's also the most telling. Structure should scale with difficulty, not with access to structure.
+Weaver does ceremony on easy tasks and skips it on hard ones. That's backwards. This 34-second task didn't need a checkpoint-rewind cycle, and the $0.02 overhead is the smallest in the eval, but it's also the most telling. Structure should scale with difficulty, not with access to structure.
 
 **Category**: Data Processing · **Difficulty**: Easy-Medium · **Verdict**: weaver-hurts
 
@@ -28,9 +28,9 @@ This is the task where weaver looks silliest.
 
 Plain solved it in 6 turns. Look at logs, understand format, write Python script, run it, write CSV, verify. Thirty-four seconds, six cents. Done.
 
-Weaver solved the exact same problem the exact same way — but took 11 turns doing it. Two checkpoints, a time_lapse, a done call, even cleaned up its temp script afterwards. Forty-five seconds, eight cents. Same CSV.
+Weaver solved the exact same problem the exact same way, but took 11 turns doing it. Two checkpoints, a time_lapse, a done call, even cleaned up its temp script afterwards. Forty-five seconds, eight cents. Same CSV.
 
-The five extra turns were pure ceremony. The "start" checkpoint recorded the task requirements (which were already in the system prompt). The "ready" checkpoint recorded the log format (which a single `head -5` had revealed). The time_lapse steering said "write a Python script to parse all files, count severities, produce CSV" — which is... what the task says to do.
+The five extra turns were pure ceremony. The "start" checkpoint recorded the task requirements (which were already in the system prompt). The "ready" checkpoint recorded the log format (which a single `head -5` had revealed). The time_lapse steering said "write a Python script to parse all files, count severities, produce CSV," which is... what the task says to do.
 
 Nobody rewound. Nobody needed to. The problem is: parse filenames for dates, count strings, bucket by range. There's one approach, it works on the first try, and that's it.
 

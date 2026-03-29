@@ -9,17 +9,17 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-The fundamental constraint. Everything fits in the context window or it doesn't. There's no "load more later" — the model sees what's in the window, period. This shapes the entire system.
+The fundamental constraint. Everything fits in the context window or it doesn't. There's no "load more later." The model sees what's in the window, period. This shapes the entire system.
 
 ---
 
 [Progressive disclosure](@/pages/harness-engineering/progressive-disclosure.md) exists because of this: 38 [skills](@/pages/harness-engineering/skills.md) at 6,800 lines can't all load at once. Skills load on demand, reveal details progressively, stay out of the way until needed.
 
-[Model tiers](@/pages/harness-engineering/model-tiers.md) are shaped by it too — bigger context windows come with more expensive models. The tier system makes this tradeoff explicit. Lite for quick tasks that barely touch the limit, high and oracle for deep work that pushes against it.
+[Model tiers](@/pages/harness-engineering/model-tiers.md) are shaped by it too. Bigger context windows come with more expensive models. The tier system makes this tradeoff explicit. Lite for quick tasks that barely touch the limit, high and oracle for deep work that pushes against it.
 
 [Token caching](@/pages/harness-engineering/token-caching.md) follows from the same constraint: if you're paying for context, don't pay twice for the same tokens. Cache the system prompt, cache the shared codebase, pay only for what's new.
 
-And when a session's context fills up, [session summarization](@/pages/harness-engineering/session-summarization.md) kicks in — Pi compacts it. The compaction summary carries forward as a lossy compression of everything that happened. Auto-resume sends a follow-up prompt so the agent continues working. The summary quality determines how much knowledge survives.
+And when a session's context fills up, [session summarization](@/pages/harness-engineering/session-summarization.md) kicks in. Pi compacts it. The compaction summary carries forward as a lossy compression of everything that happened. Auto-resume sends a follow-up prompt so the agent continues working. The summary quality determines how much knowledge survives.
 
 Anthropic found something interesting here: compaction alone isn't enough. They documented "context anxiety" — models start wrapping up work prematurely as they approach what they believe is their context limit, even when there's room left. Sonnet 4.5 exhibited this strongly enough that compaction couldn't fix it. Their solution was context resets: kill the session entirely, write a structured handoff artifact, start a fresh agent with a clean slate. It costs more in orchestration complexity and token overhead, but it works where compaction doesn't. That's essentially what [handoffs](@/pages/harness-engineering/handoffs.md) do in this system — `/handoff` captures the state, `/pickup` starts fresh. The insight is the same: sometimes you need a clean break, not a compressed continuation.
 

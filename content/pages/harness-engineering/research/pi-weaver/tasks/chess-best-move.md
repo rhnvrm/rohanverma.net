@@ -9,7 +9,7 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-The weaver agent set a checkpoint but never called time_lapse or done. That's unique in the entire eval. I think the incomplete ceremony is actually a diagnostic signal — if the agent hasn't felt confident enough to declare "orientation complete" after N minutes, something is fundamentally wrong at the capability level, not the strategy level.
+The weaver agent set a checkpoint but never called time_lapse or done. That's unique in the entire eval. I think the incomplete ceremony is actually a diagnostic signal. If the agent hasn't felt confident enough to declare "orientation complete" after N minutes, something is fundamentally wrong at the capability level, not the strategy level.
 
 **Category**: Vision/Reasoning · **Difficulty**: Hard · **Verdict**: weaver-hurts
 
@@ -26,7 +26,7 @@ Analyze a chess board image (`chess_board.png`), determine the best move for whi
 
 Both agents hit the 901-second timeout. Neither wrote a correct answer. But they burned very different amounts of money getting nowhere.
 
-The core problem is the same for both: **you can't analyze a chess position if you can't read the board**. Both agents found Stockfish (at `/usr/games/stockfish`), both invoked it correctly, both got valid analysis back. The engine wasn't the bottleneck. The bottleneck was upstream — turning pixels into a FEN string.
+The core problem is the same for both: **you can't analyze a chess position if you can't read the board**. Both agents found Stockfish (at `/usr/games/stockfish`), both invoked it correctly, both got valid analysis back. The engine wasn't the bottleneck. The bottleneck was upstream: turning pixels into a FEN string.
 
 **Plain** read the image, guessed a FEN, ran Stockfish, got suspicious results, tried different FEN variations (king at f5? g5? d1?), ran Stockfish again, got more suspicious results, repeat. Ten turns, nine bash calls, each one trying a slightly different board interpretation. $0.51.
 
@@ -40,7 +40,7 @@ Here's what's interesting about the weaver session: the agent set a "start" chec
 
 I think this is actually a signal. The agent never felt confident enough to declare "orientation complete" and fast-forward. It never reached a "ready" state because it never *was* ready — it couldn't pin down the board position. The incomplete weaver ceremony is the model telling you "I don't know what I'm doing."
 
-That could be a useful heuristic: if the agent has been running for N minutes and hasn't called time_lapse yet, something is fundamentally wrong. Maybe that's when you intervene — kill the session, provide the FEN manually, or switch to a vision-specialized model.
+That could be a useful heuristic: if the agent has been running for N minutes and hasn't called time_lapse yet, something is fundamentally wrong. Maybe that's when you intervene: kill the session, provide the FEN manually, or switch to a vision-specialized [model tier](@/pages/harness-engineering/model-tiers.md).
 
 ## Token Economics
 

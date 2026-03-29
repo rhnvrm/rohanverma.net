@@ -9,7 +9,7 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-When a session goes idle, [the daemon](@/pages/harness-engineering/the-daemon.md) spawns a Haiku agent to generate a structured summary. Cheap model, fast turnaround. The summary has YAML frontmatter — tags, files touched, duration — and a narrative section: what worked, what didn't, key insights. These accumulate in `workspace/users/{you}/sessions/`.
+When a session goes idle, [the daemon](@/pages/harness-engineering/the-daemon.md) spawns a Haiku agent to generate a structured summary. Cheap model, fast turnaround. The summary has YAML frontmatter: tags, files touched, duration — and a narrative section: what worked, what didn't, key insights. These accumulate in `workspace/users/{you}/sessions/`.
 
 The uniform frontmatter matters. Consistent schema plus predictable filenames means tools can discover, filter, and aggregate sessions without manual intervention. [Q](@/pages/harness-engineering/q-the-task-agent.md) reads these summaries. The memory tool searches them. Future agents draw on them. The structure is what makes [the loop](@/pages/harness-engineering/the-loop.md) mechanical instead of aspirational.
 
@@ -17,11 +17,11 @@ The uniform frontmatter matters. Consistent schema plus predictable filenames me
 
 Not every session is worth summarizing. Batch processing with age-based filtering skips trivial sessions — one to three messages, quick questions, throwaway explorations. This reduces summarization work by about 70%. The daemon doesn't waste tokens on "how do I format a date in Go."
 
-A catchup-sessions workflow runs hourly and at startup, preparing briefings from whatever accumulated while the system was off. Laptop sleeps, flights, weekends — when I come back, the summaries are waiting.
+A catchup-sessions workflow runs hourly and at startup, preparing briefings from whatever accumulated while the system was off. Laptop sleeps, flights, weekends. When I come back, the summaries are waiting.
 
 ---
 
-Early on, the daemon kept timing out on summarization. I assumed the summarizer was slow. The actual problem: I was loading the full agent system prompt plus the entire session JSONL into the LLM context. The [model tier](@/pages/harness-engineering/model-tiers.md) was right (Haiku is cheap), but the prompt was bloated. Switching to a lite agent — smaller system prompt, less overhead — fixed it immediately. I still added dynamic timeouts (60s base + 15s per 100 messages) because an 1,800-message session genuinely takes a while, but the initial timeouts were self-inflicted.
+Early on, the daemon kept timing out on summarization. I assumed the summarizer was slow. The actual problem: I was loading the full agent system prompt plus the entire session JSONL into the LLM context. The [model tier](@/pages/harness-engineering/model-tiers.md) was right (Haiku is cheap), but the prompt was bloated. Switching to a lite agent — smaller system prompt, less overhead. Fixed it immediately. I still added dynamic timeouts (60s base + 15s per 100 messages) because an 1,800-message session genuinely takes a while, but the initial timeouts were self-inflicted.
 
 ---
 

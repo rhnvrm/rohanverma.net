@@ -32,11 +32,11 @@ The difference is how they handled the Makefile.
 
 **Weaver** explored more broadly first — read the top-level Makefile, `config/Makefile`, `debian/rules`, and `src/Makefile`. Four files instead of two. Then it checkpointed ("ready"), time_lapsed with a steering message ("Edit Makefile, build, install"), and used the `edit` tool to surgically remove the X11 defines and library from the Makefile before compiling.
 
-The edit approach is arguably cleaner — you can `cat` the Makefile afterwards and see exactly what changed. The override approach is arguably safer — you never modify source files. Both work. Neither is wrong.
+The edit approach is arguably cleaner. You can `cat` the Makefile afterwards and see exactly what changed. The override approach is arguably safer. You never modify source files. Both work. Neither is wrong.
 
 ## The Exploration Tax
 
-Weaver spent turns 9-13 reading four different Makefiles. Plain spent turns 9-11 reading two. The extra exploration (debian/rules, config/Makefile) provided no information that changed the build strategy — they all point to `src/Makefile` as the real build file. But the agent didn't know that until it looked.
+Weaver spent turns 9-13 reading four different Makefiles. Plain spent turns 9-11 reading two. The extra exploration (debian/rules, config/Makefile) provided no information that changed the build strategy. They all point to `src/Makefile` as the real build file. But the agent didn't know that until it looked.
 
 Is that wasted work? I'm not sure. In a different task, `debian/rules` might have contained build flags that matter (it often does for Debian packages). The agent was being thorough. Weaver's checkpoint structure may have encouraged this — "orient fully before committing" is baked into the time_lapse pattern.
 
@@ -67,7 +67,7 @@ Cache reads 2.4× higher, the consistent overhead pattern across all weaver sess
 
 ## What this taught me
 
-Build tasks are inherently linear: discover build system → understand flags → modify → compile → verify. There's a right answer and you converge on it or you don't. Weaver's value proposition — "explore broadly, then execute with clean context" — works best when exploration generates a lot of irrelevant context. Building pMARS doesn't. Every Makefile read was relevant to understanding the build.
+Build tasks are inherently linear: discover build system → understand flags → modify → compile → verify. There's a right answer and you converge on it or you don't. Weaver's value proposition ("explore broadly, then execute with clean context") works best when exploration generates a lot of irrelevant context. Building pMARS doesn't. Every Makefile read was relevant to understanding the build.
 
 The interesting comparison is with [sqlite-with-gcov](sqlite-with-gcov.md), another build task. There, weaver's structured planning produced a *better first attempt* (symlink vs profile.d for PATH). Here, both approaches were equally good. The difference: SQLite's task had a hidden requirement (PATH must work in subprocesses) that planning helped surface. pMARS didn't have hidden requirements — the task description was complete.
 

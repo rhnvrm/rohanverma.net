@@ -20,19 +20,19 @@ Set up a bare git repo at `/git/server` with a post-receive hook that deploys to
 
 ## What happened without weaver
 
-The plain agent knew the recipe. Turn 1: create git user, init bare repo. Turn 2: write post-receive hook (`GIT_WORK_TREE=/var/www/gitdeploy git checkout -f`). Turn 3: nginx config. Turn 4: start nginx, set permissions. Turns 5–9: end-to-end test — clone, commit, push, curl. Works.
+The plain agent knew the recipe. Turn 1: create git user, init bare repo. Turn 2: write post-receive hook (`GIT_WORK_TREE=/var/www/gitdeploy git checkout -f`). Turn 3: nginx config. Turn 4: start nginx, set permissions. Turns 5–9: end-to-end test: clone, commit, push, curl. Works.
 
 Ten turns. Ten tool calls. $0.06. Seventy-five seconds. No hesitation, no wrong turns, no wasted work. The agent had this one memorized.
 
 ## What happened with weaver
 
-The weaver agent did something the plain agent didn't: it explored the environment first. What OS? Ubuntu 24.04. What web servers are available? Nginx, apache2. What users exist? It spent 4 turns answering questions it didn't need to ask — it was going to use nginx and a git user regardless.
+The weaver agent did something the plain agent didn't: it explored the environment first. What OS? Ubuntu 24.04. What web servers are available? Nginx, apache2. What users exist? It spent 4 turns answering questions it didn't need to ask. It was going to use nginx and a git user regardless.
 
 Then checkpoint "ready" with structured state: the OS version, available tools, a plan, the nginx config path, the web root, the repo path.
 
 Then `time_lapse("ready")`.
 
-Then... the exact same setup the plain agent did. Create user, bare repo, hook, nginx config, start, test. But now with 20 turns instead of 10, because the checkpoint/rewind/done ceremony added overhead. And `systemctl` wasn't available in the container, so it had to fall back to running `nginx` directly — a hiccup the plain agent avoided by never trying systemctl in the first place.
+Then... the exact same setup the plain agent did. Create user, bare repo, hook, nginx config, start, test. But now with 20 turns instead of 10, because the checkpoint/rewind/done ceremony added overhead. And `systemctl` wasn't available in the container, so it had to fall back to running `nginx` directly, a hiccup the plain agent avoided by never trying systemctl in the first place.
 
 ## The cost ratio problem
 
@@ -43,9 +43,9 @@ Then... the exact same setup the plain agent did. Create user, bare repo, hook, 
 | Cost | $0.06 | $0.16 |
 | Time | 75s | 106s |
 
-2.6x the cost. The absolute difference is a dime — I've spent more on a vending machine coffee. But the ratio matters because it tells you something about when weaver is structurally counterproductive.
+2.6x the cost. The absolute difference is a dime. I've spent more on a vending machine coffee. But the ratio matters because it tells you something about when weaver is structurally counterproductive.
 
-The plain session was 31K cache reads. That's a tiny context window — the whole session fit comfortably. There was nothing to prune because there was nothing wasted. Weaver's rewind pruned 4 turns of environment exploration (~5K tokens) but the ceremony of doing so — two checkpoints, a time_lapse, a done call, plus the exploration itself — added 10 turns and 133K cache reads.
+The plain session was 31K cache reads. That's a tiny [context window](@/pages/harness-engineering/context-windows.md). The whole session fit comfortably. There was nothing to prune because there was nothing wasted. Weaver's rewind pruned 4 turns of environment exploration (~5K tokens) but the ceremony of doing so — two checkpoints, a time_lapse, a done call, plus the exploration itself — added 10 turns and 133K cache reads.
 
 It's like hiring a moving crew to carry one box across the room.
 

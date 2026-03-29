@@ -13,9 +13,9 @@ The economics of AI coding are in flux. Open-source models are getting cheaper f
 
 ---
 
-Seven months of actual spend: about $700 in subscriptions. Raw API cost — what it would have been per-token — was roughly $3,500. The subscription caps the cost. You get more value the more you use it.
+Seven months of actual spend: about $700 in subscriptions. Raw API cost, what it would have been per-token — was roughly $3,500. The subscription caps the cost. You get more value the more you use it.
 
-The breakdown by era: Claude Pro ($20/month) for the copy-paste era, maybe $100 total. Claude Max ($200/month) for the OpenCode era — one month consumed $1,534 of compute for $200. Same Max subscription for the Pi/bosun era, with exact cost data from session JSONL logs.
+The breakdown by era: Claude Pro ($20/month) for the copy-paste era, maybe $100 total. Claude Max ($200/month) for the OpenCode era. One month consumed $1,534 of compute for $200. Same Max subscription for the Pi/bosun era, with exact cost data from session JSONL logs.
 
 Cost is extremely top-heavy. The top 10% of sessions account for the vast majority of total spend. These are the deep investigation and architecture sessions. Most sessions are cheap — quick questions, small edits, context gathering.
 
@@ -31,4 +31,4 @@ The economics will catch up. Models get cheaper. Context windows get larger. The
 
 For reference, Anthropic published numbers from their harness work: a solo agent built a retro game maker in 20 minutes for $9. Their full planner/generator/evaluator harness took 6 hours and cost $200 — over 20x more expensive. A DAW (digital audio workstation) run cost $124 across nearly 4 hours. The output quality difference was obvious in both cases: the solo run produced a game where the core gameplay was broken, while the harness version actually worked. That tracks with what I see. The expensive sessions aren't waste. They're the ones where the agent does real work instead of producing something that looks right but falls apart when you use it.
 
-Same bet as [the loop](@/pages/harness-engineering/the-loop.md): invest now, compound later.
+Same bet as [the loop](@/pages/harness-engineering/the-loop.md): invest now, compound later. For a closer look at where the money actually goes in a multi-agent session, see [the foreman problem](@/pages/harness-engineering/the-foreman-problem.md).

@@ -9,7 +9,7 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-Both failed, but weaver failed more usefully — faster, cheaper, and with a structured plan on record. That's a form of value even when the result is the same: the next attempt starts from a better place.
+Both failed, but weaver failed more usefully: faster, cheaper, and with a structured plan on record. That's a form of value even when the result is the same: the next attempt starts from a better place.
 
 **Category**: Build/Compilation · **Difficulty**: Medium · **Verdict**: neutral
 
@@ -26,7 +26,7 @@ Compile SQLite from a pre-vendored source tarball with gcov instrumentation enab
 
 Both agents failed this one, but they failed *differently*, and that difference is the interesting part.
 
-The task looks straightforward: extract tarball, configure with coverage flags, build, install, wire into PATH. Both agents got the build right. SQLite compiled, gcov flags applied, binary worked. The failures were in the last mile — making the verifier happy.
+The task looks straightforward: extract tarball, configure with coverage flags, build, install, wire into PATH. Both agents got the build right. SQLite compiled, gcov flags applied, binary worked. The failures were in the last mile: making the verifier happy.
 
 **Plain** installed sqlite to `/app/sqlite/install/bin/` and set PATH via `/etc/profile.d/sqlite-gcov.sh` plus `/etc/environment`. Classic sysadmin approach. Problem: the verifier runs in a subprocess that doesn't source profile scripts. `sqlite3` command not found. All 3 tests fail.
 
@@ -36,9 +36,9 @@ The third test checked for `.gcda` files under `/app/sqlite/` after running the 
 
 ## The Interesting Part
 
-The plain agent spent 21 turns doing careful, methodical work. It even noticed `configure` was saying "Use gcov? no" and went back to find the `--gcov` flag — good recovery. But it never questioned whether `/etc/profile.d/` would work in the verifier's context. That's a hidden-spec problem: you're building for a test harness you can't see.
+The plain agent spent 21 turns doing careful, methodical work. It even noticed `configure` was saying "Use gcov? no" and went back to find the `--gcov` flag — good recovery. But it never questioned whether `/etc/profile.d/` would work in the verifier's context. That's a hidden-spec problem, a variant of [the Day-50 problem](@/pages/harness-engineering/the-day-50-problem.md): you're building for a test harness you can't see.
 
-Weaver's checkpoint at T10 captured the essentials — gcc version, gcov path, tarball structure — and the time_lapse steering laid out the plan: "extract, configure with --coverage, make install to /app/sqlite, symlink to /usr/local/bin." That plan was *better* than plain's. The symlink approach just works, regardless of shell type.
+Weaver's checkpoint at T10 captured the essentials: gcc version, gcov path, tarball structure — and the time_lapse steering laid out the plan: "extract, configure with --coverage, make install to /app/sqlite, symlink to /usr/local/bin." That plan was *better* than plain's. The symlink approach just works, regardless of shell type.
 
 But the same planning that got the PATH right also chose `/tmp/sqlite-build/` as the build directory. The checkpoint state tracked where to *install* but not where to *build*. One missing field in the structured state, one failed test.
 
@@ -59,7 +59,7 @@ Weaver was 25% cheaper and 38% faster, while getting closer to passing (2/3 vs 0
 
 ## What this taught me
 
-Weaver's value here wasn't self-correction — no rewinds happened. It was **structured planning producing a better first attempt**. The act of writing a checkpoint forced the agent to articulate its approach, and the time_lapse steering message became a concrete plan. Plain just... started doing things.
+Weaver's value here wasn't self-correction. No rewinds happened. It was **structured planning producing a better first attempt**. The act of writing a checkpoint forced the agent to articulate its approach, and the time_lapse steering message became a concrete plan. Plain just... started doing things.
 
 That said, structured planning has the same blind spots as any plan. You plan for what you foresee. The `.gcda` file location was a detail neither approach foresaw, because neither agent could read the verifier's test code.
 

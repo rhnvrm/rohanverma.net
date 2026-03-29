@@ -13,11 +13,11 @@ section_title = "Harness Engineering"
 
 ---
 
-Agent templates use `${models.high}` variables. A preprocessor (`just init`) interpolates them against `config.toml` and generates the runtime files: `.pi/settings.json`, `.pi/agents.json`, `.pi/sandbox.json`, `.pi/bwrap.json`. These generated files are gitignored — they're environment-specific artifacts, not source.
+Agent templates use `${models.high}` variables. A preprocessor (`just init`) interpolates them against `config.toml` and generates the runtime files: `.pi/settings.json`, `.pi/agents.json`, `.pi/sandbox.json`, [`.pi/bwrap.json`](@/pages/harness-engineering/bubblewrap.md). These generated files are gitignored — they're environment-specific artifacts, not source.
 
 The agent `.md` files *are* checked in. Those are the system prompts, the actual agent definitions. The generated JSON configs are the glue that connects definitions to the local environment. Edit `config.toml`, run `just init`, everything updates.
 
-Change models for every agent by editing one line. Swap providers, adjust context windows, toggle [skills](@/pages/harness-engineering/skills.md). Same config, same output, every time. That determinism is what makes [the sandbox](@/pages/harness-engineering/the-sandbox.md) work.
+Change models for every agent by editing one line. Swap providers, adjust [context windows](@/pages/harness-engineering/context-windows.md), toggle [skills](@/pages/harness-engineering/skills.md). Same config, same output, every time. That determinism is what makes [the sandbox](@/pages/harness-engineering/the-sandbox.md) work.
 
 ---
 

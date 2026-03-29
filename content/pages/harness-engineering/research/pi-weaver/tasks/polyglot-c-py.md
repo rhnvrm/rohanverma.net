@@ -9,7 +9,7 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-Weaver's rewind destroyed a working solution. The first approach actually ran — it just emitted compiler warnings. The model rewound, tried something cleaner, and broke Python's syntax in the process. Then spent six minutes and 6x the cost failing to recover.
+Weaver's rewind destroyed a working solution. The first approach actually ran, it just emitted compiler warnings. The model rewound, tried something cleaner, and broke Python's syntax in the process. Then spent six minutes and 6x the cost failing to recover.
 
 **Category**: Creative Programming · **Difficulty**: Medium · **Verdict**: weaver-hurts
 
@@ -24,7 +24,7 @@ Write a single file `main.py.c` that works as both a valid Python 3 program and 
 
 ## What happened without weaver
 
-The plain agent nailed the concept immediately. Turn 1: "I'll use the `#if 0` / `"""` bridge." This is the classic polyglot trick — C's preprocessor skips Python code via `#if 0`, Python hides C code inside a triple-quoted string. Turn 2: wrote the file. Turns 3–6: compiled with gcc (works), tried running with python3 (binary not found — only `python3.12` exists in the container).
+The plain agent nailed the concept immediately. Turn 1: "I'll use the `#if 0` / `"""` bridge." This is the classic polyglot trick. C's preprocessor skips Python code via `#if 0`, Python hides C code inside a triple-quoted string. Turn 2: wrote the file. Turns 3–6: compiled with gcc (works), tried running with python3 (binary not found, only `python3.12` exists in the container).
 
 Seven turns. Six tool calls. $0.09. The polyglot was correct; the environment was broken. The agent didn't think to create a `python3` symlink, so it failed validation.
 
@@ -34,11 +34,11 @@ Same correct idea, same environment problem, but a very different trajectory.
 
 The weaver agent checkpointed "start", explored the environment (found python3.12, not python3), and wrote the polyglot by turn 7. It worked — C compiled and ran, Python ran via `python3.12`. Same place the plain agent reached, same fundamental `python3` symlink problem.
 
-Then things went sideways. GCC printed two warnings about unterminated string literals inside `#if 0` blocks. These warnings are cosmetic — they come from GCC's tokenizer scanning `"""` inside skipped preprocessor blocks. The compiled binary works fine. They're noise.
+Then things went sideways. GCC printed two warnings about unterminated string literals inside `#if 0` blocks. These warnings are cosmetic. They come from GCC's tokenizer scanning `"""` inside skipped preprocessor blocks. The compiled binary works fine. They're noise.
 
 But the agent called `time_lapse("start")`.
 
-It rewound to the beginning, losing its working solution. Then it spent 13 more turns — rewriting the polyglot, trying `#pragma GCC diagnostic` to suppress the warnings, discovering that doesn't work for tokenizer-level warnings, removing the pragma, rewriting again. By turn 25 it had... the same polyglot file it had at turn 7. With the same warnings. Which were always harmless.
+It rewound to the beginning, losing its working solution. Then it spent 13 more turns: rewriting the polyglot, trying `#pragma GCC diagnostic` to suppress the warnings, discovering that doesn't work for tokenizer-level warnings, removing the pragma, rewriting again. By turn 25 it had... the same polyglot file it had at turn 7. With the same warnings. Which were always harmless.
 
 It called `done()` on turn 26 and failed validation for the same reason: no `python3` symlink.
 

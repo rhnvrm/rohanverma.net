@@ -35,4 +35,6 @@ I estimated about 1,400 lines. It ended up at 2,750 lines of source and 240 line
 >
 > — *Chronicle: Pi-Mesh Development, Feb 2026*
 
-The recovery session fixed the truncation bug, finished every loose thread from the crashed session, and ran two rounds of parallel multi-agent code reviews on the mesh code itself. That last part was satisfying — using the coordination system to review the coordination system.
+The recovery session fixed the truncation bug, finished every loose thread from the crashed session, and ran two rounds of parallel multi-agent code reviews on the mesh code itself. That last part was satisfying: using the coordination system to review the coordination system.
+
+The cost of coordinating agents is not trivial. See [the foreman problem](@/pages/harness-engineering/the-foreman-problem.md) for what happened when this scaled to 22 agents across 50 hours.

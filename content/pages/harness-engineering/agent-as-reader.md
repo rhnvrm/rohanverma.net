@@ -13,7 +13,7 @@ An LLM doesn't just load a [skill](@/pages/harness-engineering/skills.md) — it
 
 ---
 
-Skills are markdown, not YAML config or JSON schemas, for a reason. Prose carries nuance. "Don't use this function during deployments" is a judgment call an LLM can interpret. A boolean flag can't express that. "Prefer this approach unless the codebase already uses the other pattern" — that's a sentence only a reader can act on. Config can say yes or no. A reader can say "it depends."
+Skills are markdown, not YAML config or JSON schemas, for a reason. Prose carries nuance. "Don't use this function during deployments" is a judgment call an LLM can interpret. A boolean flag can't express that. "Prefer this approach unless the codebase already uses the other pattern." That's a sentence only a reader can act on. Config can say yes or no. A reader can say "it depends."
 
 A new engineer loading a project skill immediately knows the worktree path, build command, and why the dev server needs to run in tmux. No Slack archaeology required. The agent gets the same onboarding, except it loads in seconds instead of days.
 

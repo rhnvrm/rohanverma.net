@@ -31,7 +31,7 @@ That last category is the real risk.
 ## The four patterns I saw
 
 ### 1. Orientation shedding
-The model does reconnaissance, figures out what matters, checkpoints that state, and rewinds to a clean context with a compact steering summary. Not backtracking — pruning.
+The model does reconnaissance, figures out what matters, checkpoints that state, and rewinds to a clean context with a compact steering summary. Not backtracking. Pruning.
 
 ### 2. Failure recovery
 The model actually made a mistake, or learned something concrete from a failed attempt, then rewound with a revised plan. This is what I originally wanted the feature for.
@@ -40,7 +40,7 @@ The model actually made a mistake, or learned something concrete from a failed a
 Sometimes the rewind was not about a new idea at all. It was about cleaning up a conversation that had become noisy or slightly misleading. Less glamorous than failure recovery, but still valuable.
 
 ### 4. Grind
-The model keeps discovering locally true things, keeps writing increasingly plausible steering text, and keeps paying for more attempts — but the task's actual search space is not getting smaller.
+The model keeps discovering locally true things, keeps writing increasingly plausible steering text, and keeps paying for more attempts, but the task's actual search space is not getting smaller.
 
 > Rewind is excellent at compressing insight. It is terrible at telling you when you no longer have one.
 

@@ -34,7 +34,7 @@ This is why the cheap-manager fantasy doesn't hold up.
 
 People look at a multi-agent system and assume the manager should be lightweight because the workers are the ones doing the "real" work. But orchestration isn't just message passing. The orchestrator has to make the hardest judgment calls in the whole session.
 
-If three agents give you three plausible pages, someone has to decide which one is actually good. If a review pass says there are broken links, someone has to tell real issues from false positives. If a deckhand fails because of a sandbox problem, someone has to recognize the failure mode and choose the next move. If prose is technically correct but dead on arrival, someone has to notice.
+If three agents give you three plausible pages, someone has to decide which one is actually good. If a review pass says there are broken links, someone has to tell real issues from false positives. If a deckhand fails because of a [sandbox](@/pages/harness-engineering/the-sandbox.md) problem, someone has to recognize the failure mode and choose the next move. If prose is technically correct but dead on arrival, someone has to notice.
 
 That's not clerical work. That's taste, judgment, and system-level awareness.
 
