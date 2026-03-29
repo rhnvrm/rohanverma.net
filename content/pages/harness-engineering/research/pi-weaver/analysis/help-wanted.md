@@ -9,9 +9,9 @@ draft = true
 section_title = "pi-weaver"
 +++
 
-We ran 15 of Terminal-Bench 2.0's 89 tasks. The results are suggestive but not conclusive. More data would help.
+I ran 15 of Terminal-Bench 2.0's 89 tasks. The results are suggestive but not conclusive. More data would help.
 
-## What we need
+## What I need
 
 Someone to run the remaining 74 tasks (or any subset) with the same A/B methodology:
 
@@ -21,7 +21,7 @@ Someone to run the remaining 74 tasks (or any subset) with the same A/B methodol
 
 The cost for 74 tasks at ~$0.40/task would be roughly **$60** total ($30 per variant).
 
-## What we provide
+## What I provide
 
 Everything needed to reproduce is in the [bosun repo](https://github.com/oddship/bosun/tree/main/packages/pi-weaver):
 
@@ -52,7 +52,7 @@ export MODEL=claude-sonnet-4-6
 
 ### What to send back
 
-Session JSONL files from `workspace/harbor-jobs/`. Each run produces a `.jsonl` file with full session traces. We can extract economics, tool usage, and pass/fail from these.
+Session JSONL files from `workspace/harbor-jobs/`. Each run produces a `.jsonl` file with full session traces. I can extract economics, tool usage, and pass/fail from these.
 
 ## Open questions more data would answer
 

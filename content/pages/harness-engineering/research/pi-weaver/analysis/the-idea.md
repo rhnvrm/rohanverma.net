@@ -36,7 +36,7 @@ It maps to programming primitives:
 
 The bet was specific: give the model these tools and a good prompt, and it will use them without reinforcement learning. No fine-tuning, no RLHF on rewind behavior. Just tool descriptions and a cookbook of when to use them.
 
-Whether the bet paid off is [more complicated than a yes or no](when-weaver-helps.md). The model does use the tools — 17 time_lapse calls across 15 tasks, [6 of 7 helpful](time-lapse-patterns.md) in our initial eval. But using them well is harder. The [polyglot-c-py](../tasks/polyglot-c-py.md) session shows the model rewinding correctly from a broken rewrite, then immediately re-entering the same trap. The tool works. The judgment doesn't always.
+Whether the bet paid off is [more complicated than a yes or no](when-weaver-helps.md). The model does use the tools — [17 time_lapse calls across 15 tasks](time-lapse-patterns.md). But using them well is harder. The [polyglot-c-py](../tasks/polyglot-c-py.md) session shows the model rewinding correctly from a broken rewrite, then immediately re-entering the same trap. The tool works. The judgment doesn't always.
 
 antirez's question was the right one to ask.
 

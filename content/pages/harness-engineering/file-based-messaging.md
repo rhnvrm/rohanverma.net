@@ -9,22 +9,24 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-No daemon. No server. No central orchestrator. Everything in `.pi/mesh/`: a registry directory (one JSON file per agent), inbox directories (messages as JSON files), and an append-only feed. Two [Pi](@/pages/harness-engineering/pi.md) sessions in the same project directory find each other automatically.
+Files weren't an ideological choice. They were the path of least resistance that never needed replacing.
 
 ---
 
-You can debug the entire [coordination](@/pages/harness-engineering/coordination.md) system with `cat` and `ls`. [The sandbox](@/pages/harness-engineering/the-sandbox.md) philosophy, applied to multi-agent work. No hidden state. No process you need to keep running. If something goes wrong, the evidence is right there in the filesystem.
+Agents already live in the filesystem. [The daemon](@/pages/harness-engineering/the-daemon.md) already watches files. [The sandbox](@/pages/harness-engineering/the-sandbox.md) already controls file access. Adding a message broker or database would mean one more process to start, monitor, and debug. Files are boring. Boring is [the point](@/pages/harness-engineering/the-boring-stuff.md).
 
-Five tools: `mesh_peers` (who's active, what model), `mesh_reserve` and `mesh_release` (claim files before editing), `mesh_send` (message another agent), and `mesh_manage` (rename, set status, view feed). Messages are delivered between turns — agent A finishes work and sends results, agent B receives the message on its next turn. No polling, no webhooks.
-
-Reservations hook Pi's `edit` and `write` tools. Another agent trying to edit a reserved file gets blocked with a message telling them who has it and why. Can an agent bypass this via `sed -i` through the shell? Yes. Blocking bash would mean parsing shell commands, which is a rabbit hole. The reservation system prevents the common case, not every possible case. In practice, Pi's tool control mitigates this further — some agents only get `read` and `write`, no `bash` at all.
+The format is one JSON file per message, one directory per inbox, one registry file per agent. You can debug the entire [coordination](@/pages/harness-engineering/coordination.md) system with `cat` and `ls`. No hidden state. No process you need to keep running.
 
 ---
 
-Early bug: duplicate reservations were allowed. Two agents could reserve the same file. Peer discovery and messaging worked fine — the bug was specifically in reservation locking. The kind of thing that only shows up when you actually run multiple agents against the same codebase, not in unit tests.
+The interesting design question wasn't "files or sockets" — it was how to handle conflicts.
+
+Reservations hook Pi's `edit` and `write` tools. If agent A reserves `src/auth/`, agent B trying to edit a file in that path gets blocked with a message saying who has it and why. But can agent B bypass this with `sed -i` through bash? Yes. Blocking shell commands would mean parsing them, which is a rabbit hole I'm not going down.
+
+The reservation system prevents the common case, not every possible case. That's enough. In practice, Pi's tool control adds another layer — some agents only get `read` and `write`, no `bash` at all. The agents most likely to cause file conflicts are also the ones least likely to have shell access.
 
 ---
 
-[Pi-mesh](https://github.com/rhnvrm/pi-mesh) started as a Pi extension, built on Nico Bailon's [pi-messenger](https://github.com/nicobailon/pi-messenger) work. He'd already solved the hard problems: file-based messaging, presence detection, the overlay UI. I estimated about 1,400 lines. It ended up at 2,750 lines of source and 240 lines of tests. The overlay UI and tab-completion were most of the overrun.
+Early bug: duplicate reservations were allowed. Two agents could reserve the same file simultaneously. Peer discovery and messaging worked fine — the bug was specifically in the locking logic. The kind of thing that only shows up when you actually run multiple agents against the same codebase, not in unit tests. I found it because two deckhands both claimed `src/index.ts` and neither noticed.
 
-Files weren't an ideological choice. Agents already live in the filesystem. [The daemon](@/pages/harness-engineering/the-daemon.md) already watches files. Adding a message broker or database would mean one more thing to start, monitor, and debug. Files are boring. Boring is [the point](@/pages/harness-engineering/the-boring-stuff.md).
+That's the other argument for files: when coordination fails, the evidence is sitting right there in `.pi/mesh/`. No log aggregation, no process introspection. Just `ls .pi/mesh/reservations/` and you see the problem.

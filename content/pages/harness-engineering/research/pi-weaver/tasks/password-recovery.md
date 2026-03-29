@@ -23,7 +23,7 @@ That distinction matters more than it sounds.
 
 **Category**: security  
 **Difficulty**: hard  
-**Verdict**: weaver-wins
+**Verdict**: weaver-helps
 
 ## What the task actually asked
 Recover the password from a deleted `launchcode.txt` somewhere under `/app`, then write candidates to `/app/recovered_passwords.txt` one per line. The true password is tightly constrained:

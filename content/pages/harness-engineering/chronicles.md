@@ -15,7 +15,7 @@ Chronicles are not [session summaries](@/pages/harness-engineering/session-summa
 
 A two-agent pipeline produces them. The chronicle-analyzer runs hourly, reads session summaries, and produces a JSON analysis — which sessions belong to which journey, what the arc is, what's significant. The chronicle-scribe watches the analysis directory and generates prose. Markdown output, organized by month, landing in `workspace/users/{you}/public/chronicles/`.
 
-32 bosun chronicles and 234 older ones from before this setup existed. Eight months of work in there — what I did, why decisions got made, what went wrong, what worked.
+About 120 chronicle entries from the bosun era, plus 234 older ones from before this setup existed. Eight months of work in there — what I did, why decisions got made, what went wrong, what worked.
 
 ---
 

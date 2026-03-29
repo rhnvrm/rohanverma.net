@@ -25,7 +25,7 @@ That's a useful failure mode to name, because it's easy to confuse with rigor.
 
 **Category**: debugging  
 **Difficulty**: medium  
-**Verdict**: plain-wins
+**Verdict**: weaver-hurts
 
 ## What the task actually asked
 Fix a C++ program in `/app` that crashes in RELEASE mode but not DEBUG mode. Only `/app/user.cpp` may be modified. The result must compile in both modes and show no leaks under Valgrind.

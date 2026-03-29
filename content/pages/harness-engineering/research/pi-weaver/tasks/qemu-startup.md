@@ -21,7 +21,7 @@ In both cases, the model has to boot Alpine under QEMU and prove a readiness con
 
 **Category**: system-administration  
 **Difficulty**: medium  
-**Verdict**: weaver-wins
+**Verdict**: weaver-helps
 
 ## What the task actually asked
 Boot `alpine.iso` so that:
