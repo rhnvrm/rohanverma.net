@@ -99,3 +99,7 @@ The value isn't in any single session. It's in the loop. Every skill you encode,
 [The XKCD Math](@/pages/harness-engineering/the-xkcd-math.md) — is it worth automating?
 
 [Where to Start](@/pages/harness-engineering/where-to-start.md) — you don't need all of this.
+
+### Research
+
+[pi-weaver](@/pages/harness-engineering/research/pi-weaver/_index.md) — teaching agents to undo. Checkpoint, rewind, retry. 15-task eval against Terminal-Bench 2.0.
