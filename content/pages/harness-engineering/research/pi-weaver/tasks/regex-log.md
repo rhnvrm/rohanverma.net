@@ -9,10 +9,14 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
+This task cost enough that weaver's overhead disappeared into the noise. $0.35 plain, $0.30 weaver — both passed, weaver slightly faster. When a task already takes three minutes and costs a third of a dollar, a checkpoint and rewind are rounding errors.
 
-**Category**: Text Processing / Regex  **Difficulty**: Medium
-**Result**: Plain pass (217s, $0.35) | Weaver pass (191s, $0.30)
-**Verdict**: neutral
+**Category**: Text Processing · **Difficulty**: Medium · **Verdict**: neutral
+
+| Variant | Result | Time | Cost |
+|---|---|---:|---:|
+| Plain | pass | 217s | $0.35 |
+| Weaver | pass | 191s | $0.30 |
 
 ## What the task asks
 

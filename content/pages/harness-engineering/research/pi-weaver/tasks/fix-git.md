@@ -9,16 +9,20 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
+The agent used weaver's tools in exactly the wrong order. It did the work first, then called time_lapse, then checkpointed — backwards from the intended flow. The fix still landed, but the ceremony cost more than it saved because the model hadn't internalized the checkpoint-before-attempt pattern.
 
-**Category**: Git/Version Control  **Difficulty**: Easy-Medium
-**Result**: Plain pass (43s, $0.07) | Weaver pass (67s, $0.10)
-**Verdict**: weaver-hurts
+**Category**: Git/Version Control · **Difficulty**: Easy-Medium · **Verdict**: weaver-hurts
 
-## Task Description
+| Variant | Result | Time | Cost |
+|---|---|---:|---:|
+| Plain | pass | 43s | $0.07 |
+| Weaver | pass | 67s | $0.10 |
+
+## What the task asks
 
 Find changes that were lost after checking out master in a personal site git repo, and merge them back into master.
 
-## What Happened
+## What happened
 
 Both agents nailed the diagnosis. The user made a commit in detached HEAD state (checked out `HEAD~1`, then committed "Move to Stanford"). When they switched back to master, the commit became orphaned — still in the reflog, but not reachable from any branch. Classic git footgun.
 
@@ -53,7 +57,7 @@ That's exactly what happened at T12. The agent rewound to a checkpoint that said
 
 48% more expensive, 56% slower. The cache reads are 2.4× higher from the checkpoint replays.
 
-## What This Teaches
+## What this taught me
 
 **Ordering matters more than having the tools.** Weaver's tools aren't magic — they're `try/raise/return` for conversations. If you put the `try` after the code that might fail, it doesn't help. The model needs to learn the idiom: checkpoint *before* you start, time_lapse *when* you're ready to execute, not after.
 

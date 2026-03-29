@@ -9,10 +9,14 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
+Weaver's rewind destroyed a working solution. The first approach actually ran — it just emitted compiler warnings. The model rewound, tried something cleaner, and broke Python's syntax in the process. Then spent six minutes and 6x the cost failing to recover.
 
-**Category**: Creative Programming / Polyglot  **Difficulty**: Medium
-**Result**: Plain fail (69s, $0.09) | Weaver fail (439s, $0.58)
-**Verdict**: weaver-hurts
+**Category**: Creative Programming · **Difficulty**: Medium · **Verdict**: weaver-hurts
+
+| Variant | Result | Time | Cost |
+|---|---|---:|---:|
+| Plain | fail | 69s | $0.09 |
+| Weaver | fail | 439s | $0.58 |
 
 ## What the task asks
 

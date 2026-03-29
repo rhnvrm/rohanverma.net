@@ -9,16 +9,20 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
+Insurance that didn't pay out. The model explored, checkpointed, rewound, and then executed the same Makefile edit it would have done without weaver. Both passed. Weaver cost 44% more. On a task this straightforward, the [decision framework](@/pages/harness-engineering/research/pi-weaver/analysis/when-weaver-helps.md) is simple: skip it.
 
-**Category**: Build/Compilation  **Difficulty**: Medium
-**Result**: Plain pass (92s, $0.09) | Weaver pass (110s, $0.13)
-**Verdict**: neutral
+**Category**: Build/Compilation · **Difficulty**: Medium · **Verdict**: neutral
 
-## Task Description
+| Variant | Result | Time | Cost |
+|---|---|---:|---:|
+| Plain | pass | 92s | $0.09 |
+| Weaver | pass | 110s | $0.13 |
+
+## What the task asks
 
 Build pMARS (a Core War simulator) from Debian source packages without X11 support, extract source to `/app`, and install the binary to `/usr/local/bin/pmars`.
 
-## What Happened
+## What happened
 
 Both agents solved this cleanly. The path was the same: enable `deb-src` in apt, download the source package, find the Makefile, remove the X11 flag (`-DXWINGRAPHX`) and library (`-lX11`), compile, install, verify.
 
@@ -61,7 +65,7 @@ The honest answer is: weaver didn't help and didn't hurt much. It's insurance th
 
 Cache reads 2.4× higher, the consistent overhead pattern across all weaver sessions.
 
-## What This Teaches
+## What this taught me
 
 Build tasks are inherently linear: discover build system → understand flags → modify → compile → verify. There's a right answer and you converge on it or you don't. Weaver's value proposition — "explore broadly, then execute with clean context" — works best when exploration generates a lot of irrelevant context. Building pMARS doesn't. Every Makefile read was relevant to understanding the build.
 

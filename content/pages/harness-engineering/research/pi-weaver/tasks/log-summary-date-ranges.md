@@ -9,16 +9,20 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
+Weaver does ceremony on easy tasks and skips it on hard ones. That's backwards. This 34-second task didn't need a checkpoint-rewind cycle, and the $0.02 overhead is the smallest in the eval — but it's also the most telling. Structure should scale with difficulty, not with access to structure.
 
-**Category**: Data Processing  **Difficulty**: Easy-Medium
-**Result**: Plain pass (34s, $0.06) | Weaver pass (45s, $0.08)
-**Verdict**: weaver-hurts
+**Category**: Data Processing · **Difficulty**: Easy-Medium · **Verdict**: weaver-hurts
 
-## Task Description
+| Variant | Result | Time | Cost |
+|---|---|---:|---:|
+| Plain | pass | 34s | $0.06 |
+| Weaver | pass | 45s | $0.08 |
+
+## What the task asks
 
 Analyze log files in `/app/logs/` (named `YYYY-MM-DD_source.log`) and produce a CSV counting ERROR, WARNING, and INFO occurrences across five date-range periods, using 2025-08-12 as the reference date.
 
-## What Happened
+## What happened
 
 This is the task where weaver looks silliest.
 
@@ -51,7 +55,7 @@ Compare with [chess-best-move](chess-best-move.md), where the agent actually *un
 
 32% more expensive, 32% slower. The cache reads are 2.7× higher because each checkpoint replays the growing context.
 
-## What This Teaches
+## What this taught me
 
 The tax is real but small in absolute terms — two cents, eleven seconds. If you told me "pay $0.02 extra for every task so that hard tasks get self-correction," I'd take that deal. The problem is when the tax is all you get.
 

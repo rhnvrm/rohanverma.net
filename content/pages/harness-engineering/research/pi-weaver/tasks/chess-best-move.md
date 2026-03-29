@@ -9,16 +9,20 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
+The weaver agent set a checkpoint but never called time_lapse or done. That's unique in the entire eval. I think the incomplete ceremony is actually a diagnostic signal — if the agent hasn't felt confident enough to declare "orientation complete" after N minutes, something is fundamentally wrong at the capability level, not the strategy level.
 
-**Category**: Vision/Reasoning  **Difficulty**: Hard
-**Result**: Plain fail (901s timeout, $0.51) | Weaver fail (901s timeout, $0.80)
-**Verdict**: weaver-hurts
+**Category**: Vision/Reasoning · **Difficulty**: Hard · **Verdict**: weaver-hurts
 
-## Task Description
+| Variant | Result | Time | Cost |
+|---|---|---:|---:|
+| Plain | fail | 901s | $0.51 |
+| Weaver | fail | 901s | $0.80 |
+
+## What the task asks
 
 Analyze a chess board image (`chess_board.png`), determine the best move for white, and write it to `/app/move.txt` in coordinate form (e.g., `e2e4`).
 
-## What Happened
+## What happened
 
 Both agents hit the 901-second timeout. Neither wrote a correct answer. But they burned very different amounts of money getting nowhere.
 
@@ -51,7 +55,7 @@ That could be a useful heuristic: if the agent has been running for N minutes an
 
 Weaver spent 57% more reaching the same timeout. Those extra output tokens are the model reasoning at length about FEN variations — generating more text didn't make the guesses more accurate.
 
-## What This Teaches
+## What this taught me
 
 **Weaver can't fix capability gaps.** If the model can't see the chess pieces correctly, no amount of structured planning or context management helps. Checkpoint/time_lapse is a *strategy* tool — it helps when the strategy is wrong. Here the strategy was fine (use Stockfish). The perception was wrong.
 

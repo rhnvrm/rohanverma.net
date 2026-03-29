@@ -9,16 +9,20 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
+Both failed, but weaver failed more usefully — faster, cheaper, and with a structured plan on record. That's a form of value even when the result is the same: the next attempt starts from a better place.
 
-**Category**: Build/Compilation  **Difficulty**: Medium
-**Result**: Plain fail (178s, $0.15) | Weaver fail (110s, $0.11)
-**Verdict**: neutral
+**Category**: Build/Compilation · **Difficulty**: Medium · **Verdict**: neutral
 
-## Task Description
+| Variant | Result | Time | Cost |
+|---|---|---:|---:|
+| Plain | fail | 178s | $0.15 |
+| Weaver | fail | 110s | $0.11 |
+
+## What the task asks
 
 Compile SQLite from a pre-vendored source tarball with gcov instrumentation enabled, install it to `/app/sqlite`, and make the `sqlite3` binary available in PATH.
 
-## What Happened
+## What happened
 
 Both agents failed this one, but they failed *differently*, and that difference is the interesting part.
 
@@ -53,7 +57,7 @@ This is the pattern I keep seeing: weaver improves the parts of the problem you 
 
 Weaver was 25% cheaper and 38% faster, while getting closer to passing (2/3 vs 0/3). If this were scored on partial credit, weaver wins clearly.
 
-## What This Teaches
+## What this taught me
 
 Weaver's value here wasn't self-correction — no rewinds happened. It was **structured planning producing a better first attempt**. The act of writing a checkpoint forced the agent to articulate its approach, and the time_lapse steering message became a concrete plan. Plain just... started doing things.
 
