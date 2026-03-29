@@ -6,13 +6,14 @@
 {# Get the parent section for sidebar navigation #}
 {% set_global parent_section = "" %}
 {% set_global sidebar_section = "" %}
+{% set_global back_section = "" %}
 {% if page.ancestors | length > 0 %}
   {% set last_ancestor = page.ancestors | last %}
   {% set_global parent_section = get_section(path=last_ancestor) %}
   {# Walk up to find a section with subsections (e.g. pi-weaver with tasks/ and analysis/) #}
   {% set_global sidebar_section = parent_section %}
   {% if parent_section.subsections | length == 0 and page.ancestors | length > 1 %}
-    {# Parent has no subsections — it's probably a leaf section like tasks/ or analysis/.
+    {# Parent has no subsections — it's a leaf section like tasks/ or analysis/.
        Walk up one level to get the grouping section (e.g. pi-weaver). #}
     {% set grandparent_path = page.ancestors | slice(end=-1) | last %}
     {% if grandparent_path %}
@@ -20,6 +21,13 @@
       {% if gp.subsections | length > 0 %}
         {% set_global sidebar_section = gp %}
       {% endif %}
+    {% endif %}
+  {% endif %}
+  {# Find back link: go up from sidebar_section to its parent #}
+  {% if sidebar_section and sidebar_section.ancestors | length > 2 %}
+    {% set back_path = sidebar_section.ancestors | last %}
+    {% if back_path %}
+      {% set_global back_section = get_section(path=back_path) %}
     {% endif %}
   {% endif %}
 {% endif %}
@@ -39,6 +47,12 @@
     <!-- Sidebar with navigation from parent section -->
     <aside data-sidebar>
         {% if sidebar_section %}
+
+        {# Back link to grandparent #}
+        {% if back_section %}
+        <a href="{{ back_section.permalink }}" class="sidebar-back-link">← {{ back_section.extra.section_title | default(value=back_section.title) }}</a>
+        {% endif %}
+
         {% if sidebar_section.extra.section_title %}
         <a href="{{ sidebar_section.permalink }}" class="sidebar-section-title">{{ sidebar_section.extra.section_title }}</a>
         {% elif sidebar_section.title %}
@@ -46,6 +60,43 @@
         {% endif %}
         <nav>
             <ul>
+                {# Subsection folders FIRST #}
+                {% for subsection in sidebar_section.subsections %}
+                {% set sub = get_section(path=subsection) %}
+                {% if not sub.extra.hidden | default(value=false) %}
+                  {# Check if current page is inside this subsection #}
+                  {% set_global is_active_sub = false %}
+                  {% if parent_section %}
+                    {% for anc in page.ancestors %}
+                      {% if anc == subsection %}
+                        {% set_global is_active_sub = true %}
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
+
+                  <li class="sidebar-subsection{% if is_active_sub %} sidebar-subsection-open{% endif %}">
+                      <a href="{{ sub.permalink }}">
+                          {% if is_active_sub %}📂{% else %}📁{% endif %} {{ sub.title }}
+                          {% if sub.pages | length > 0 %}
+                          <span class="sidebar-count">({{ sub.pages | length }})</span>
+                          {% endif %}
+                      </a>
+                  </li>
+                  {# Expand pages only for the active subsection #}
+                  {% if is_active_sub %}
+                    {% for spg in sub.pages %}
+                    <li class="sidebar-group-item">
+                        <a href="{{ spg.permalink }}"
+                           {% if current_path == spg.path %}aria-current="page"{% endif %}>
+                            {{ spg.title }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                  {% endif %}
+                {% endif %}
+                {% endfor %}
+
+                {# Then direct pages of the sidebar section #}
                 {% for pg in sidebar_section.pages %}
                 <li>
                     <a href="{{ pg.permalink }}"
@@ -53,31 +104,6 @@
                         {{ pg.title }}
                     </a>
                 </li>
-                {% endfor %}
-                {% for subsection in sidebar_section.subsections %}
-                {% set sub = get_section(path=subsection) %}
-                {% if not sub.extra.hidden | default(value=false) %}
-                  {% if sub.pages | length > 0 %}
-                  <li class="sidebar-group-heading">
-                      <a href="{{ sub.permalink }}">{{ sub.title }}</a>
-                  </li>
-                  {% for spg in sub.pages %}
-                  <li class="sidebar-group-item">
-                      <a href="{{ spg.permalink }}"
-                         {% if current_path == spg.path %}aria-current="page"{% endif %}>
-                          {{ spg.title }}
-                      </a>
-                  </li>
-                  {% endfor %}
-                  {% else %}
-                  <li class="sidebar-subsection">
-                      <a href="{{ sub.permalink }}"
-                         {% if current_path == sub.path %}aria-current="page"{% endif %}>
-                          📂 {{ sub.title }}
-                      </a>
-                  </li>
-                  {% endif %}
-                {% endif %}
                 {% endfor %}
             </ul>
         </nav>
@@ -89,7 +115,7 @@
         <article class="pages-article">
             <h1>{{ page.title }}</h1>
             {% if page.date %}
-            <p><small style="color: var(--muted-foreground);">Last updated: {{ page.date | date(format="%B %Y") }}</small></p>
+            <p><small style="color: var(--muted-foreground);">Last updated: {{ page.date | date(format="%B %d, %Y") }}</small></p>
             {% endif %}
             {{ page.content | safe }}
         </article>

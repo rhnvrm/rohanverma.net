@@ -334,3 +334,29 @@ a.sidebar-section-title {
   font-size: var(--text-regular);
   margin-block-start: var(--space-1);
 }
+
+/* Sidebar back link */
+.sidebar-back-link {
+  display: block;
+  font-size: var(--text-8);
+  color: var(--muted-foreground) !important;
+  text-decoration: none !important;
+  padding: var(--space-1) 0;
+  margin-bottom: var(--space-1);
+}
+.sidebar-back-link:hover {
+  color: var(--primary) !important;
+}
+
+/* Sidebar subsection folder */
+.sidebar-subsection a {
+  font-weight: 500;
+}
+.sidebar-subsection-open > a {
+  color: var(--primary) !important;
+}
+.sidebar-count {
+  font-size: var(--text-9);
+  color: var(--muted-foreground);
+  font-weight: 400;
+}
