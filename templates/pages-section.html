@@ -33,12 +33,26 @@
                 {% for subsection in section.subsections %}
                 {% set sub = get_section(path=subsection) %}
                 {% if not sub.extra.hidden | default(value=false) %}
-                <li class="sidebar-subsection">
-                    <a href="{{ sub.permalink }}"
-                       {% if current_path == sub.path %}aria-current="page"{% endif %}>
-                        📂 {{ sub.title }}
-                    </a>
-                </li>
+                  {% if sub.pages | length > 0 %}
+                  <li class="sidebar-group-heading">
+                      <a href="{{ sub.permalink }}">{{ sub.title }}</a>
+                  </li>
+                  {% for pg in sub.pages %}
+                  <li class="sidebar-group-item">
+                      <a href="{{ pg.permalink }}"
+                         {% if current_path == pg.path %}aria-current="page"{% endif %}>
+                          {{ pg.title }}
+                      </a>
+                  </li>
+                  {% endfor %}
+                  {% else %}
+                  <li class="sidebar-subsection">
+                      <a href="{{ sub.permalink }}"
+                         {% if current_path == sub.path %}aria-current="page"{% endif %}>
+                          📂 {{ sub.title }}
+                      </a>
+                  </li>
+                  {% endif %}
                 {% endif %}
                 {% endfor %}
             </ul>

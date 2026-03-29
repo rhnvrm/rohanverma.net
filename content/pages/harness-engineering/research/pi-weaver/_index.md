@@ -7,7 +7,7 @@ page_template = "pages-page.html"
 draft = true
 
 [extra]
-section_title = "Harness Engineering"
+section_title = "pi-weaver"
 +++
 
 I built pi-weaver because I wanted a model to have one escape hatch it normally doesn't get in a terminal harness: the ability to admit that a line of attack is getting stale, rewind to a clean checkpoint, and try again without dragging the entire dead branch along for the ride.

@@ -163,6 +163,31 @@ a.sidebar-section-title {
   padding: var(--space-2) var(--space-3) var(--space-1);
 }
 
+/* ---- Sidebar group headings (subsection titles) ---- */
+.sidebar-group-heading {
+  list-style: none;
+  font-size: var(--text-8);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted-foreground);
+  margin-block-start: var(--space-4);
+  padding: var(--space-1) var(--space-3);
+}
+
+.sidebar-group-heading a {
+  color: var(--muted-foreground) !important;
+  text-decoration: none !important;
+}
+
+.sidebar-group-heading a:hover {
+  color: var(--primary) !important;
+}
+
+.sidebar-group-item {
+  padding-inline-start: var(--space-2);
+}
+
 /* ---- Footnote references (superscript numbers) ---- */
 .footnote-reference a {
   color: var(--primary);
