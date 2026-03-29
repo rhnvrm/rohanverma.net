@@ -9,32 +9,50 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-The value isn't in any single agent session. It's in the loop.
+The value in this setup is not that one agent session goes well. It's that the next session starts a little less ignorant than the last one.
 
-Sessions produce artifacts. Artifacts become searchable knowledge. Knowledge feeds future sessions. Every [skill](@/pages/harness-engineering/skills.md) you encode, every workflow you automate compounds across every future session and every agent you spawn. That's the bet, anyway.
+That sounds obvious until you compare it to the usual way people talk about AI coding: speed. Am I 3x faster? 10x? I genuinely don't know. I wrote that line in the [session history](@/pages/harness-engineering/session-history.md) page because I don't. Some tasks feel dramatically faster. Some are slower because I'm still building the machinery. If all I cared about was shaving minutes off the current task, I would have stopped a long time ago.
 
----
+What keeps me interested is something else: knowledge compounds differently than time savings.
 
-The loop: sessions → [summaries](@/pages/harness-engineering/the-daemon.md) → searchable knowledge → better sessions. Nothing magical about it. Each piece makes the next session a bit better than the last.
+Time savings reset. You finish the task, the clock stops, and tomorrow you start over.
 
-[The daemon](@/pages/harness-engineering/the-daemon.md) summarizes sessions automatically. [Q](@/pages/harness-engineering/q-the-task-agent.md) reads those summaries and updates task status, notes progress, flags blockers. The memory tool makes it all searchable: keyword, semantic, hybrid with LLM reranking. When an agent needs "have we worked on this before?", it finds relevant past work regardless of which session it happened in.
+Encoded knowledge doesn't reset. A good session leaves behind artifacts: raw JSONL, a summary, a handoff, a chronicle, a skill tweak, a task update, a config fix. Those artifacts get indexed. Future agents can search them. Future me can search them. The next session doesn't begin from a blank prompt plus whatever I still remember after coffee.
 
-Unlike traditional note-taking, the LLM writes the notes, not me. I don't decide what's worth capturing after each session. The daemon summarizes automatically, and the summaries are good enough that future agents can act on them.
-
----
-
-This didn't start with infrastructure. Back in August with claude-manager, I was manually running a slash command at the end of each session to write learnings to a file. Then I automated it with Claude hooks. Then an OpenCode plugin to trigger on session idle. Now with [Pi](@/pages/harness-engineering/pi.md), file watchers on the raw session JSONL trigger summarization automatically.
-
-Each step was just automating what I was already doing by hand. Start manual, observe what's valuable, automate the valuable parts.
+That's the loop: sessions produce artifacts, artifacts become searchable knowledge, searchable knowledge changes what future sessions can do.
 
 ---
 
-The loop closes when a future session draws on past work without being told to. The multi-agent evaluation chronicle captures this happening: one agent conducted a technical review, another evaluated from a user perspective, and a synthesis session brought both together. The contradiction between "technically production-ready" and "not adoptable" was something no single perspective would have surfaced.
+The numbers in [session history](@/pages/harness-engineering/session-history.md) are what made me believe this wasn't just a nice theory. It starts small: 19 sessions in August 2025, 57 in September, 18 in October, 62 in November, 146 in December. Then bosun's daemon takes over the boring part and the volume jumps: 745 summarized sessions in January, then hundreds more after that. Most of those sessions were not heroic. They were short, messy, ordinary. That's exactly why they matter. Compounding doesn't come from a handful of brilliant transcripts. It comes from keeping the boring ones too.
+
+The loop only becomes real when something actually reads all that residue.
+
+That's where [Q](@/pages/harness-engineering/q-the-task-agent.md) changed the system for me. Before Q, session summaries were useful in principle. After Q, they became operational. [The daemon](@/pages/harness-engineering/the-daemon.md) writes summaries in the background. Q reads them and updates tasks, notes progress, and flags blockers. In one session, Q autonomously synced 15 session summaries into task updates while I was focused on writing. That was the moment the whole thing stopped feeling like "I have a pile of AI exhaust I should probably use someday" and started feeling like a working memory system.
+
+Same story with retrieval. If an agent can ask "have we touched this before?" and get back the relevant prior work, the value isn't that I saved five minutes of re-explaining. The value is that the agent can operate with continuity. That's a different category of capability.
+
+I think that's the key distinction: the loop is less about acceleration than continuity.
+
+Acceleration is task-local. Continuity is system-wide.
+
+---
+
+That's also why I care about multi-agent synthesis, not just single-agent output. The chronicle line I keep coming back to is this:
 
 > Multi-agent evaluation is more powerful than single-perspective review. Technical agent: "It's production-ready." User agent: "It's not adoptable." Both true. Different domains. The synthesis revealed the real issue: priority misalignment, not quality failure.
 >
 > — *Chronicle: Multi-Agent Evaluation & Chronicle Synthesis, Feb 2026*
 
+That wasn't just a cute quote about using more than one agent. It's the loop showing up at a higher level. One session produces a technical judgment. Another produces a user judgment. A later synthesis session combines them and surfaces the actual problem. No single transcript contains the full answer. The answer emerges because prior work was captured, retrievable, and legible enough to build on.
+
+That's the part I think people miss when they reduce this to "AI pair programming, but faster." The real win is not that one session writes code quickly. The real win is that sessions stop being disposable.
+
+Once sessions become inputs to future sessions, the system starts learning in public. Slowly, unevenly, with plenty of junk in the corpus. But still learning.
+
 ---
 
-The details of each piece have their own pages: [session history](@/pages/harness-engineering/session-history.md) for the raw numbers, [the daemon](@/pages/harness-engineering/the-daemon.md) for background automation, [Q](@/pages/harness-engineering/q-the-task-agent.md) for task management. [The economics](@/pages/harness-engineering/the-economics.md) covers what this costs. But the core idea fits in one sentence: **make every session slightly better than the last, and let it compound.**
+So when every other page in this section points back to "the loop," this is what I mean: not automation for its own sake, not notes for their own sake, not search for its own sake. I mean a deliberate attempt to make each session leave the ground slightly better prepared for the next one.
+
+One useful session is nice.
+
+A thousand sessions that can inform each other is a different game.

@@ -9,16 +9,42 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-A skill for creating skills. An agent template for creating agents. That's the multiplier.
+The idea is embarrassingly simple: if I keep creating the same kind of harness components over and over, I should make the agent good at creating them.
+
+So yes, I have a skill for creating skills.
+
+That sounds like recursion cosplay until you watch what it removes. A new skill isn't just "write some markdown." It has a format, a location, frontmatter rules, naming conventions, [progressive-disclosure](@/pages/harness-engineering/progressive-disclosure.md) constraints, examples, anti-patterns, sometimes helper scripts, sometimes reference docs. None of that is hard. It's just repetitive enough to be annoying and important enough to get wrong.
+
+The `meta-skill-creator` skill exists so I don't spend attention on the scaffolding.
+
+Its own instructions are very explicit. Pick a descriptive kebab-case name. Create `.pi/skills/<name>/SKILL.md`. Make the frontmatter `name` match the directory. Keep the main file tight. Move bulky details into `references/`. Include anti-patterns. Include concrete examples. In other words: it encodes the boring editorial standards that make the rest of the [skill system](@/pages/harness-engineering/skills.md) composable.
 
 ---
 
-There are five meta-skills: creating [skills](@/pages/harness-engineering/skills.md), creating agents, creating extensions, creating commands, creating tools. Each one encodes the format, conventions, file placement, and registration steps so I don't think about scaffolding. "Create a skill for debugging feed latency" and the meta-skill handles the rest.
+A concrete example helps.
 
-Maybe 15 minutes saved per skill. Across 38 skills, plus every future one, that adds up. But the real value isn't time saved — it's friction removed. When creating a new skill is easy, I create skills more often. When I create skills more often, the agent gets better faster. The bootstrapping compounds.
+Say I want browser automation inside the harness. The input is not some giant spec doc. It's closer to this:
+
+> Create a skill for browser automation via Chrome DevTools Protocol. It should help agents navigate pages, click, fill forms, take screenshots, inspect the DOM, capture console errors, and do visual review across multiple viewport sizes.
+
+That's the human request. The meta-skill turns that into a proper skill package.
+
+The generated shape matters more than any one sentence inside it. It starts with frontmatter the selector can actually use — a description packed with trigger phrases like "browser", "click", "fill form", "screenshot", "console errors", "responsive", "overflow." Then it gets concrete fast. Not philosophy. Commands.
+
+```bash
+bun scripts/visual-review.ts --base http://localhost:8080 --crawl --out workspace/scratch/review
+bun scripts/cdp.ts navigate "https://example.com"
+bun scripts/cdp.ts screenshot workspace/scratch/page.png
+```
+
+Then prerequisites, then workflows. Not just capabilities — an order of operations. A good skill doesn't merely describe a tool. It teaches an agent how to use it.
 
 ---
 
-I keep coming back to this pattern from [the loop](@/pages/harness-engineering/the-loop.md): make the thing that makes the things. Invest in the tooling that produces more tooling. It feels slow at first — you could just write the skill directly. But the meta-skill ensures consistency, and consistency matters when you have 38 skills that need to compose with each other.
+The same pattern shows up in smaller skills too. I have a `background-processes` skill that exists because agents kept making one specific mistake: assuming a `workdir` parameter existed on the background process tool. The skill encodes the fix once: always `cd /full/path && command`. It even includes the wrong version first, because that's the failure mode I wanted to kill.
 
-The system builds itself. Not autonomously — I still decide what skills to create and when. But the mechanical parts of creating them are handled. I focus on what the skill should *teach*, not how to format it.
+That's what I mean when I say the meta-skill is a multiplier. It doesn't magically invent the content. I still have to know what the skill should teach. But once I know that, I can ask for the skill in the shape the system expects, instead of hand-assembling the shape every time.
+
+The time savings are real but modest. Maybe 15 minutes here, 20 there. The bigger effect is behavioral. When creating a skill is easy, I do it sooner. When I do it sooner, mistakes get encoded out of the system faster. That matters more than the saved minutes.
+
+Make the thing that makes the things. That pattern keeps showing up in this harness because it keeps paying for itself.
