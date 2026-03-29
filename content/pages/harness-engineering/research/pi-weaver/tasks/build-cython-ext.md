@@ -18,7 +18,7 @@ section_title = "Harness Engineering"
 
 Clone pyknotid 0.5.3 (a knot theory library), fix its NumPy 2.3.0 compatibility issues across ~15 source files, compile three Cython extensions, install everything to system Python, and verify that both the README snippet and test suite still work.
 
-This is the hardest task in my batch. It's not conceptually difficult — you're replacing deprecated NumPy aliases — but there are a lot of them, scattered across a lot of files, and the build has to work end-to-end.
+This is the hardest task in my batch. It's not conceptually difficult, you're replacing deprecated NumPy aliases — but there are a lot of them, scattered across a lot of files, and the build has to work end-to-end.
 
 ## What happened without weaver
 
@@ -26,11 +26,11 @@ The plain agent was methodical. It cloned the repo, read the key files, then ran
 
 Then it edited. Twelve files, one after another, 22 turns of read-edit cycles. No backtracking. No surprises. It built the extensions, installed the package, ran the README snippet, ran the test suite. Eighteen tests pass. Done.
 
-Forty-nine turns, 62 tool calls, $0.63. Linear execution — the agent had a clear mental model of every file that needed changes and followed it through.
+Forty-nine turns, 62 tool calls, $0.63. Linear execution. The agent had a clear mental model of every file that needed changes and followed it through.
 
 ## What happened with weaver
 
-The weaver agent started the same way: checkpoint "start", explore the codebase. But it explored for much longer — 27 turns of bash commands before saving checkpoint "ready" with a detailed fix plan.
+The weaver agent started the same way: checkpoint "start", explore the codebase. But it explored for much longer, 27 turns of bash commands before saving checkpoint "ready" with a detailed fix plan.
 
 Then `time_lapse("ready")`. Good — that's the pattern that [worked for fix-code-vulnerability](fix-code-vulnerability.md). Prune the exploration, execute the fix plan from clean context.
 
@@ -70,11 +70,11 @@ This is a learnable skill. The model needs to understand: checkpoint *after* you
 | Cost | $0.63 | $0.83 |
 | Time | 247s | 355s |
 
-The cache read difference — 370K extra tokens — is the cost of four rewinds. Each rewind forces the model to re-process everything from the checkpoint forward, and each re-application of edits adds to the context that subsequent turns must read.
+The cache read difference, 370K extra tokens — is the cost of four rewinds. Each rewind forces the model to re-process everything from the checkpoint forward, and each re-application of edits adds to the context that subsequent turns must read.
 
 ## The lesson
 
-Weaver struggles with scattered multi-file edits. When the fix is twelve small changes across twelve files, rewinds are destructive — they erase correct changes along with stale context. The plain agent's linear approach was better: grep everything, fix everything, build once.
+Weaver struggles with scattered multi-file edits. When the fix is twelve small changes across twelve files, rewinds are destructive. They erase correct changes along with stale context. The plain agent's linear approach was better: grep everything, fix everything, build once.
 
 Four time_lapses in a single task is a red flag. Each one means the previous attempt's work was lost. Compare this to [fix-code-vulnerability](fix-code-vulnerability.md), which used one time_lapse perfectly — the difference is that a CRLF fix is a single edit, and this task is a dozen.
 
