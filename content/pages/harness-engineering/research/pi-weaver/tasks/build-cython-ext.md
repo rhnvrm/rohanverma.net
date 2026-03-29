@@ -1,6 +1,6 @@
 +++
 title = "build-cython-ext"
-weight = 1
+weight = 3
 template = "pages-page.html"
 date = 2026-03-29
 draft = true

@@ -1,6 +1,6 @@
 +++
 title = "sqlite-with-gcov"
-weight = 10
+weight = 12
 template = "pages-page.html"
 date = 2026-03-29
 draft = true

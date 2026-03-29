@@ -1,6 +1,6 @@
 +++
 title = "polyglot-c-py"
-weight = 8
+weight = 10
 template = "pages-page.html"
 date = 2026-03-29
 draft = true

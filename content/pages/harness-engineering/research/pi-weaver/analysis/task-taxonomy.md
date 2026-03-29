@@ -1,6 +1,6 @@
 +++
 title = "The Task Spectrum"
-weight = 22
+weight = 5
 template = "pages-page.html"
 date = 2026-03-29
 draft = true

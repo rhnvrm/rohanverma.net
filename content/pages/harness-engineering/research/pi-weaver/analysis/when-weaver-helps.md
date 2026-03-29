@@ -1,6 +1,6 @@
 +++
 title = "The Decision Framework"
-weight = 23
+weight = 6
 template = "pages-page.html"
 date = 2026-03-29
 draft = true

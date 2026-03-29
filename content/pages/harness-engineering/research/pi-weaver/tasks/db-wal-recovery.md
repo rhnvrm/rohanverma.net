@@ -1,6 +1,6 @@
 +++
 title = "db-wal-recovery"
-weight = 11
+weight = 1
 template = "pages-page.html"
 date = 2026-03-29
 draft = true

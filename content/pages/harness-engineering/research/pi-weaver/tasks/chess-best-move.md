@@ -1,6 +1,6 @@
 +++
 title = "chess-best-move"
-weight = 3
+weight = 5
 template = "pages-page.html"
 date = 2026-03-29
 draft = true

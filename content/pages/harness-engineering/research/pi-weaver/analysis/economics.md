@@ -1,6 +1,6 @@
 +++
 title = "The Cache Economics"
-weight = 20
+weight = 3
 template = "pages-page.html"
 date = 2026-03-29
 draft = true

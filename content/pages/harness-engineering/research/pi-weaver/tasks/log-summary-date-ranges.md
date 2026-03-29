@@ -1,6 +1,6 @@
 +++
 title = "log-summary-date-ranges"
-weight = 7
+weight = 9
 template = "pages-page.html"
 date = 2026-03-29
 draft = true
