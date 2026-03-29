@@ -30,6 +30,17 @@
                     </a>
                 </li>
                 {% endfor %}
+                {% for subsection in section.subsections %}
+                {% set sub = get_section(path=subsection) %}
+                {% if not sub.extra.hidden | default(value=false) %}
+                <li class="sidebar-subsection">
+                    <a href="{{ sub.permalink }}"
+                       {% if current_path == sub.path %}aria-current="page"{% endif %}>
+                        📂 {{ sub.title }}
+                    </a>
+                </li>
+                {% endif %}
+                {% endfor %}
             </ul>
         </nav>
     </aside>
