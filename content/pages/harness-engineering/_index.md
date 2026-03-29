@@ -98,6 +98,10 @@ The value isn't in any single session. It's in the loop. Every skill you encode,
 
 [The XKCD Math](@/pages/harness-engineering/the-xkcd-math.md) — is it worth automating?
 
+[The Review Loop](@/pages/harness-engineering/the-review-loop.md) — audit, visual check, content review. Single-pass confidence is fake.
+
+[The Foreman Problem](@/pages/harness-engineering/the-foreman-problem.md) — the orchestrator costs more than the workers. That's not obviously wrong.
+
 [Where to Start](@/pages/harness-engineering/where-to-start.md) — you don't need all of this.
 
 ### Research
