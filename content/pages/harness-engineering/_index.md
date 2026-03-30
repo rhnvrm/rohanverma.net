@@ -9,31 +9,21 @@ draft = true
 [extra]
 section_title = "Harness Engineering"
 +++
-<!--I think the sentence formation is not a bit natural here, maybe it can be slightly improved? I am not sure, it just feels like its not the best intro paragraph, also I think maybe its not Harness Engineering telling anything about the topic. Maybe the page title can be Something else apart from Harness Engineering maybe you can refer to https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html and https://openai.com/index/harness-engineering/ https://codagent.beehiiv.com/p/slot-machines-and-safety-nets-->
+Most writing about AI coding lands in one of two camps: people showing off what the model can generate, or experienced engineers explaining why none of this replaces judgment. I care about the middle: what happens when you keep the judgment, keep experimenting, and start building infrastructure around the model instead of treating the model itself as the product. That is what I mean by harness engineering.
 
-<!--https://codagent.beehiiv.com/p/slot-machines-and-safety-nets this one has a very important point i often make is that agents are also like non deterministic slot machines-->
+The term seems to have emerged naturally among software engineers running into the same class of problems from different directions. [OpenAI](https://openai.com/index/harness-engineering/) uses it. [Martin Fowler](https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html) uses it. [Codagent](https://codagent.beehiiv.com/p/slot-machines-and-safety-nets) got at the same idea from the field. My version comes from eight months of building [bosun](https://github.com/oddship/bosun) on [Pi](https://github.com/badlogic/pi-mono): a sandboxed environment, a daemon for background automation, a task agent, multi-agent coordination through [pi-mesh](https://github.com/rhnvrm/pi-mesh), 38 skills, and more than 4,000 sessions since August 2025. At some point, "prompting" is no longer the interesting part. The interesting part is everything around the model that makes it usable day after day.
 
-<!--My point here being, after the following, the main point here needs to be that the the harness engineering term is something that has naturally come up to define what I and what other fellow software engineers have been experimenting on naturally after getting exposed to LLMs -->
-Most writing about AI coding comes from two ends: people excited about generating code, or experienced engineers explaining why it doesn't replace thinking. The middle is underrepresented. People with enough experience to build real infrastructure but who haven't stopped experimenting. That's where I am, and I think the perspective is useful.
+That matters because agents are non-deterministic slot machines. Sometimes they are brilliant. Sometimes they confidently wander off. Sometimes the exact same task works on the second try for no satisfying reason. The harness is the safety net. It is the sandbox, the review loop, the skill system, the session history, the checkpoints, the task structure, the coordination layer, and all the boring glue that turns inconsistent raw capability into something I can actually trust in practice.
 
-<!--The bell curve meme in dark mode is hard to view-->
+These pages started as blog posts. Then they got too long. Then I realized I did not want "finished" posts anyway — I wanted living pages I could keep updating as the system changed and as my opinions sharpened. So this section is half field notes, half wiki: a map of what I have built, what I think is working, and where I think most of the leverage actually is.
+
+My thesis is simple: the agent handles the typing, I handle the thinking. Not because the model is useless, but because the highest-leverage setup I have found is one where the model does the fast mechanical work and the harness keeps that work inside a loop that improves over time. By "the loop," I mean the compounding cycle where each skill, workflow, guardrail, and automation makes future sessions better — not just this session, but every session after it, including the ones run by other agents.
+
+What follows is an orientation to that loop. The first section explains the core split between agent labor and human judgment. The next sections cover the system itself: sandboxing, skills, coordination, context management, and the design choices that make the setup reliable. After that come the feedback loops — session history, handoffs, automation, evaluation, and the mechanisms that let the harness learn from repeated use. And finally there is the surrounding context: economics, tradeoffs, failure modes, and where I think this approach is heading.
+
 ![bell curve](/images/pages/bell-curve.webp)
 
----
-
-<!--the part about the thesis has emerged here abruptyly what even was the hypothesis that you are suddenly speaking of was my first thought here, like a intro to this missing entirely-->
-After eight months of iterating on AI coding setups, the thesis has sharpened:
-
-> Harness engineering isn't important for the *thinking* part of LLMs — it's important for the "automate the boring stuff" part. The agent types. I think. That's the split.
-<!--The above also is a very complex sentence-->
-<!--This is also abrupt what has been written below-->
-I've been building a sandboxed development environment called [bosun](https://github.com/oddship/bosun), running on [Pi](https://github.com/badlogic/pi-mono). A daemon for background automation. A task agent. Multi-agent coordination through [pi-mesh](https://github.com/rhnvrm/pi-mesh). 38 skills across about 4,000 sessions since August 2025.
-<!--What is the loop here really nothing has been told-->
-The value isn't in any single session. It's in the loop. Every skill you encode, every workflow you automate compounds across every future session and every agent you spawn. That's the bet, anyway.
-
-<!--Before giving a TOC directly below some small article like intro to this whole section be there-->
-
-<!--I also want to mention that the idea of these /pages was that i was trying to write blogposts on my website but i did not feel right to write all this down and the posts were getting a bit too long-->
+*(Best viewed in light mode.)*
 
 ---
 
