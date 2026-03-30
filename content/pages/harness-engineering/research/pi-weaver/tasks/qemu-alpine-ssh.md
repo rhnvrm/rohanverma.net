@@ -3,7 +3,7 @@ title = "qemu-alpine-ssh"
 weight = 2
 template = "pages-page.html"
 date = 2026-03-29
-draft = true
+draft = false
 
 [extra]
 section_title = "Harness Engineering"
@@ -34,7 +34,7 @@ ssh -p 2222 root@localhost
 
 with password `password123`.
 
-That sounds like a QEMU task, but it's really a layered-debugging task. Boot path, serial control, in-guest setup, guest network state, host port forwarding, host-side SSH validation — any one of those can be the thing that fails.
+That sounds like a QEMU task, but it's really a layered-debugging task. Boot path, serial control, in-guest setup, guest network state, host port forwarding, host-side SSH validation. Any one of those can be the thing that fails.
 
 ## What plain pi did
 Plain pi made an early architectural choice that turned out to be exactly right: boot QEMU in the background with `2222 -> 22` forwarding, then automate the guest over a serial console exposed via a Unix socket.
@@ -56,7 +56,7 @@ Weaver started the way I would have hoped: checkpoint, orient, inspect environme
 
 And then it started building session machinery.
 
-The first big move was a large expect script that tried to do too much in one shot: boot QEMU, control Alpine, configure SSH, and keep the process alive in the background. That failed for process-model reasons — `interact`, detached execution, PTY assumptions, all the messy stuff you only notice after your "clever" wrapper breaks.
+The first big move was a large expect script that tried to do too much in one shot: boot QEMU, control Alpine, configure SSH, and keep the process alive in the background. That failed for process-model reasons: `interact`, detached execution, PTY assumptions, all the messy stuff you only notice after your "clever" wrapper breaks.
 
 To its credit, the run *noticed* that. A `time_lapse` explicitly recognized the backgrounding issue and pivoted to detached `tmux` sessions. But that just moved the complexity around.
 
@@ -85,7 +85,7 @@ When I say weaver hurts here, I don't mean checkpoints are bad. I mean they can 
 
 This task needed less session design and more stubborn attention to the guest's network state.
 
-The value isn't in any single agent session. It's in [the loop](@/pages/harness-engineering/the-loop.md). Here, the weaver loop kept folding back into meta-control instead of forcing a simpler question: *is the guest actually online?*
+The value isn't in any single agent session. It's in [the loop](@/pages/harness-engineering/thesis/the-loop.md). Here, the weaver loop kept folding back into meta-control instead of forcing a simpler question: *is the guest actually online?*
 
 ## Token economics
 And yes, the economics punish that drift.
@@ -106,6 +106,6 @@ On those tasks, weaver helped compress the search space. On this one, it expande
 
 My takeaway is pretty specific: weaver is worst when the system is already stateful and fragile, and the right move is to preserve one working foothold rather than re-architect the interaction loop. If you're one observation away from the fix, more meta-control can be a tax.
 
-[Tuition, not overhead.](@/pages/harness-engineering/the-economics.md) That framing matters.
+[Tuition, not overhead.](@/pages/harness-engineering/economics/the-economics.md) That framing matters.
 
 Plain pi paid less tuition here because it stayed close to the guest and kept asking host/guest questions until the answer was boring enough to be true.

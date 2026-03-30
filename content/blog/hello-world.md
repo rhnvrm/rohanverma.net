@@ -8,7 +8,7 @@ taxonomies.tags = ["emacs", "doomemacs", "orgmode", "foss", "vim"]
 
 # Setting up ox-hugo with Doom Emacs
 
-I recently released my blog's [new theme](/projects/bodhi) on [hugo-themes](https://themes.gohugo.io/bodhi/). I had also started to re-learn Emacs for org-mode. I have a fully functional setup of Doom Emacs and have also been able to set up a workflow which works for me. My internal writing and documentation has improved as a result.
+I recently released my blog's [new theme](/pages/projects/bodhi) on [hugo-themes](https://themes.gohugo.io/bodhi/). I had also started to re-learn Emacs for org-mode. I have a fully functional setup of Doom Emacs and have also been able to set up a workflow which works for me. My internal writing and documentation has improved as a result.
 
 ## Introduction
 

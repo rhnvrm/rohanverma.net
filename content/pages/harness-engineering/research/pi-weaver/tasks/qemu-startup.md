@@ -3,7 +3,7 @@ title = "qemu-startup"
 weight = 13
 template = "pages-page.html"
 date = 2026-03-29
-draft = true
+draft = false
 
 [extra]
 section_title = "Harness Engineering"
@@ -52,7 +52,7 @@ At that point the run entered the classic boot-debugging spiral:
 - reconnecting with telnet and expect
 - trying to infer whether the guest was merely slow
 
-Eventually it did something that saved the run: it turned on serial logging. That exposed the real failure — a kernel panic about not being able to mount the root filesystem.
+Eventually it did something that saved the run: it turned on serial logging. That exposed the real failure, a kernel panic about not being able to mount the root filesystem.
 
 And that, in turn, led to the actual root cause: the session had extracted the wrong blob. It used the sector for `MODLOOP` instead of `INITRAMFS_LTS`.
 
@@ -106,6 +106,6 @@ That's what useful overhead looks like.
 ## What this taught me
 I don't think weaver is "best on systems tasks" in some broad sense. [qemu-alpine-ssh](@/pages/harness-engineering/research/pi-weaver/tasks/qemu-alpine-ssh.md) is the counterexample. But it is very good when the task is serial, inspectable, and has a crisp readiness condition.
 
-This one is a nice example of the value being in [the loop](@/pages/harness-engineering/the-loop.md). The checkpoint didn't add capability. It kept the session pointed at the machine's own source of truth long enough to avoid a really expensive wrong turn.
+This one is a nice example of the value being in [the loop](@/pages/harness-engineering/thesis/the-loop.md). The checkpoint didn't add capability. It kept the session pointed at the machine's own source of truth long enough to avoid a really expensive wrong turn.
 
 And that's enough. A lot of the time, enough is all you need.

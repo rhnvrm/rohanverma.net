@@ -3,7 +3,7 @@ title = "The Cache Economics"
 weight = 3
 template = "pages-page.html"
 date = 2026-03-29
-draft = true
+draft = false
 
 [extra]
 section_title = "Harness Engineering"
@@ -135,6 +135,6 @@ I came out of this believing two things at once.
 
 First: cache-aware rewind is economically viable. The raw token numbers are better than I expected.
 
-Second: [the economics](@/pages/harness-engineering/the-economics.md) are downstream of task selection. If you turn weaver on indiscriminately, it will absolutely spend money teaching the model lessons the task never cashes out.
+Second: [the economics](@/pages/harness-engineering/economics/the-economics.md) are downstream of task selection. If you turn weaver on indiscriminately, it will absolutely spend money teaching the model lessons the task never cashes out.
 
 If the economics tell me rewind is affordable, [When to Rewind](@/pages/harness-engineering/research/pi-weaver/analysis/time-lapse-patterns.md) tells me when it actually deserves to happen.

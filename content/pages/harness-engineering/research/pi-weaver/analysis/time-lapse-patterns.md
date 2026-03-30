@@ -3,7 +3,7 @@ title = "When to Rewind"
 weight = 4
 template = "pages-page.html"
 date = 2026-03-29
-draft = true
+draft = false
 
 [extra]
 section_title = "Harness Engineering"
@@ -50,61 +50,61 @@ The model keeps discovering locally true things, keeps writing increasingly plau
 
 ### 1. [fix-code-vulnerability](@/pages/harness-engineering/research/pi-weaver/tasks/fix-code-vulnerability.md)
 **Steering:** CWE-93 / CRLF injection; `_hkey`/`_hval` need to reject control chars.
-**Pattern:** orientation shedding — **helped**
+**Pattern:** orientation shedding, **helped**
 
 Cleanest positive case. Rewind converted reconnaissance into an exact patch plan.
 
 ### 2. [polyglot-c-py](@/pages/harness-engineering/research/pi-weaver/tasks/polyglot-c-py.md)
 **Steering:** the triple-quote approach worked; the continuation approach broke Python; go back.
-**Pattern:** failure recovery — **hurt**
+**Pattern:** failure recovery, **hurt**
 
 Sensible diagnosis but the task still ate time without converting into a pass.
 
 ### 3–6. [build-cython-ext](@/pages/harness-engineering/research/pi-weaver/tasks/build-cython-ext.md) (4 rewinds)
-- **#3** orientation shedding: apply NumPy fixes, then build — **neutral**
-- **#4** context sanitation: grep exit 1 was a false alarm — **neutral**
-- **#5** failure recovery: missing setuptools — **neutral**
-- **#6** failure recovery / grind: missing pytest, serial blocker hunt — **hurt**
+- **#3** orientation shedding: apply NumPy fixes, then build, **neutral**
+- **#4** context sanitation: grep exit 1 was a false alarm, **neutral**
+- **#5** failure recovery: missing setuptools, **neutral**
+- **#6** failure recovery / grind: missing pytest, serial blocker hunt, **hurt**
 
 By rewind #6, the model is still making progress, but the task has turned into a dependency tail. The rewind isn't wrong. It's just no longer buying leverage.
 
 ### 7. [configure-git-webserver](@/pages/harness-engineering/research/pi-weaver/tasks/configure-git-webserver.md)
 **Steering:** Ubuntu 24.04, no systemd; create git user, bare repo, nginx on 8080.
-**Pattern:** orientation shedding — **hurt**
+**Pattern:** orientation shedding, **hurt**
 
 Plain was already perfectly capable. The rewind added process, not capability.
 
 ### 8. [sqlite-with-gcov](@/pages/harness-engineering/research/pi-weaver/tasks/sqlite-with-gcov.md)
 **Steering:** compiler and gcov installed; unpack SQLite, configure with coverage flags.
-**Pattern:** orientation shedding — **neutral**
+**Pattern:** orientation shedding, **neutral**
 
 Both failed, but weaver failed faster and cheaper.
 
 ### 9. [log-summary-date-ranges](@/pages/harness-engineering/research/pi-weaver/tasks/log-summary-date-ranges.md)
 **Steering:** logs follow date-stamped naming; count severities by period.
-**Pattern:** orientation shedding — **hurt**
+**Pattern:** orientation shedding, **hurt**
 
 Too small a task to benefit from a reset. Reads like hygiene, acts like overhead.
 
 ### 10–15. [qemu-alpine-ssh](@/pages/harness-engineering/research/pi-weaver/tasks/qemu-alpine-ssh.md) (6 rewinds)
-- **#10** orientation shedding: boot Alpine, configure SSH — **neutral**
-- **#11** failure recovery: `interact` needs a TTY, switch to serial socket — **hurt**
-- **#12** failure recovery: Alpine live ISO lacks OpenSSH, install with apk — **neutral**
-- **#13** failure recovery / grind: sshd runs but banner exchange times out — **hurt**
-- **#14** failure recovery / grind: likely DNS hang, rewrite sshd_config — **hurt**
-- **#15** context sanitation / grind: tmux escape sequences breaking prompt matching — **hurt**
+- **#10** orientation shedding: boot Alpine, configure SSH, **neutral**
+- **#11** failure recovery: `interact` needs a TTY, switch to serial socket, **hurt**
+- **#12** failure recovery: Alpine live ISO lacks OpenSSH, install with apk, **neutral**
+- **#13** failure recovery / grind: sshd runs but banner exchange times out, **hurt**
+- **#14** failure recovery / grind: likely DNS hang, rewrite sshd_config, **hurt**
+- **#15** context sanitation / grind: tmux escape sequences breaking prompt matching, **hurt**
 
 By rewind #15, the model is improving the automation framework around the task more than the task itself.
 
 ### 16. [fix-git](@/pages/harness-engineering/research/pi-weaver/tasks/fix-git.md)
 **Steering:** orphaned commit found; merge conflict resolved; finalize with `git commit`.
-**Pattern:** failure recovery — **helped**
+**Pattern:** failure recovery, **helped**
 
 Smallest, nicest self-correction in the set. Concrete mistake, precise recovery, done.
 
 ### 17. [build-pmars](@/pages/harness-engineering/research/pi-weaver/tasks/build-pmars.md)
 **Steering:** source extracted; remove `-DXWINGRAPHX` and `-lX11`, then build.
-**Pattern:** orientation shedding — **hurt**
+**Pattern:** orientation shedding, **hurt**
 
 The model didn't need a dramatic reset. It needed to edit the Makefile.
 

@@ -3,7 +3,7 @@ title = "The Idea"
 weight = 1
 template = "pages-page.html"
 date = 2026-03-29
-draft = true
+draft = false
 
 [extra]
 section_title = "Harness Engineering"
@@ -24,7 +24,7 @@ That's the question pi-weaver tries to answer.
 
 The name comes from Dota 2. Weaver's ultimate ability, Time Lapse, reverses position, health, and mana to 5 seconds ago. Everything that happened in those 5 seconds is undone: damage taken, mana spent, distance traveled. But the player's *knowledge* of what happened persists.
 
-That's the exact mechanic we wanted. The agent reverses to a checkpoint. Conversation context rewinds. Structured state (the model's knowledge) is preserved. Everything between — the failed grep, the wrong edit, the misleading error — is gone.
+That's the exact mechanic we wanted. The agent reverses to a checkpoint. Conversation context rewinds. Structured state (the model's knowledge) is preserved. Everything between (the failed grep, the wrong edit, the misleading error) is gone.
 
 It maps to programming primitives:
 - `checkpoint` = `try:`
@@ -34,9 +34,9 @@ It maps to programming primitives:
 
 ---
 
-The bet was specific: give the model these tools and a good prompt, and it will use them without reinforcement learning. No fine-tuning, no RLHF on rewind behavior. Just tool descriptions and a cookbook of when to use them. Another bet on [assumptions that might decay](@/pages/harness-engineering/harness-assumptions-decay.md) if models get RL for this.
+The bet was specific: give the model these tools and a good prompt, and it will use them without reinforcement learning. No fine-tuning, no RLHF on rewind behavior. Just tool descriptions and a cookbook of when to use them. Another bet on [assumptions that might decay](@/pages/harness-engineering/failure-modes/harness-assumptions-decay.md) if models get RL for this.
 
-Whether the bet paid off is [more complicated than a yes or no](when-weaver-helps.md). The model does use the tools — [17 time_lapse calls across 15 tasks](time-lapse-patterns.md). But using them well is harder. The [polyglot-c-py](../tasks/polyglot-c-py.md) session shows the model rewinding correctly from a broken rewrite, then immediately re-entering the same trap. The tool works. The judgment doesn't always.
+Whether the bet paid off is [more complicated than a yes or no](when-weaver-helps.md). The model does use the tools: [17 time_lapse calls across 15 tasks](time-lapse-patterns.md). But using them well is harder. The [polyglot-c-py](../tasks/polyglot-c-py.md) session shows the model rewinding correctly from a broken rewrite, then immediately re-entering the same trap. The tool works. The judgment doesn't always.
 
 antirez's question was the right one to ask.
 
@@ -47,7 +47,7 @@ antirez's question was the right one to ask.
 This isn't a general self-correction framework. It doesn't do:
 - Automatic retries (the model decides when to retry)
 - Reflection or chain-of-thought forcing (no "think about what went wrong" injection)
-- Git-based checkpointing (file changes persist — only the conversation rewinds)
+- Git-based checkpointing (file changes persist; only the conversation rewinds)
 - Phase gating or plan validation (no structure imposed)
 
 It's three tools and a prompt. The model does the rest. That's the experiment.
@@ -58,4 +58,4 @@ It's three tools and a prompt. The model does the rest. That's the experiment.
 
 ### The evaluation
 
-We ran 15 Terminal-Bench 2.0 tasks with Sonnet 4.6, comparing plain pi against pi+weaver. Both scored [11/15](../index.md) — same pass rate, different tasks. The interesting question isn't "does it work" but "when does it help and when does it hurt." The [task pages](../tasks/) and [analysis pages](./) try to answer that.
+We ran 15 Terminal-Bench 2.0 tasks with Sonnet 4.6, comparing plain pi against pi+weaver. Both scored [11/15](../index.md), same pass rate, different tasks. The interesting question isn't "does it work" but "when does it help and when does it hurt." The [task pages](../tasks/) and [analysis pages](./) try to answer that.

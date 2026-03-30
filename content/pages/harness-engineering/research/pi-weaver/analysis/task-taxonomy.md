@@ -3,7 +3,7 @@ title = "The Task Spectrum"
 weight = 5
 template = "pages-page.html"
 date = 2026-03-29
-draft = true
+draft = false
 
 [extra]
 section_title = "Harness Engineering"
@@ -71,25 +71,25 @@ Some tasks have all the signs of a good rewind candidate: many moving parts, rea
 
 [qemu-alpine-ssh](@/pages/harness-engineering/research/pi-weaver/tasks/qemu-alpine-ssh.md): each failure taught the model something true but not decisive. No TTY for `interact`. OpenSSH missing from the live image. Possible banner exchange issue. Possible DNS delay. The search space never collapsed. Weaver didn't just fail here; it legitimized continuing to fail.
 
-The lesson is not "systems tasks are bad for rewind." [qemu-startup](@/pages/harness-engineering/research/pi-weaver/tasks/qemu-startup.md) is the counterexample — a messy bring-up task where weaver helped a lot. The difference is the branching structure:
+The lesson is not "systems tasks are bad for rewind." [qemu-startup](@/pages/harness-engineering/research/pi-weaver/tasks/qemu-startup.md) is the counterexample, a messy bring-up task where weaver helped a lot. The difference is the branching structure:
 
 > Systems tasks are good for rewind **if one successful line of attack collapses the rest of the work**.
 
 ## My working classification
 
-### Bucket 1: Insight tasks — **best fit**
+### Bucket 1: Insight tasks, **best fit**
 Hidden structure, one or two important corrections, cheap verification once understood.
 *db-wal-recovery, fix-code-vulnerability, fix-git, password-recovery*
 
-### Bucket 2: Direct execution tasks — **weak fit**
+### Bucket 2: Direct execution tasks, **weak fit**
 Answer is close to a straight-line edit. Structure mostly acts as overhead.
 *log-summary-date-ranges, build-pmars, configure-git-webserver*
 
-### Bucket 3: Branchy systems/debug tasks — **mixed fit, highest risk**
+### Bucket 3: Branchy systems/debug tasks, **mixed fit, highest risk**
 Failures are informative but not informative *enough*. Each retry creates another believable plan.
 *qemu-alpine-ssh, build-cython-ext, custom-memory-heap-crash*
 
-### Bucket 4: Capability-bound tasks — **bad fit**
+### Bucket 4: Capability-bound tasks, **bad fit**
 Success depends on a missing modality. Harness control flow cannot substitute.
 *chess-best-move*
 

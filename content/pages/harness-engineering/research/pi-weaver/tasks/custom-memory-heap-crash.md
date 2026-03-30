@@ -3,7 +3,7 @@ title = "custom-memory-heap-crash"
 weight = 15
 template = "pages-page.html"
 date = 2026-03-29
-draft = true
+draft = false
 
 [extra]
 section_title = "Harness Engineering"
@@ -65,7 +65,7 @@ Then it started doing the sort of work that looks impressive in a transcript:
 - reasoning about inlining of `has_facet`
 - testing whether direct or indirect paths would preserve the needed side effect under `-O2`
 
-That's all real debugging. It's not wasted in some absolute sense. But relative to the task, it's [tuition](@/pages/harness-engineering/the-economics.md).
+That's all real debugging. It's not wasted in some absolute sense. But relative to the task, it's [tuition](@/pages/harness-engineering/economics/the-economics.md).
 
 Eventually weaver settled on the working answer: forward-declare the hidden registration function and call it directly from `user_init()`. Then everything passed.
 
@@ -78,7 +78,7 @@ Plain pi understood enough, patched, verified, and quit. Weaver understood enoug
 
 That instinct is valuable in research. It's not always valuable in repair.
 
-I keep thinking about the line: [the split is simple](@/pages/harness-engineering/the-boring-stuff.md) — the agent does the boring stuff, I do the hard stuff. On this task, the "hard stuff" was not deeper analysis. It was deciding to trust the analysis already earned.
+I keep thinking about the line: [the split is simple](@/pages/harness-engineering/thesis/the-boring-stuff.md). The agent does the boring stuff, I do the hard stuff. On this task, the "hard stuff" was not deeper analysis. It was deciding to trust the analysis already earned.
 
 That's what plain pi did better.
 
@@ -99,7 +99,7 @@ This page is the counterexample I want next to [db-wal-recovery](@/pages/harness
 
 Weaver is not automatically better on "hard debugging." In fact, when the path from diagnosis to patch is short and verifiable, extra reflective structure can encourage the model to keep proving things after the practical question has already been answered.
 
-The value isn't in any single checkpoint. It's in [the loop](@/pages/harness-engineering/the-loop.md). And if the loop doesn't know when to stop, rigor turns into drag.
+The value isn't in any single checkpoint. It's in [the loop](@/pages/harness-engineering/thesis/the-loop.md). And if the loop doesn't know when to stop, rigor turns into drag.
 
 This task taught me to ask a sharper question: is the model still reducing uncertainty that matters, or is it just polishing the explanation because polishing feels productive?
 

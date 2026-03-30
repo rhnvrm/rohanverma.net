@@ -3,7 +3,7 @@ title = "db-wal-recovery"
 weight = 1
 template = "pages-page.html"
 date = 2026-03-29
-draft = true
+draft = false
 
 [extra]
 section_title = "Harness Engineering"

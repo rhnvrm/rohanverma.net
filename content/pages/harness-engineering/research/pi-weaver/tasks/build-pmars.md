@@ -3,7 +3,7 @@ title = "build-pmars"
 weight = 4
 template = "pages-page.html"
 date = 2026-03-29
-draft = true
+draft = false
 
 [extra]
 section_title = "Harness Engineering"
@@ -30,7 +30,7 @@ The difference is how they handled the Makefile.
 
 **Plain** found `src/Makefile`, identified the X11 lines, and overrode them on the command line: `make CFLAGS="-O -DEXT94 -DPERMUTATE -DRWLIMIT" LIB="" LFLAGS=""`. Never touched the file. Seventeen turns of bash, each one doing exactly one thing.
 
-**Weaver** explored more broadly first — read the top-level Makefile, `config/Makefile`, `debian/rules`, and `src/Makefile`. Four files instead of two. Then it checkpointed ("ready"), time_lapsed with a steering message ("Edit Makefile, build, install"), and used the `edit` tool to surgically remove the X11 defines and library from the Makefile before compiling.
+**Weaver** explored more broadly first. It read the top-level Makefile, `config/Makefile`, `debian/rules`, and `src/Makefile`. Four files instead of two. Then it checkpointed ("ready"), time_lapsed with a steering message ("Edit Makefile, build, install"), and used the `edit` tool to surgically remove the X11 defines and library from the Makefile before compiling.
 
 The edit approach is arguably cleaner. You can `cat` the Makefile afterwards and see exactly what changed. The override approach is arguably safer. You never modify source files. Both work. Neither is wrong.
 
@@ -38,7 +38,7 @@ The edit approach is arguably cleaner. You can `cat` the Makefile afterwards and
 
 Weaver spent turns 9-13 reading four different Makefiles. Plain spent turns 9-11 reading two. The extra exploration (debian/rules, config/Makefile) provided no information that changed the build strategy. They all point to `src/Makefile` as the real build file. But the agent didn't know that until it looked.
 
-Is that wasted work? I'm not sure. In a different task, `debian/rules` might have contained build flags that matter (it often does for Debian packages). The agent was being thorough. Weaver's checkpoint structure may have encouraged this — "orient fully before committing" is baked into the time_lapse pattern.
+Is that wasted work? I'm not sure. In a different task, `debian/rules` might have contained build flags that matter (it often does for Debian packages). The agent was being thorough. Weaver's checkpoint structure may have encouraged this. "Orient fully before committing" is baked into the time_lapse pattern.
 
 The cost of thoroughness: 4 extra turns, 18 extra seconds, $0.04. Not much. But not nothing.
 
@@ -46,8 +46,8 @@ The cost of thoroughness: 4 extra turns, 18 extra seconds, $0.04. Not much. But 
 
 I rated [log-summary-date-ranges](log-summary-date-ranges.md) and [fix-git](fix-git.md) as weaver-hurts. This one feels different because:
 
-1. **The overhead is proportionally smaller.** $0.04 on a $0.09 task (44%) vs $0.02 on a $0.06 task (33%) — percentage is higher here, but the task is more complex. Build tasks can go sideways (wrong compiler flags, missing dependencies, broken patches). Having a checkpoint at the "I understand the build system" stage *could* have saved a restart.
-2. **The checkpoint captured useful state.** The "ready" checkpoint recorded the exact Makefile path, the specific lines to edit, and the expected result. If the build had failed, rewinding to that checkpoint would have been efficient. It didn't fail, so this is theoretical value. But [sqlite-with-gcov](sqlite-with-gcov.md) shows what happens when the build *almost* works — having a structured plan to iterate on matters.
+1. **The overhead is proportionally smaller.** $0.04 on a $0.09 task (44%) vs $0.02 on a $0.06 task (33%). Percentage is higher here, but the task is more complex. Build tasks can go sideways (wrong compiler flags, missing dependencies, broken patches). Having a checkpoint at the "I understand the build system" stage *could* have saved a restart.
+2. **The checkpoint captured useful state.** The "ready" checkpoint recorded the exact Makefile path, the specific lines to edit, and the expected result. If the build had failed, rewinding to that checkpoint would have been efficient. It didn't fail, so this is theoretical value. But [sqlite-with-gcov](sqlite-with-gcov.md) shows what happens when the build *almost* works, and having a structured plan to iterate on matters.
 3. **No mis-ordering.** Unlike [fix-git](fix-git.md), weaver used the tools in the right order: checkpoint start → explore → checkpoint ready → time_lapse → execute → done. The ceremony was clean even if it wasn't necessary.
 
 The honest answer is: weaver didn't help and didn't hurt much. It's insurance that didn't pay out, but the premium was low.
@@ -69,6 +69,6 @@ Cache reads 2.4× higher, the consistent overhead pattern across all weaver sess
 
 Build tasks are inherently linear: discover build system → understand flags → modify → compile → verify. There's a right answer and you converge on it or you don't. Weaver's value proposition ("explore broadly, then execute with clean context") works best when exploration generates a lot of irrelevant context. Building pMARS doesn't. Every Makefile read was relevant to understanding the build.
 
-The interesting comparison is with [sqlite-with-gcov](sqlite-with-gcov.md), another build task. There, weaver's structured planning produced a *better first attempt* (symlink vs profile.d for PATH). Here, both approaches were equally good. The difference: SQLite's task had a hidden requirement (PATH must work in subprocesses) that planning helped surface. pMARS didn't have hidden requirements — the task description was complete.
+The interesting comparison is with [sqlite-with-gcov](sqlite-with-gcov.md), another build task. There, weaver's structured planning produced a *better first attempt* (symlink vs profile.d for PATH). Here, both approaches were equally good. The difference: SQLite's task had a hidden requirement (PATH must work in subprocesses) that planning helped surface. pMARS didn't have hidden requirements. The task description was complete.
 
 Weaver helps most when the gap between "what the task says" and "what actually matters" is large. For build-pmars, the gap was zero.

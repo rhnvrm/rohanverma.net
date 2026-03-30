@@ -3,7 +3,7 @@ title = "sqlite-with-gcov"
 weight = 12
 template = "pages-page.html"
 date = 2026-03-29
-draft = true
+draft = false
 
 [extra]
 section_title = "Harness Engineering"
@@ -30,15 +30,15 @@ The task looks straightforward: extract tarball, configure with coverage flags, 
 
 **Plain** installed sqlite to `/app/sqlite/install/bin/` and set PATH via `/etc/profile.d/sqlite-gcov.sh` plus `/etc/environment`. Classic sysadmin approach. Problem: the verifier runs in a subprocess that doesn't source profile scripts. `sqlite3` command not found. All 3 tests fail.
 
-**Weaver** did something smarter. Its [time_lapse](../analysis/architecture.md) steering message included "symlink to /usr/local/bin" — and that's exactly what it did. `ln -sf /app/sqlite/bin/sqlite3 /usr/local/bin/sqlite3`. The verifier found the binary, 2 of 3 tests passed.
+**Weaver** did something smarter. Its [time_lapse](../analysis/architecture.md) steering message included "symlink to /usr/local/bin," and that's exactly what it did. `ln -sf /app/sqlite/bin/sqlite3 /usr/local/bin/sqlite3`. The verifier found the binary, 2 of 3 tests passed.
 
 The third test checked for `.gcda` files under `/app/sqlite/` after running the binary. Weaver built in `/tmp/sqlite-build/` instead of directly in `/app/sqlite/`, so the runtime coverage data landed in the wrong directory. A one-directory decision that turned a pass into a fail.
 
 ## The Interesting Part
 
-The plain agent spent 21 turns doing careful, methodical work. It even noticed `configure` was saying "Use gcov? no" and went back to find the `--gcov` flag — good recovery. But it never questioned whether `/etc/profile.d/` would work in the verifier's context. That's a hidden-spec problem, a variant of [the Day-50 problem](@/pages/harness-engineering/the-day-50-problem.md): you're building for a test harness you can't see.
+The plain agent spent 21 turns doing careful, methodical work. It even noticed `configure` was saying "Use gcov? no" and went back to find the `--gcov` flag, good recovery. But it never questioned whether `/etc/profile.d/` would work in the verifier's context. That's a hidden-spec problem, a variant of [the Day-50 problem](@/pages/harness-engineering/failure-modes/the-day-50-problem.md): you're building for a test harness you can't see.
 
-Weaver's checkpoint at T10 captured the essentials: gcc version, gcov path, tarball structure — and the time_lapse steering laid out the plan: "extract, configure with --coverage, make install to /app/sqlite, symlink to /usr/local/bin." That plan was *better* than plain's. The symlink approach just works, regardless of shell type.
+Weaver's checkpoint at T10 captured the essentials: gcc version, gcov path, tarball structure. The time_lapse steering laid out the plan: "extract, configure with --coverage, make install to /app/sqlite, symlink to /usr/local/bin." That plan was *better* than plain's. The symlink approach just works, regardless of shell type.
 
 But the same planning that got the PATH right also chose `/tmp/sqlite-build/` as the build directory. The checkpoint state tracked where to *install* but not where to *build*. One missing field in the structured state, one failed test.
 
@@ -63,4 +63,4 @@ Weaver's value here wasn't self-correction. No rewinds happened. It was **struct
 
 That said, structured planning has the same blind spots as any plan. You plan for what you foresee. The `.gcda` file location was a detail neither approach foresaw, because neither agent could read the verifier's test code.
 
-Compare with [fix-code-vulnerability](fix-code-vulnerability.md), where weaver's checkpoint-and-rewind actually pruned exploration context. Here there was nothing to prune — the task is linear. The value came from the planning side-effect, not the rewind mechanism.
+Compare with [fix-code-vulnerability](fix-code-vulnerability.md), where weaver's checkpoint-and-rewind actually pruned exploration context. Here there was nothing to prune. The task is linear. The value came from the planning side-effect, not the rewind mechanism.

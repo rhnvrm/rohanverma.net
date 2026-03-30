@@ -3,7 +3,7 @@ title = "configure-git-webserver"
 weight = 6
 template = "pages-page.html"
 date = 2026-03-29
-draft = true
+draft = false
 
 [extra]
 section_title = "Harness Engineering"
@@ -45,7 +45,7 @@ Then... the exact same setup the plain agent did. Create user, bare repo, hook, 
 
 2.6x the cost. The absolute difference is a dime. I've spent more on a vending machine coffee. But the ratio matters because it tells you something about when weaver is structurally counterproductive.
 
-The plain session was 31K cache reads. That's a tiny [context window](@/pages/harness-engineering/context-windows.md). The whole session fit comfortably. There was nothing to prune because there was nothing wasted. Weaver's rewind pruned 4 turns of environment exploration (~5K tokens) but the ceremony of doing so — two checkpoints, a time_lapse, a done call, plus the exploration itself — added 10 turns and 133K cache reads.
+The plain session was 31K cache reads. That's a tiny [context window](@/pages/harness-engineering/agents/context-windows.md). The whole session fit comfortably. There was nothing to prune because there was nothing wasted. Weaver's rewind pruned 4 turns of environment exploration (~5K tokens) but the ceremony of doing so (two checkpoints, a time_lapse, a done call, plus the exploration itself) added 10 turns and 133K cache reads.
 
 It's like hiring a moving crew to carry one box across the room.
 
@@ -53,13 +53,13 @@ It's like hiring a moving crew to carry one box across the room.
 
 This is the subtler question. The plain agent went straight to execution. The weaver agent explored first. Same model, same task, different behavior. Why?
 
-I think the checkpoint tool creates an "explore first" instinct. When you have a tool that says "save your findings for later," the model wants to *have* findings. So it explores to justify the checkpoint. On [fix-code-vulnerability](fix-code-vulnerability.md), that instinct was correct — there were real findings (which CWE? which functions?). Here, the "findings" were "it's Ubuntu and nginx is installed," which the model already assumed.
+I think the checkpoint tool creates an "explore first" instinct. When you have a tool that says "save your findings for later," the model wants to *have* findings. So it explores to justify the checkpoint. On [fix-code-vulnerability](fix-code-vulnerability.md), that instinct was correct. There were real findings (which CWE? which functions?). Here, the "findings" were "it's Ubuntu and nginx is installed," which the model already assumed.
 
 The exploration wasn't wrong, exactly. It was just unnecessary for a task the model could already solve from memory. The weaver prompt encourages a pattern that doesn't always fit.
 
 ## The lesson
 
-Weaver hurts on fast procedural tasks. When the agent already has the recipe — create repo, write hook, configure nginx, test — checkpoints and rewinds are pure overhead. There's nothing to explore, nothing to prune, nothing to correct.
+Weaver hurts on fast procedural tasks. When the agent already has the recipe (create repo, write hook, configure nginx, test), checkpoints and rewinds are pure overhead. There's nothing to explore, nothing to prune, nothing to correct.
 
 This is the opposite end of the spectrum from [fix-code-vulnerability](fix-code-vulnerability.md). There, the agent didn't know the answer and had to discover it; the checkpoint captured the discovery and the rewind cleaned up the search. Here, the agent knew the answer before it started; the checkpoint captured nothing useful and the rewind deleted nothing wasteful.
 

@@ -2,20 +2,22 @@
 # Run with `just <command>`
 
 port := "1111"
-host := "127.0.0.1"
+host := "192.168.69.113"
 logfile := "/tmp/zola-serve.log"
 
 # Check if we're inside a nix shell
+
+[private]
 _in-nix-shell := `command -v zola >/dev/null 2>&1 && echo "true" || echo "false"`
 
 # Run a command in nix shell if needed
 _run-in-nix *ARGS:
     #!/usr/bin/env bash
-    if [ "{{_in-nix-shell}}" = "true" ]; then
-        exec {{ARGS}}
+    if [ "{{ _in-nix-shell }}" = "true" ]; then
+        exec {{ ARGS }}
     else
         echo -e "\033[1;33m⚠️  Required tools not available, entering Nix shell...\033[0m"
-        exec nix --extra-experimental-features 'nix-command flakes' develop --command just {{ARGS}}
+        exec nix --extra-experimental-features 'nix-command flakes' develop --command just {{ ARGS }}
     fi
 
 # Default recipe to display help
@@ -34,17 +36,17 @@ serve-drafts:
 # Start dev server in background (with drafts)
 bg *FLAGS:
     #!/usr/bin/env bash
-    if curl -s -o /dev/null -w "%{http_code}" http://{{host}}:{{port}}/ 2>/dev/null | grep -q 200; then
-        echo -e "\033[0;33mServer already running on {{host}}:{{port}}, use 'just stop' first\033[0m"
+    if curl -s -o /dev/null -w "%{http_code}" http://{{ host }}:{{ port }}/ 2>/dev/null | grep -q 200; then
+        echo -e "\033[0;33mServer already running on {{ host }}:{{ port }}, use 'just stop' first\033[0m"
         exit 1
     fi
-    echo -e "\033[0;32mStarting background server on {{host}}:{{port}}...\033[0m"
-    just _run-in-nix _bg {{FLAGS}} &
+    echo -e "\033[0;32mStarting background server on {{ host }}:{{ port }}...\033[0m"
+    just _run-in-nix _bg {{ FLAGS }} &
     disown
     # Wait for server to be ready
     for i in $(seq 1 30); do
-        if curl -s -o /dev/null -w "%{http_code}" http://{{host}}:{{port}}/ 2>/dev/null | grep -q 200; then
-            echo -e "\033[0;32m✓ Server ready at http://{{host}}:{{port}}/\033[0m"
+        if curl -s -o /dev/null -w "%{http_code}" http://{{ host }}:{{ port }}/ 2>/dev/null | grep -q 200; then
+            echo -e "\033[0;32m✓ Server ready at http://{{ host }}:{{ port }}/\033[0m"
             exit 0
         fi
         sleep 2
@@ -55,7 +57,7 @@ bg *FLAGS:
 # Stop background dev server
 stop:
     #!/usr/bin/env bash
-    if pkill -f "zola serve.*--port {{port}}" 2>/dev/null; then
+    if pkill -f "zola serve.*--port {{ port }}" 2>/dev/null; then
         sleep 1
         echo -e "\033[0;32m✓ Server stopped\033[0m"
     elif pkill -f "zola.*serve" 2>/dev/null; then
@@ -68,13 +70,13 @@ stop:
 # Restart background dev server
 restart *FLAGS:
     just stop
-    just bg {{FLAGS}}
+    just bg {{ FLAGS }}
 
 # Show dev server logs
 logs:
     #!/usr/bin/env bash
-    if [ -f "{{logfile}}" ]; then
-        tail -30 {{logfile}}
+    if [ -f "{{ logfile }}" ]; then
+        tail -30 {{ logfile }}
     else
         echo "No log file found"
     fi
@@ -82,9 +84,9 @@ logs:
 # Check if dev server is running
 status:
     #!/usr/bin/env bash
-    HTTP=$(curl -s -o /dev/null -w "%{http_code}" http://{{host}}:{{port}}/ 2>/dev/null)
+    HTTP=$(curl -s -o /dev/null -w "%{http_code}" http://{{ host }}:{{ port }}/ 2>/dev/null)
     if [ "$HTTP" = "200" ]; then
-        echo -e "\033[0;32m● Server running at http://{{host}}:{{port}}/\033[0m"
+        echo -e "\033[0;32m● Server running at http://{{ host }}:{{ port }}/\033[0m"
     else
         echo -e "\033[0;31m○ Server not running\033[0m"
     fi
@@ -96,7 +98,7 @@ _bg *FLAGS:
         echo -e "\033[0;31mNo config.toml found.\033[0m"
         exit 1
     fi
-    zola serve --drafts --interface {{host}} --port {{port}} {{FLAGS}} >> {{logfile}} 2>&1
+    zola serve --drafts --interface {{ host }} --port {{ port }} {{ FLAGS }} >> {{ logfile }} 2>&1
 
 # Internal: Zola serve (when in nix shell)
 _serve:
@@ -106,7 +108,7 @@ _serve:
         echo -e "\033[0;31mNo config.toml found. Cannot start server.\033[0m"
         exit 1
     fi
-    zola serve --interface {{host}} --port {{port}}
+    zola serve --interface {{ host }} --port {{ port }}
 
 # Internal: Zola serve with drafts (when in nix shell)
 _serve-drafts:
@@ -116,7 +118,7 @@ _serve-drafts:
         echo -e "\033[0;31mNo config.toml found. Cannot start server.\033[0m"
         exit 1
     fi
-    zola serve --drafts --interface {{host}} --port {{port}}
+    zola serve --drafts --interface {{ host }} --port {{ port }}
 
 # Build Zola site
 build:

@@ -3,7 +3,7 @@ title = "password-recovery"
 weight = 14
 template = "pages-page.html"
 date = 2026-03-29
-draft = true
+draft = false
 
 [extra]
 section_title = "Harness Engineering"
@@ -12,7 +12,7 @@ section_title = "Harness Engineering"
 
 This one is my favorite example of weaver helping without doing anything flashy.
 
-Nobody found a magical hidden tool. Nobody invented a novel forensic method. Both variants eventually recovered the same password from the same evidence. The difference is that one session kept reopening the search space, while the other decided — correctly — that it already knew enough.
+Nobody found a magical hidden tool. Nobody invented a novel forensic method. Both variants eventually recovered the same password from the same evidence. The difference is that one session kept reopening the search space, while the other decided, correctly, that it already knew enough.
 
 That distinction matters more than it sounds.
 
@@ -55,7 +55,7 @@ So it did what competent forensic tooling invites you to do: `unzip`, `fsstat`, 
 
 I don't mean that as an insult. This is exactly what a capable model does when it senses structure and refuses to stop too early.
 
-But eventually the answer came from something much smaller than the search space it had constructed. The session found one fragment after `PASSWORD=` — `8XDP5Q2RT9Z` — and another fragment near the ZIP central directory — `K7VB3BV4WW54`. Put together, they formed a 23-character candidate that matched the prompt constraints.
+But eventually the answer came from something much smaller than the search space it had constructed. The session found one fragment after `PASSWORD=` (`8XDP5Q2RT9Z`) and another fragment near the ZIP central directory (`K7VB3BV4WW54`). Put together, they formed a 23-character candidate that matched the prompt constraints.
 
 Then it did one thing I really liked: it validated the reconstruction against the ZIP CRC-32. That's the moment the session stopped guessing and started *knowing*.
 
@@ -68,7 +68,7 @@ It still explored a little. It checked whether the blob was ZIP-like, examined o
 
 The difference is that it didn't keep demanding a total theory of the artifact before acting.
 
-That's what I mean when I say [the split is simple](@/pages/harness-engineering/the-boring-stuff.md): the agent does the boring stuff, I do the hard stuff. Here the hard part wasn't more tooling. It was deciding when the evidence had crossed the threshold from suggestive to sufficient.
+That's what I mean when I say [the split is simple](@/pages/harness-engineering/thesis/the-boring-stuff.md): the agent does the boring stuff, I do the hard stuff. Here the hard part wasn't more tooling. It was deciding when the evidence had crossed the threshold from suggestive to sufficient.
 
 Weaver crossed that threshold earlier.
 
@@ -79,7 +79,7 @@ Plain pi kept reopening the case even after the case was basically solved. Weave
 
 That's a subtle but important kind of value.
 
-In forensic-feeling tasks, there's always a temptation to keep digging because the artifact hints at one more layer of hidden structure. Sometimes that's necessary. Sometimes it's just [tuition](@/pages/harness-engineering/the-economics.md).
+In forensic-feeling tasks, there's always a temptation to keep digging because the artifact hints at one more layer of hidden structure. Sometimes that's necessary. Sometimes it's just [tuition](@/pages/harness-engineering/economics/the-economics.md).
 
 Weaver paid less tuition because it had a tighter loop between evidence and completion.
 
@@ -100,4 +100,4 @@ This task sits in the same family as [db-wal-recovery](@/pages/harness-engineeri
 
 That's the weaver pattern I trust most. Not synthetic brilliance. Just a better loop around "what do I already know, and is it enough to ship?"
 
-The value isn't in any single agent session. It's in [the loop](@/pages/harness-engineering/the-loop.md). On this task, the loop shortened the distance between evidence and conviction.
+The value isn't in any single agent session. It's in [the loop](@/pages/harness-engineering/thesis/the-loop.md). On this task, the loop shortened the distance between evidence and conviction.

@@ -3,7 +3,7 @@ title = "chess-best-move"
 weight = 5
 template = "pages-page.html"
 date = 2026-03-29
-draft = true
+draft = false
 
 [extra]
 section_title = "Harness Engineering"
@@ -38,9 +38,9 @@ Neither agent ever wrote to `/app/move.txt`. They both ran out of time still sea
 
 Here's what's interesting about the weaver session: the agent set a "start" checkpoint but **never called time_lapse or done**. That's unique among my five tasks. In [fix-git](fix-git.md), [build-pmars](build-pmars.md), and [log-summary-date-ranges](log-summary-date-ranges.md), the agent used the full checkpoint→time_lapse→done sequence. In [sqlite-with-gcov](sqlite-with-gcov.md), it used all three. Here: just one checkpoint, then flailing.
 
-I think this is actually a signal. The agent never felt confident enough to declare "orientation complete" and fast-forward. It never reached a "ready" state because it never *was* ready — it couldn't pin down the board position. The incomplete weaver ceremony is the model telling you "I don't know what I'm doing."
+I think this is actually a signal. The agent never felt confident enough to declare "orientation complete" and fast-forward. It never reached a "ready" state because it never *was* ready. It couldn't pin down the board position. The incomplete weaver ceremony is the model telling you "I don't know what I'm doing."
 
-That could be a useful heuristic: if the agent has been running for N minutes and hasn't called time_lapse yet, something is fundamentally wrong. Maybe that's when you intervene: kill the session, provide the FEN manually, or switch to a vision-specialized [model tier](@/pages/harness-engineering/model-tiers.md).
+That could be a useful heuristic: if the agent has been running for N minutes and hasn't called time_lapse yet, something is fundamentally wrong. Maybe that's when you intervene: kill the session, provide the FEN manually, or switch to a vision-specialized [model tier](@/pages/harness-engineering/agents/model-tiers.md).
 
 ## Token Economics
 
@@ -53,13 +53,13 @@ That could be a useful heuristic: if the agent has been running for N minutes an
 | Total cost | $0.51 | $0.80 |
 | Elapsed | 901s (timeout) | 901s (timeout) |
 
-Weaver spent 57% more reaching the same timeout. Those extra output tokens are the model reasoning at length about FEN variations — generating more text didn't make the guesses more accurate.
+Weaver spent 57% more reaching the same timeout. Those extra output tokens are the model reasoning at length about FEN variations. Generating more text didn't make the guesses more accurate.
 
 ## What this taught me
 
-**Weaver can't fix capability gaps.** If the model can't see the chess pieces correctly, no amount of structured planning or context management helps. Checkpoint/time_lapse is a *strategy* tool — it helps when the strategy is wrong. Here the strategy was fine (use Stockfish). The perception was wrong.
+**Weaver can't fix capability gaps.** If the model can't see the chess pieces correctly, no amount of structured planning or context management helps. Checkpoint/time_lapse is a *strategy* tool. It helps when the strategy is wrong. Here the strategy was fine (use Stockfish). The perception was wrong.
 
-This is the hardest category for any self-correction framework: tasks where the agent doesn't know what it doesn't know. Both agents thought their FEN interpretations were plausible. They had no reliable way to verify a FEN against the image short of "does the Stockfish eval look reasonable?" — and reasonable is subjective.
+This is the hardest category for any self-correction framework: tasks where the agent doesn't know what it doesn't know. Both agents thought their FEN interpretations were plausible. They had no reliable way to verify a FEN against the image short of "does the Stockfish eval look reasonable?" And reasonable is subjective.
 
 The [polyglot-c-py](polyglot-c-py.md) page shows weaver helping when the agent *recognizes* it's stuck (rewind from a broken rewrite). Chess-best-move shows what happens when the agent can't even tell it's wrong. Self-correction requires self-awareness, and vision-to-symbolic-representation failures are invisible to the model.
 

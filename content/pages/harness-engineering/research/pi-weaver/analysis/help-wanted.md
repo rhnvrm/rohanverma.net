@@ -3,7 +3,7 @@ title = "Help Wanted"
 weight = 7
 template = "pages-page.html"
 date = 2026-03-29
-draft = true
+draft = false
 
 [extra]
 section_title = "pi-weaver"

@@ -4,7 +4,7 @@ description = "Teaching agents to undo — checkpoint, rewind, retry."
 sort_by = "weight"
 template = "pages-section.html"
 page_template = "pages-page.html"
-draft = true
+draft = false
 
 [extra]
 section_title = "pi-weaver"
@@ -51,14 +51,14 @@ That is the whole thesis of this section:
 
 ## The pages
 
-- [The Idea](@/pages/harness-engineering/research/pi-weaver/analysis/the-idea.md) — antirez's question, Dota 2 naming, the experiment.
-- [The Architecture](@/pages/harness-engineering/research/pi-weaver/analysis/architecture.md) — three iterations to get context-event pruning right.
-- [The Cache Economics](@/pages/harness-engineering/research/pi-weaver/analysis/economics.md) — where the money actually went, and why I stopped thinking of rewind cost as overhead.
-- [When to Rewind](@/pages/harness-engineering/research/pi-weaver/analysis/time-lapse-patterns.md) — all 17 `time_lapse` calls, and the difference between a clean reset and a grind spiral.
-- [The Task Spectrum](@/pages/harness-engineering/research/pi-weaver/analysis/task-taxonomy.md) — the kinds of tasks that reward self-correction, and the ones that really don't.
-- [The Decision Framework](@/pages/harness-engineering/research/pi-weaver/analysis/when-weaver-helps.md) — the simple rule I would use if I had to decide, task by task, whether to turn weaver on.
-- [The Session](@/pages/harness-engineering/research/pi-weaver/analysis/the-session.md) — the 50-hour, $220 session that built pi-weaver. Good planning beats good recovery.
-- [Help Wanted](@/pages/harness-engineering/research/pi-weaver/analysis/help-wanted.md) — we ran 15 of 89 tasks. Want to run the rest?
+- [The Idea](@/pages/harness-engineering/research/pi-weaver/analysis/the-idea.md): antirez's question, Dota 2 naming, the experiment.
+- [The Architecture](@/pages/harness-engineering/research/pi-weaver/analysis/architecture.md): three iterations to get context-event pruning right.
+- [The Cache Economics](@/pages/harness-engineering/research/pi-weaver/analysis/economics.md): where the money actually went, and why I stopped thinking of rewind cost as overhead.
+- [When to Rewind](@/pages/harness-engineering/research/pi-weaver/analysis/time-lapse-patterns.md): all 17 `time_lapse` calls, and the difference between a clean reset and a grind spiral.
+- [The Task Spectrum](@/pages/harness-engineering/research/pi-weaver/analysis/task-taxonomy.md): the kinds of tasks that reward self-correction, and the ones that really don't.
+- [The Decision Framework](@/pages/harness-engineering/research/pi-weaver/analysis/when-weaver-helps.md): the simple rule I would use if I had to decide, task by task, whether to turn weaver on.
+- [The Session](@/pages/harness-engineering/research/pi-weaver/analysis/the-session.md): the 50-hour, $220 session that built pi-weaver. Good planning beats good recovery.
+- [Help Wanted](@/pages/harness-engineering/research/pi-weaver/analysis/help-wanted.md): we ran 15 of 89 tasks. Want to run the rest?
 
 ## The task pages
 

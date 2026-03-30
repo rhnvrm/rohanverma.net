@@ -3,7 +3,7 @@ title = "The Decision Framework"
 weight = 6
 template = "pages-page.html"
 date = 2026-03-29
-draft = true
+draft = false
 
 [extra]
 section_title = "Harness Engineering"
@@ -72,7 +72,7 @@ Some tasks really do get easier if the model gets one orientation pass before ac
 ### 3. The task is branchy in the wrong way
 This is the real hazard class.
 
-[qemu-alpine-ssh](@/pages/harness-engineering/research/pi-weaver/tasks/qemu-alpine-ssh.md): the model learned true things — no TTY for interact, OpenSSH absent from live image, banner exchange hanging, DNS delay, tmux escape sequences. Read as bullet points, they sound like progress. In the run, they were progress-shaped expenditure.
+[qemu-alpine-ssh](@/pages/harness-engineering/research/pi-weaver/tasks/qemu-alpine-ssh.md): the model learned true things: no TTY for interact, OpenSSH absent from live image, banner exchange hanging, DNS delay, tmux escape sequences. Read as bullet points, they sound like progress. In the run, they were progress-shaped expenditure.
 
 Each rewind made the next attempt sound more justified. The search space never actually collapsed.
 

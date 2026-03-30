@@ -3,7 +3,7 @@ title = "log-summary-date-ranges"
 weight = 9
 template = "pages-page.html"
 date = 2026-03-29
-draft = true
+draft = false
 
 [extra]
 section_title = "Harness Engineering"
@@ -36,11 +36,11 @@ Nobody rewound. Nobody needed to. The problem is: parse filenames for dates, cou
 
 ## Why This Matters
 
-Every framework has a tax. Weaver's tax is the checkpoint/time_lapse/done ceremony — roughly 3-5 tool calls of overhead per task. On a task that takes 5 tool calls total, that's a 60-100% increase in overhead. On a task that takes 50, it's 6-10% and probably invisible.
+Every framework has a tax. Weaver's tax is the checkpoint/time_lapse/done ceremony, roughly 3-5 tool calls of overhead per task. On a task that takes 5 tool calls total, that's a 60-100% increase in overhead. On a task that takes 50, it's 6-10% and probably invisible.
 
 The question isn't whether this task is the right one for weaver. Obviously it isn't. The question is: **can the agent learn when to skip the ceremony?** Right now, it can't. The weaver prompt tells it to checkpoint early and time_lapse after orientation. So it does, even when orientation takes one bash call.
 
-Compare with [chess-best-move](chess-best-move.md), where the agent actually *under-used* weaver — only 1 checkpoint, no time_lapse. The model has some sense of when it's stuck vs. cruising, but the threshold is off. It does ceremony on easy tasks and skips it on hard ones.
+Compare with [chess-best-move](chess-best-move.md), where the agent actually *under-used* weaver, with only 1 checkpoint and no time_lapse. The model has some sense of when it's stuck vs. cruising, but the threshold is off. It does ceremony on easy tasks and skips it on hard ones.
 
 ## Token Economics
 
@@ -57,6 +57,6 @@ Compare with [chess-best-move](chess-best-move.md), where the agent actually *un
 
 ## What this taught me
 
-The tax is real but small in absolute terms — two cents, eleven seconds. If you told me "pay $0.02 extra for every task so that hard tasks get self-correction," I'd take that deal. The problem is when the tax is all you get.
+The tax is real but small in absolute terms: two cents, eleven seconds. If you told me "pay $0.02 extra for every task so that hard tasks get self-correction," I'd take that deal. The problem is when the tax is all you get.
 
 This task is the "hello world" of the evaluation: well-specified input, deterministic output, one obvious approach. Weaver's bet is that across a portfolio of tasks, the wins on hard problems ([fix-code-vulnerability](fix-code-vulnerability.md) saved $0.08, [polyglot-c-py](polyglot-c-py.md) enabled a correct rewind) outweigh the losses on easy ones. This page is what a loss looks like. It's boring. That's the point.
