@@ -17,13 +17,13 @@ You can't load everything into one [context window](@/pages/harness-engineering/
 
 [Pi](@/pages/harness-engineering/pi.md) loads skills based on trigger keywords when a task matches. The agent doesn't get the full git skill until it's doing git work. The mesh skill stays unloaded until someone mentions coordination. This is demand-driven, not front-loaded.
 
-The file structure supports this. `SKILL.md` is always loaded — the overview. An optional `references/` directory holds deeper detail, loaded on demand when the agent needs specifics. The standard skill is 100-250 lines. The largest (q-tasks) is about 250 lines with a detailed CLI reference. Most are much shorter. You can browse the [skills directory on GitHub](https://github.com/oddship/bosun/tree/main/skills).
+The file structure supports this. `SKILL.md` is always loaded (the overview). An optional `references/` directory holds deeper detail, loaded on demand when the agent needs specifics. The standard skill is 100-250 lines. The largest (q-tasks) is about 250 lines with a detailed CLI reference. Most are much shorter. You can browse the [skills directory on GitHub](https://github.com/oddship/bosun/tree/main/skills).
 
 ---
 
 Progressive disclosure combined with an orchestrator spawning specialist agents works better than trying to front-load everything. The orchestrator agent loads the planning skills. The coding agent loads the git and project skills. The review agent loads the editorial skills. Each agent's context is focused on what it's doing.
 
-This also connects to [pi-weaver](@/pages/harness-engineering/research/pi-weaver/_index.md). When the model checkpoints and rewinds, the context after the rewind contains only what the model decided to carry forward — a form of progressive disclosure for the model's own work history. The pattern applies at multiple levels: what skills to load, what context to keep, what to discard.
+This also connects to [pi-weaver](@/pages/harness-engineering/research/pi-weaver/_index.md). When the model checkpoints and rewinds, the context after the rewind contains only what the model decided to carry forward, a form of progressive disclosure for the model's own work history. The pattern applies at multiple levels: what skills to load, what context to keep, what to discard.
 
 ---
 

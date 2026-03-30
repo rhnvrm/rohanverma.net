@@ -1,6 +1,6 @@
 +++
 title = "Harness Engineering"
-description = "On building the infrastructure around AI coding agents — the boring stuff that makes the interesting stuff possible."
+description = "On building the infrastructure around AI coding agents: the boring stuff that makes the interesting stuff possible."
 sort_by = "weight"
 template = "pages-section.html"
 page_template = "pages-page.html"
@@ -15,11 +15,11 @@ The term seems to have emerged naturally among software engineers running into t
 
 That matters because agents are non-deterministic slot machines. Sometimes they are brilliant. Sometimes they confidently wander off. Sometimes the exact same task works on the second try for no satisfying reason. The harness is the safety net. It is the sandbox, the review loop, the skill system, the session history, the checkpoints, the task structure, the coordination layer, and all the boring glue that turns inconsistent raw capability into something I can actually trust in practice.
 
-These pages started as blog posts. Then they got too long. Then I realized I did not want "finished" posts anyway — I wanted living pages I could keep updating as the system changed and as my opinions sharpened. So this section is half field notes, half wiki: a map of what I have built, what I think is working, and where I think most of the leverage actually is.
+These pages started as blog posts. Then they got too long. Then I realized I did not want "finished" posts anyway. I wanted living pages I could keep updating as the system changed and as my opinions sharpened. So this section is half field notes, half wiki: a map of what I have built, what I think is working, and where I think most of the leverage actually is.
 
-My thesis is simple: the agent handles the typing, I handle the thinking. Not because the model is useless, but because the highest-leverage setup I have found is one where the model does the fast mechanical work and the harness keeps that work inside a loop that improves over time. By "the loop," I mean the compounding cycle where each skill, workflow, guardrail, and automation makes future sessions better — not just this session, but every session after it, including the ones run by other agents.
+My thesis is simple: the agent handles the typing, I handle the thinking. Not because the model is useless, but because the highest-leverage setup I have found is one where the model does the fast mechanical work and the harness keeps that work inside a loop that improves over time. By "the loop," I mean the compounding cycle where each skill, workflow, guardrail, and automation makes future sessions better. Not just this session, but every session after it, including the ones run by other agents.
 
-What follows is an orientation to that loop. The first section explains the core split between agent labor and human judgment. The next sections cover the system itself: sandboxing, skills, coordination, context management, and the design choices that make the setup reliable. After that come the feedback loops — session history, handoffs, automation, evaluation, and the mechanisms that let the harness learn from repeated use. And finally there is the surrounding context: economics, tradeoffs, failure modes, and where I think this approach is heading.
+What follows is an orientation to that loop. The first section explains the core split between agent labor and human judgment. The next sections cover the system itself: sandboxing, skills, coordination, context management, and the design choices that make the setup reliable. After that come the feedback loops: session history, handoffs, automation, evaluation, and the mechanisms that let the harness learn from repeated use. And finally there is the surrounding context: economics, tradeoffs, failure modes, and where I think this approach is heading.
 
 ![bell curve](/images/pages/bell-curve.webp)
 

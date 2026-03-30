@@ -9,7 +9,7 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-The loop is the self-improving flywheel in my agent harness.
+The loop, a mental model I use to reason about this process, is the self-improving flywheel in my agent harness.
 
 A session does some work. That session leaves artifacts behind: the raw JSONL transcript, a summary, a handoff, a chronicle entry, task updates, maybe a skill tweak or a workflow change. Those artifacts get indexed. Future agents search them. Future sessions start with more context. Better context produces better sessions, which produce better artifacts, which improve the next round again.
 
@@ -33,7 +33,7 @@ That sequence is important because it explains what I am actually building. This
 
 The earliest useful thing in that stack was not autonomous coding. It was session management.
 
-Once you give an agent a deterministic workflow — clone repos here, create worktrees here, store project files here, load the environment this way, resume work from these artifacts — the number of sessions you can run starts to increase. At first that feels great. Then it becomes a problem. You cannot keep all of it in your head. You need to know what happened, what is pending, what broke, what was learned, and which conventions should change next time.
+Once you give an agent a deterministic workflow (clone repos here, create worktrees here, store project files here, load the environment this way, resume work from these artifacts) the number of sessions you can run starts to increase. At first that feels great. Then it becomes a problem. You cannot keep all of it in your head. You need to know what happened, what is pending, what broke, what was learned, and which conventions should change next time.
 
 That is why the first thing I automated was session management.
 

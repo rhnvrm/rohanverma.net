@@ -9,7 +9,7 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-This is where harness engineering shines: tasks that are not fully deterministic, but teachable. Things the agent can learn from a [skill](@/pages/harness-engineering/skills.md), recover from with the right tools, or figure out given enough context. Not trivial automation — but not hard judgment either. The boring middle.
+This is where harness engineering shines: tasks that are not fully deterministic, but teachable. Things the agent can learn from a [skill](@/pages/harness-engineering/skills.md), recover from with the right tools, or figure out given enough context. Not trivial automation, but not hard judgment either. The boring middle.
 
 ---
 
@@ -17,11 +17,11 @@ The best example is convention enforcement. Early on, repos kept getting cloned 
 
 The boring part: following the convention, every time, without thinking about it. The hard part: recognizing the pattern after three failures. Deciding to encode it. Writing a convention clear enough that an LLM interprets it correctly.
 
-The harness enforces this through skill loading. When the agent runs a bash command with `git` in it, Pi's keyword matching triggers the git skill. The skill says "repos go here." The agent follows it. You could even enforce this more strictly — require that the git skill be loaded in context before any git bash call is allowed. That's a reasonable TODO.
+The harness enforces this through skill loading. When the agent runs a bash command with `git` in it, Pi's keyword matching triggers the git skill. The skill says "repos go here." The agent follows it. You could even enforce this more strictly: require that the git skill be loaded in context before any git bash call is allowed. That's a reasonable TODO.
 
 ---
 
-Same pattern with code verification. I once spawned two agents against git history and the codebase to verify claims in a wiki document. They found wrong dates, inflated numbers, and a timeline that didn't match the commit log. Reported back through [inter-agent messaging](@/pages/harness-engineering/coordination.md) while I kept working on something else. This started because we'd caught a NATS client bug in the zero-agent repo through exactly this kind of cross-referencing — checking what the code actually said against what the docs claimed.
+Same pattern with code verification. I once spawned two agents against git history and the codebase to verify claims in a wiki document. They found wrong dates, inflated numbers, and a timeline that didn't match the commit log. Reported back through [inter-agent messaging](@/pages/harness-engineering/coordination.md) while I kept working on something else. This started because we'd caught a NATS client bug in the zero-agent repo through exactly this kind of cross-referencing: checking what the code actually said against what the docs claimed.
 
 The boring part: digging through git history, cross-referencing commit dates, counting things. The hard part: deciding which claims needed verification and knowing what to do with the discrepancies.
 

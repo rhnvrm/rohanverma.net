@@ -17,7 +17,7 @@ Yes, Nix is notorious for being hard to debug by hand. The error messages are cr
 
 I don't want agents improvising their development environment. I don't want one session to see Bun 1.x, another to see some random global Node install, a third to discover that Vulkan headers exist on this machine but not that one. Humans can muddle through that. Agents just burn tokens on it.
 
-The cleanest example was a GPU build failure. I was trying to get `node-llama-cpp` compiling with Vulkan support. The build failed in CMake's `FindVulkan` step — no headers, no loader libraries. On a normal machine there are ten bad fixes: install a distro package and hope, export `VULKAN_SDK` in your shell profile, paste a Stack Overflow incantation, get it working locally and forget what you changed.
+The cleanest example was a GPU build failure. I was trying to get `node-llama-cpp` compiling with Vulkan support. The build failed in CMake's `FindVulkan` step: no headers, no loader libraries. On a normal machine there are ten bad fixes: install a distro package and hope, export `VULKAN_SDK` in your shell profile, paste a Stack Overflow incantation, get it working locally and forget what you changed.
 
 The fix happened where it should: in `flake.nix`. Added `pkgs.vulkan-headers` and `pkgs.vulkan-loader`, reloaded the shell, verified the Vulkan paths appeared in `NIX_CFLAGS_COMPILE`. Done. Every future session inherited it.
 
@@ -33,4 +33,4 @@ Nix doesn't eliminate every environment bug, but it turns them into explicit, co
 
 Nix pairs naturally with the rest of the harness. Bubblewrap constrains where the agent can go. Nix constrains what it finds there. Together they make `just start` feel less like "launch an AI into my laptop" and more like "start a repeatable process with known tools and known boundaries."
 
-My [nix-system repo](https://github.com/rhnvrm/nix-system) manages the whole machine config the same way — NixOS for the base, home-manager for dotfiles, flakes for per-project dev shells. The agent development environment is just one more flake in a fully declarative stack. Boring is a feature.
+My [nix-system repo](https://github.com/rhnvrm/nix-system) manages the whole machine config the same way: NixOS for the base, home-manager for dotfiles, flakes for per-project dev shells. The agent development environment is just one more flake in a fully declarative stack. Boring is a feature.
