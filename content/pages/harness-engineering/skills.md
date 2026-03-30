@@ -9,43 +9,34 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-Skills are documentation. We've had READMEs and runbooks forever. The difference is that an LLM doesn't just load a skill — it interprets it with judgment. When the git skill says "repos go in `workspace/code/{server}/{org}/{repo}`", the agent understands the convention and applies it to repos it's never seen. That's not config. That's an agent reading documentation the way a new team member would.
+Skills are documentation that agents read with judgment. We've had READMEs and runbooks forever. The difference is that an LLM doesn't just parse a skill — it interprets it. When the git skill says "repos go in `workspace/code/{server}/{org}/{repo}`", the agent understands the convention and applies it to repos it's never seen. That's an [agent reading documentation](@/pages/harness-engineering/agent-as-reader.md) the way a new team member would.
 
 ---
 
-<!--Umm which pi skills are we talking about here? from which repo-->
-There are 38 skills in `.pi/skills/`. Pi loads them based on trigger keywords when a task matches. They're markdown files, not tied to any specific harness. At 38 skills and 6,800 lines, you can't load everything into one context. Progressive disclosure isn't a nicety — it's a [context window](@/pages/harness-engineering/context-windows.md) constraint. A skill that dumps everything upfront wastes tokens. One that reveals details based on what the agent is actually doing stays useful longer.
-<!--This needs to be rewritten smells of AI, emdash and nicety then saying stuff-->
-Three kinds:
-<!--The most interesting one being the meta skills that help bootstrap-->
+There are 38 skills in the [bosun skills directory](https://github.com/oddship/bosun/tree/main/skills) and the packages that ship with it. Pi loads them based on trigger keywords when a task matches. They're markdown files. At 38 skills, you can't load everything into one [context window](@/pages/harness-engineering/context-windows.md). Skills load on demand and reveal details progressively — a skill that dumps everything upfront wastes tokens. See [progressive disclosure](@/pages/harness-engineering/progressive-disclosure.md).
+
+Three kinds. The most interesting are the meta-skills:
+
 - *General-purpose* (21 skills): git, GitHub, context management, session analysis, mesh [coordination](@/pages/harness-engineering/coordination.md), browser automation, background processes, tmux orchestration.
-- *Project-specific* (12 skills): conventions for specific codebases. Worktree paths, build commands, deployment pipelines, debugging playbooks. Tribal knowledge — the kind of thing that lives in Slack threads and gets lost.
-- *[Meta-skills](@/pages/harness-engineering/meta-skills.md)* (5 skills): skills for creating skills, agents, extensions, commands, tools. The multiplier.
+- *Project-specific* (12 skills): conventions for specific codebases. Worktree paths, build commands, deployment pipelines, debugging playbooks. Tribal knowledge that lives in Slack threads and gets lost.
+- *[Meta-skills](@/pages/harness-engineering/meta-skills.md)* (5 skills): skills for creating skills, agents, extensions, commands, tools. The multiplier. These bootstrap the harness itself.
 
-12 of the 38 show multiple commits of active refinement. These aren't write-once-forget. They evolve as I learn what the agent gets wrong.
-
-<!--Ideally you just ask the agent to manage the skills-->
----
-
-<!--Thats what you would think, they are a standard but people are not following that standard, this is similar to when MCP was introduced and skills are still in a flux-->
-Skills are portable and maintainable. When Pi updates, I ask the agent to read the changelog, diff it against existing skills, and suggest updates. That's cheaper than monitoring unversioned docs from a closed-source tool.
-
-Skills compose. Git + deployment conventions + infrastructure knowledge = the agent knows how to branch, push, trigger CI, and deploy correctly. No trial and error on the mechanical parts. I still make the decisions about *what* to deploy and *when* — [the boring stuff](@/pages/harness-engineering/the-boring-stuff.md) pattern.
-<!--Weaker models might still not follow instructions or do them well, so you can include some scripts with skills that can be used to validate or ship tools via clis for the agent like the Q skills do-->
----
-
-A new engineer loading a project skill immediately knows the worktree path, build command, and why the dev server needs to run in tmux. No Slack archaeology required. A skill compresses weeks of learning into minutes.
-
-<!--Give a gist on why someone should click and read that-->
-But skills don't solve everything. That's [the Day-50 problem](@/pages/harness-engineering/the-day-50-problem.md).
+12 of the 38 show multiple commits of active refinement. These aren't write-once-forget. They evolve as I learn what the agent gets wrong. Ideally you just ask the agent to manage them — and with meta-skills, it can.
 
 ---
 
-<!-- I did not understand this-->
-The context management skill was a case study in how skills evolve through friction. The original plan was to document a `/pickup` command. The post-mortem analysis revealed that five commands were broken (stored in the wrong directory), the specification wasn't being followed, and there was a 17x performance inefficiency. The skill that emerged was fundamentally different from the one that was planned.
-<!--I rarely use pickup/handoff-->
+Skills are still in flux as a concept. They're not an industry standard yet — similar to when MCP was first introduced. Different tools handle them differently. Pi's skill format is portable markdown, but there's no guarantee another harness reads them the same way.
+
+Weaker models might not follow skill instructions reliably. For those cases, you can ship CLI tools alongside skills that enforce behavior programmatically. The [Q task agent](@/pages/harness-engineering/q-the-task-agent.md) does this — `qt`, `qp`, `qr` are real CLIs that the skill references, so even a lite model can execute task operations correctly.
+
+Skills compose. Git + deployment conventions + infrastructure knowledge = the agent knows how to branch, push, trigger CI, and deploy correctly. No trial and error on the mechanical parts. I still make the decisions about *what* to deploy and *when*. [The boring stuff](@/pages/harness-engineering/the-boring-stuff.md) pattern.
+
+---
+
+A new engineer loading a project skill immediately knows the worktree path, build command, and why the dev server needs to run in tmux. A skill compresses weeks of learning into minutes. But skills don't solve everything — they encode what I *know* to write down. What I don't know is [the Day-50 problem](@/pages/harness-engineering/the-day-50-problem.md).
+
+The context management skill was a case study in how skills evolve through friction. The original plan was to document a `/pickup` command. The post-mortem revealed that five commands were broken, the specification wasn't being followed, and there was a 17x performance inefficiency. The skill that emerged was fundamentally different from what was planned.
+
 > I analyzed what it would actually take to implement the documented `/pickup` command. The numbers were shocking. To list documents, a subagent would need 17-27 tool calls for what should be a single operation. The architecture was creating a 17-27x inefficiency.
 >
 > — *Chronicle: Context Management Skill Implementation, Jan 2026*
-
-<!--Maybe we should look at our session histories and see how many times and where skills have been invoked and dig in for more nuggets here-->

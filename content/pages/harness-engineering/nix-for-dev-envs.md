@@ -9,48 +9,28 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-<!--Thats not the first thing I would say though-->
-<!--Nix is notorious for being hard to debug by hand-->
-Nix is one of those tools that's easiest to appreciate when something breaks in a stupid way.
+Why not Docker? Docker works. I use it for eval tasks and CI. But for the development environment that agents live in every day, I find Nix + [bubblewrap](@/pages/harness-engineering/bubblewrap.md) faster and more composable. Docker means a VM or daemon, image layers, container startup time. Nix gives you a shell with exactly the tools you declared, and bwrap wraps it in filesystem isolation. No daemon, native speed.
 
-<!--Yeah this is good, do it once and forget-->
-When it works, it's boring. That's the whole point.
-<!--Yeah then but docker also solves that-->
-I don't want agents improvising their development environment. I don't want one session to see Bun 1.x, another to see some random global Node install, a third to discover that Vulkan headers exist on this machine but not that one. Humans can muddle through that. Agents mostly just burn tokens on it.
-
-A good harness should make the environment the least interesting part of the story.
+Yes, Nix is notorious for being hard to debug by hand. The error messages are cryptic. The language is odd. I'm not going to pretend otherwise. But once the `flake.nix` works, it disappears. And that's the whole point.
 
 ---
 
-The cleanest recent example was a GPU build failure in bosun's dev shell. I was trying to get `node-llama-cpp` compiling with Vulkan support. The build was failing in CMake's `FindVulkan` step because the shell didn't actually have the Vulkan headers and loader libraries available. This is exactly the kind of problem that turns into yak-shaving on a normal machine.
+I don't want agents improvising their development environment. I don't want one session to see Bun 1.x, another to see some random global Node install, a third to discover that Vulkan headers exist on this machine but not that one. Humans can muddle through that. Agents just burn tokens on it.
 
-On a typical laptop setup, there are ten bad fixes available immediately: install some distro package and hope it's the right one, export `VULKAN_SDK` in your shell profile, paste a Stack Overflow incantation into `.bashrc`, get it working locally and forget what you changed, discover next week that another machine doesn't have the same setup.
+The cleanest example was a GPU build failure. I was trying to get `node-llama-cpp` compiling with Vulkan support. The build failed in CMake's `FindVulkan` step — no headers, no loader libraries. On a normal machine there are ten bad fixes: install a distro package and hope, export `VULKAN_SDK` in your shell profile, paste a Stack Overflow incantation, get it working locally and forget what you changed.
 
-I didn't want any of that.
+The fix happened where it should: in `flake.nix`. Added `pkgs.vulkan-headers` and `pkgs.vulkan-loader`, reloaded the shell, verified the Vulkan paths appeared in `NIX_CFLAGS_COMPILE`. Done. Every future session inherited it.
 
-So the fix happened where it should happen: in `flake.nix`. I added `pkgs.vulkan-headers` and `pkgs.vulkan-loader` to the dev shell, reloaded it, and verified the result by checking that the Vulkan paths now appeared in `NIX_CFLAGS_COMPILE` and `NIX_LDFLAGS`.
-
-What I like about that incident is how unglamorous it is. The agent didn't become more intelligent. I didn't discover a profound architecture insight. I just changed the environment declaration once, and every future session inherited it.
-<!--we should check the base session this is based on and check if we can add any other nugget of info-->
-That's the Nix payoff in one sentence: fix the world, not the session.
+Fix the world, not the session.
 
 ---
 
-It also gave me a nice contrast with the kinds of failures I saw before the environment was pinned down properly. I have session summaries with lines like "python3 command not found in environment." I've also got eval tasks where the logic was correct and the run still failed because the container only had `python3.12` and not `python3`. Those are not interesting failures. They don't teach the model anything useful. They just waste effort on ambient machine state.
+I have session summaries with lines like "python3 command not found in environment." Eval tasks where the logic was correct and the run failed because the container only had `python3.12` and not `python3`. Those are not interesting failures. They don't teach the model anything. They waste effort on ambient machine state.
 
-Nix doesn't eliminate every environment bug, but it turns them into explicit, code-reviewable bugs.
+Nix doesn't eliminate every environment bug, but it turns them into explicit, code-reviewable bugs. If a tool is missing, that shows up as a diff in `flake.nix`, not as tribal knowledge in your shell history. Agents don't have common sense about local machine weirdness. They treat whatever environment they get as reality. If reality drifts, their behavior drifts with it.
 
-If a tool is missing, I want that to show up as a diff in `flake.nix`, not as tribal knowledge in my shell history. If an agent needs `rg`, `git`, `tmux`, Bun, or some library headers, I want the answer to be "it's in the dev shell" or "it isn't," not "depends which terminal you launched from."
-
-That's especially important for agents because they don't have common sense about local machine weirdness. They treat whatever environment they get as reality. If reality drifts, their behavior drifts with it.
-<!--We should immediately answer why not docker somewhere earlier-->
 ---
 
-<!--and just doctor-->
-The other half of this is that Nix pairs naturally with the rest of the harness. [Bubblewrap](@/pages/harness-engineering/bubblewrap.md) constrains where the agent can go. Nix constrains what it finds there. Together they make `just start` feel less like "launch an AI into my laptop" and more like "start a repeatable process with known tools and known boundaries."
+Nix pairs naturally with the rest of the harness. Bubblewrap constrains where the agent can go. Nix constrains what it finds there. Together they make `just start` feel less like "launch an AI into my laptop" and more like "start a repeatable process with known tools and known boundaries."
 
-Invisible infrastructure is underrated. The best version of this page would almost be unnecessary, because a reproducible environment should disappear into the background.
-
-But when I added two Vulkan packages to `flake.nix` and every later session got the same fixed world for free, that was the reminder. Boring is a feature. Especially when you're building for agents.
-
-<!--I think the nix-system repo also is a good example in itself also maybe there are more nix related sessions in our session history to add to this page-->
+My [nix-system repo](https://github.com/rhnvrm/nix-system) manages the whole machine config the same way — NixOS for the base, home-manager for dotfiles, flakes for per-project dev shells. The agent development environment is just one more flake in a fully declarative stack. Boring is a feature.
