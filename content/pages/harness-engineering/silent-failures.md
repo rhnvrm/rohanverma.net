@@ -9,7 +9,9 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-No exceptions. No stack traces. The code compiles, the tests pass, and the behavior is wrong. This is [the Day-50 problem](@/pages/harness-engineering/the-day-50-problem.md) — agents breaking on mature codebases — at its most frustrating.
+This page is about the category of bug that scares me most when working with agents: code compiles, tests pass, behavior is wrong. No exceptions. No stack traces. The agent declares success and moves on. These are silent failures, and they're the hardest class of problem for any automated system to catch.
+
+It's [the Day-50 problem](@/pages/harness-engineering/the-day-50-problem.md) at its most frustrating — mature codebases full of implicit assumptions that aren't in any test suite.
 
 ---
 
@@ -28,3 +30,5 @@ Or: a premature abstraction that's now more complex than the problem it solves. 
 Agents struggle here because these bugs require understanding architectural assumptions, not just reading code. [Skills](@/pages/harness-engineering/skills.md) help — they encode the conventions that prevent *new* silent failures. [Session history](@/pages/harness-engineering/session-history.md) helps — past investigations of similar patterns are searchable. But some bugs require human judgment about what the code was *supposed* to do versus what it does.
 
 Why I keep saying the agent does [the boring stuff](@/pages/harness-engineering/the-boring-stuff.md) and I do the hard stuff. Silent failures are the hard stuff. The agent can trace the data flow, run the comparisons, check the imports. I have to recognize the *class* of failure and know where to look. [The loop](@/pages/harness-engineering/the-loop.md) makes the agent slightly better at this over time — but "slightly" is the honest word.
+
+These examples come from real sessions. The import mismatch bug was a NATS client version conflict in the zero-agent repo. The decommissioned dependency was a monitoring service call that had been dead for weeks. I don't have a neat solution for any of them. The harness helps with prevention (skills encode conventions), detection (review agents, verify agents), and memory (session history makes past investigations searchable). But silent failures remain the category where I trust the agent least and check the hardest.

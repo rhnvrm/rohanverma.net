@@ -13,6 +13,9 @@ The idea is embarrassingly simple: if I keep creating the same kind of harness c
 
 So yes, I have a skill for creating skills.
 
+<!--Add an analogy of factorio-->
+<!--https://news.ycombinator.com/item?id=24181783-->
+
 That sounds like recursion cosplay until you watch what it removes. A new skill isn't just "write some markdown." It has a format, a location, frontmatter rules, naming conventions, [progressive-disclosure](@/pages/harness-engineering/progressive-disclosure.md) constraints, examples, anti-patterns, sometimes helper scripts, sometimes reference docs. None of that is hard. It's just repetitive enough to be annoying and important enough to get wrong.
 
 The `meta-skill-creator` skill exists so I don't spend attention on the scaffolding.
@@ -39,6 +42,8 @@ bun scripts/cdp.ts screenshot workspace/scratch/page.png
 
 Then prerequisites, then workflows. Not just capabilities — an order of operations. A good skill doesn't merely describe a tool. It teaches an agent how to use it.
 
+<!--We might have an actual session developing the cdp-browser and the meta skills so maybe walk us through the real sessiosn-->
+
 ---
 
 The same pattern shows up in smaller skills too. I have a `background-processes` skill that exists because agents kept making one specific mistake: assuming a `workdir` parameter existed on the background process tool. The skill encodes the fix once: always `cd /full/path && command`. It even includes the wrong version first, because that's the failure mode I wanted to kill.
@@ -48,3 +53,5 @@ That's what I mean when I say the meta-skill is a multiplier. It doesn't magical
 The time savings are real but modest. Maybe 15 minutes here, 20 there. The bigger effect is behavioral. When creating a skill is easy, I do it sooner. When I do it sooner, mistakes get encoded out of the system faster. That matters more than the saved minutes.
 
 Make the thing that makes the things. That pattern keeps showing up in this harness because it keeps paying for itself.
+
+<!--Meta skills also allow us to add more meta skills like cover the other meta skills that are for other parts of the harness-->

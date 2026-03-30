@@ -28,3 +28,7 @@ The honest version: I don't have a solution for this. I have mitigations.
 Skills encode the conventions I can articulate. [Session history](@/pages/harness-engineering/session-history.md) gives agents access to past decisions and their context. The [coordination](@/pages/harness-engineering/coordination.md) layer lets me run a verify agent that checks changes against existing tests before anything gets committed.
 
 But the gap between "agent is helpful" and "agent is autonomous" is mostly the Day-50 problem. The greenfield demo is seductive. The mature-codebase reality is humbling. I keep investing in [the loop](@/pages/harness-engineering/the-loop.md) because I think the compounding knowledge eventually narrows that gap. But it's a bet, not a certainty.
+
+---
+
+The framing isn't original to me. Kaspar von Grünberg at Humanitec talked about "building golden paths for Day 50, not Day 1" in platform engineering before coding agents were a thing. The same pattern applies: it's easy to build scaffolding for new projects, hard to build infrastructure that helps with mature ones. HN threads in 2025 about AI's "diminishing returns" on real codebases were getting at the same idea. The agents dazzle on demos and struggle on the stuff that pays the bills.

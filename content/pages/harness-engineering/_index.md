@@ -9,20 +9,31 @@ draft = true
 [extra]
 section_title = "Harness Engineering"
 +++
+<!--I think the sentence formation is not a bit natural here, maybe it can be slightly improved? I am not sure, it just feels like its not the best intro paragraph, also I think maybe its not Harness Engineering telling anything about the topic. Maybe the page title can be Something else apart from Harness Engineering maybe you can refer to https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html and https://openai.com/index/harness-engineering/ https://codagent.beehiiv.com/p/slot-machines-and-safety-nets-->
 
+<!--https://codagent.beehiiv.com/p/slot-machines-and-safety-nets this one has a very important point i often make is that agents are also like non deterministic slot machines-->
+
+<!--My point here being, after the following, the main point here needs to be that the the harness engineering term is something that has naturally come up to define what I and what other fellow software engineers have been experimenting on naturally after getting exposed to LLMs -->
 Most writing about AI coding comes from two ends: people excited about generating code, or experienced engineers explaining why it doesn't replace thinking. The middle is underrepresented. People with enough experience to build real infrastructure but who haven't stopped experimenting. That's where I am, and I think the perspective is useful.
 
+<!--The bell curve meme in dark mode is hard to view-->
 ![bell curve](/images/pages/bell-curve.webp)
 
 ---
 
+<!--the part about the thesis has emerged here abruptyly what even was the hypothesis that you are suddenly speaking of was my first thought here, like a intro to this missing entirely-->
 After eight months of iterating on AI coding setups, the thesis has sharpened:
 
 > Harness engineering isn't important for the *thinking* part of LLMs — it's important for the "automate the boring stuff" part. The agent types. I think. That's the split.
-
+<!--The above also is a very complex sentence-->
+<!--This is also abrupt what has been written below-->
 I've been building a sandboxed development environment called [bosun](https://github.com/oddship/bosun), running on [Pi](https://github.com/badlogic/pi-mono). A daemon for background automation. A task agent. Multi-agent coordination through [pi-mesh](https://github.com/rhnvrm/pi-mesh). 38 skills across about 4,000 sessions since August 2025.
-
+<!--What is the loop here really nothing has been told-->
 The value isn't in any single session. It's in the loop. Every skill you encode, every workflow you automate compounds across every future session and every agent you spawn. That's the bet, anyway.
+
+<!--Before giving a TOC directly below some small article like intro to this whole section be there-->
+
+<!--I also want to mention that the idea of these /pages was that i was trying to write blogposts on my website but i did not feel right to write all this down and the posts were getting a bit too long-->
 
 ---
 

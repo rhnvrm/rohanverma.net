@@ -9,13 +9,13 @@ draft = true
 section_title = "Harness Engineering"
 +++
 
-`config.toml` is the single source of truth. Model tiers, sandbox settings, daemon configuration, agent templates, skill paths — one file controls the whole system.
+`config.toml` is the single source of truth from which other files in the system are generated. Model tiers, sandbox settings, daemon configuration, agent templates, skill paths — one file controls the whole system.
 
 ---
 
-Agent templates use `${models.high}` variables. A preprocessor (`just init`) interpolates them against `config.toml` and generates the runtime files: `.pi/settings.json`, `.pi/agents.json`, `.pi/sandbox.json`, [`.pi/bwrap.json`](@/pages/harness-engineering/bubblewrap.md). These generated files are gitignored — they're environment-specific artifacts, not source.
+The key abstraction here is [pi-agents](https://github.com/oddship/bosun/tree/main/packages/pi-agents), a package that manages agent definitions and their resolution. Agent `.md` files are the system prompts — the actual agent definitions, checked into git. They use `${models.high}` template variables. A preprocessor (`just init`) interpolates them against `config.toml` and generates the runtime files: `.pi/settings.json`, `.pi/agents.json`, `.pi/sandbox.json`, [`.pi/bwrap.json`](@/pages/harness-engineering/bubblewrap.md). The generated files are gitignored — they're environment-specific artifacts, not source.
 
-The agent `.md` files *are* checked in. Those are the system prompts, the actual agent definitions. The generated JSON configs are the glue that connects definitions to the local environment. Edit `config.toml`, run `just init`, everything updates.
+Important distinction: `config.toml` itself is NOT checked into git. The repo contains `config.sample.toml` as a template. Your local `config.toml` has your API keys, your model preferences, your sandbox paths. `just init` detects when `config.toml` changes and warns you to regenerate.
 
 Change models for every agent by editing one line. Swap providers, adjust [context windows](@/pages/harness-engineering/context-windows.md), toggle [skills](@/pages/harness-engineering/skills.md). Same config, same output, every time. That determinism is what makes [the sandbox](@/pages/harness-engineering/the-sandbox.md) work.
 
@@ -25,6 +25,6 @@ Change models for every agent by editing one line. Swap providers, adjust [conte
 
 ---
 
-The config-as-code approach has a specific advantage for [model tiers](@/pages/harness-engineering/model-tiers.md): the tier abstraction lives in config, not in agent definitions. When a new model drops, or a provider changes pricing, the update is one line in `config.toml` — not editing every agent file. When I want to test whether Sonnet 4 works as well as Opus for coding tasks, I change the `high` tier definition and run `just init`. Every agent using `${models.high}` picks up the change.
+The config-as-code approach has a specific advantage for [model tiers](@/pages/harness-engineering/model-tiers.md): the tier abstraction lives in config, not in agent definitions. When a new model drops, or a provider changes pricing, the update is one line in `config.toml`. Every agent using `${models.high}` picks up the change after `just init`. When I want to test whether Sonnet 4 works as well as Opus for coding tasks, I change the `high` tier and run the eval.
 
-Nix philosophy, applied to agent configuration. Declarative, reproducible, diffable. The config is version-controlled. The generated output is deterministic. If something breaks, `git diff config.toml` tells you exactly what changed.
+Nix philosophy, applied to agent configuration. Declarative, reproducible, diffable. The sample config is version-controlled. The generated output is deterministic. If something breaks, `git diff config.sample.toml` tells you what changed in the template, and your local config tells you the rest.
