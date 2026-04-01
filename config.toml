@@ -13,7 +13,7 @@ default_language = "en"
 compile_sass = true
 minify_html = true
 generate_feeds = true
-feed_filenames = ["index.xml"]
+feed_filenames = ["rss.xml"]
 build_search_index = true
 
 # Markdown configuration
@@ -76,7 +76,7 @@ weight = 4
 # Umami Analytics configuration
 [extra.umami]
 script_url = "https://analytics.rohanverma.net/script.js"
-website_id = "" # Set after creating website in Umami dashboard
+website_id = "32929dd1-0796-4752-b63a-6f9ae6b71448"
 
 # Now section dynamic content
 [extra.now]
