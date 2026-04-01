@@ -2,7 +2,7 @@
 title = "Assistive vs Agentic"
 weight = 4
 template = "pages-page.html"
-date = 2026-03-30
+date = 2026-04-02
 draft = false
 
 [extra]

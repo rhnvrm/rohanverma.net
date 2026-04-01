@@ -2,7 +2,7 @@
 title = "Start Manual, Automate Later"
 weight = 19
 template = "pages-page.html"
-date = 2026-03-23
+date = 2026-04-02
 draft = false
 
 [extra]

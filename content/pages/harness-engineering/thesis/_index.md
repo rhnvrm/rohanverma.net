@@ -2,6 +2,7 @@
 title = "The Thesis"
 sort_by = "weight"
 weight = 1
+date = 2026-04-02
 template = "pages-section.html"
 page_template = "pages-page.html"
 draft = false
