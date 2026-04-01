@@ -73,10 +73,10 @@ name = "Pages"
 url = "/pages/"
 weight = 4
 
-# Fathom Analytics configuration
-[extra.fathom_analytics]
-site_id = "REDBQ"
-server_url = "fathom.rohanverma.net"
+# Umami Analytics configuration
+[extra.umami]
+script_url = "https://analytics.rohanverma.net/script.js"
+website_id = "" # Set after creating website in Umami dashboard
 
 # Now section dynamic content
 [extra.now]
