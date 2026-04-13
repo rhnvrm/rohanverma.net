@@ -135,3 +135,7 @@ What follows is the recommended reading order. Start with the thesis to understa
 ### Research
 
 [pi-weaver](@/pages/harness-engineering/research/pi-weaver/_index.md): teaching agents to undo. Checkpoint, rewind, retry. 15-task eval against Terminal-Bench 2.0.
+
+### Notes
+
+[The Z/L Continuum](@/pages/harness-engineering/notes/the-z-l-continuum.md): a conference note on delegation vs code ownership, framed as a risk-policy decision.
