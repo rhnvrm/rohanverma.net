@@ -139,3 +139,5 @@ What follows is the recommended reading order. Start with the thesis to understa
 ### Notes
 
 [The Z/L Continuum](@/pages/harness-engineering/notes/the-z-l-continuum.md): a conference note on delegation vs code ownership, framed as a risk-policy decision.
+
+[Opinionated Shovel Makers vs. Opinionated Diggers](@/pages/harness-engineering/notes/opinionated-shovel-makers-vs-opinionated-diggers.md): why harness tooling should serve product/domain work rather than become the work.
