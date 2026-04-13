@@ -11,9 +11,13 @@ github_url = "https://github.com/rhnvrm/simples3"
 
 A Go library for manipulating objects in S3 buckets using REST API calls signed with AWS Signature Version 4. Used in production at [Zerodha](https://zerodha.tech).
 
+## Scope
+
+I looked into whether `simples3` should add support for AWS S3 Files. I decided not to put that into the core library. S3 Files is a separate AWS service with its own control plane and operational model, and it would pull `simples3` away from its main job: being a small S3 object client. I wrote up the reasoning here: [AWS S3 Files and simples3](@/pages/go/aws-s3-files-and-simples3.md).
+
 ## Why simples3?
 
-The official AWS Go SDK is massive. If all you need is basic S3 operations, pulling in 50+ MB of dependencies feels excessive. simples3 provides a minimal alternative with **zero dependencies** beyond the Go standard library.
+The official AWS Go SDK is massive. If all you need is basic S3 operations, pulling in a much larger dependency tree feels excessive. simples3 provides a minimal alternative with **zero dependencies** beyond the Go standard library.
 
 ## Features
 
