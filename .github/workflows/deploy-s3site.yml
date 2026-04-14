@@ -1,6 +1,8 @@
-name: Deploy via s3site (manual)
+name: Deploy via s3site
 
 on:
+  push:
+    branches: [master]
   workflow_dispatch:
 
 concurrency:

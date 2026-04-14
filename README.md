@@ -69,7 +69,7 @@ That workflow expects these GitHub secrets:
 
 It builds the site, joins the tailnet with the Tailscale GitHub Action, uploads `sites/rohanverma.net.tar.gz` to Garage at `http://rhnvrm-private:3900`, verifies the object exists, and then lets `oddship-web` pick it up on the next `s3site` poll.
 
-The workflow is manual-only (`workflow_dispatch`).
+The workflow runs on every push to `master` and can also be triggered manually with `workflow_dispatch`.
 
 Before using it, `oddship-web` must have:
 
