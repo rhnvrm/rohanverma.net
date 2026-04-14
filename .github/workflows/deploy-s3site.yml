@@ -1,0 +1,69 @@
+name: Deploy via s3site (canary)
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-rohanverma-s3site
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v27
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+
+      - name: Build site
+        run: nix build .#default
+
+      - name: Create site archive
+        run: tar czf rohanverma.net.tar.gz -C result .
+
+      - name: Connect to Tailscale
+        uses: tailscale/github-action@v4
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
+          ping: rhnvrm-private
+
+      - name: Install AWS CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y awscli
+
+      - name: Upload archive to Garage
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.S3SITE_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3SITE_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: garage
+          AWS_EC2_METADATA_DISABLED: true
+          S3SITE_BUCKET: static-sites
+          S3SITE_ENDPOINT: http://rhnvrm-private:3900
+        run: |
+          set -euo pipefail
+          aws --endpoint-url "${S3SITE_ENDPOINT}" s3 cp rohanverma.net.tar.gz "s3://${S3SITE_BUCKET}/sites/rohanverma.net.tar.gz"
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || true
+
+      - name: Refresh s3site on oddship-web
+        run: |
+          ssh -i ~/.ssh/deploy_key \
+            -o StrictHostKeyChecking=accept-new \
+            -o ServerAliveInterval=60 \
+            -o ServerAliveCountMax=10 \
+            rhnvrm@${{ secrets.DEPLOY_HOST }} \
+            "sudo /run/current-system/sw/bin/s3site refresh -socket /run/s3site/control.sock rohanverma.net && \
+             curl -fsS -H 'Host: rohanverma.net' http://127.0.0.1:9001/ >/dev/null"
