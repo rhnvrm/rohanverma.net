@@ -52,6 +52,31 @@ zola build    # Build for production
 - `justfile` - Development task definitions
 - `ai/` - Project documentation
 
+## Deployment
+
+Production currently deploys through `oddship/nix-system`.
+
+A canary workflow for the future `s3site` path lives at:
+
+- `.github/workflows/deploy-s3site.yml`
+
+That workflow expects these GitHub secrets:
+
+- `TS_OAUTH_CLIENT_ID`
+- `TS_OAUTH_SECRET` (OAuth client must be allowed to use `tag:gh-ci`)
+- `S3SITE_ACCESS_KEY_ID`
+- `S3SITE_SECRET_ACCESS_KEY`
+- `DEPLOY_HOST`
+- `DEPLOY_SSH_KEY`
+
+It builds the site, joins the tailnet with the Tailscale GitHub Action, uploads `sites/rohanverma.net.tar.gz` to Garage at `http://rhnvrm-private:3900`, and then runs `sudo /run/current-system/sw/bin/s3site refresh` over SSH.
+
+Before using it, `oddship-web` must have:
+
+- the `s3site` service enabled
+- agenix-managed `oddship-web-s3site-env.age` with the Garage runtime credentials
+- agenix-managed `oddship-web-tailscale-auth.age` with `TAILSCALE_AUTH_KEY=...` so the host can join the tailnet and reach Garage privately
+
 ## License
 
 Content © Rohan Verma. Code is available under MIT license.
