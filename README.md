@@ -66,16 +66,15 @@ That workflow expects these GitHub secrets:
 - `TS_OAUTH_SECRET` (OAuth client must be allowed to use `tag:gh-ci`)
 - `S3SITE_ACCESS_KEY_ID`
 - `S3SITE_SECRET_ACCESS_KEY`
-- `DEPLOY_HOST`
-- `DEPLOY_SSH_KEY`
 
-It builds the site, joins the tailnet with the Tailscale GitHub Action, uploads `sites/rohanverma.net.tar.gz` to Garage at `http://rhnvrm-private:3900`, and then runs `sudo /run/current-system/sw/bin/s3site refresh` over SSH.
+It builds the site, joins the tailnet with the Tailscale GitHub Action, uploads `sites/rohanverma.net.tar.gz` to Garage at `http://rhnvrm-private:3900`, verifies the object exists, and then lets `oddship-web` pick it up on the next `s3site` poll.
 
 Before using it, `oddship-web` must have:
 
 - the `s3site` service enabled
+- `services.s3site.poll = "5m";` (or another interval you are comfortable with)
 - agenix-managed `oddship-web-s3site-env.age` with the Garage runtime credentials
-- agenix-managed `oddship-web-tailscale-auth.age` with `TAILSCALE_AUTH_KEY=...` so the host can join the tailnet and reach Garage privately
+- agenix-managed `oddship-web-tailscale-auth.age` with the raw OAuth client secret so the host can join the tailnet and reach Garage privately
 
 ## License
 
