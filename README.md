@@ -54,9 +54,9 @@ zola build    # Build for production
 
 ## Deployment
 
-Production currently deploys through `oddship/nix-system`.
+Production now deploys through `s3site` hosted on `oddship-web`.
 
-A canary workflow for the future `s3site` path lives at:
+The deploy workflow is:
 
 - `.github/workflows/deploy-s3site.yml`
 
@@ -68,6 +68,8 @@ That workflow expects these GitHub secrets:
 - `S3SITE_SECRET_ACCESS_KEY`
 
 It builds the site, joins the tailnet with the Tailscale GitHub Action, uploads `sites/rohanverma.net.tar.gz` to Garage at `http://rhnvrm-private:3900`, verifies the object exists, and then lets `oddship-web` pick it up on the next `s3site` poll.
+
+The workflow is manual-only (`workflow_dispatch`).
 
 Before using it, `oddship-web` must have:
 
