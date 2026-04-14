@@ -63,7 +63,8 @@ jobs:
           chmod 600 ~/.ssh/deploy_key
           echo "DEPLOY_SSH_KEY fingerprint:"
           ssh-keygen -lf ~/.ssh/deploy_key
-          ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || true
+          echo "DEPLOY_HOST host key fingerprints:"
+          ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" 2>/dev/null | tee -a ~/.ssh/known_hosts | ssh-keygen -lf -
 
       - name: Refresh s3site on oddship-web
         run: |
