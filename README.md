@@ -63,7 +63,7 @@ A canary workflow for the future `s3site` path lives at:
 That workflow expects these GitHub secrets:
 
 - `TS_OAUTH_CLIENT_ID`
-- `TS_OAUTH_SECRET`
+- `TS_OAUTH_SECRET` (OAuth client must be allowed to use `tag:gh-ci`)
 - `S3SITE_ACCESS_KEY_ID`
 - `S3SITE_SECRET_ACCESS_KEY`
 - `DEPLOY_HOST`

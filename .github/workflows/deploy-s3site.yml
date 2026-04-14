@@ -31,7 +31,7 @@ jobs:
         with:
           oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
           oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-          tags: tag:ci
+          tags: tag:gh-ci
           ping: rhnvrm-private
 
       - name: Install AWS CLI
