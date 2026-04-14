@@ -1,6 +1,6 @@
 +++
 title = "bosun review stack: browser, annotations, and diff rounds"
-description = "How bosun's browser-facing review tooling is evolving: cdp-browser, annotation bridge, diff-review sessions, and a planned plan reviewer."
+description = "How bosun's browser-facing review tooling is evolving: cdp-browser, annotation bridge, diff-review sessions, and markdown plan review."
 template = "projects-page.html"
 date = 2026-04-14
 weight = 2
@@ -50,25 +50,24 @@ The product direction (from April 2026 planning/implementation sessions):
 
 This keeps v1 tightly scoped to **diff review**. Not generic code review yet.
 
-## Planned next step: plan reviewer
+## Now shipped: browser markdown plan reviewer
 
-After diff review stabilizes, I want the same interaction model for implementation plans.
+Plan review is now a first-class browser workflow in bosun (landed in commit `9874161`).
 
-Working idea:
-- render plan docs in a browser review surface,
-- annotate sections/claims/assumptions with structured comments,
-- send review batches over mesh before coding starts,
-- support rerounds as the plan changes.
+Current capabilities:
+- render markdown plans into a readable review surface,
+- attach inline anchored comments to specific plan ranges,
+- run rerounds with delta-first change visibility,
+- persist local session state for review continuity,
+- deliver structured review results back over mesh.
 
-So: review isn’t only “is the code diff okay?” but also “is the plan coherent before we execute it?”
-
-Not shipped yet. This is a planned extension of the same review primitives.
+So review is no longer only “is the code diff okay?” It also supports “is the plan coherent before we execute it?” using the same review loop primitives.
 
 ## Why this direction
 
 bosun already had the building blocks (CDP + mesh + session artifacts). The goal is composing them into a review product where context doesn’t reset every turn.
 
-If this works, reviewing code and reviewing plans become two views over the same core loop:
+At this point, reviewing code and reviewing plans are two views over the same core loop:
 - structured reviewer intent,
 - durable state,
 - agent action,

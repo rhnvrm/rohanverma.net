@@ -25,4 +25,4 @@ The harness engineering approach behind bosun is documented in the [Harness Engi
 
 ## Notes
 
-- [Review stack: browser, annotations, and diff rounds](@/pages/projects/bosun/review-stack/index.md) — current state of `cdp-browser`, `cdp-browser-mesh`, diff-review sessions, and the planned plan-reviewer direction.
+- [Review stack: browser, annotations, and diff rounds](@/pages/projects/bosun/review-stack/index.md) — current state of `cdp-browser`, `cdp-browser-mesh`, diff-review sessions, and the shipped browser markdown plan reviewer.
