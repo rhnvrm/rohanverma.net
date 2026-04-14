@@ -46,7 +46,10 @@ jobs:
           set -euo pipefail
           nix shell nixpkgs#awscli2 -c aws \
             --endpoint-url "${S3SITE_ENDPOINT}" \
-            s3 cp --no-progress rohanverma.net.tar.gz "s3://${S3SITE_BUCKET}/sites/rohanverma.net.tar.gz"
+            s3api put-object \
+            --bucket "${S3SITE_BUCKET}" \
+            --key "sites/rohanverma.net.tar.gz" \
+            --body rohanverma.net.tar.gz >/dev/null
           nix shell nixpkgs#awscli2 -c aws \
             --endpoint-url "${S3SITE_ENDPOINT}" \
             s3api head-object \
