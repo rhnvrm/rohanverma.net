@@ -56,35 +56,6 @@ jobs:
             --bucket "${S3SITE_BUCKET}" \
             --key "sites/rohanverma.net.tar.gz" >/dev/null
 
-      - name: Setup SSH
+      - name: Wait for poll-based rollout
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          echo "DEPLOY_SSH_KEY fingerprint:"
-          ssh-keygen -lf ~/.ssh/deploy_key
-          echo "DEPLOY_HOST host key fingerprints:"
-          ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" 2>/dev/null | tee -a ~/.ssh/known_hosts | ssh-keygen -lf -
-
-      - name: Refresh s3site on oddship-web
-        run: |
-          ssh -i ~/.ssh/deploy_key \
-            -o StrictHostKeyChecking=accept-new \
-            -o ServerAliveInterval=60 \
-            -o ServerAliveCountMax=10 \
-            rhnvrm@${{ secrets.DEPLOY_HOST }} \
-            'set -euo pipefail
-             for _ in $(seq 1 30); do
-               if sudo systemctl is-active --quiet s3site && sudo test -S /run/s3site/control.sock; then
-                 break
-               fi
-               sleep 2
-             done
-             sudo systemctl is-active --quiet s3site
-             sudo /run/current-system/sw/bin/s3site refresh -socket /run/s3site/control.sock rohanverma.net
-             curl -fsS -H "Host: rohanverma.net" http://127.0.0.1:9001/ >/dev/null'
-
-      - name: Verify public site
-        run: |
-          curl -fsSI --retry 10 --retry-delay 3 https://rohanverma.net >/dev/null
-          curl -fsSI -H 'Host: rohanverma.net' http://${{ secrets.DEPLOY_HOST }} >/dev/null
+          echo "Archive uploaded to Garage. oddship-web will pick it up on the next s3site poll (configured for 5 minutes)."
