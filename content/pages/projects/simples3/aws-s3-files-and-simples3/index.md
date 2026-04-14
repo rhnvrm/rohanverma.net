@@ -2,12 +2,13 @@
 title = "AWS S3 Files and simples3"
 description = "Notes on why AWS S3 Files is out of scope for the core simples3 library."
 weight = 2
-template = "pages-page.html"
+template = "projects-page.html"
 date = 2026-04-13
 draft = false
+aliases = ["/pages/go/aws-s3-files-and-simples3/"]
 
 [extra]
-section_title = "Go"
+section_title = "Projects"
 +++
 
 This is a note about a feature I decided not to add.

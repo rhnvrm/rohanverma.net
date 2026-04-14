@@ -1,6 +1,6 @@
 +++
 title = "Duh"
-description = "Browser extension that auto-corrects misspellings using fuzzy matching"
+description = "A joke browser extension that started with Zerodha misspellings and turned into a typo autocorrect tool"
 date = 2026-01-04
 weight = 2
 
@@ -11,11 +11,15 @@ tech_stack = "TypeScript, WXT"
 status = "released"
 +++
 
-Cross-browser extension that catches and corrects common misspellings in real-time. Uses Levenshtein distance for fuzzy matching and n-gram patterns for multi-word corrections.
+Duh started as a joke project.
+
+Someone misspelled "Zerodha" in an internal chat, and I replied with: "install this extension I just wrote and you'll never misspell Zerodha again." Then I actually built it.
+
+Under the joke, it turned into a useful browser-side autocorrect experiment: fuzzy matching for typo variants and n-gram rules for multi-word corrections.
 
 ## Why Duh?
 
-Autocorrect on mobile is smart. Desktop browsers? Not so much. Duh fills that gap with configurable correction rules and presets.
+Most desktop browser inputs still have weak autocorrect compared to mobile keyboards. Duh was my way to test a lightweight, configurable correction layer that works directly inside forms and text boxes.
 
 ## Features
 
@@ -23,7 +27,7 @@ Autocorrect on mobile is smart. Desktop browsers? Not so much. Duh fills that ga
 - **Multi-word patterns**: N-gram matching (up to 4 words) for phrases like "Looney Toons" → "Looney Tunes"
 - **Real-time detection**: 500ms debouncing, non-blocking
 - **Keyboard shortcuts**: Tab/Enter to accept, Esc to dismiss
-- **Preset system**: Mandela Effect corrections, common typos, custom presets
+- **Preset system**: Common typos, custom presets, and project/team-specific words (including many Zerodha misspellings)
 - **Works with SPAs**: MutationObserver detects dynamically added inputs
 
 ## Tech Stack

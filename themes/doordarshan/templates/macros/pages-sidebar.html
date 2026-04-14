@@ -16,9 +16,15 @@
 {% set pages_root = get_section(path="pages/_index.md") %}
 
 {% if ancestors | length <= 2 %}
-  {# At /pages/ or a direct child like /pages/go/ #}
-  {% set_global nav_root = pages_root %}
-  {% set_global show_back = false %}
+  {# Special-case nested project pages that live under a project page folder (e.g. /pages/projects/bosun/review-stack/) #}
+  {% if (current_path is starting_with("/pages/projects/") or current_path is starting_with("pages/projects/")) and current_path != "/pages/projects/" and current_path != "pages/projects/_index.md" %}
+    {% set_global nav_root = get_section(path="pages/projects/_index.md") %}
+    {% set_global show_back = true %}
+  {% else %}
+    {# At /pages/ or a direct child like /pages/go/ #}
+    {% set_global nav_root = pages_root %}
+    {% set_global show_back = false %}
+  {% endif %}
 {% else %}
   {# Inside a subsection — find nearest ancestor with subsections #}
   {% set_global nav_root = get_section(path=ancestors | last) %}
@@ -74,10 +80,49 @@
 
     {# Expand active branch: pages then child folders #}
     {% if is_active %}
+      {% set sub_url = sub.permalink | replace(from=config.base_url, to="/") %}
       {% for pg in sub.pages %}
-      <li class="sidebar-group-item">
-        <a href="{{ pg.permalink }}" {% if pg.path == current_path %}aria-current="page"{% endif %}>{{ pg.title }}</a>
+      {% set page_dir_rel = pg.path | replace(from="index.md", to="") %}
+      {% set page_dir = "/" ~ page_dir_rel %}
+      {% set page_url = pg.permalink | replace(from=config.base_url, to="/") %}
+      {% set has_children = pg.extra.sidebar_children is defined and pg.extra.sidebar_children | length > 0 %}
+      {% set_global page_active = pg.path == current_path or current_path == page_dir or current_path is starting_with(page_dir) or current_path == page_url or current_path is starting_with(page_url) %}
+
+      {% if has_children %}
+        {% for child in pg.extra.sidebar_children %}
+          {% set child_page = get_page(path=child.path) %}
+          {% set child_dir_rel = child_page.path | replace(from="index.md", to="") %}
+          {% set child_dir = "/" ~ child_dir_rel %}
+          {% set child_url = child_page.permalink | replace(from=config.base_url, to="/") %}
+          {% if child_page.path == current_path or current_path == child_dir or current_path is starting_with(child_dir) or current_path == child_url or current_path is starting_with(child_url) %}
+            {% set_global page_active = true %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      {% set show_children = has_children and (page_active or current_path == sub_url or current_path == sub.path) %}
+      <li class="sidebar-group-item{% if has_children %} sidebar-subsection{% endif %}{% if show_children %} sidebar-subsection-open{% endif %}">
+        <a href="{{ pg.permalink }}" {% if pg.path == current_path or current_path == page_dir or current_path == page_url %}aria-current="page"{% endif %}>
+          <span class="sidebar-marker" aria-hidden="true">{% if show_children or page_active %}▸{% else %}॰{% endif %}</span>
+          {{ pg.title }}
+          {% if has_children and not show_children %}<span class="sidebar-count">({{ pg.extra.sidebar_children | length }})</span>{% endif %}
+        </a>
       </li>
+
+      {% if show_children %}
+        {% for child in pg.extra.sidebar_children %}
+          {% set child_page = get_page(path=child.path) %}
+          {% set child_dir_rel = child_page.path | replace(from="index.md", to="") %}
+          {% set child_dir = "/" ~ child_dir_rel %}
+          {% set child_url = child_page.permalink | replace(from=config.base_url, to="/") %}
+          <li class="sidebar-group-item">
+            <a href="{{ child_page.permalink }}" {% if child_page.path == current_path or current_path == child_dir or current_path is starting_with(child_dir) or current_path == child_url or current_path is starting_with(child_url) %}aria-current="page"{% endif %}>
+              <span class="sidebar-marker" aria-hidden="true">↳</span>
+              {{ child.title | default(value=child_page.title) }}
+            </a>
+          </li>
+        {% endfor %}
+      {% endif %}
       {% endfor %}
       {% for child_path in sub.subsections %}
       {% set child = get_section(path=child_path) %}
@@ -96,9 +141,45 @@
 
   {# Direct pages of nav_root #}
   {% for pg in nav_root.pages %}
-  <li class="sidebar-group-item">
-    <a href="{{ pg.permalink }}" {% if pg.path == current_path %}aria-current="page"{% endif %}>{{ pg.title }}</a>
+  {% set page_dir_rel = pg.path | replace(from="index.md", to="") %}
+  {% set page_dir = "/" ~ page_dir_rel %}
+  {% set has_children = pg.extra.sidebar_children is defined and pg.extra.sidebar_children | length > 0 %}
+  {% set_global page_active = pg.path == current_path or current_path == page_dir or current_path is starting_with(page_dir) %}
+
+  {% if has_children %}
+    {% for child in pg.extra.sidebar_children %}
+      {% set child_page = get_page(path=child.path) %}
+      {% set child_dir_rel = child_page.path | replace(from="index.md", to="") %}
+      {% set child_dir = "/" ~ child_dir_rel %}
+      {% set child_url = child_page.permalink | replace(from=config.base_url, to="/") %}
+      {% if child_page.path == current_path or current_path == child_dir or current_path is starting_with(child_dir) or current_path == child_url or current_path is starting_with(child_url) %}
+        {% set_global page_active = true %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  <li class="sidebar-group-item{% if has_children %} sidebar-subsection{% endif %}{% if has_children and page_active %} sidebar-subsection-open{% endif %}">
+    <a href="{{ pg.permalink }}" {% if pg.path == current_path or current_path == page_dir %}aria-current="page"{% endif %}>
+      <span class="sidebar-marker" aria-hidden="true">{% if page_active %}▸{% else %}॰{% endif %}</span>
+      {{ pg.title }}
+      {% if has_children and not page_active %}<span class="sidebar-count">({{ pg.extra.sidebar_children | length }})</span>{% endif %}
+    </a>
   </li>
+
+  {% if has_children and page_active %}
+    {% for child in pg.extra.sidebar_children %}
+      {% set child_page = get_page(path=child.path) %}
+      {% set child_dir_rel = child_page.path | replace(from="index.md", to="") %}
+      {% set child_dir = "/" ~ child_dir_rel %}
+      {% set child_url = child_page.permalink | replace(from=config.base_url, to="/") %}
+      <li class="sidebar-group-item">
+        <a href="{{ child_page.permalink }}" {% if child_page.path == current_path or current_path == child_dir or current_path is starting_with(child_dir) or current_path == child_url or current_path is starting_with(child_url) %}aria-current="page"{% endif %}>
+          <span class="sidebar-marker" aria-hidden="true">↳</span>
+          {{ child.title | default(value=child_page.title) }}
+        </a>
+      </li>
+    {% endfor %}
+  {% endif %}
   {% endfor %}
 </ul>
 </nav>

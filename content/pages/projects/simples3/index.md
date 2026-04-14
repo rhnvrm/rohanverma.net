@@ -7,13 +7,16 @@ weight = 1
 aliases = ["/projects/simples3/"]
 [extra]
 github_url = "https://github.com/rhnvrm/simples3"
+sidebar_children = [
+  { path = "pages/projects/simples3/aws-s3-files-and-simples3/index.md", title = "AWS S3 Files note" }
+]
 +++
 
 A Go library for manipulating objects in S3 buckets using REST API calls signed with AWS Signature Version 4. Used in production at [Zerodha](https://zerodha.tech).
 
 ## Scope
 
-I looked into whether `simples3` should add support for AWS S3 Files. I decided not to put that into the core library. S3 Files is a separate AWS service with its own control plane and operational model, and it would pull `simples3` away from its main job: being a small S3 object client. I wrote up the reasoning here: [AWS S3 Files and simples3](@/pages/go/aws-s3-files-and-simples3.md).
+I looked into whether `simples3` should add support for AWS S3 Files. I decided not to put that into the core library. S3 Files is a separate AWS service with its own control plane and operational model, and it would pull `simples3` away from its main job: being a small S3 object client. I wrote up the reasoning here: [AWS S3 Files and simples3](@/pages/projects/simples3/aws-s3-files-and-simples3/index.md).
 
 ## Why simples3?
 
