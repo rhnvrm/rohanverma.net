@@ -52,6 +52,35 @@ footer_message = "Feel free to use the content of this website with appropriate 
 handwritten_font = "https://fonts.googleapis.com/css2?family=Shrikhand&display=swap"
 nav_brand = "~/rhnvrm"
 
+# Backward-compatible flat keys retained during theme contract migration.
+github = "https://github.com/rhnvrm/"
+twitter_handle = "@rhnvrm"
+
+[extra.doordarshan.sections]
+blog = "blog/_index.md"
+pages = "pages/_index.md"
+
+[extra.doordarshan.features]
+pages_search = true
+
+[extra.doordarshan.assets]
+social_image = "images/social-card.png"
+
+[extra.doordarshan.identity]
+nav_brand = "~/rhnvrm"
+avatar = "/images/avatar.jpg"
+homepage_title = "Rohan Verma"
+homepage_tagline = "Software Engineer at Zerodha. Systems, infrastructure, open source."
+handwritten_font = "https://fonts.googleapis.com/css2?family=Shrikhand&display=swap"
+favicon = "/images/favicon.ico"
+github_url = "https://github.com/rhnvrm/"
+twitter_handle = "@rhnvrm"
+
+[extra.doordarshan.analytics]
+enabled = true
+script_url = "https://analytics.rohanverma.net/script.js"
+website_id = "32929dd1-0796-4752-b63a-6f9ae6b71448"
+
 # Main navigation menu
 [[extra.menu_main]]
 name = "Home"
@@ -73,6 +102,26 @@ name = "Pages"
 url = "/pages/"
 weight = 4
 
+[[extra.doordarshan.nav.menu]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[extra.doordarshan.nav.menu]]
+name = "Blog"
+url = "/blog/"
+weight = 2
+
+[[extra.doordarshan.nav.menu]]
+name = "Contact"
+url = "/contact/"
+weight = 3
+
+[[extra.doordarshan.nav.menu]]
+name = "Pages"
+url = "/pages/"
+weight = 4
+
 # Umami Analytics configuration
 [extra.umami]
 script_url = "https://analytics.rohanverma.net/script.js"
@@ -85,7 +134,3 @@ items = [
     "Sketchbook: Mafia‐inspired art WIP (#7).",
     "Listening to Tezpur → Guwahati train announcements."
 ]
-
-# Social links
-github = "https://github.com/rhnvrm/"
-twitter_handle = "@rhnvrm"
