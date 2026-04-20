@@ -66,6 +66,25 @@ pages_search = true
 [extra.doordarshan.assets]
 social_image = "images/social-card.png"
 
+[extra.doordarshan.homepage]
+show_recent = true
+recent_limit = 5
+
+[[extra.doordarshan.homepage.links]]
+label = "Blog"
+url = "/blog/"
+
+[[extra.doordarshan.homepage.links]]
+label = "Projects"
+url = "/pages/projects/"
+
+[[extra.doordarshan.homepage.links]]
+label = "Contact"
+url = "/contact/"
+
+[extra.doordarshan.scripts]
+additional = ["js/easter-eggs.js"]
+
 [extra.doordarshan.identity]
 nav_brand = "~/rhnvrm"
 avatar = "/images/avatar.jpg"
