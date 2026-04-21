@@ -2,12 +2,15 @@
   description = "Development environment for rohanverma.net website";
 
   inputs = {
-    self.submodules = true;
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+    doordarshan = {
+      url = "github:oddship/doordarshan-zola/26bba9d126ff0edf785797df9c80a769d9ff7de6";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
+  outputs = { self, nixpkgs, flake-utils, doordarshan }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
@@ -18,6 +21,11 @@
           version = "1.0.0";
           src = ./.;
           nativeBuildInputs = [ pkgs.zola ];
+          postUnpack = ''
+            mkdir -p "$sourceRoot/themes"
+            cp -R ${doordarshan} "$sourceRoot/themes/doordarshan"
+            chmod -R u+w "$sourceRoot/themes/doordarshan"
+          '';
           buildPhase = ''
             zola build
           '';
