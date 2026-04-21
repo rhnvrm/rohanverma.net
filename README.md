@@ -13,7 +13,15 @@ This project uses Nix flakes for reproducible development environment and Just a
 
 ### Getting Started
 
-1. Clone the repository
+1. Clone the repository with submodules:
+   ```bash
+   git clone --recurse-submodules https://github.com/rhnvrm/rohanverma.net.git
+   cd rohanverma.net
+   ```
+   If you already cloned it without submodules:
+   ```bash
+   git submodule update --init --recursive
+   ```
 2. Enter the development shell:
    ```bash
    nix develop
@@ -44,9 +52,10 @@ zola build    # Build for production
   - Blog posts (2010-2021)
   - Projects with images
   - Static pages (contact, now, etc.)
-- `templates/` - Zola templates
+- `templates/` - Site-level Zola overrides/hooks
 - `sass/` - Sass stylesheets
 - `static/` - Static assets (images, files, etc.)
+- `themes/doordarshan/` - External theme submodule from `oddship/doordarshan-zola`
 - `config.toml` - Zola configuration
 - `flake.nix` - Nix development environment
 - `justfile` - Development task definitions

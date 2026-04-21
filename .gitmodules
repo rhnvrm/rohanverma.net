@@ -1,1 +1,3 @@
-# All submodules have been removed as part of Zola migration
+[submodule "themes/doordarshan"]
+	path = themes/doordarshan
+	url = https://github.com/oddship/doordarshan-zola.git
