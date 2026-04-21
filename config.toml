@@ -62,6 +62,7 @@ pages = "pages/_index.md"
 
 [extra.doordarshan.features]
 pages_search = true
+site_search = true
 
 [extra.doordarshan.assets]
 social_image = "images/social-card.png"
@@ -84,6 +85,46 @@ url = "/contact/"
 
 [extra.doordarshan.scripts]
 additional = ["js/easter-eggs.js"]
+
+[extra.doordarshan.contact]
+intro = "Want to chat about code, collaborate on a project, or just say hello?"
+email = "hello@rohanverma.net"
+response_time = "I usually respond within a day or two."
+
+[[extra.doordarshan.contact.links]]
+label = "GitHub"
+url = "https://github.com/rhnvrm"
+description = "code & projects"
+
+[[extra.doordarshan.contact.links]]
+label = "Twitter"
+url = "https://twitter.com/rhnvrm"
+description = "thoughts & updates"
+
+[[extra.doordarshan.contact.links]]
+label = "Mastodon"
+url = "https://fosstodon.org/@rhnvrm"
+description = "fediverse"
+
+[[extra.doordarshan.contact.links]]
+label = "LinkedIn"
+url = "https://www.linkedin.com/in/rhnvrm/"
+description = "professional"
+
+[[extra.doordarshan.contact.links]]
+label = "YouTube"
+url = "https://www.youtube.com/TheRohanVerma"
+description = "videos"
+
+[[extra.doordarshan.contact.links]]
+label = "Zerodha Tech"
+url = "https://zerodha.tech/authors/rhnvrm/"
+description = "work blog"
+
+[[extra.doordarshan.contact.links]]
+label = "Keybase"
+url = "https://keybase.io/rhnvrm"
+description = "secure contact"
 
 [extra.doordarshan.identity]
 nav_brand = "~/rhnvrm"
