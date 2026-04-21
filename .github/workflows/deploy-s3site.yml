@@ -3,11 +3,16 @@ name: Deploy via s3site
 on:
   push:
     branches: [master]
+  schedule:
+    - cron: '23 * * * *'
   workflow_dispatch:
 
 concurrency:
   group: deploy-rohanverma-s3site
   cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   deploy:
@@ -16,6 +21,16 @@ jobs:
       - uses: actions/checkout@v5
         with:
           submodules: recursive
+
+      - name: Generate stargazer feed
+        # Pin to the initial stargazers-action commit; switch to a release tag after publish.
+        uses: oddship/stargazers-action@666084195b7340bae5798134f6a035f0a15a238e
+        with:
+          config: .github/stargazers.yml
+          token: ${{ github.token }}
+
+      - name: Stage generated feed files for flake build
+        run: git add -f data/github-stars.json static/feeds/github-stars.xml
 
       - name: Install Nix
         uses: cachix/install-nix-action@v27

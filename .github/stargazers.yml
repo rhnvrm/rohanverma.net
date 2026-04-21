@@ -1,0 +1,15 @@
+owner: rhnvrm
+repo_include:
+  - rohanverma.net
+  - pi-mesh
+  - s3site
+  - simples3
+recent_limit: 40
+per_repo_limit: 40
+include_forks: false
+include_archived: false
+json_output: data/github-stars.json
+feed_output: static/feeds/github-stars.xml
+site_url: https://rohanverma.net
+feed_title: Rohan Verma GitHub stargazers
+feed_description: Recent GitHub stargazers across selected public projects by Rohan Verma.

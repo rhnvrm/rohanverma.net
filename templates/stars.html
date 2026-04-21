@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% set stars_data = load_data(path="data/github-stars.json", required=false) %}
+
+<div class="content-container-narrow">
+    <article>
+        <header class="section-header">
+            <h1 class="text-display">{{ page.title }}</h1>
+            <p class="text-body">A quiet log of people finding the work.</p>
+            <p class="text-body">
+                <a href="/feeds/github-stars.xml">RSS feed</a>
+            </p>
+            {% if stars_data and stars_data.generatedAt %}
+            <p class="text-caption">Updated {{ stars_data.generatedAt | date(format="%B %d, %Y %H:%M UTC") }}</p>
+            {% endif %}
+        </header>
+
+        {% if stars_data and stars_data.stars and stars_data.stars | length > 0 %}
+        <div class="spacing-component" style="display: grid; gap: 1rem;">
+            {% for star in stars_data.stars %}
+            <article class="card card-content">
+                <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                    {% if star.user.avatarUrl %}
+                    <img
+                        src="{{ star.user.avatarUrl }}"
+                        alt=""
+                        width="48"
+                        height="48"
+                        loading="lazy"
+                        style="border-radius: 999px; flex-shrink: 0;"
+                    />
+                    {% endif %}
+                    <div>
+                        <div class="text-caption">{{ star.starredAt | date(format="%B %d, %Y %H:%M UTC") }}</div>
+                        <h3 class="text-title card-title">
+                            <a href="{{ star.user.url }}">@{{ star.user.login }}</a>
+                            starred
+                            <a href="{{ star.repo.url }}">{{ star.repo.nameWithOwner }}</a>
+                        </h3>
+                        {% if star.repo.description %}
+                        <p class="text-body">{{ star.repo.description }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="card card-content spacing-component">
+            <p class="text-body">No recent stargazers yet.</p>
+        </div>
+        {% endif %}
+    </article>
+</div>
+{% endblock content %}

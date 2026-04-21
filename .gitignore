@@ -24,3 +24,7 @@ out.txt
 test-results/
 node_modules/
 npm-debug.log
+
+# Generated stargazer artifacts
+data/github-stars.json
+static/feeds/github-stars.xml

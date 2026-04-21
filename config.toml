@@ -162,6 +162,11 @@ name = "Pages"
 url = "/pages/"
 weight = 4
 
+[[extra.menu_main]]
+name = "Stars"
+url = "/stars/"
+weight = 5
+
 [[extra.doordarshan.nav.menu]]
 name = "Home"
 url = "/"
