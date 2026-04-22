@@ -11,6 +11,8 @@ section_title = "In Practice"
 
 Everything described so far ([the sandbox](@/pages/harness-engineering/sandbox/the-sandbox.md), [the daemon](@/pages/harness-engineering/feedback/the-daemon.md), [skills](@/pages/harness-engineering/skills/skills.md), [the review loop](@/pages/harness-engineering/feedback/the-review-loop.md)) is abstract until you see it work on a real problem. This is one such problem, start to finish.
 
+For a smaller public-facing example of the same pattern, see [Building stargazers-action](/blog/2026/04/22/building-stargazers-action/).
+
 ---
 
 ## The Situation

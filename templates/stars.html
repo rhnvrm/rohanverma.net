@@ -1,5 +1,165 @@
 {% extends "base.html" %}
 
+{% block head_extra %}
+<style>
+    .stars-header-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 0.15rem;
+    }
+
+    .stars-feed-link {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid var(--c-border);
+        padding: 0.18rem 0.45rem;
+        font-size: var(--text-sm);
+        line-height: 1.1;
+        text-decoration: none;
+        transition: border-color 150ms ease, background 150ms ease;
+    }
+
+    .stars-feed-link:hover {
+        border-color: var(--c-marigold);
+        background: var(--c-bg-subtle);
+    }
+
+    .stars-updated {
+        margin: 0;
+        font-size: var(--text-xs);
+        color: var(--c-text-tertiary);
+    }
+
+    .stars-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.42rem;
+    }
+
+    .star-card {
+        width: 100%;
+        margin: 0;
+        padding: 0.5rem 0.65rem;
+        border-left: 2px solid var(--c-border);
+        transition: border-color 150ms ease, background 150ms ease;
+    }
+
+    .star-card:hover {
+        border-left-color: var(--c-marigold);
+        background: var(--c-bg-subtle);
+    }
+
+    .star-row {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        min-width: 0;
+    }
+
+    .star-avatar {
+        border-radius: 999px;
+        flex-shrink: 0;
+        width: 28px;
+        height: 28px;
+    }
+
+    .star-meta {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .star-main {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        min-width: 0;
+    }
+
+    .star-action {
+        margin: 0;
+        flex: 1 1 auto;
+        min-width: 0;
+        font-size: 0.94rem;
+        line-height: 1.2;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .star-user {
+        font-weight: var(--weight-medium);
+    }
+
+    .star-verb {
+        color: var(--c-text-tertiary);
+    }
+
+    .star-repo {
+        color: var(--c-accent);
+    }
+
+    .star-time {
+        margin: 0;
+        flex-shrink: 0;
+        white-space: nowrap;
+        color: var(--c-text-tertiary);
+        font-size: var(--text-xs);
+    }
+
+    .star-time-mobile {
+        display: none;
+    }
+
+    @media (max-width: 640px) {
+        .stars-header-meta {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .stars-feed-link {
+            border: 0;
+            padding: 0;
+            font-size: var(--text-xs);
+            text-decoration: underline;
+        }
+
+        .star-card {
+            padding: 0.45rem 0.55rem;
+        }
+
+        .star-avatar {
+            width: 24px;
+            height: 24px;
+        }
+
+        .star-main {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 0.08rem;
+        }
+
+        .star-action {
+            width: 100%;
+            font-size: 0.9rem;
+            white-space: normal;
+            overflow: visible;
+            text-overflow: clip;
+        }
+
+        .star-time-desktop {
+            display: none;
+        }
+
+        .star-time-mobile {
+            display: block;
+        }
+    }
+</style>
+{% endblock head_extra %}
+
 {% block content %}
 {% set stars_data = load_data(path="data/github-stars.json", required=false) %}
 
@@ -8,46 +168,46 @@
         <header class="section-header">
             <h1 class="text-display">{{ page.title }}</h1>
             <p class="text-body">A quiet log of people finding the work.</p>
-            <p class="text-body">
-                <a href="/feeds/github-stars.xml">RSS feed</a>
-            </p>
-            {% if stars_data and stars_data.generatedAt %}
-            <p class="text-caption">Updated {{ stars_data.generatedAt | date(format="%B %d, %Y %H:%M UTC") }}</p>
-            {% endif %}
+            <div class="stars-header-meta">
+                <a href="/feeds/github-stars.xml" class="stars-feed-link">RSS feed</a>
+                {% if stars_data and stars_data.generatedAt %}
+                <p class="stars-updated">Updated {{ stars_data.generatedAt | date(format="%B %d, %Y %H:%M UTC") }}</p>
+                {% endif %}
+            </div>
         </header>
 
         {% if stars_data and stars_data.stars and stars_data.stars | length > 0 %}
-        <div class="spacing-component" style="display: grid; gap: 1rem;">
+        <div class="stars-list">
             {% for star in stars_data.stars %}
-            <article class="card card-content">
-                <div style="display: flex; gap: 1rem; align-items: flex-start;">
+            <div class="card star-card">
+                <div class="star-row">
                     {% if star.user.avatarUrl %}
                     <img
                         src="{{ star.user.avatarUrl }}"
                         alt=""
-                        width="48"
-                        height="48"
+                        width="28"
+                        height="28"
                         loading="lazy"
-                        style="border-radius: 999px; flex-shrink: 0;"
+                        class="star-avatar"
                     />
                     {% endif %}
-                    <div>
-                        <div class="text-caption">{{ star.starredAt | date(format="%B %d, %Y %H:%M UTC") }}</div>
-                        <h3 class="text-title card-title">
-                            <a href="{{ star.user.url }}">@{{ star.user.login }}</a>
-                            starred
-                            <a href="{{ star.repo.url }}">{{ star.repo.nameWithOwner }}</a>
-                        </h3>
-                        {% if star.repo.description %}
-                        <p class="text-body">{{ star.repo.description }}</p>
-                        {% endif %}
+                    <div class="star-meta">
+                        <div class="star-main">
+                            <p class="star-action">
+                                <a href="{{ star.user.url }}" class="star-user">@{{ star.user.login }}</a>
+                                <span class="star-verb">starred</span>
+                                <a href="{{ star.repo.url }}" class="star-repo">{{ star.repo.nameWithOwner }}</a>
+                            </p>
+                            <p class="star-time star-time-desktop">{{ star.starredAt | date(format="%B %d, %Y %H:%M UTC") }}</p>
+                            <p class="star-time star-time-mobile">{{ star.starredAt | date(format="%b %d, %Y %H:%M") }}</p>
+                        </div>
                     </div>
                 </div>
-            </article>
+            </div>
             {% endfor %}
         </div>
         {% else %}
-        <div class="card card-content spacing-component">
+        <div class="card card-content">
             <p class="text-body">No recent stargazers yet.</p>
         </div>
         {% endif %}
