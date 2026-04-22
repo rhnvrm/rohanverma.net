@@ -46,7 +46,7 @@ anchors = "on"
 [extra]
 author = "Rohan Verma"
 bio = "I scribble about code, trains, and random rabbit‐holes."
-avatar = "/images/avatar.jpg"
+avatar = "/images/avatar-github.png"
 favicon = "/images/favicon.ico"
 footer_message = "Feel free to use the content of this website with appropriate attribution to the author."
 handwritten_font = "https://fonts.googleapis.com/css2?family=Shrikhand&display=swap"
@@ -128,7 +128,7 @@ description = "secure contact"
 
 [extra.doordarshan.identity]
 nav_brand = "~/rhnvrm"
-avatar = "/images/avatar.jpg"
+avatar = "/images/avatar-github.png"
 homepage_title = "Rohan Verma"
 homepage_tagline = "Software Engineer at Zerodha. Systems, infrastructure, open source."
 handwritten_font = "https://fonts.googleapis.com/css2?family=Shrikhand&display=swap"
