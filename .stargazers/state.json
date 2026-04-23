@@ -3,6 +3,22 @@
   "updatedAt": "2026-04-23T11:39:15.418Z",
   "events": [
     {
+      "id": "rhnvrm/simplelock:blacklovertech66:2026-04-23T09:09:26Z",
+      "starredAt": "2026-04-23T09:09:26Z"
+    },
+    {
+      "id": "rhnvrm/linkpage:blacklovertech66:2026-04-23T09:08:59Z",
+      "starredAt": "2026-04-23T09:08:59Z"
+    },
+    {
+      "id": "rhnvrm/listmonk-mcp:blacklovertech66:2026-04-23T09:08:34Z",
+      "starredAt": "2026-04-23T09:08:34Z"
+    },
+    {
+      "id": "rhnvrm/hq:blacklovertech66:2026-04-23T09:03:56Z",
+      "starredAt": "2026-04-23T09:03:56Z"
+    },
+    {
       "id": "rhnvrm/linkpage:Abin-Antu:2026-04-21T18:48:01Z",
       "starredAt": "2026-04-21T18:48:01Z"
     },
@@ -218,27 +234,5 @@
       "id": "rhnvrm/pi-mesh:nordnes:2026-02-17T23:20:28Z",
       "starredAt": "2026-02-17T23:20:28Z"
     }
-  ],
-  "pending": {
-    "batchId": "2026-04-23T11:39:15.418Z:4:rhnvrm/simplelock:blacklovertech66:2026-04-23T09:09:26Z",
-    "preparedAt": "2026-04-23T11:39:15.418Z",
-    "events": [
-      {
-        "id": "rhnvrm/simplelock:blacklovertech66:2026-04-23T09:09:26Z",
-        "starredAt": "2026-04-23T09:09:26Z"
-      },
-      {
-        "id": "rhnvrm/linkpage:blacklovertech66:2026-04-23T09:08:59Z",
-        "starredAt": "2026-04-23T09:08:59Z"
-      },
-      {
-        "id": "rhnvrm/listmonk-mcp:blacklovertech66:2026-04-23T09:08:34Z",
-        "starredAt": "2026-04-23T09:08:34Z"
-      },
-      {
-        "id": "rhnvrm/hq:blacklovertech66:2026-04-23T09:03:56Z",
-        "starredAt": "2026-04-23T09:03:56Z"
-      }
-    ]
-  }
+  ]
 }
