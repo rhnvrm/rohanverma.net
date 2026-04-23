@@ -7,7 +7,10 @@ draft = false
 
 [extra]
 section_title = "TIL"
+og_image = "/images/pages/til/python-overload-clicked/header-overload-blueprint.png"
 +++
+
+![Retro editorial diagram showing two typed record shapes converging into one shared Python function implementation](/images/pages/til/python-overload-clicked/header-overload-blueprint.png)
 
 Today I started with one small typing problem.
 
