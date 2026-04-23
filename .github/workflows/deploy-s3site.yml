@@ -24,7 +24,7 @@ jobs:
 
       - name: Generate stargazer feed
         # Pin to the current Discord-capable stargazers-action commit; switch to a release tag after publish.
-        uses: oddship/stargazers-action@73dbb983970054b2e815acfed65bf163d9e0ebde
+        uses: oddship/stargazers-action@e7aaad6179a4518f1fb53ebf55c3706b75dba8fb
         with:
           config: .github/stargazers.yml
           token: ${{ github.token }}
@@ -111,7 +111,7 @@ jobs:
         if: success() && steps.discord_webhook.outputs.configured == 'true'
         env:
           DISCORD_STARGAZERS_WEBHOOK: ${{ secrets.DISCORD_STARGAZERS_WEBHOOK }}
-        uses: oddship/stargazers-action@73dbb983970054b2e815acfed65bf163d9e0ebde
+        uses: oddship/stargazers-action@e7aaad6179a4518f1fb53ebf55c3706b75dba8fb
         with:
           mode: discord
           config: .github/stargazers.yml
