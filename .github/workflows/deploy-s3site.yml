@@ -3,8 +3,6 @@ name: Deploy via s3site
 on:
   push:
     branches: [master]
-  schedule:
-    - cron: '23 * * * *'
   workflow_dispatch:
 
 concurrency:
@@ -12,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   deploy:
@@ -21,16 +19,6 @@ jobs:
       - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
         with:
           submodules: recursive
-
-      - name: Generate stargazer feed
-        # Pin to the current Discord-capable stargazers-action commit; switch to a release tag after publish.
-        uses: oddship/stargazers-action@e7aaad6179a4518f1fb53ebf55c3706b75dba8fb
-        with:
-          config: .github/stargazers.yml
-          token: ${{ github.token }}
-
-      - name: Stage generated feed files for flake build
-        run: git add -f data/github-stars.json static/feeds/github-stars.xml
 
       - name: Install Nix
         uses: cachix/install-nix-action@ba0dd844c9180cbf77aa72a116d6fbc515d0e87b # v27
@@ -75,49 +63,3 @@ jobs:
             --bucket "${S3SITE_BUCKET}" \
             --key "sites/rohanverma.net.tar.gz" >/dev/null
 
-      - name: Check Discord webhook configured
-        id: discord_webhook
-        env:
-          DISCORD_STARGAZERS_WEBHOOK: ${{ secrets.DISCORD_STARGAZERS_WEBHOOK }}
-        run: |
-          if [ -n "${DISCORD_STARGAZERS_WEBHOOK}" ]; then
-            echo "configured=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "configured=false" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Wait for live feed rollout
-        run: |
-          set -euo pipefail
-          expected_hash="$(sha256sum static/feeds/github-stars.xml | awk '{print $1}')"
-
-          for attempt in $(seq 1 30); do
-            if live_hash="$(curl -fsSL https://rohanverma.net/feeds/github-stars.xml | sha256sum | awk '{print $1}')"; then
-              if [ "$live_hash" = "$expected_hash" ]; then
-                echo "Live feed rollout confirmed on attempt ${attempt}."
-                exit 0
-              fi
-              echo "Attempt ${attempt}: live feed hash ${live_hash} does not match expected ${expected_hash} yet."
-            else
-              echo "Attempt ${attempt}: live feed not reachable yet."
-            fi
-            sleep 20
-          done
-
-          echo "::error::Timed out waiting for https://rohanverma.net/feeds/github-stars.xml to match the uploaded artifact."
-          exit 1
-
-      - name: Notify Discord about new stargazers
-        if: success() && steps.discord_webhook.outputs.configured == 'true'
-        env:
-          DISCORD_STARGAZERS_WEBHOOK: ${{ secrets.DISCORD_STARGAZERS_WEBHOOK }}
-        uses: oddship/stargazers-action@e7aaad6179a4518f1fb53ebf55c3706b75dba8fb
-        with:
-          mode: discord
-          config: .github/stargazers.yml
-          state_backend: github-branch
-          state_branch: stargazers-state
-          discord_bootstrap: silent
-          discord_notify_mode: summary
-          discord_webhook_url: ${{ env.DISCORD_STARGAZERS_WEBHOOK }}
-          token: ${{ github.token }}
