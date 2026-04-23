@@ -15,6 +15,8 @@ Short notes on things I figured out and didn't want to forget. Troubleshooting f
 
 ---
 
+[TIL: Python @overload](@/pages/til/python-overload-clicked.md) — a small typing lesson on `TypedDict`, `Literal`, and why `@overload` finally clicked for me.
+
 [How to Make a Table Row Sticky](@/pages/til/sticky-table-row.md) — CSS patterns for sticky headers and rows in HTML tables.
 
 [Fix Garbled Text and Shadows in Chrome and VSCode](@/pages/til/fix-garbled-text-chrome-vscode.md) — GPU rendering issues on Linux and how to fix them.
