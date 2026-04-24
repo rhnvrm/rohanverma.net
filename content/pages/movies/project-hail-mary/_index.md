@@ -1,6 +1,6 @@
 +++
 title = "Project Hail Mary"
-description = "First entry in the watch log. I want to come back and write a fuller note on this one."
+description = "A big, emotionally warm sci-fi watch that I already know I want to revisit in writing."
 weight = 1
 template = "movies-entry.html"
 page_template = "pages-page.html"
@@ -9,13 +9,13 @@ draft = false
 [extra]
 section_title = "Movies"
 watched_on = "2026-04-24"
-reaction = "Still too fresh to summarize properly, but definitely one I want to come back and write about."
-poster = "/images/pages/movies/project-hail-mary/poster.jpg"
-poster_alt = "Poster for Project Hail Mary"
+reaction = "Still too fresh to pin down properly, but definitely the kind of movie that makes me want to come back and write a longer note."
+poster = "https://upload.wikimedia.org/wikipedia/en/3/3b/Project_Hail_Mary_poster.jpg"
+poster_alt = "Theatrical poster for Project Hail Mary"
 +++
 
-This is the first movie page in the log, so I am keeping it short on purpose.
+This is the first entry in the movies log, so I am keeping the note short on purpose.
 
-I wanted a structure that makes it easy to track what I have watched without forcing every entry to become a full review. So for now, this page is a small note and a placeholder for anything I may want to add later.
+I mostly wanted a place to remember what I watched without turning every entry into a formal review. *Project Hail Mary* felt like the right movie to start with: the kind of big sci-fi story that is fun in the moment, but also leaves enough behind that I can imagine coming back to it later.
 
-If this movie keeps sticking in my head, I can always expand this section with more specific thoughts, favorite scenes, or separate subpages.
+For now, this page is just a marker that I watched it and want to keep it in the log. If it keeps lingering, I can always expand this into a fuller note with favorite scenes, themes, or separate subpages.
