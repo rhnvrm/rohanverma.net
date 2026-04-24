@@ -1,0 +1,28 @@
+{% extends "pages-base.html" %}
+
+{% block title %}{{ section.title }} | {{ config.title }}{% endblock title %}
+
+{% block sidebar %}
+{{ nav::sidebar(ancestors=section.ancestors, current_path=section.path) }}
+{% endblock sidebar %}
+
+{% block pages_content %}
+<h1>{{ section.title }}</h1>
+{{ section.content | safe }}
+
+{% if section.subsections %}
+<ul class="pages-index-list">
+    {% for sub_path in section.subsections %}
+    {% set movie = get_section(path=sub_path) %}
+    <li onclick="window.location='{{ movie.permalink }}'">
+        <a href="{{ movie.permalink }}">{{ movie.title }}</a>
+        {% if movie.extra.reaction %}
+        <p class="section-desc">{{ movie.extra.reaction }}</p>
+        {% elif movie.description %}
+        <p class="section-desc">{{ movie.description }}</p>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock pages_content %}

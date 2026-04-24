@@ -1,0 +1,33 @@
+{% extends "pages-base.html" %}
+
+{% block title %}{{ section.title }} | {{ config.title }}{% endblock title %}
+
+{% block sidebar %}
+{{ nav::sidebar(ancestors=section.ancestors, current_path=section.path) }}
+{% endblock sidebar %}
+
+{% block pages_content %}
+<h1>{{ section.title }}</h1>
+{% if section.extra.watched_on %}
+<p class="pages-last-updated"><small>Watched: {{ section.extra.watched_on }}</small></p>
+{% endif %}
+
+{% if section.extra.poster %}
+<img src="{{ section.extra.poster }}" alt="{{ section.extra.poster_alt | default(value=section.title) }}">
+{% endif %}
+
+{{ section.content | safe }}
+
+{% if section.pages or section.subsections %}
+<h2>More on this movie</h2>
+<ul>
+    {% for page in section.pages %}
+    <li><a href="{{ page.permalink }}">{{ page.title }}</a></li>
+    {% endfor %}
+    {% for sub_path in section.subsections %}
+    {% set child = get_section(path=sub_path) %}
+    <li><a href="{{ child.permalink }}">{{ child.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock pages_content %}
