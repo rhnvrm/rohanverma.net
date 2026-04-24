@@ -2,27 +2,138 @@
 
 {% block title %}{{ section.title }} | {{ config.title }}{% endblock title %}
 
+{% block head_extra %}
+<style>
+  .movies-index-intro {
+    max-width: min(72ch, 100%);
+    color: var(--c-text-secondary);
+  }
+
+  .movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1rem;
+    margin-top: var(--space-8);
+  }
+
+  .movie-card,
+  .movie-card:visited {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    border: 1px solid var(--c-border);
+    background: linear-gradient(180deg,
+      color-mix(in srgb, var(--c-bg-subtle) 70%, transparent),
+      transparent 100%);
+    color: inherit;
+    text-decoration: none !important;
+    transition: border-color 150ms ease, background 150ms ease, transform 150ms ease;
+    overflow: hidden;
+  }
+
+  .movie-card:hover {
+    border-color: var(--c-marigold);
+    background: color-mix(in srgb, var(--c-marigold) 6%, var(--c-bg));
+    transform: translateY(-2px);
+  }
+
+  .movie-card-media {
+    aspect-ratio: 2 / 3;
+    border-bottom: 1px solid var(--c-border);
+    background:
+      radial-gradient(circle at top left, color-mix(in srgb, var(--c-marigold) 16%, transparent), transparent 35%),
+      linear-gradient(180deg, color-mix(in srgb, var(--c-bg-subtle) 85%, transparent), color-mix(in srgb, var(--c-bg) 92%, transparent));
+    overflow: hidden;
+  }
+
+  .movie-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0;
+    border: 0;
+    box-shadow: none;
+    display: block;
+  }
+
+  .movie-card-placeholder {
+    height: 100%;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    text-align: center;
+    color: var(--c-text-tertiary);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .movie-card-body {
+    display: grid;
+    gap: 0.55rem;
+    padding: 0.9rem 1rem 1rem;
+  }
+
+  .movie-card-title {
+    margin: 0;
+    color: var(--c-text-primary);
+    font-size: var(--text-lg);
+    line-height: 1.2;
+  }
+
+  .movie-card-reaction {
+    margin: 0;
+    color: var(--c-text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.65;
+  }
+
+  @media (max-width: 640px) {
+    .movies-grid {
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.85rem;
+    }
+
+    .movie-card-body {
+      padding: 0.8rem 0.9rem 0.95rem;
+    }
+  }
+</style>
+{% endblock head_extra %}
+
 {% block sidebar %}
 {{ nav::sidebar(ancestors=section.ancestors, current_path=section.path) }}
 {% endblock sidebar %}
 
 {% block pages_content %}
 <h1>{{ section.title }}</h1>
-{{ section.content | safe }}
+<div class="movies-index-intro">
+    {{ section.content | safe }}
+</div>
 
 {% if section.subsections %}
-<ul class="pages-index-list">
+<section class="movies-grid" aria-label="Movie poster grid">
     {% for sub_path in section.subsections %}
     {% set movie = get_section(path=sub_path) %}
-    <li onclick="window.location='{{ movie.permalink }}'">
-        <a href="{{ movie.permalink }}">{{ movie.title }}</a>
-        {% if movie.extra.reaction %}
-        <p class="section-desc">{{ movie.extra.reaction }}</p>
-        {% elif movie.description %}
-        <p class="section-desc">{{ movie.description }}</p>
-        {% endif %}
-    </li>
+    <a href="{{ movie.permalink }}" class="movie-card">
+        <div class="movie-card-media">
+            {% if movie.extra.poster %}
+            <img src="{{ movie.extra.poster }}" alt="{% if movie.extra.poster_alt %}{{ movie.extra.poster_alt }}{% else %}Poster for {{ movie.title }}{% endif %}">
+            {% else %}
+            <div class="movie-card-placeholder">Poster pending</div>
+            {% endif %}
+        </div>
+        <div class="movie-card-body">
+            <h2 class="movie-card-title">{{ movie.title }}</h2>
+            {% if movie.extra.reaction %}
+            <p class="movie-card-reaction">{{ movie.extra.reaction }}</p>
+            {% elif movie.description %}
+            <p class="movie-card-reaction">{{ movie.description }}</p>
+            {% endif %}
+        </div>
+    </a>
     {% endfor %}
-</ul>
+</section>
 {% endif %}
 {% endblock pages_content %}

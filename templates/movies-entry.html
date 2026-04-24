@@ -2,32 +2,152 @@
 
 {% block title %}{{ section.title }} | {{ config.title }}{% endblock title %}
 
+{% block head_extra %}
+<style>
+  .movie-entry-hero {
+    display: grid;
+    grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
+    gap: 1.25rem;
+    align-items: start;
+    margin-bottom: var(--space-8);
+  }
+
+  .movie-entry-poster {
+    border: 1px solid var(--c-border);
+    background: color-mix(in srgb, var(--c-bg-subtle) 75%, transparent);
+    overflow: hidden;
+  }
+
+  .movie-entry-poster img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .movie-entry-poster-placeholder {
+    aspect-ratio: 2 / 3;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    text-align: center;
+    color: var(--c-text-tertiary);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background:
+      radial-gradient(circle at top left, color-mix(in srgb, var(--c-marigold) 16%, transparent), transparent 35%),
+      linear-gradient(180deg, color-mix(in srgb, var(--c-bg-subtle) 85%, transparent), color-mix(in srgb, var(--c-bg) 92%, transparent));
+  }
+
+  .movie-entry-copy h1 {
+    margin-bottom: var(--space-3);
+  }
+
+  .movie-entry-dek {
+    margin: 0 0 var(--space-4);
+    color: var(--c-text-secondary);
+    font-size: var(--text-base);
+    line-height: 1.7;
+  }
+
+  .movie-entry-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: var(--space-4);
+    padding: 0.35rem 0.55rem;
+    border: 1px solid var(--c-border);
+    color: var(--c-text-tertiary);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .movie-entry-meta::before {
+    content: "॰";
+    color: var(--c-marigold);
+  }
+
+  .movie-entry-note {
+    max-width: min(72ch, 100%);
+  }
+
+  .movie-entry-children {
+    margin-top: var(--space-10);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--c-border);
+  }
+
+  .movie-entry-children h2 {
+    margin-top: 0 !important;
+  }
+
+  .movie-entry-children ul {
+    padding-left: var(--space-5);
+  }
+
+  .movie-entry-children a {
+    text-decoration: none !important;
+  }
+
+  @media (max-width: 720px) {
+    .movie-entry-hero {
+      grid-template-columns: 1fr;
+    }
+
+    .movie-entry-poster {
+      max-width: 280px;
+    }
+  }
+</style>
+{% endblock head_extra %}
+
 {% block sidebar %}
 {{ nav::sidebar(ancestors=section.ancestors, current_path=section.path) }}
 {% endblock sidebar %}
 
 {% block pages_content %}
-<h1>{{ section.title }}</h1>
-{% if section.extra.watched_on %}
-<p class="pages-last-updated"><small>Watched: {{ section.extra.watched_on }}</small></p>
-{% endif %}
+<div class="movie-entry-hero">
+    <div class="movie-entry-poster">
+        {% if section.extra.poster %}
+        <img src="{{ section.extra.poster }}" alt="{% if section.extra.poster_alt %}{{ section.extra.poster_alt }}{% else %}Poster for {{ section.title }}{% endif %}">
+        {% else %}
+        <div class="movie-entry-poster-placeholder">Poster pending</div>
+        {% endif %}
+    </div>
 
-{% if section.extra.poster %}
-<img src="{{ section.extra.poster }}" alt="{{ section.extra.poster_alt | default(value=section.title) }}">
-{% endif %}
+    <div class="movie-entry-copy">
+        <h1>{{ section.title }}</h1>
+        {% if section.extra.watched_on %}
+        <div class="movie-entry-meta">Watched {{ section.extra.watched_on }}</div>
+        {% endif %}
+        {% if section.description %}
+        <p class="movie-entry-dek">{{ section.description }}</p>
+        {% endif %}
+    </div>
+</div>
 
-{{ section.content | safe }}
+<div class="movie-entry-note">
+    {{ section.content | safe }}
+</div>
 
 {% if section.pages or section.subsections %}
-<h2>More on this movie</h2>
-<ul>
-    {% for page in section.pages %}
-    <li><a href="{{ page.permalink }}">{{ page.title }}</a></li>
-    {% endfor %}
-    {% for sub_path in section.subsections %}
-    {% set child = get_section(path=sub_path) %}
-    <li><a href="{{ child.permalink }}">{{ child.title }}</a></li>
-    {% endfor %}
-</ul>
+<section class="movie-entry-children">
+    <h2>More on this movie</h2>
+    <ul>
+        {% for page in section.pages %}
+        <li><a href="{{ page.permalink }}">{{ page.title }}</a></li>
+        {% endfor %}
+        {% for sub_path in section.subsections %}
+        {% set child = get_section(path=sub_path) %}
+        <li><a href="{{ child.permalink }}">{{ child.title }}</a></li>
+        {% endfor %}
+    </ul>
+</section>
 {% endif %}
 {% endblock pages_content %}
