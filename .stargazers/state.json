@@ -47,6 +47,10 @@
       "starredAt": "2026-04-21T02:10:00Z"
     },
     {
+      "id": "rhnvrm/pi-mesh:easemanai:2026-04-20T17:54:22Z",
+      "starredAt": "2026-04-20T17:54:22Z"
+    },
+    {
       "id": "rhnvrm/pi-mesh:eyeswideopenpod:2026-04-20T17:54:22Z",
       "starredAt": "2026-04-20T17:54:22Z"
     },
@@ -254,15 +258,5 @@
       "id": "rhnvrm/pi-mesh:nordnes:2026-02-17T23:20:28Z",
       "starredAt": "2026-02-17T23:20:28Z"
     }
-  ],
-  "pending": {
-    "batchId": "2026-04-28T08:44:11.235Z:1:rhnvrm/pi-mesh:easemanai:2026-04-20T17:54:22Z",
-    "preparedAt": "2026-04-28T08:44:11.235Z",
-    "events": [
-      {
-        "id": "rhnvrm/pi-mesh:easemanai:2026-04-20T17:54:22Z",
-        "starredAt": "2026-04-20T17:54:22Z"
-      }
-    ]
-  }
+  ]
 }
