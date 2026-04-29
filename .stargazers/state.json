@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-29T14:39:35.644Z",
+  "updatedAt": "2026-04-29T19:59:04.623Z",
   "events": [
     {
       "id": "rhnvrm/catprinter:sultanmyrza:2026-04-29T07:35:44Z",
@@ -266,5 +266,15 @@
       "id": "rhnvrm/pi-mesh:nordnes:2026-02-17T23:20:28Z",
       "starredAt": "2026-02-17T23:20:28Z"
     }
-  ]
+  ],
+  "pending": {
+    "batchId": "2026-04-29T19:59:04.623Z:1:rhnvrm/catprinter:Dronicsam:2026-04-29T17:37:33Z",
+    "preparedAt": "2026-04-29T19:59:04.623Z",
+    "events": [
+      {
+        "id": "rhnvrm/catprinter:Dronicsam:2026-04-29T17:37:33Z",
+        "starredAt": "2026-04-29T17:37:33Z"
+      }
+    ]
+  }
 }
