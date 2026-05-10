@@ -3,6 +3,10 @@
   "updatedAt": "2026-05-10T13:59:11.012Z",
   "events": [
     {
+      "id": "rhnvrm/linkpage:listato:2026-05-10T12:43:28Z",
+      "starredAt": "2026-05-10T12:43:28Z"
+    },
+    {
       "id": "rhnvrm/s3site:ifeelgarv:2026-05-08T03:33:23Z",
       "starredAt": "2026-05-08T03:33:23Z"
     },
@@ -290,15 +294,5 @@
       "id": "rhnvrm/pi-mesh:nordnes:2026-02-17T23:20:28Z",
       "starredAt": "2026-02-17T23:20:28Z"
     }
-  ],
-  "pending": {
-    "batchId": "2026-05-10T13:59:11.012Z:1:rhnvrm/linkpage:listato:2026-05-10T12:43:28Z",
-    "preparedAt": "2026-05-10T13:59:11.012Z",
-    "events": [
-      {
-        "id": "rhnvrm/linkpage:listato:2026-05-10T12:43:28Z",
-        "starredAt": "2026-05-10T12:43:28Z"
-      }
-    ]
-  }
+  ]
 }
