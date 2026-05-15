@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-15T09:29:19.212Z",
+  "updatedAt": "2026-05-15T14:44:22.479Z",
   "events": [
     {
       "id": "rhnvrm/linkpage:listato:2026-05-10T12:43:28Z",
@@ -294,5 +294,15 @@
       "id": "rhnvrm/pi-mesh:nordnes:2026-02-17T23:20:28Z",
       "starredAt": "2026-02-17T23:20:28Z"
     }
-  ]
+  ],
+  "pending": {
+    "batchId": "2026-05-15T14:44:22.479Z:1:rhnvrm/stock-market-circulars:codingCoffee:2026-05-15T10:41:36Z",
+    "preparedAt": "2026-05-15T14:44:22.479Z",
+    "events": [
+      {
+        "id": "rhnvrm/stock-market-circulars:codingCoffee:2026-05-15T10:41:36Z",
+        "starredAt": "2026-05-15T10:41:36Z"
+      }
+    ]
+  }
 }
