@@ -3,6 +3,14 @@
   "updatedAt": "2026-05-19T08:34:15.954Z",
   "events": [
     {
+      "id": "rhnvrm/simples3:termermc:2026-05-18T21:58:09Z",
+      "starredAt": "2026-05-18T21:58:09Z"
+    },
+    {
+      "id": "rhnvrm/simples3:masacento:2026-05-16T00:32:45Z",
+      "starredAt": "2026-05-16T00:32:45Z"
+    },
+    {
       "id": "rhnvrm/stock-market-circulars:codingCoffee:2026-05-15T10:41:36Z",
       "starredAt": "2026-05-15T10:41:36Z"
     },
@@ -298,19 +306,5 @@
       "id": "rhnvrm/pi-mesh:nordnes:2026-02-17T23:20:28Z",
       "starredAt": "2026-02-17T23:20:28Z"
     }
-  ],
-  "pending": {
-    "batchId": "2026-05-19T08:34:15.954Z:2:rhnvrm/simples3:termermc:2026-05-18T21:58:09Z",
-    "preparedAt": "2026-05-19T08:34:15.954Z",
-    "events": [
-      {
-        "id": "rhnvrm/simples3:termermc:2026-05-18T21:58:09Z",
-        "starredAt": "2026-05-18T21:58:09Z"
-      },
-      {
-        "id": "rhnvrm/simples3:masacento:2026-05-16T00:32:45Z",
-        "starredAt": "2026-05-16T00:32:45Z"
-      }
-    ]
-  }
+  ]
 }
