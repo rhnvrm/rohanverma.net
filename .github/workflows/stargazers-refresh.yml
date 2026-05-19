@@ -21,8 +21,8 @@ jobs:
           submodules: recursive
 
       - name: Generate stargazer feed
-        # Pin to the current Discord-capable stargazers-action commit; switch to a release tag after publish.
-        uses: oddship/stargazers-action@e7aaad6179a4518f1fb53ebf55c3706b75dba8fb
+        # Pin to the github-branch 409-retry fix; switch to a release tag after publish.
+        uses: oddship/stargazers-action@e833029d34d36390c9d7abd8d0adce530f1fd41b
         with:
           config: .github/stargazers.yml
           token: ${{ github.token }}
@@ -109,7 +109,7 @@ jobs:
         if: success() && steps.discord_webhook.outputs.configured == 'true'
         env:
           DISCORD_STARGAZERS_WEBHOOK: ${{ secrets.DISCORD_STARGAZERS_WEBHOOK }}
-        uses: oddship/stargazers-action@e7aaad6179a4518f1fb53ebf55c3706b75dba8fb
+        uses: oddship/stargazers-action@e833029d34d36390c9d7abd8d0adce530f1fd41b
         with:
           mode: discord
           config: .github/stargazers.yml
