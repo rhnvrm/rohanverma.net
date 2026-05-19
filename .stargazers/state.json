@@ -167,6 +167,10 @@
       "starredAt": "2026-03-18T21:16:34Z"
     },
     {
+      "id": "rhnvrm/pi-mesh:jordanhindo:2026-03-17T06:29:18Z",
+      "starredAt": "2026-03-17T06:29:18Z"
+    },
+    {
       "id": "rhnvrm/pi-mesh:zenchantlive:2026-03-17T06:29:18Z",
       "starredAt": "2026-03-17T06:29:18Z"
     },
@@ -306,15 +310,5 @@
       "id": "rhnvrm/pi-mesh:nordnes:2026-02-17T23:20:28Z",
       "starredAt": "2026-02-17T23:20:28Z"
     }
-  ],
-  "pending": {
-    "batchId": "2026-05-19T20:09:23.785Z:1:rhnvrm/pi-mesh:jordanhindo:2026-03-17T06:29:18Z",
-    "preparedAt": "2026-05-19T20:09:23.785Z",
-    "events": [
-      {
-        "id": "rhnvrm/pi-mesh:jordanhindo:2026-03-17T06:29:18Z",
-        "starredAt": "2026-03-17T06:29:18Z"
-      }
-    ]
-  }
+  ]
 }
