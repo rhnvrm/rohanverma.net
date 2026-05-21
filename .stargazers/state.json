@@ -3,6 +3,10 @@
   "updatedAt": "2026-05-21T04:54:06.233Z",
   "events": [
     {
+      "id": "rhnvrm/stock-market-circulars:prayagverma:2026-05-21T02:06:31Z",
+      "starredAt": "2026-05-21T02:06:31Z"
+    },
+    {
       "id": "rhnvrm/pi-mesh:ShalokShalom:2026-05-20T11:43:13Z",
       "starredAt": "2026-05-20T11:43:13Z"
     },
@@ -314,15 +318,5 @@
       "id": "rhnvrm/pi-mesh:nordnes:2026-02-17T23:20:28Z",
       "starredAt": "2026-02-17T23:20:28Z"
     }
-  ],
-  "pending": {
-    "batchId": "2026-05-21T04:54:06.233Z:1:rhnvrm/stock-market-circulars:prayagverma:2026-05-21T02:06:31Z",
-    "preparedAt": "2026-05-21T04:54:06.233Z",
-    "events": [
-      {
-        "id": "rhnvrm/stock-market-circulars:prayagverma:2026-05-21T02:06:31Z",
-        "starredAt": "2026-05-21T02:06:31Z"
-      }
-    ]
-  }
+  ]
 }
