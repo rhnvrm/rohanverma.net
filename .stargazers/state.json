@@ -3,6 +3,10 @@
   "updatedAt": "2026-06-04T05:14:22.106Z",
   "events": [
     {
+      "id": "rhnvrm/pi-bash-readonly:yisar:2026-06-04T00:16:41Z",
+      "starredAt": "2026-06-04T00:16:41Z"
+    },
+    {
       "id": "rhnvrm/simples3:qingyu31:2026-06-03T14:08:07Z",
       "starredAt": "2026-06-03T14:08:07Z"
     },
@@ -330,15 +334,5 @@
       "id": "rhnvrm/pi-mesh:nordnes:2026-02-17T23:20:28Z",
       "starredAt": "2026-02-17T23:20:28Z"
     }
-  ],
-  "pending": {
-    "batchId": "2026-06-04T05:14:22.106Z:1:rhnvrm/pi-bash-readonly:yisar:2026-06-04T00:16:41Z",
-    "preparedAt": "2026-06-04T05:14:22.106Z",
-    "events": [
-      {
-        "id": "rhnvrm/pi-bash-readonly:yisar:2026-06-04T00:16:41Z",
-        "starredAt": "2026-06-04T00:16:41Z"
-      }
-    ]
-  }
+  ]
 }
