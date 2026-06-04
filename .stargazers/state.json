@@ -3,6 +3,14 @@
   "updatedAt": "2026-06-04T20:29:13.774Z",
   "events": [
     {
+      "id": "rhnvrm/linkpage:pareshjoshij:2026-06-04T16:54:14Z",
+      "starredAt": "2026-06-04T16:54:14Z"
+    },
+    {
+      "id": "rhnvrm/listmonk-mcp:redactedCHAD:2026-06-04T16:11:03Z",
+      "starredAt": "2026-06-04T16:11:03Z"
+    },
+    {
       "id": "rhnvrm/pi-bash-readonly:yisar:2026-06-04T00:16:41Z",
       "starredAt": "2026-06-04T00:16:41Z"
     },
@@ -334,19 +342,5 @@
       "id": "rhnvrm/pi-mesh:nordnes:2026-02-17T23:20:28Z",
       "starredAt": "2026-02-17T23:20:28Z"
     }
-  ],
-  "pending": {
-    "batchId": "2026-06-04T20:29:13.774Z:2:rhnvrm/linkpage:pareshjoshij:2026-06-04T16:54:14Z",
-    "preparedAt": "2026-06-04T20:29:13.774Z",
-    "events": [
-      {
-        "id": "rhnvrm/linkpage:pareshjoshij:2026-06-04T16:54:14Z",
-        "starredAt": "2026-06-04T16:54:14Z"
-      },
-      {
-        "id": "rhnvrm/listmonk-mcp:redactedCHAD:2026-06-04T16:11:03Z",
-        "starredAt": "2026-06-04T16:11:03Z"
-      }
-    ]
-  }
+  ]
 }
