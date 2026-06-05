@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-05T10:24:12.214Z",
+  "updatedAt": "2026-06-05T15:34:26.780Z",
   "events": [
     {
       "id": "rhnvrm/simples3:neteenkk:2026-06-05T06:29:15Z",
@@ -346,5 +346,15 @@
       "id": "rhnvrm/pi-mesh:nordnes:2026-02-17T23:20:28Z",
       "starredAt": "2026-02-17T23:20:28Z"
     }
-  ]
+  ],
+  "pending": {
+    "batchId": "2026-06-05T15:34:26.780Z:1:rhnvrm/listmonk-mcp:oliverkierepka:2026-06-05T11:41:32Z",
+    "preparedAt": "2026-06-05T15:34:26.780Z",
+    "events": [
+      {
+        "id": "rhnvrm/listmonk-mcp:oliverkierepka:2026-06-05T11:41:32Z",
+        "starredAt": "2026-06-05T11:41:32Z"
+      }
+    ]
+  }
 }
