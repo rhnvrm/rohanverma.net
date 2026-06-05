@@ -3,6 +3,10 @@
   "updatedAt": "2026-06-05T20:19:15.546Z",
   "events": [
     {
+      "id": "rhnvrm/listmonk-mcp:tecspda:2026-06-05T18:14:17Z",
+      "starredAt": "2026-06-05T18:14:17Z"
+    },
+    {
       "id": "rhnvrm/listmonk-mcp:oliverkierepka:2026-06-05T11:41:32Z",
       "starredAt": "2026-06-05T11:41:32Z"
     },
@@ -350,15 +354,5 @@
       "id": "rhnvrm/pi-mesh:nordnes:2026-02-17T23:20:28Z",
       "starredAt": "2026-02-17T23:20:28Z"
     }
-  ],
-  "pending": {
-    "batchId": "2026-06-05T20:19:15.546Z:1:rhnvrm/listmonk-mcp:tecspda:2026-06-05T18:14:17Z",
-    "preparedAt": "2026-06-05T20:19:15.546Z",
-    "events": [
-      {
-        "id": "rhnvrm/listmonk-mcp:tecspda:2026-06-05T18:14:17Z",
-        "starredAt": "2026-06-05T18:14:17Z"
-      }
-    ]
-  }
+  ]
 }
