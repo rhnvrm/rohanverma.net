@@ -19,6 +19,10 @@
       "starredAt": "2026-06-05T11:41:32Z"
     },
     {
+      "id": "rhnvrm/simples3:neeteenk:2026-06-05T06:29:15Z",
+      "starredAt": "2026-06-05T06:29:15Z"
+    },
+    {
       "id": "rhnvrm/simples3:neteenkk:2026-06-05T06:29:15Z",
       "starredAt": "2026-06-05T06:29:15Z"
     },
@@ -362,15 +366,5 @@
       "id": "rhnvrm/pi-mesh:nordnes:2026-02-17T23:20:28Z",
       "starredAt": "2026-02-17T23:20:28Z"
     }
-  ],
-  "pending": {
-    "batchId": "2026-06-14T05:14:16.715Z:1:rhnvrm/simples3:neeteenk:2026-06-05T06:29:15Z",
-    "preparedAt": "2026-06-14T05:14:16.715Z",
-    "events": [
-      {
-        "id": "rhnvrm/simples3:neeteenk:2026-06-05T06:29:15Z",
-        "starredAt": "2026-06-05T06:29:15Z"
-      }
-    ]
-  }
+  ]
 }
