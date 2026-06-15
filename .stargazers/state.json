@@ -3,6 +3,10 @@
   "updatedAt": "2026-06-15T05:34:10.383Z",
   "events": [
     {
+      "id": "rhnvrm/mattermost-cli:dontmint:2026-06-15T03:41:29Z",
+      "starredAt": "2026-06-15T03:41:29Z"
+    },
+    {
       "id": "rhnvrm/stock-market-circulars:knl:2026-06-11T08:24:17Z",
       "starredAt": "2026-06-11T08:24:17Z"
     },
@@ -366,15 +370,5 @@
       "id": "rhnvrm/pi-mesh:nordnes:2026-02-17T23:20:28Z",
       "starredAt": "2026-02-17T23:20:28Z"
     }
-  ],
-  "pending": {
-    "batchId": "2026-06-15T05:34:10.383Z:1:rhnvrm/mattermost-cli:dontmint:2026-06-15T03:41:29Z",
-    "preparedAt": "2026-06-15T05:34:10.383Z",
-    "events": [
-      {
-        "id": "rhnvrm/mattermost-cli:dontmint:2026-06-15T03:41:29Z",
-        "starredAt": "2026-06-15T03:41:29Z"
-      }
-    ]
-  }
+  ]
 }
