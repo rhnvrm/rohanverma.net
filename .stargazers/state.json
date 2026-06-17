@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-16T21:24:16.268Z",
+  "updatedAt": "2026-06-17T05:24:22.164Z",
   "events": [
     {
       "id": "rhnvrm/mattermost-cli:dontmint:2026-06-15T03:41:29Z",
@@ -370,5 +370,15 @@
       "id": "rhnvrm/pi-mesh:nordnes:2026-02-17T23:20:28Z",
       "starredAt": "2026-02-17T23:20:28Z"
     }
-  ]
+  ],
+  "pending": {
+    "batchId": "2026-06-17T05:24:22.164Z:1:rhnvrm/pi-bash-readonly:nathanic:2026-06-16T23:03:52Z",
+    "preparedAt": "2026-06-17T05:24:22.164Z",
+    "events": [
+      {
+        "id": "rhnvrm/pi-bash-readonly:nathanic:2026-06-16T23:03:52Z",
+        "starredAt": "2026-06-16T23:03:52Z"
+      }
+    ]
+  }
 }
