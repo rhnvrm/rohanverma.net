@@ -3,6 +3,30 @@
   "updatedAt": "2026-06-18T05:09:21.826Z",
   "events": [
     {
+      "id": "rhnvrm/catprinter:blacklovertech:2026-06-18T04:12:22Z",
+      "starredAt": "2026-06-18T04:12:22Z"
+    },
+    {
+      "id": "rhnvrm/lzo1z:blacklovertech:2026-06-18T04:12:12Z",
+      "starredAt": "2026-06-18T04:12:12Z"
+    },
+    {
+      "id": "rhnvrm/czero:blacklovertech:2026-06-18T04:12:08Z",
+      "starredAt": "2026-06-18T04:12:08Z"
+    },
+    {
+      "id": "rhnvrm/pi-mesh:blacklovertech:2026-06-18T04:12:03Z",
+      "starredAt": "2026-06-18T04:12:03Z"
+    },
+    {
+      "id": "rhnvrm/s3site:blacklovertech:2026-06-18T04:11:52Z",
+      "starredAt": "2026-06-18T04:11:52Z"
+    },
+    {
+      "id": "rhnvrm/simples3:blacklovertech:2026-06-18T04:09:47Z",
+      "starredAt": "2026-06-18T04:09:47Z"
+    },
+    {
       "id": "rhnvrm/pi-bash-readonly:nathanic:2026-06-16T23:03:52Z",
       "starredAt": "2026-06-16T23:03:52Z"
     },
@@ -374,35 +398,5 @@
       "id": "rhnvrm/pi-mesh:nordnes:2026-02-17T23:20:28Z",
       "starredAt": "2026-02-17T23:20:28Z"
     }
-  ],
-  "pending": {
-    "batchId": "2026-06-18T05:09:21.826Z:6:rhnvrm/catprinter:blacklovertech:2026-06-18T04:12:22Z",
-    "preparedAt": "2026-06-18T05:09:21.826Z",
-    "events": [
-      {
-        "id": "rhnvrm/catprinter:blacklovertech:2026-06-18T04:12:22Z",
-        "starredAt": "2026-06-18T04:12:22Z"
-      },
-      {
-        "id": "rhnvrm/lzo1z:blacklovertech:2026-06-18T04:12:12Z",
-        "starredAt": "2026-06-18T04:12:12Z"
-      },
-      {
-        "id": "rhnvrm/czero:blacklovertech:2026-06-18T04:12:08Z",
-        "starredAt": "2026-06-18T04:12:08Z"
-      },
-      {
-        "id": "rhnvrm/pi-mesh:blacklovertech:2026-06-18T04:12:03Z",
-        "starredAt": "2026-06-18T04:12:03Z"
-      },
-      {
-        "id": "rhnvrm/s3site:blacklovertech:2026-06-18T04:11:52Z",
-        "starredAt": "2026-06-18T04:11:52Z"
-      },
-      {
-        "id": "rhnvrm/simples3:blacklovertech:2026-06-18T04:09:47Z",
-        "starredAt": "2026-06-18T04:09:47Z"
-      }
-    ]
-  }
+  ]
 }
