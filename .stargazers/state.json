@@ -3,6 +3,10 @@
   "updatedAt": "2026-06-25T04:39:24.321Z",
   "events": [
     {
+      "id": "rhnvrm/listmonk-mcp:satonotdead:2026-06-25T03:16:25Z",
+      "starredAt": "2026-06-25T03:16:25Z"
+    },
+    {
       "id": "rhnvrm/catprinter:blacklovertech:2026-06-18T04:12:22Z",
       "starredAt": "2026-06-18T04:12:22Z"
     },
@@ -398,15 +402,5 @@
       "id": "rhnvrm/pi-mesh:nordnes:2026-02-17T23:20:28Z",
       "starredAt": "2026-02-17T23:20:28Z"
     }
-  ],
-  "pending": {
-    "batchId": "2026-06-25T04:39:24.321Z:1:rhnvrm/listmonk-mcp:satonotdead:2026-06-25T03:16:25Z",
-    "preparedAt": "2026-06-25T04:39:24.321Z",
-    "events": [
-      {
-        "id": "rhnvrm/listmonk-mcp:satonotdead:2026-06-25T03:16:25Z",
-        "starredAt": "2026-06-25T03:16:25Z"
-      }
-    ]
-  }
+  ]
 }
