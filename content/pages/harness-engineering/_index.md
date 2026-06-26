@@ -130,6 +130,8 @@ What follows is the recommended reading order. Start with the thesis to understa
 
 [A Worked Example](@/pages/harness-engineering/in-practice/a-worked-example.md): end-to-end: from prompt to shipped code, showing how the pieces fit together.
 
+[How Worktrees Actually Work](@/pages/harness-engineering/in-practice/how-worktrees-actually-work.md): how branch isolation became part of the harness rather than just a Git trick.
+
 [Content Import Pipeline](@/pages/harness-engineering/in-practice/content-import-pipeline.md): how this digital garden was built: notes vault to published site in one session.
 
 ### Research

@@ -16,4 +16,6 @@ End-to-end worked examples showing how all the pieces fit together in real sessi
 
 [A Worked Example](@/pages/harness-engineering/in-practice/a-worked-example.md). End-to-end: from prompt to shipped code, showing how the pieces fit together.
 
+[How Worktrees Actually Work](@/pages/harness-engineering/in-practice/how-worktrees-actually-work.md). Why worktrees became reliable only after they were turned into harness infrastructure.
+
 [Content Import Pipeline](@/pages/harness-engineering/in-practice/content-import-pipeline.md). How this digital garden was built: notes vault to published site in one session.
