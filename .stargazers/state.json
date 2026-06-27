@@ -3,6 +3,10 @@
   "updatedAt": "2026-06-27T19:49:18.361Z",
   "events": [
     {
+      "id": "rhnvrm/listmonk-mcp:vednolacni:2026-06-27T18:15:40Z",
+      "starredAt": "2026-06-27T18:15:40Z"
+    },
+    {
       "id": "rhnvrm/listmonk-mcp:satonotdead:2026-06-25T03:16:25Z",
       "starredAt": "2026-06-25T03:16:25Z"
     },
@@ -402,15 +406,5 @@
       "id": "rhnvrm/pi-mesh:nordnes:2026-02-17T23:20:28Z",
       "starredAt": "2026-02-17T23:20:28Z"
     }
-  ],
-  "pending": {
-    "batchId": "2026-06-27T19:49:18.361Z:1:rhnvrm/listmonk-mcp:vednolacni:2026-06-27T18:15:40Z",
-    "preparedAt": "2026-06-27T19:49:18.361Z",
-    "events": [
-      {
-        "id": "rhnvrm/listmonk-mcp:vednolacni:2026-06-27T18:15:40Z",
-        "starredAt": "2026-06-27T18:15:40Z"
-      }
-    ]
-  }
+  ]
 }
