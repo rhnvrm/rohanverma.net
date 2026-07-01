@@ -3,6 +3,10 @@
   "updatedAt": "2026-07-01T10:19:19.847Z",
   "events": [
     {
+      "id": "rhnvrm/linkpage:devilankur18:2026-07-01T08:44:50Z",
+      "starredAt": "2026-07-01T08:44:50Z"
+    },
+    {
       "id": "rhnvrm/listmonk-mcp:vednolacni:2026-06-27T18:15:40Z",
       "starredAt": "2026-06-27T18:15:40Z"
     },
@@ -406,15 +410,5 @@
       "id": "rhnvrm/pi-mesh:nordnes:2026-02-17T23:20:28Z",
       "starredAt": "2026-02-17T23:20:28Z"
     }
-  ],
-  "pending": {
-    "batchId": "2026-07-01T10:19:19.847Z:1:rhnvrm/linkpage:devilankur18:2026-07-01T08:44:50Z",
-    "preparedAt": "2026-07-01T10:19:19.847Z",
-    "events": [
-      {
-        "id": "rhnvrm/linkpage:devilankur18:2026-07-01T08:44:50Z",
-        "starredAt": "2026-07-01T08:44:50Z"
-      }
-    ]
-  }
+  ]
 }
