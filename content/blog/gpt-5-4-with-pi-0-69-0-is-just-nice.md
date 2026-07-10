@@ -1,7 +1,7 @@
 +++
 title = "GPT-5.4 with Pi 0.69.0 is just nice"
 date = "2026-07-10T19:00:00+05:30"
-draft = true
+draft = false
 path = "blog/2026/07/10/gpt-5-4-with-pi-0-69-0-is-just-nice/"
 
 [taxonomies]
