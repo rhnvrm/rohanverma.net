@@ -70,6 +70,9 @@ social_image = "images/social-card.png"
 [extra.doordarshan.homepage]
 show_recent = true
 recent_limit = 5
+reading_list_notes_feed_url = "https://reading-list.oddship.net/notes/rss.xml"
+reading_list_digests_feed_url = "https://reading-list.oddship.net/digests/rss.xml"
+reading_list_url = "https://reading-list.oddship.net/"
 
 [[extra.doordarshan.homepage.links]]
 label = "Blog"

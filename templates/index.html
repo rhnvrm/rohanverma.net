@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% import "macros/urls.html" as urls %}
+
+{% block content %}
+{% set blog_section_path = config.extra.doordarshan.sections.blog | default(value="blog/_index.md") %}
+{% set pages_section_path = config.extra.doordarshan.sections.pages | default(value="pages/_index.md") %}
+{% set blog_section_url = get_url(path=blog_section_path | replace(from="_index.md", to="")) %}
+{% set pages_section_url = get_url(path=pages_section_path | replace(from="_index.md", to="")) %}
+{% set recent_limit = 5 %}
+{% set show_recent = false %}
+{% if config.extra.doordarshan.homepage is defined and config.extra.doordarshan.homepage.recent_limit is defined %}
+    {% set recent_limit = config.extra.doordarshan.homepage.recent_limit %}
+{% endif %}
+{% if config.extra.doordarshan.homepage is defined and config.extra.doordarshan.homepage.show_recent is defined %}
+    {% set show_recent = config.extra.doordarshan.homepage.show_recent %}
+{% endif %}
+{% set reading_list_feed_url = false %}
+{% set reading_list_notes_feed_url = false %}
+{% set reading_list_digests_feed_url = false %}
+{% set reading_list_url = false %}
+{% if config.extra.doordarshan.homepage is defined and config.extra.doordarshan.homepage.reading_list_feed_url is defined %}
+    {% set reading_list_feed_url = config.extra.doordarshan.homepage.reading_list_feed_url %}
+{% endif %}
+{% if config.extra.doordarshan.homepage is defined and config.extra.doordarshan.homepage.reading_list_notes_feed_url is defined %}
+    {% set reading_list_notes_feed_url = config.extra.doordarshan.homepage.reading_list_notes_feed_url %}
+{% endif %}
+{% if config.extra.doordarshan.homepage is defined and config.extra.doordarshan.homepage.reading_list_digests_feed_url is defined %}
+    {% set reading_list_digests_feed_url = config.extra.doordarshan.homepage.reading_list_digests_feed_url %}
+{% endif %}
+{% if config.extra.doordarshan.homepage is defined and config.extra.doordarshan.homepage.reading_list_url is defined %}
+    {% set reading_list_url = config.extra.doordarshan.homepage.reading_list_url %}
+{% endif %}
+
+<section class="hero-section">
+    <div class="content-container">
+        <div class="hero-card">
+            {% if config.extra.doordarshan.identity is defined and config.extra.doordarshan.identity.avatar is defined and config.extra.doordarshan.identity.avatar %}
+            <img src="{{ urls::resolve(path=config.extra.doordarshan.identity.avatar) }}" alt="{{ config.title }}" class="avatar energy-glow">
+            {% elif config.extra.avatar is defined and config.extra.avatar %}
+            <img src="{{ urls::resolve(path=config.extra.avatar) }}" alt="{{ config.title }}" class="avatar energy-glow">
+            {% endif %}
+
+            <h1 class="hero-title">
+                {% if config.extra.doordarshan.identity is defined and config.extra.doordarshan.identity.homepage_title is defined and config.extra.doordarshan.identity.homepage_title %}
+                    {{ config.extra.doordarshan.identity.homepage_title }}
+                {% elif config.extra.author is defined and config.extra.author %}
+                    {{ config.extra.author }}
+                {% else %}
+                    {{ config.title }}
+                {% endif %}
+            </h1>
+
+            {% if config.extra.doordarshan.identity is defined and config.extra.doordarshan.identity.homepage_tagline is defined and config.extra.doordarshan.identity.homepage_tagline %}
+            <p class="hero-description">{{ config.extra.doordarshan.identity.homepage_tagline }}</p>
+            {% elif config.description %}
+            <p class="hero-description">{{ config.description }}</p>
+            {% endif %}
+
+            <div class="rangoli-divider">
+                <span class="rangoli-symbol">✦</span>
+            </div>
+
+            <nav class="hero-links">
+                {% if config.extra.doordarshan.homepage is defined and config.extra.doordarshan.homepage.links is defined %}
+                    {% for link in config.extra.doordarshan.homepage.links %}
+                <a href="{{ urls::resolve(path=link.url) }}" class="btn-retro">{{ link.label }}</a>
+                    {% endfor %}
+                {% else %}
+                <a href="{{ blog_section_url }}" class="btn-retro">Blog</a>
+                <a href="{{ pages_section_url }}" class="btn-retro">Pages</a>
+                {% endif %}
+            </nav>
+        </div>
+    </div>
+</section>
+
+{% if show_recent %}
+{% set blog_section = get_section(path=blog_section_path) %}
+{% set pages_section = get_section(path=pages_section_path) %}
+<section class="recent-updates site-updates">
+    <div class="content-container">
+        <h2 class="recent-updates-title">/* From Here */</h2>
+        <div class="homepage-split-columns">
+            <section>
+                <h3 class="homepage-split-title">Posts</h3>
+                <ul class="recent-updates-list">
+                    {% for post in blog_section.pages | sort(attribute="date") | reverse | slice(end=recent_limit) %}
+                    <li class="recent-update-item">
+                        <time datetime="{{ post.date }}">{{ post.date | date(format="%b %d") }}</time>
+                        <a href="{{ post.permalink }}">{{ post.title }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </section>
+
+            <section>
+                <h3 class="homepage-split-title">Pages</h3>
+                <ul class="recent-updates-list">
+                    {% set_global recent_pages = [] %}
+                    {% for page in pages_section.pages %}
+                        {% if page.date %}{% set_global recent_pages = recent_pages | concat(with=[page]) %}{% endif %}
+                    {% endfor %}
+                    {% for subsection_path in pages_section.subsections %}
+                        {% set subsection = get_section(path=subsection_path) %}
+                        {% for page in subsection.pages %}
+                            {% if page.date %}{% set_global recent_pages = recent_pages | concat(with=[page]) %}{% endif %}
+                        {% endfor %}
+                        {% for sub2_path in subsection.subsections %}
+                            {% set sub2 = get_section(path=sub2_path) %}
+                            {% for page in sub2.pages %}
+                                {% if page.date %}{% set_global recent_pages = recent_pages | concat(with=[page]) %}{% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                    {% endfor %}
+                    {% for page in recent_pages | sort(attribute="date") | reverse | slice(end=recent_limit) %}
+                    <li class="recent-update-item">
+                        <time datetime="{{ page.date }}">{{ page.date | date(format="%b %d") }}</time>
+                        <a href="{{ page.permalink }}">{{ page.title }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% if reading_list_feed_url or reading_list_notes_feed_url or reading_list_digests_feed_url %}
+<section class="homepage-split-section reading-list-section" {% if reading_list_feed_url %}data-reading-list-feed="{{ reading_list_feed_url }}"{% endif %} {% if reading_list_notes_feed_url %}data-reading-list-notes-feed="{{ reading_list_notes_feed_url }}"{% endif %} {% if reading_list_digests_feed_url %}data-reading-list-digests-feed="{{ reading_list_digests_feed_url }}"{% endif %} {% if reading_list_url %}data-reading-list-url="{{ reading_list_url }}"{% endif %}>
+    <div class="content-container">
+        <h2 class="recent-updates-title">/* Reading */</h2>
+        <div class="homepage-split-columns" aria-live="polite">
+            <section>
+                <h3 class="homepage-split-title">Recent Notes</h3>
+                <ul class="recent-updates-list reading-list-items" data-reading-list-items="notes">
+                    <li class="recent-update-item reading-list-status">Loading notes...</li>
+                </ul>
+            </section>
+            <section>
+                <h3 class="homepage-split-title">Digests</h3>
+                <ul class="recent-updates-list reading-list-items" data-reading-list-items="digests">
+                    <li class="recent-update-item reading-list-status">Loading digests...</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock content %}
+
+{% block site_scripts %}
+{{ super() }}
+{% if reading_list_feed_url or reading_list_notes_feed_url or reading_list_digests_feed_url %}
+<script src="{{ get_url(path='js/reading-list.js') | trim_end_matches(pat='/') }}?h={{ get_hash(path='js/reading-list.js', sha_type=256) | truncate(length=8, end='') }}"></script>
+{% endif %}
+{% endblock site_scripts %}
