@@ -22,3 +22,5 @@ Short notes on things I figured out and didn't want to forget. Troubleshooting f
 [Fix Garbled Text and Shadows in Chrome and VSCode](@/pages/til/fix-garbled-text-chrome-vscode.md) — GPU rendering issues on Linux and how to fix them.
 
 [Combining Multiple Git Repos While Preserving History](@/pages/til/combining-git-repos.md) — merging repos into a monorepo without losing commit history.
+
+[Running the Buzz AppImage on NixOS](@/pages/til/buzz-appimage-nixos.md) — AppImage, WebKit, and GStreamer fixes for a desktop app on NixOS.
