@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     doordarshan = {
-      url = "github:oddship/doordarshan-zola/232caa1504fc93d75afec24559cf611025d2c958";
+      url = "github:oddship/doordarshan-zola/5c0a3325d05bfc66202653fd5b17f77ed464b754";
       flake = false;
     };
   };
@@ -21,12 +21,11 @@
           version = "1.0.0";
           src = ./.;
           nativeBuildInputs = [ pkgs.zola ];
-          postUnpack = ''
-            mkdir -p "$sourceRoot/themes"
-            cp -R ${doordarshan} "$sourceRoot/themes/doordarshan"
-            chmod -R u+w "$sourceRoot/themes/doordarshan"
-          '';
           buildPhase = ''
+            rm -rf themes/doordarshan
+            mkdir -p themes
+            cp -R ${doordarshan} themes/doordarshan
+            chmod -R u+w themes/doordarshan
             zola build
           '';
           installPhase = ''
