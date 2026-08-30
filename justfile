@@ -2,7 +2,7 @@
 # Run with `just <command>`
 
 port := "1111"
-host := "192.168.69.113"
+host := env_var_or_default("ZOLA_HOST", "127.0.0.1")
 logfile := "/tmp/zola-serve.log"
 
 # Check if we're inside a nix shell
