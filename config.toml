@@ -16,6 +16,13 @@ generate_feeds = true
 feed_filenames = ["rss.xml"]
 build_search_index = true
 
+[search]
+include_title = true
+include_content = true
+include_description = true
+include_path = false
+index_format = "fuse_javascript"
+
 # Markdown configuration
 [markdown]
 highlight_code = true
