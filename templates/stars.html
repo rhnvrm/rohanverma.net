@@ -33,9 +33,7 @@
     }
 
     .stars-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0.42rem;
+        width: 100%;
     }
 
     .star-card {
@@ -43,6 +41,7 @@
         margin: 0;
         padding: 0.5rem 0.65rem;
         border-left: 2px solid var(--c-border);
+        border-bottom: 1px solid var(--c-border);
         transition: border-color 150ms ease, background 150ms ease;
     }
 
@@ -177,9 +176,9 @@
         </header>
 
         {% if stars_data and stars_data.stars and stars_data.stars | length > 0 %}
-        <div class="stars-list">
+        <div class="stars-list item-group" data-divided>
             {% for star in stars_data.stars %}
-            <div class="card star-card">
+            <div class="card item star-card" data-variant="outline">
                 <div class="star-row">
                     {% if star.user.avatarUrl %}
                     <img
