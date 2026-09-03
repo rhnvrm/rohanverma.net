@@ -33,6 +33,7 @@ This project uses Nix flakes for reproducible development environment and Just a
 ```bash
 just                # Show available commands
 just serve          # Start Zola development server
+just admin          # Start local-only Markdown editor on port 1112
 just build          # Build Zola site
 just check          # Check available tools and versions
 just clean          # Clean build artifacts
@@ -45,6 +46,10 @@ The justfile will automatically detect if you're running in a Nix shell and ente
 zola serve    # Development server
 zola build    # Build for production
 ```
+
+### Local admin editor
+
+Run `just admin` in a second terminal while `just serve-drafts` (or `just bg`) is running. Open `http://127.0.0.1:1112/admin/` to create drafts, edit blog posts or pages, preview them through Zola, and change content between draft and public. The same local origin proxies the actual Zola site at `/`, injects local-only in-page editing controls, and shows a live preview beside the Markdown editor. If port 1112 is occupied, use `ADMIN_PORT=33447 just admin` and open that port instead. The editor is provided by Doordarshan's `dev/` tooling, binds only to loopback, and writes only Markdown under `content/blog/` and `content/pages/`; it does not commit, push, or deploy anything.
 
 ### Project Structure
 

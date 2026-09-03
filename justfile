@@ -4,6 +4,7 @@
 port := "1111"
 host := env_var_or_default("ZOLA_HOST", "127.0.0.1")
 logfile := "/tmp/zola-serve.log"
+admin_port := env_var_or_default("ADMIN_PORT", "1112")
 
 # Check if we're inside a nix shell
 
@@ -32,6 +33,10 @@ serve:
 # Start Zola development server with drafts (foreground)
 serve-drafts:
     @just _run-in-nix _serve-drafts
+
+# Start the local-only Markdown admin editor (foreground)
+admin:
+    @just _run-in-nix _admin
 
 # Start dev server in background (with drafts)
 bg *FLAGS:
@@ -119,6 +124,11 @@ _serve-drafts:
         exit 1
     fi
     zola serve --drafts --interface {{ host }} --port {{ port }}
+
+# Internal: local admin editor (when in nix shell)
+_admin:
+    #!/usr/bin/env bash
+    ADMIN_PORT={{ admin_port }} node themes/doordarshan/dev/admin-server.js
 
 # Build Zola site
 build:
