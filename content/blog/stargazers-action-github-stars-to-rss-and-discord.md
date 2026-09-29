@@ -24,10 +24,12 @@ It does not.
 
 That should probably have been the end of it. Instead, over the rest of one long working session, that one question turned into a proper little build story: a new repo, a reusable GitHub Action, two live site integrations, Discord notifications, docs on GitHub Pages, a project page, and the cleanup work that made it feel finished instead of merely working.
 
-The finished project is [`stargazers-action`](https://github.com/oddship/stargazers-action), and I use it here:
+The finished project is [`stargazers-action`](https://github.com/oddship/stargazers-action). I originally used it for two live site integrations:
 
-- [oddship.net/signals](https://oddship.net/signals/)
-- [rohanverma.net/stars](https://rohanverma.net/stars/)
+- `oddship.net/signals`
+- `rohanverma.net/stars`
+
+Those site integrations have since been retired.
 
 ## It started as “does this exist?”
 
@@ -283,6 +285,4 @@ That is also why this felt worth writing up. To me, it is a concrete [harness en
 
 - Docs: <https://oddship.github.io/stargazers-action/>
 - Source: <https://github.com/oddship/stargazers-action>
-- `oddship.net` live page: <https://oddship.net/signals/>
-- `rohanverma.net` live page: <https://rohanverma.net/stars/>
 - Project page on this site: [/pages/projects/stargazers-action/](/pages/projects/stargazers-action/)

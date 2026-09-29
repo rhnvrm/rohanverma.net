@@ -15,7 +15,7 @@ A small TypeScript tool that turns recent GitHub stars across a user or organiza
 - **Framework-agnostic output** — generate JSON + RSS once, render it however you want
 - **Discord notifications** — diff against prior state so only new events are sent
 - **Three surfaces** — works as a GitHub Action, a CLI, and a small library
-- **Real site integrations** — currently powers the `/signals/` page on `oddship.net` and the `/stars/` page here on `rohanverma.net`
+- **Real site integrations** — originally powered dedicated pages on both `oddship.net` and `rohanverma.net`
 
 ## Why I like it
 
