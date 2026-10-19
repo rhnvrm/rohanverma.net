@@ -1,0 +1,20 @@
+name: Check Zola content
+on:
+  push:
+    branches: [content/missing-github-projects]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+      - name: Install pinned Zola and build
+        run: |
+          curl --fail --location --retry 3 https://github.com/getzola/zola/releases/download/v0.21.0/zola-v0.21.0-x86_64-unknown-linux-gnu.tar.gz -o /tmp/zola.tar.gz
+          echo '5c37a8f706567d6cad3f0dbc0eaebe3b9591cc301bd67089e5ddc0d0401732d6  /tmp/zola.tar.gz' | sha256sum --check
+          tar xzf /tmp/zola.tar.gz -C /tmp
+          /tmp/zola build
