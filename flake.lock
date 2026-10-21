@@ -3,17 +3,17 @@
     "doordarshan": {
       "flake": false,
       "locked": {
-        "lastModified": 1788436873,
-        "narHash": "sha256-M4fULVX55pqe9AbatJqKW2/C1fGm5GtdgKPIgL5pjfw=",
+        "lastModified": 1792571944,
+        "narHash": "sha256-w8qZh/gHz50wgP27eoq4SS0RUoQttxUu8UBVrQw1YCw=",
         "owner": "oddship",
         "repo": "doordarshan-zola",
-        "rev": "ec3c4c976aeff3d5e7b0f15ba97b881d31ba2d05",
+        "rev": "b45a5d5421eb7a2dfcb5f5e081ac5b3dc04d1c5c",
         "type": "github"
       },
       "original": {
         "owner": "oddship",
         "repo": "doordarshan-zola",
-        "rev": "ec3c4c976aeff3d5e7b0f15ba97b881d31ba2d05",
+        "rev": "b45a5d5421eb7a2dfcb5f5e081ac5b3dc04d1c5c",
         "type": "github"
       }
     },
