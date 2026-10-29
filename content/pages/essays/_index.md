@@ -16,3 +16,5 @@ Personal essays and reflections. Some started as talks, some as late-night notes
 [Hobbyist Programmers Have Been Gaslit for Too Long](@/pages/essays/hobbyist-programmers-gaslit.md). On programming as a lifelong hobby and the culture that keeps telling you it should be something else.
 
 [Navigating the River of Thoughts](@/pages/essays/navigating-river-of-thoughts.md). A metaphor for managing information overload, originally a presentation.
+
+[Bhāva and feeling](@/pages/essays/bhava-and-feeling.md). A ChatGPT-written summary of a conversation about emotion, language, religion, and disbelief.
