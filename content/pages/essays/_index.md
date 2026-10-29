@@ -18,3 +18,5 @@ Personal essays and reflections. Some started as talks, some as late-night notes
 [Navigating the River of Thoughts](@/pages/essays/navigating-river-of-thoughts.md). A metaphor for managing information overload, originally a presentation.
 
 [Bhāva and feeling](@/pages/essays/bhava-and-feeling.md). A ChatGPT-written summary of a conversation about emotion, language, religion, and disbelief.
+
+[Let's, can we, and the language of requests](@/pages/essays/lets-can-we-and-the-language-of-requests.md). A companion conversation about request forms, politeness, Indian English, and how we ask agents to act.
