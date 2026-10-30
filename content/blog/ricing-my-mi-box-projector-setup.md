@@ -1,7 +1,7 @@
 +++
 title = "Ricing my Mi Box and TCL TV with CleanYourTV"
 date = "2026-10-30T04:30:00+05:30"
-draft = true
+draft = false
 path = "blog/2026/10/30/ricing-my-mi-box-projector-setup/"
 description = "Cleaning up my Mi Box projector setup with CleanYourTV, adding media shelves and Photos, then bringing the same launcher to my TCL TV."
 
