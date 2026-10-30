@@ -14,19 +14,21 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
+        socialPython = pkgs.python3.withPackages (ps: [ ps.pillow ]);
       in
       {
         packages.default = pkgs.stdenv.mkDerivation {
           pname = "rohanverma-site";
           version = "1.0.0";
           src = ./.;
-          nativeBuildInputs = [ pkgs.zola ];
+          nativeBuildInputs = [ pkgs.zola socialPython ];
+          SOCIAL_CARD_FONT_DIR = "${pkgs.dejavu_fonts}/share/fonts/truetype";
           buildPhase = ''
             rm -rf themes/doordarshan
             mkdir -p themes
             cp -R ${doordarshan} themes/doordarshan
             chmod -R u+w themes/doordarshan
-            zola build
+            bash scripts/build-site.sh
           '';
           installPhase = ''
             cp -r public $out
@@ -36,6 +38,7 @@
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             zola
+            socialPython
             git
             nodejs_20
             yarn
@@ -44,6 +47,7 @@
           ];
 
           shellHook = ''
+            export SOCIAL_CARD_FONT_DIR="${pkgs.dejavu_fonts}/share/fonts/truetype"
             export PLAYWRIGHT_BROWSERS_PATH="${pkgs.playwright-driver.browsers}"
             export PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=true
 

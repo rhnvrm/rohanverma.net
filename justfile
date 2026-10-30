@@ -142,7 +142,7 @@ _build:
         echo -e "\033[0;31mNo config.toml found. Cannot build.\033[0m"
         exit 1
     fi
-    zola build
+    bash scripts/build-site.sh || exit $?
     echo -e "\033[0;32mZola build complete!\033[0m"
 
 # Check available tools and versions

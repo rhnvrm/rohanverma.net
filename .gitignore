@@ -24,3 +24,6 @@ out.txt
 test-results/
 node_modules/
 npm-debug.log
+
+# Python build tooling
+__pycache__/

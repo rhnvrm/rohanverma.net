@@ -44,7 +44,7 @@ The justfile will automatically detect if you're running in a Nix shell and ente
 **Direct commands (within nix develop):**
 ```bash
 zola serve    # Development server
-zola build    # Build for production
+just build    # Build for production, including social previews
 ```
 
 ### Local admin editor
@@ -97,3 +97,24 @@ Before using it, `oddship-web` must have:
 Content © Rohan Verma. Code is available under MIT license.
 
 See the live site at [rohanverma.net](https://rohanverma.net)
+
+## Blog social previews
+
+`just build` and the Nix deployment build generate a 1200 × 630 PNG for each
+published blog post. Each card includes the post title, description, author,
+date, and site address. Posts without a front matter `description` use an excerpt
+from their opening paragraphs, excluding code blocks, tables, and figures.
+Add a short `description` to a post to choose the preview text.
+
+The build updates both Twitter Card and Open Graph metadata. An explicit
+`[extra] og_image` takes precedence over generated images. Card filenames include
+a content hash so edits get a fresh image URL. All images are static files;
+sharing does not require a browser or image service.
+
+For a build outside Nix, use Python 3.11 or later, Pillow, and DejaVu fonts,
+then run `bash scripts/build-site.sh`. Set `SOCIAL_CARD_FONT_DIR` if the fonts
+are outside `/usr/share/fonts/truetype/dejavu`. The script accepts Zola build
+flags that use the default `public` output directory. For another output
+directory, run Zola directly, then `python3 scripts/social_cards.py --output DIR`.
+A plain `zola build` or `zola serve` uses the theme's generic preview image;
+use the production build to review the generated cards.
