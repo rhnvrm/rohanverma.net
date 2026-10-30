@@ -100,21 +100,24 @@ See the live site at [rohanverma.net](https://rohanverma.net)
 
 ## Blog social previews
 
-`just build` and the Nix deployment build generate a 1200 × 630 PNG for each
-published blog post. Each card includes the post title, description, author,
-date, and site address. Posts without a front matter `description` use an excerpt
-from their opening paragraphs, excluding code blocks, tables, and figures.
-Add a short `description` to a post to choose the preview text.
+`just build` and the Nix deployment build use the theme's static social card
+pipeline. The theme renders Open Graph and Twitter metadata and generates a
+1200 × 630 PNG for each dated blog post. Posts without a description use an
+excerpt from their prose paragraphs. A post's `[extra] og_image` overrides the
+generated card; `og_image_alt` supplies its alternative text.
 
-The build updates both Twitter Card and Open Graph metadata. An explicit
-`[extra] og_image` takes precedence over generated images. Card filenames include
-a content hash so edits get a fresh image URL. All images are static files;
-sharing does not require a browser or image service.
+Site branding lives in `[extra.doordarshan.social_cards]` in `config.toml`.
+See the [theme's social preview documentation](themes/doordarshan/README.md#social-previews)
+for colors, fonts, and build options.
 
-For a build outside Nix, use Python 3.11 or later, Pillow, and DejaVu fonts,
-then run `bash scripts/build-site.sh`. Set `SOCIAL_CARD_FONT_DIR` if the fonts
-are outside `/usr/share/fonts/truetype/dejavu`. The script accepts Zola build
-flags that use the default `public` output directory. For another output
-directory, run Zola directly, then `python3 scripts/social_cards.py --output DIR`.
-A plain `zola build` or `zola serve` uses the theme's generic preview image;
-use the production build to review the generated cards.
+Outside Nix, install Python 3.11 or later, Pillow, and DejaVu fonts, then run
+`bash scripts/build-site.sh`. Set `SOCIAL_CARD_FONT_DIR` for a different font
+directory. The wrapper accepts `--output-dir`, `--base-url`, `--config`,
+`--root`, `--drafts`, `--force`, and `--minify`. A plain `zola build` or
+`zola serve` uses the theme's fallback image while retaining contextual text.
+
+The Nix build fetches the theme commit recorded by the submodule. After updating
+the submodule, run `scripts/sync-doordarshan-flake.sh` and commit `flake.nix`
+and `flake.lock`.
+Uncommitted theme edits are used by local builds, but are not included in the
+fetched production theme.

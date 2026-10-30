@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     doordarshan = {
-      url = "github:oddship/doordarshan-zola/b45a5d5421eb7a2dfcb5f5e081ac5b3dc04d1c5c";
+      url = "github:oddship/doordarshan-zola/32c50086e65970586bd9df0df24d9c93372a51a1";
       flake = false;
     };
   };

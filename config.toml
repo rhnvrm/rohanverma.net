@@ -204,3 +204,6 @@ items = [
     "Sketchbook: Mafia‐inspired art WIP (#7).",
     "Listening to Tezpur → Guwahati train announcements."
 ]
+
+[extra.doordarshan.social_cards]
+brand = "~/rhnvrm"

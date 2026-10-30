@@ -27,3 +27,5 @@ npm-debug.log
 
 # Python build tooling
 __pycache__/
+
+.doordarshan-social-*/

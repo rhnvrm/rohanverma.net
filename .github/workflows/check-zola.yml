@@ -27,4 +27,4 @@ jobs:
           tar xzf /tmp/zola.tar.gz -C /tmp
           export PATH="/tmp:$PATH"
           bash scripts/build-site.sh
-          python3 -m unittest discover -s scripts/tests
+          python3 -m unittest discover -s themes/doordarshan/scripts/tests
